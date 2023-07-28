@@ -99,21 +99,21 @@
     <br></div>
 
   <label name="lblNome" id="lblNome" style="width: 120px;">Nome</label>
-  <input type="text" name="txtNome" id="txtNome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" name="txtNome" id="txtNome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
   <script>var txtNome = $('#txtNome');</script>
   <br>
   
   <div id="brasileiroRG" style="">
     <label name="lblRg" id="lblRg" style="width: 120px;">RG</label>
-    <input type="text" name="txtRg" id="txtRg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
+    <input type="text" name="txtRg" id="txtRg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
 
   <script>var txtRg = $('#txtRg');</script>
   </div>
   <label name="lblOrgaoEmissor" id="lblOrgaoEmissor" style="width: 120px;"  >Orgão expedidor</label>
-  <input type="text" name="txtPessoaRg" id="txtPessoaRg"  maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 90px;"  />
+  <input type="text" name="txtPessoaRg" id="txtPessoaRg"  maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 90px;" readonly="readonly">
   <script>var txtPessoaRg = $('#txtPessoaRg');</script>
 
-    <select class="mousetrap" style="width: 60px;" name="cmbOrgaoEmissorRgUnidadeFederativaId" id="cmbOrgaoEmissorRgUnidadeFederativaId" >
+    <select class="mousetrap" style="width: 60px;" name="cmbOrgaoEmissorRgUnidadeFederativaId" id="cmbOrgaoEmissorRgUnidadeFederativaId">
       <option value=''>&nbsp;</option>
       <option value="1">AC</option>
       <option value="2">AL</option>
@@ -151,16 +151,16 @@
 
 
   <label name="lblDtNasc" id="lblDtNasc" style="width: 120px;"  >Dt. nascimento</label>
-  <input type="text" name="txtPessoaDataNasc" id="txtPessoaDataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" />
+  <input type="text" name="txtPessoaDataNasc" id="txtPessoaDataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" readonly="readonly">
   <script type='text/javascript'>var txtPessoaDataNasc = $('#txtPessoaDataNasc');</script><br />
 
 
   <label name="lblEmail" id="lblEmail" style="width: 120px;">E-mail</label>
-  <input type="text" name="txtEmail" id="txtEmail" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" name="txtEmail" id="txtEmail" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
   <script>var txtEmail = $('#txtEmail');</script>
   <br>
   <label name="lblNacionalidade" id="lblNacionalidade" style="width: 120px;">Nacionalidade</label>
-  <input type="text" name="txtNacionalidade" id="txtNacionalidade" value="Brasileira" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" name="txtNacionalidade" id="txtNacionalidade" value="Brasileira" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
   <script>var txtNacionalidade = $('#txtNacionalidade');</script>
   <br>
   <label name="lblNaturalidade" id="lblNaturalidade" style="width: 120px;">Naturalidade</label>
@@ -168,7 +168,7 @@
   <input type="hidden" name="cmbNaturalidade" id="cmbNaturalidade" value="5343">
  <br>
   <label name="lblEstadoCivil" id="lblEstadoCivil" style="width: 120px;">Estado Cívil</label>
-  <select class="mousetrap" style="width: 100px; display: none;" name="cmbEstadoCivil" id="cmbEstadoCivil" aria-disabled="false"><option value="">&nbsp;</option>
+  <select class="mousetrap" style="width: 100px; display: none;" name="cmbEstadoCivil" id="cmbEstadoCivil" aria-disabled="false" readonly="readonly"><option value="">&nbsp;</option>
   <option value="2">CASADO</option>
   <option value="4">DIVORCIADO</option>
   <option value="6">OUTROS</option>
@@ -184,7 +184,7 @@
 
 
   <label name="lblSexo" id="lblSexo" style="width: 120px;">Sexo</label>
-  <select class="mousetrap" style="width: 100px; display: none;" name="cmbSexo" id="cmbSexo" aria-disabled="false">
+  <select class="mousetrap" style="width: 100px; display: none;" name="cmbSexo" id="cmbSexo" aria-disabled="false" readonly="readonly">
   <option value="M" selected="selected">Masculino</option>
   <option value="F">Feminino</option>
   </select><span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span><script type="text/javascript">
@@ -197,160 +197,78 @@
   <hr class="ui-state-default"><label name="lblFiliacao" id="lblFiliacao" style="font-weight:bold;width: 120px;">Filiação</label>
   <br>
   <label name="lblNomeMae" id="lblNomeMae" style="width: 120px;">Nome da mãe</label>
-  <input type="text" name="txtPessoaNomeMae" id="txtPessoaNomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" name="txtPessoaNomeMae" id="txtPessoaNomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
   <script>var txtPessoaNomeMae = $('#txtPessoaNomeMae');</script>
   <br>
   <label name="lblNomePai" id="lblNomePai" style="width: 120px;">Nome do pai</label>
-  <input type="text" name="txtPessoaNomePai" id="txtPessoaNomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" name="txtPessoaNomePai" id="txtPessoaNomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
   <script>var txtPessoaNomePai = $('#txtPessoaNomePai');</script>
   <br>
-  <hr class="ui-state-default"><label name="lblCorRaca" id="lblCorRaca" style="font-weight:bold;width: 120px;">Cor/Raça</label>
-  <br>
-  <input type="radio" id="optCorAma" name="chkCor" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorAma = chkCor;</script><label name="lblCorAma" id="lblCorAma" style="width: 120px;">Amarela</label>
-  <input type="radio" id="optCorBra" name="chkCor" value="1" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorBra = chkCor;</script><label name="lblCorBra" id="lblCorBra" style="width: 120px;">Branca</label>
-  <input type="radio" id="optCorInd" name="chkCor" value="4" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorInd = chkCor;</script><label name="lblCorInd" id="lblCorInd" style="width: 120px;">Indígena</label>
-  <input type="radio" id="optCorNeg" name="chkCor" value="2" class="mousetrap " checked="">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorNeg = chkCor;</script><label name="lblCorNeg" id="lblCorNeg" style="width: 120px;">Preta</label>
-  <input type="radio" id="optCorPar" name="chkCor" value="5" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorPar = chkCor;</script><label name="lblCorPar" id="lblCorPar" style="width: 120px;">Parda</label>
-  <input type="radio" id="optCorPar" name="chkCor" value="6" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorPar = chkCor;</script><label name="lblCorNot" id="lblCorNot" style="width: 125px;">Não quis declarar</label>
+ 
 
+  <hr class="ui-state-default"><label name="lblCorRaca" id="lblCorRaca" style="font-weight:bold;width: 120px;">Cor/Raça</label>
+    
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="lblCorRaca" id="lblCorRaca">
+      <option value="CorAmarel">Amarelo</option>
+      <option value="CorBranca">Branca</option>
+      <option value="CorIndig">Indígena</option>
+      <option value="CorParda">Parda</option>
+      <option value="CorND">Não quis declarar</option>
+    </select> 
+
+  <br>
   <br>
   
-  <hr class="ui-state-default"><label name="lblPNE" id="lblPNE" style="font-weight:bold;width: 120px;">Condição sistêmica/Necessidade especial:</label>
+  
+   <hr class="ui-state-default"><label for="lblPNE" id="lblPNE" style="font-weight:bold;width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
+  
+    <select class="ui-state-default" style="width: 100px;" name="lblPNE" id="lblPNE" multiple>
+      <option value="hipertenso">Hipertensão</option>
+      <option value="diabetes">Diabetes</option>
+      <option value="hepB">Hepatite B</option>
+      <option value="hepC">Hepatite C</option>
+      <option value="soropositivo">Soropositivo</option>
+    </select> 
+
+<hr class="ui-state-default"><label for="endereço" id="endereço" style="font-weight:bold;width: 120px;">Endereço:</label>
   <br>
 
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Hipertensão</label>
-
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Diabetes</label>
-
-    <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Hepatite B</label>
-
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Hepatite C</label>
-
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Soropositivo</label><br>
-
-
-  <hr class="ui-state-default"><label name="lblCorRaca" id="lblCorRaca" style="font-weight:bold;width: 120px;">Endereço</label>
-  <br>    
-
-    <input type="hidden" name="txtEnderecoPessoaId" id="txtEnderecoPessoaId" value="165000">
-    <script>var txtEnderecoPessoaId = $('#txtEnderecoPessoaId');</script>
-    <input type="hidden" name="txtEnderecoId" id="txtEnderecoId" value="">
-    <script>var txtEnderecoId = $('#txtEnderecoId');</script>
+     
     <label name="lblEnderecoTipo" id="lblEnderecoTipo" style="width: 120px;">Tipo de endereço</label>
-      <select class="mousetrap" style="width: 100px; display: none;" name="cmbEnderecoTipo" id="cmbEnderecoTipo" aria-disabled="false">
-        <option value="">&nbsp;</option>
-        <option value="1">Comercial</option>
-        <option value="3">Família</option>
-        <option value="2">Residencial</option>
-      </select><span><a class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-dropdown" id="cmbEnderecoTipo-button" role="button" href="#nogo" tabindex="0" aria-haspopup="true" aria-owns="cmbEnderecoTipo-menu" style="width: 112px;" aria-disabled="false"><span class="ui-selectmenu-status">&nbsp;</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span><script type="text/javascript">
+        <script>var txtEnderecoPessoaId = $('#txtEnderecoPessoaId');</script>
+      
+      <span><a class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-dropdown" id="cmbEnderecoTipo-button" role="button" href="#nogo" tabindex="0" aria-haspopup="true" aria-owns="cmbEnderecoTipo-menu" style="width: 112px;" aria-disabled="false" readonly="readonly"><span class="ui-selectmenu-status">&nbsp;</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span><script type="text/javascript">
                 var cmbEnderecoTipo = 'cmbEnderecoTipo';
                 $(document).ready(function(){
                     $('#cmbEnderecoTipo').selectmenu({style:'dropdown'});
                 });
             </script><br>
     <label name="lblCep" id="lblCep" style="width: 120px;">CEP</label>
-    <input type="text" name="txtEnderecoCep" id="txtEnderecoCep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;">
+    <input type="text" name="txtEnderecoCep" id="txtEnderecoCep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;" readonly="readonly">
     <script>var txtEnderecoCep = $('#txtEnderecoCep');</script>
     <br>
     <label name="lblRua" id="lblRua" style="width: 120px;">Endereço</label>
-    <input type="text" name="txtEnderecoRua" id="txtEnderecoRua" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" name="txtEnderecoRua" id="txtEnderecoRua" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
     <script>var txtEnderecoRua = $('#txtEnderecoRua');</script>
     <br>
     <label name="lblNumero" id="lblNumero" style="width: 120px;">Número</label>
-    <input type="text" name="txtEnderecoNumero" id="txtEnderecoNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
+    <input type="text" name="txtEnderecoNumero" id="txtEnderecoNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
     <script>var txtEnderecoNumero = $('#txtEnderecoNumero');</script>
     <br>
     <label name="lblComplemento" id="lblComplemento" style="width: 120px;">Complemento</label>
-    <input type="text" name="txtEnderecoComplemento" id="txtEnderecoComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" name="txtEnderecoComplemento" id="txtEnderecoComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
     <script>var txtEnderecoComplemento = $('#txtEnderecoComplemento');</script>
     <br>
     <label name="lblBairro" id="lblBairro" style="width: 120px;">Bairro</label>
-    <input type="text" name="txtEnderecoBairro" id="txtEnderecoBairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" name="txtEnderecoBairro" id="txtEnderecoBairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
     <script>var txtEnderecoBairro = $('#txtEnderecoBairro');</script>
     <br>
     <label name="lblCidade" id="lblCidade" style="width: 120px;">Cidade</label>
     
    <div style="height: 22px; width: 25px; margin: 0px -1px 5px 0px; display: block; float: left; position: relative; padding: 0; text-decoration: none !important; text-align: center; zoom: 1; overflow: visible; border-right: none;" class="ui-widget ui-state-default ui-corner-tl ui-corner-bl ui-button-icon-only"><span class=" ui-icon ui-icon-search"></span></div>
 
-   <input type="text" value="" name="searchcmbCidade" id="searchcmbCidade" maxlength="255" class="ui-state-default ui-corner-tr ui-corner-br mousetrap  ui-autocomplete-input" style="width: 275px;" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-   <input type="hidden" name="cmbCidade" id="cmbCidade" value="">
+   <input type="text" value="" name="searchcmbCidade" id="searchcmbCidade" maxlength="255" class="ui-state-default ui-corner-tr ui-corner-br mousetrap  ui-autocomplete-input" style="width: 275px;" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible" readonly="readonly"></span>
+   
   <br>
 
 

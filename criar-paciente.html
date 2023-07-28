@@ -205,109 +205,31 @@
   <script>var txtPessoaNomePai = $('#txtPessoaNomePai');</script>
   <br>
   <hr class="ui-state-default"><label name="lblCorRaca" id="lblCorRaca" style="font-weight:bold;width: 120px;">Cor/Raça</label>
-  <br>
-  <input type="radio" id="optCorAma" name="chkCor" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorAma = chkCor;</script><label name="lblCorAma" id="lblCorAma" style="width: 120px;">Amarela</label>
-  <input type="radio" id="optCorBra" name="chkCor" value="1" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorBra = chkCor;</script><label name="lblCorBra" id="lblCorBra" style="width: 120px;">Branca</label>
-  <input type="radio" id="optCorInd" name="chkCor" value="4" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorInd = chkCor;</script><label name="lblCorInd" id="lblCorInd" style="width: 120px;">Indígena</label>
-  <input type="radio" id="optCorNeg" name="chkCor" value="2" class="mousetrap " checked="">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorNeg = chkCor;</script><label name="lblCorNeg" id="lblCorNeg" style="width: 120px;">Preta</label>
-  <input type="radio" id="optCorPar" name="chkCor" value="5" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorPar = chkCor;</script><label name="lblCorPar" id="lblCorPar" style="width: 120px;">Parda</label>
-  <input type="radio" id="optCorPar" name="chkCor" value="6" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optCorPar = chkCor;</script><label name="lblCorNot" id="lblCorNot" style="width: 125px;">Não quis declarar</label>
+      
+      <select class="ui-state-default" style="width: 180px; height: 20px;" name="lblCorRaca" id="lblCorRaca">
+        <option value="CorAmarel">Amarelo</option>
+        <option value="CorBranca">Branca</option>
+        <option value="CorIndig">Indígena</option>
+        <option value="CorParda">Parda</option>
+        <option value="CorND">Não quis declarar</option>
+      </select> 
 
-  <br>
-  
-  <hr class="ui-state-default"><label name="lblPNE" id="lblPNE" style="font-weight:bold;width: 120px;">Condição sistêmica/Necessidade especial:</label>
-  <br>
+    <br>
+    <br>
+    
+    
+     <hr class="ui-state-default"><label for="lblPNE" id="lblPNE" style="font-weight:bold;width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
+    
+      <select class="ui-state-default" style="width: 100px;" name="lblPNE" id="lblPNE" multiple>
+        <option value="hipertenso">Hipertensão</option>
+        <option value="diabetes">Diabetes</option>
+        <option value="hepB">Hepatite B</option>
+        <option value="hepC">Hepatite C</option>
+        <option value="soropositivo">Soropositivo</option>
+      </select> 
 
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Hipertensão</label>
-
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Diabetes</label>
-
-    <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Hepatite B</label>
-
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Hepatite C</label>
-
-  <input type="checkbox" id="optPNE" name="chkPNE" value="3" class="mousetrap ">
-  <script type="text/javascript">var chkCor = $.extend($(":radio"), {
-                  val:() => {
-                          return $("input[name= chkCor]:checked").val();
-                      }
-                  }
-              );
-              var optPNE = chkPNE;</script><label name="lblCorPNE" id="lblCorPNE" style="width: 120px;">Soropositivo</label><br>
-
-
-  <hr class="ui-state-default"><label name="lblCorRaca" id="lblCorRaca" style="font-weight:bold;width: 120px;">Endereço</label>
-  <br>    
+  <hr class="ui-state-default"><label for="endereço" id="endereço" style="font-weight:bold;width: 120px;">Endereço:</label>
+    <br>
 
     <input type="hidden" name="txtEnderecoPessoaId" id="txtEnderecoPessoaId" value="165000">
     <script>var txtEnderecoPessoaId = $('#txtEnderecoPessoaId');</script>

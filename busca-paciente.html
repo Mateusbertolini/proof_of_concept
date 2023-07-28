@@ -77,13 +77,11 @@
   
   <label name="lblCpf" id="lblCpf" style="width: 80px;"  >CPF</label>
   <input type="text" name="txtCpf" id="txtCpf" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cpf" style="width: 100px;"  />
-
-<script>var txtCpf = $('#txtCpf');</script>
+  <button id="pesquisar" class="pesquisar" title="Enter" style="float: left;" onclick="consultarPacientesporCPF()">Pesquisar por CPF</button>
   <br>
   <label name="lblNome" id="lblNome" style="width: 80px;"  >Nome</label>
   <input type="text" name="txtNome" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;"  />
-
-<script>var txtNome = $('#txtNome');</script>
+  <button id="pesquisar" class="pesquisar" title="Enter" style="float: left;" onclick="consultarPacientespornome()">Pesquisar por nome</button>
     <br>
                 
     <table id="gridAluno"></table><div id="gridAlunoPager" style="margin-bottom: 5px"></div>                                                            <script>var gridAluno =  'gridAluno';$(document).ready(function (){$('#gridAluno').jqGrid({"sortname":"aluno_nome","autoload":false,"autowidth":true,"pager":"#gridAlunoPager","multiselect":true,"rowNum":25,"toppager":true,"caption":"Lista de pacientes","height":"auto","jsonReader":{"repeatitems":false,"id":0},"onSelectRow":function(rowid){try{gridAluno_onSelectRow(rowid);}catch(err){}},"onCellSelect":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_click(rowid);}catch(err){}}},"ondblClickRow":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_dblClick(rowid);}catch(err){}}},"loadBeforeSend":function(xhr){try{gridAluno_loadBeforeSend();}catch(err){}},"loadComplete":function(data){if($("#gridAluno").jqGrid('getGridParam','datatype') != 'local'){try{gridAluno_loadComplete();}catch(err){}}},"gridComplete":function(data){generateTabs();try{gridAluno_init();}catch(err){}},"loadError":function(xhr,st,err) {var url = $("#gridAluno").jqGrid('getGridParam','url');if(!$.cookie('logout'))if(xhr.status==200 && st=="parsererror"){try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: O resultado não está no formato esperado");}catch(err){}}else{try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: "+ xhr.status + " "+xhr.statusText);}catch(err){}}},"url":"https://cobalto.ufpel.edu.br/academico/consultas/aluno/listaAlunosPessoasCursos/","altRows":true,"altclass":"ui-state-default jqgrow-alt","rownumbers":false,"viewrecords":true,"datatype":"local","sortorder":"asc","forceFit":true,"headertitles":true,"colNames":["ID","Nome","E-mail","CPF","Situação","RG","Dt.Cadastro"],"colModel":[{"sortable":true,"hidden":true,"name":"id","index":"id","colName":"ID","width":0,"align":"right"},{"sortable":true,"name":"aluno_nome","index":"aluno_nome","colName":"Nome","width":450,"align":"left"},{"sortable":true,"name":"email","index":"email","colName":"E-mail","width":280,"align":"left"},{"sortable":true,"name":"cpf","index":"cpf","colName":"CPF","width":160,"align":"center"},{"sortable":true,"hidden":true,"name":"situacao","index":"situacao","colName":"Situação","width":200,"align":"center"},{"sortable":true,"name":"aluno_rg","index":"aluno_rg","colName":"RG","width":180,"align":"center"},{"sortable":true,"formatter":"date","name":"dt_cadastro","index":"dt_cadastro","colName":"Dt.Cadastro","width":200,"align":"center"}]});$('#gridAluno').setGridParam({datatype: 'json'});$('#gridAluno').setGridParam({autoload: true});});function gridAluno_resize() {$('#gbox_gridAluno').width('auto');$('#gridAluno').setGridWidth($('#gbox_gridAluno').width());};$(window).bind('resize', gridAluno_resize);$('#tabFiltroCurso').bind('tabsshow', gridAluno_resize);</script>
@@ -108,7 +106,106 @@
       style="border:0;" alt="" /></p></noscript>
       <!-- End Piwik Code -->
 
- <div> <a href="perfil-paciente.html" >APÓS FAZER A BUSCA, AO CLICAR EM UMA LINHA NA TABELA DEVE ABRIR A PÁGINA PERFIL DE PACIENTE</a></div>
-    
+    <script>
+       // Função para adicionar uma nova linha à tabela usando XPath
+function adicionarNovaLinha(nome, email, cpf, rg, dtCadastro) {
+  // Seleciona o corpo da tabela usando o XPath
+    const tbody = document.querySelector('.ui-jqgrid-htable');
+
+   
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
+
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td><input role="checkbox" type="checkbox" class="cbox"></td>
+    <td style="display: none;">ID</td>
+    <td><a href="/perfil-paciente.html?CPF=${cpf}">${nome}</a></td>
+    <td>${email}</td>
+    <td>${cpf}</td>
+    <td style="display: none;">Situação</td>
+    <td>${rg}</td>
+    <td>${dtCadastro}</td>
+  `;
+
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
+function consultarPacientespornome() {
+  const tbody = document.querySelector('.ui-jqgrid-htable');
+
+  while (tbody.children.length > 1) {
+        tbody.removeChild(tbody.lastChild);
+      }
+      const nome = document.getElementById('txtNome').value;
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://prontuario-ufpel-backend.onrender.com/consulta-nome/');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const pacientes = JSON.parse(xhr.responseText);
+            if (pacientes.length === 0) {
+alert("Nenhum paciente encontrado")
+            } else {
+              pacientes.forEach(paciente => {
+                adicionarNovaLinha(
+                  paciente.Nome,
+                  paciente.email,
+                  paciente.CPF,
+                  paciente.RG,
+                  paciente.dtCadastro
+                );
+              });
+            }
+          } else {
+            console.error('Erro ao consultar pacientes:', xhr.status, xhr.statusText);
+          }
+        }
+      };
+      xhr.send(JSON.stringify({ Nome: nome }));
+    }
+
+    function consultarPacientesporCPF() {
+  const tbody = document.querySelector('.ui-jqgrid-htable');
+
+  while (tbody.children.length > 1) {
+        tbody.removeChild(tbody.lastChild);
+      }
+      const CPF = document.getElementById('txtCpf').value;
+
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://3333-pedroaf0-prontuarioufpe-af5hxl1gdi6.ws-us102.gitpod.io/consulta-CPF/');
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            const pacientes = JSON.parse(xhr.responseText);
+            if (pacientes.length === 0) {
+alert("Nenhum paciente encontrado")
+            } else {
+              pacientes.forEach(paciente => {
+                adicionarNovaLinha(
+                  paciente.Nome,
+                  paciente.email,
+                  paciente.CPF,
+                  paciente.RG,
+                  paciente.dtCadastro
+                );
+              });
+            }
+          } else {
+            console.error('Erro ao consultar pacientes:', xhr.status, xhr.statusText);
+          }
+        }
+      };
+      xhr.send(JSON.stringify({ CPF: CPF }));
+    }
+
+adicionarNovaLinha('Pedro Santos', 'pedro@example.com', '555.555.555-55', '987654321', '2023-07-27');
+
+
+    </script>
   </body>
 </html>

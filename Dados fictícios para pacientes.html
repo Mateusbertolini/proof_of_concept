@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dados fictícios para pacientes</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Dados fictícios para pacientes</h1>
+
+  <table id="pacientes-table">
+    <tr>
+      <th>CPF</th>
+      <th>Nome</th>
+      <th>RG</th>
+      <th>Data nasc.</th>
+      <th>E-mail</th>
+      <th>Tel.</th>
+      <th>Estado civil</th>
+      <th>Sexo</th>
+      <th>Nome do pai</th>
+      <th>Nome da mãe</th>
+      <th>Cor/Raça</th>
+      <th>PNE</th>
+      <th>Tipo de endereço</th>
+      <th>CEP</th>
+      <th>Rua</th>
+      <th>Número</th>
+      <th>Complemento</th>
+      <th>Bairro</th>
+      <th>Cidade</th>
+    </tr>
+    <!-- JavaScript will populate the options table here -->
+  </table>
+
+  <script>
+    // JavaScript code with the options array
+    const options = [
+     	{Cpf: '111.222.333-44', Nome:'Joana Oliveira', Rg:'987654321', DataNasc: '05/12/1990', Email: 'joana.oliveira@email.com', Tel:'(53)998765-4321', EstadoCivil:'SOLTEIRO', Sexo: 'Feminino', NomeMae: 'Maria Oliveira', NomePai: 'José Oliveira', CorRaca: 'Branca', PNE: '', EnderecoTipo: 'Residencial', Cep: '12345-678', Rua: 'Rua das Flores', EndNumero: '123', EndComplemento: 'Apto 45', Bairro: 'Bairro Alegre',  Cidade: 'Pelotas'},
+     	{Cpf: '555.666.777-88', Nome:'José Maria Santos', Rg:'123456789', DataNasc: '15/08/1985', Email: 'joao.santos@email.com', Tel:'(21)998765-4321', EstadoCivil:'Casado', Sexo: 'Masculino', NomeMae: 'Ana Santos', NomePai: 'Carlos Santos', CorRaca: 'Parda', PNE: 'Diabetes', EnderecoTipo: 'Residencial', Cep: '56789-012', Rua: 'Rua dos Pinheiros', EndNumero: '456', EndComplemento: 'Casa 2', Bairro: 'Bairro Harmonia',  Cidade: 'Pelotas'},
+     	{Cpf: '999.888.777-66', Nome:'Maria da Silva', Rg:'543216789', DataNasc: '25/04/1992', Email: 'maria.silva@email.com', Tel:'(31)998765-4321', EstadoCivil:'Divorciada', Sexo: 'Feminino', NomeMae: 'Joana Santos', NomePai: 'José da Silva', CorRaca: 'Branca', PNE: '', EnderecoTipo: 'Residencial', Cep: '90123-456', Rua: 'Avenida das Palmeiras', EndNumero: '789', EndComplemento: 'Bloco C, Ap 102', Bairro: 'Bairro Tranquilidade',  Cidade: 'Pelotas'},
+		{Cpf: '777.888.999-00', Nome:'Lucas Pereira da Silva', Rg:'9876543210', DataNasc: '10/11/1988', Email: 'lucas.pereira@email.com', Tel:'(41)998765-4321', EstadoCivil:'Viuvo', Sexo: 'Masculino', NomeMae: 'Ana Pereira', NomePai: 'Carlos Pereira', CorRaca: 'Parda', PNE: 'Hepatite B', EnderecoTipo: 'Família', Cep: '34567-890', Rua: 'Rua dos Ipês', EndNumero: '1234', EndComplemento: 'Casa dos fundos', Bairro: 'Bairro Sossego',  Cidade: 'Pelotas'},
+		{Cpf: '222.333.444-55', Nome:'Sofia Martins Pereira', Rg:'567891234', DataNasc: '20/03/1995', Email: 'sofia.martins@email.com', Tel:'(51)998765-4321', EstadoCivil:'Outros', Sexo: 'Masculino', NomeMae: 'Laura Martins', NomePai: 'José Martins', CorRaca: 'Branca', PNE: 'Soropositivo', EnderecoTipo: 'Comercial', Cep: '23456-789', Rua: 'Avenida das Estrelas', EndNumero: '5678', EndComplemento: 'Sala 301', Bairro: 'Bairro Sossego',  Cidade: 'Pelotas'},
+
+      // Add more options as needed
+    ];
+
+  // Function to display the options in the table
+  function displayOptions() {
+    const optionsTable = document.getElementById('pacientes-table');
+
+    options.forEach((option) => {
+      const row = document.createElement('tr');
+      const cpfCell = document.createElement('td');
+      const nameCell = document.createElement('td');
+      const RGCell = document.createElement('td');
+      const DataNascCell = document.createElement('td');
+      const EmailCell = document.createElement('td');
+      const TelCell = document.createElement('td');
+      const EstadoCivilCell = document.createElement('td');
+      const SexoCell = document.createElement('td');
+      const NomeMaeCell = document.createElement('td');
+      const NomePaiCell = document.createElement('td');
+      const CorRacaCell = document.createElement('td');
+      const PNECell = document.createElement('td');
+      const EnderecoTipoCell = document.createElement('td');
+      const CepCell = document.createElement('td');
+      const RuaCell = document.createElement('td');
+      const EndNumeroCell = document.createElement('td');
+      const EndComplementoCell = document.createElement('td');
+      const BairroCell = document.createElement('td');
+      const CidadeCell = document.createElement('td');
+
+      cpfCell.textContent = option.Cpf;
+      nameCell.textContent = option.Nome;
+      RGCell.textContent = option.Rg;
+      DataNascCell.textContent = option.DataNasc;
+      EmailCell.textContent = option.Email;
+      TelCell.textContent = option.Tel;
+      EstadoCivilCell.textContent = option.EstadoCivil;
+      SexoCell.textContent = option.Sexo;
+      NomeMaeCell.textContent = option.NomeMae;
+      NomePaiCell.textContent = option.NomePai;
+      CorRacaCell.textContent = option.CorRaca;
+      PNECell.textContent = option.PNE;
+      EnderecoTipoCell.textContent = option.EnderecoTipo;
+      CepCell.textContent = option.Cep;
+      RuaCell.textContent = option.Rua;
+      EndNumeroCell.textContent = option.EndNumero;
+      EndComplementoCell.textContent = option.EndComplemento;
+      BairroCell.textContent = option.Bairro;
+      CidadeCell.textContent = option.Cidade;
+
+      row.appendChild(cpfCell);
+      row.appendChild(nameCell);
+      row.appendChild(RGCell);
+      row.appendChild(DataNascCell);
+      row.appendChild(EmailCell);
+      row.appendChild(TelCell);
+      row.appendChild(EstadoCivilCell);
+      row.appendChild(SexoCell);
+      row.appendChild(NomeMaeCell);
+      row.appendChild(NomePaiCell);
+      row.appendChild(CorRacaCell);
+      row.appendChild(PNECell);
+      row.appendChild(EnderecoTipoCell);
+      row.appendChild(CepCell);
+      row.appendChild(RuaCell);
+      row.appendChild(EndNumeroCell);
+      row.appendChild(EndComplementoCell);
+      row.appendChild(BairroCell);
+      row.appendChild(CidadeCell);
+
+      optionsTable.appendChild(row);
+    });
+  }
+
+  // Call the function to display the options
+  displayOptions();
+</script>
+
+
+
+ 
+</body>
+</html>
+
+
+

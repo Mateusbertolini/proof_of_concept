@@ -176,7 +176,7 @@ alert("Nenhum paciente encontrado")
       const CPF = document.getElementById('txtCpf').value;
 
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'https://3333-pedroaf0-prontuarioufpe-af5hxl1gdi6.ws-us102.gitpod.io/consulta-CPF/');
+      xhr.open('POST', 'https://prontuario-ufpel-backend.onrender.com/consulta-CPF/');
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {

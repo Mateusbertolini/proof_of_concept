@@ -275,7 +275,28 @@
    <input type="hidden" name="cmbCidade" id="cmbCidade" value="">
   <br>
 
+<script>
+  function submit() {
+  const parentDiv = document.getElementById("suaDivId"); // Substitua "suaDivId" pelo ID da sua div específica
+  const elements = document.querySelectorAll("input, select");
+  const jsonData = {};
 
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value; // Usar "value" em vez de "textContent" para selects
+    }
+  }
+
+  console.log(jsonData);
+  // Agora você pode enviar esse JSON com todos os inputs e selects da sua div específica para onde quiser
+}
+</script>
 
 </body>
 </html>

@@ -1,3 +1,56 @@
+<!-- Lista de labels página CADASTRAR NOVO PACIENTE
+
+{
+  Cpf;
+  Nome;
+  Rg;
+  DataNasc;
+  Email;
+  Tel;
+  EstadoCivil {
+    CASADO;
+    DIVORCIADO;
+    OUTROS;
+    SEPARADO;
+    SOLTEIRO;
+    VIUVO;
+    }
+  Sexo {
+    Masculino;
+    Feminino;
+    }
+  NomeMae;
+  NomePai;
+  CorRaca {
+    Amarelo;
+    Branca;
+    Indígena;
+    Parda;
+    Não quis declarar;
+    };
+  PNE {
+    Diabetes;
+    Hepatite B;
+    Hepatite C;
+    Soropositivo;
+  };
+  EnderecoTipo {
+    Comercial;
+    Família;
+    Residencial;
+    }
+  Cep;
+  Rua;
+  EndNumero;
+  EndComplemento;
+  Bairro;
+  Cidade;
+} 
+
+Lista de labels página CADASTRAR NOVO PACIENTE -->
+
+
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head lang="pt-br">
@@ -58,7 +111,8 @@
     <ul>
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
       <li>Consulta</li>
-      <li>NOME DO PACIENTE</li>
+      <li>Paciente</li>
+      <li>GET NAME FROM THE DATABASE</li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     </ul>
@@ -87,189 +141,148 @@
 <div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
   <br>
-  <input type="hidden" name="txtPessoaId" id="txtPessoaId" value="165000">
-
-  <br>
-  <div id="brasileiro" style="">
-    <label name="lblCpf" id="lblCpf" style="width: 120px;">CPF</label>
-    <input type="text" name="txtCpf" id="txtCpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;" readonly="readonly">
+  <div>
+    <label style="width: 120px; ;margin: 5px;">CPF</label>
+    <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;" readonly="readonly">
 
     <br></div>
 
-  <label name="lblNome" id="lblNome" style="width: 120px;">Nome</label>
-  <input type="text" name="txtNome" id="txtNome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
-  <script>var txtNome = $('#txtNome');</script>
+  <label style="width: 120px; ;margin: 5px;">Nome</label>
+  <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
   <br>
   
-  <div id="brasileiroRG" style="">
-    <label name="lblRg" id="lblRg" style="width: 120px;">RG</label>
-    <input type="text" name="txtRg" id="txtRg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
-
-  <script>var txtRg = $('#txtRg');</script>
-  </div>
-  <label name="lblOrgaoEmissor" id="lblOrgaoEmissor" style="width: 120px;"  >Orgão expedidor</label>
-  <input type="text" name="txtPessoaRg" id="txtPessoaRg"  maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 90px;" readonly="readonly">
-  <script>var txtPessoaRg = $('#txtPessoaRg');</script>
-
-    <select class="mousetrap" style="width: 60px;" name="cmbOrgaoEmissorRgUnidadeFederativaId" id="cmbOrgaoEmissorRgUnidadeFederativaId">
-      <option value=''>&nbsp;</option>
-      <option value="1">AC</option>
-      <option value="2">AL</option>
-      <option value="3">AM</option>
-      <option value="4">AP</option>
-      <option value="5">BA</option>
-      <option value="6">CE</option>
-      <option value="7">DF</option>
-      <option value="8">ES</option>
-      <option value="9">GO</option>
-      <option value="10">MA</option>
-      <option value="11">MG</option>
-      <option value="12">MS</option>
-      <option value="13">MT</option>
-      <option value="14">PA</option>
-      <option value="15">PB</option>
-      <option value="16">PE</option>
-      <option value="17">PI</option>
-      <option value="18">PR</option>
-      <option value="19">RJ</option>
-      <option value="20">RN</option>
-      <option value="21">RO</option>
-      <option value="22">RR</option>
-      <option value="23" selected="selected">RS</option>
-      <option value="24">SC</option>
-      <option value="25">SE</option>
-      <option value="26">SP</option>
-      <option value="27">TO</option>
-      </select><script type='text/javascript'>
-                  var cmbOrgaoEmissorRgUnidadeFederativaId = 'cmbOrgaoEmissorRgUnidadeFederativaId';
-                  $(document).ready(function(){
-                      $('#cmbOrgaoEmissorRgUnidadeFederativaId').selectmenu({style:'dropdown'});
-                  });
-            </script>  <br /></div>
-
-
-  <label name="lblDtNasc" id="lblDtNasc" style="width: 120px;"  >Dt. nascimento</label>
-  <input type="text" name="txtPessoaDataNasc" id="txtPessoaDataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" readonly="readonly">
-  <script type='text/javascript'>var txtPessoaDataNasc = $('#txtPessoaDataNasc');</script><br />
-
-
-  <label name="lblEmail" id="lblEmail" style="width: 120px;">E-mail</label>
-  <input type="text" name="txtEmail" id="txtEmail" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
-  <script>var txtEmail = $('#txtEmail');</script>
+  <label style="width: 120px; ;margin: 5px;">RG</label>
+  <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
   <br>
-  <label name="lblNacionalidade" id="lblNacionalidade" style="width: 120px;">Nacionalidade</label>
-  <input type="text" name="txtNacionalidade" id="txtNacionalidade" value="Brasileira" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
-  <script>var txtNacionalidade = $('#txtNacionalidade');</script>
+
+  
+  <label style="width: 120px; ;margin: 5px;"  >Dt. nascimento</label>
+  <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" readonly="readonly">
   <br>
-  <label name="lblNaturalidade" id="lblNaturalidade" style="width: 120px;">Naturalidade</label>
-  <div style="height: 22px; width: 25px; margin: 0px -1px 5px 0px; display: block; float: left; position: relative; padding: 0; text-decoration: none !important; text-align: center; zoom: 1; overflow: visible; border-right: none;" class="ui-widget ui-state-default ui-corner-tl ui-corner-bl ui-button-icon-only"><span class=" ui-icon ui-icon-search"></span></div><input type="text" value="Pelotas - RS" name="searchcmbNaturalidade" id="searchcmbNaturalidade" maxlength="255" class="ui-state-default ui-corner-tr ui-corner-br mousetrap  ui-autocomplete-input" style="width: 275px;" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span>
-  <input type="hidden" name="cmbNaturalidade" id="cmbNaturalidade" value="5343">
- <br>
-  <label name="lblEstadoCivil" id="lblEstadoCivil" style="width: 120px;">Estado Cívil</label>
-  <select class="mousetrap" style="width: 100px; display: none;" name="cmbEstadoCivil" id="cmbEstadoCivil" aria-disabled="false" readonly="readonly"><option value="">&nbsp;</option>
-  <option value="2">CASADO</option>
-  <option value="4">DIVORCIADO</option>
-  <option value="6">OUTROS</option>
-  <option value="5">SEPARADO JUDICIALMENTE</option>
-  <option value="1" selected="selected">SOLTEIRO</option>
-  <option value="3">VIUVO</option>
-  </select><span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span><script type="text/javascript">
-              var cmbEstadoCivil = 'cmbEstadoCivil';
-              $(document).ready(function(){
-                  $('#cmbEstadoCivil').selectmenu({style:'dropdown'});
-              });
-          </script><br>
+
+  <label style="width: 120px; ;margin: 5px;">E-mail</label>
+  <input type="text" name="Email" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+  <br>
+
+  <label style="width: 120px; ;margin: 5px;">Telefone</label>
+  <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+  <br>
+  
 
 
-  <label name="lblSexo" id="lblSexo" style="width: 120px;">Sexo</label>
-  <select class="mousetrap" style="width: 100px; display: none;" name="cmbSexo" id="cmbSexo" aria-disabled="false" readonly="readonly">
-  <option value="M" selected="selected">Masculino</option>
-  <option value="F">Feminino</option>
-  </select><span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span><script type="text/javascript">
-              var cmbSexo = 'cmbSexo';
-              $(document).ready(function(){
-                  $('#cmbSexo').selectmenu({style:'dropdown'});
-              });
-          </script><br>
+  <label style="width: 120px; ;margin: 5px;">Estado civil</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil" readonly="readonly">
+      <option value="CASADO">CASADO</option>
+      <option value="DIVORCIADO">DIVORCIADO</option>
+      <option value="OUTROS">OUTROS</option>
+      <option value="SEPARADO">SEPARADO JUDICIALMENTE</option>
+      <option value="SOLTEIRO">SOLTEIRO</option>
+      <option value="VIUVO">VIUVO</option>
+    </select>
+  <br>
 
-  <hr class="ui-state-default"><label name="lblFiliacao" id="lblFiliacao" style="font-weight:bold;width: 120px;">Filiação</label>
+  <label style="width: 120px; ;margin: 5px;">Sexo</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="Sexo" id="Sexo" readonly="readonly">
+      <option value="Masculino">Masculino</option>
+      <option value="Feminino">Feminino</option>
+        </select> 
   <br>
-  <label name="lblNomeMae" id="lblNomeMae" style="width: 120px;">Nome da mãe</label>
-  <input type="text" name="txtPessoaNomeMae" id="txtPessoaNomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
-  <script>var txtPessoaNomeMae = $('#txtPessoaNomeMae');</script>
-  <br>
-  <label name="lblNomePai" id="lblNomePai" style="width: 120px;">Nome do pai</label>
-  <input type="text" name="txtPessoaNomePai" id="txtPessoaNomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
-  <script>var txtPessoaNomePai = $('#txtPessoaNomePai');</script>
-  <br>
- 
 
-  <hr class="ui-state-default"><label name="lblCorRaca" id="lblCorRaca" style="font-weight:bold;width: 120px;">Cor/Raça</label>
-    
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="lblCorRaca" id="lblCorRaca">
-      <option value="CorAmarel">Amarelo</option>
-      <option value="CorBranca">Branca</option>
-      <option value="CorIndig">Indígena</option>
-      <option value="CorParda">Parda</option>
-      <option value="CorND">Não quis declarar</option>
+  <label style="width: 120px; ;margin: 5px;">Cor/Raça</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca" readonly="readonly">
+      <option value="Amarelo">Amarelo</option>
+      <option value="Branca">Branca</option>
+      <option value="Indígena">Indígena</option>
+      <option value="Parda">Parda</option>
+      <option value="Não quis declarar">Não quis declarar</option>
     </select> 
 
+
+  <hr class="ui-state-default">
+  <label style="font-weight:bold;width: 120px;" readonly="readonly">Filiação</label>
   <br>
+
+  <label style="width: 120px; margin: 5px;">Nome da mãe</label>
+  <input type="text" name="NomeMae" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+
   <br>
+  <label style="width: 120px;margin: 5px;">Nome do pai</label>
+  <input type="text" name="NomePai" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
   
-  
-   <hr class="ui-state-default"><label for="lblPNE" id="lblPNE" style="font-weight:bold;width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
-  
-    <select class="ui-state-default" style="width: 100px;" name="lblPNE" id="lblPNE" multiple>
-      <option value="hipertenso">Hipertensão</option>
-      <option value="diabetes">Diabetes</option>
-      <option value="hepB">Hepatite B</option>
-      <option value="hepC">Hepatite C</option>
-      <option value="soropositivo">Soropositivo</option>
+  <br>
+  <hr class="ui-state-default">
+  <label style="width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
+    <select class="ui-state-default" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple readonly="readonly">
+      <option value="Hipertensão">Hipertensão</option>
+      <option value="Diabetes">Diabetes</option>
+      <option value="Hepatite B">Hepatite B</option>
+      <option value="Hepatite C">Hepatite C</option>
+      <option value="Soropositivo">Soropositivo</option>
     </select> 
 
-<hr class="ui-state-default"><label for="endereço" id="endereço" style="font-weight:bold;width: 120px;">Endereço:</label>
+  <hr class="ui-state-default"><label style="font-weight:bold;width: 120px;">Endereço:</label>
+  <br>
+  
+  <label style="width: 120px;">Tipo de endereço</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo" readonly="readonly">
+      <option value="Comercial">Comercial</option>
+      <option value="Família">Família</option>
+      <option value="Residencial">Residencial</option>
+    </select> 
   <br>
 
-     
-    <label name="lblEnderecoTipo" id="lblEnderecoTipo" style="width: 120px;">Tipo de endereço</label>
-        <script>var txtEnderecoPessoaId = $('#txtEnderecoPessoaId');</script>
-      
-      <span><a class="ui-selectmenu ui-widget ui-state-default ui-corner-all ui-selectmenu-dropdown" id="cmbEnderecoTipo-button" role="button" href="#nogo" tabindex="0" aria-haspopup="true" aria-owns="cmbEnderecoTipo-menu" style="width: 112px;" aria-disabled="false" readonly="readonly"><span class="ui-selectmenu-status">&nbsp;</span><span class="ui-selectmenu-icon ui-icon ui-icon-triangle-1-s"></span></a></span><script type="text/javascript">
-                var cmbEnderecoTipo = 'cmbEnderecoTipo';
-                $(document).ready(function(){
-                    $('#cmbEnderecoTipo').selectmenu({style:'dropdown'});
-                });
-            </script><br>
-    <label name="lblCep" id="lblCep" style="width: 120px;">CEP</label>
-    <input type="text" name="txtEnderecoCep" id="txtEnderecoCep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;" readonly="readonly">
-    <script>var txtEnderecoCep = $('#txtEnderecoCep');</script>
+  <label style="width: 120px;">CEP</label>
+    <input type="text" name="Cep" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;" readonly="readonly">
     <br>
-    <label name="lblRua" id="lblRua" style="width: 120px;">Endereço</label>
-    <input type="text" name="txtEnderecoRua" id="txtEnderecoRua" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
-    <script>var txtEnderecoRua = $('#txtEnderecoRua');</script>
-    <br>
-    <label name="lblNumero" id="lblNumero" style="width: 120px;">Número</label>
-    <input type="text" name="txtEnderecoNumero" id="txtEnderecoNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
-    <script>var txtEnderecoNumero = $('#txtEnderecoNumero');</script>
-    <br>
-    <label name="lblComplemento" id="lblComplemento" style="width: 120px;">Complemento</label>
-    <input type="text" name="txtEnderecoComplemento" id="txtEnderecoComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
-    <script>var txtEnderecoComplemento = $('#txtEnderecoComplemento');</script>
-    <br>
-    <label name="lblBairro" id="lblBairro" style="width: 120px;">Bairro</label>
-    <input type="text" name="txtEnderecoBairro" id="txtEnderecoBairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
-    <script>var txtEnderecoBairro = $('#txtEnderecoBairro');</script>
-    <br>
-    <label name="lblCidade" id="lblCidade" style="width: 120px;">Cidade</label>
-    
-   <div style="height: 22px; width: 25px; margin: 0px -1px 5px 0px; display: block; float: left; position: relative; padding: 0; text-decoration: none !important; text-align: center; zoom: 1; overflow: visible; border-right: none;" class="ui-widget ui-state-default ui-corner-tl ui-corner-bl ui-button-icon-only"><span class=" ui-icon ui-icon-search"></span></div>
 
-   <input type="text" value="" name="searchcmbCidade" id="searchcmbCidade" maxlength="255" class="ui-state-default ui-corner-tr ui-corner-br mousetrap  ui-autocomplete-input" style="width: 275px;" autocomplete="off"><span role="status" aria-live="polite" class="ui-helper-hidden-accessible" readonly="readonly"></span>
+    <label style="width: 120px;">Endereço</label>
+    <input type="text" name="Rua" id="Rua" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <br>
+
+    <label style="width: 120px;">Número</label>
+    <input type="text" name="EndNumero" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+    <br>
+
+    <label style="width: 120px;">Complemento</label>
+    <input type="text" name="EndComplemento" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <br>
+
+    <label style="width: 120px;">Bairro</label>
+    <input type="text" name="Bairro" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <br>
+
+    <label style="width: 120px;">Cidade</label>
+    <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <br>
+
    
-  <br>
+
+    
+  
 
 
+<script type="text/javascript">
+  function submit() {
+  const parentDiv = document.getElementById("tab-0"); // Substitua "suaDivId" pelo ID da sua div específica
+  const elements = document.querySelectorAll("input, select");
+  const jsonData = {};
+
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value; // Usar "value" em vez de "textContent" para selects
+    }
+  }
+
+  console.log(jsonData);
+  // Agora você pode enviar esse JSON com todos os inputs e selects da sua div específica para onde quiser
+}
+</script>
 
 </body>
 </html>

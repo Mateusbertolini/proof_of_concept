@@ -262,7 +262,11 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 
 
 <script type="text/javascript">
-  const api = "https://prontuario-ufpel-backend.onrender.com"
+  function getApiUrl() {
+  const storedApiUrl = localStorage.getItem('api');
+  return storedApiUrl ? storedApiUrl : 'https://prontuario-ufpel-backend.onrender.com';
+}
+  const api = getApiUrl()
   function submit() {
   const parentDiv = document.getElementById("tab-0"); // Substitua "suaDivId" pelo ID da sua div específica
   const elements = document.querySelectorAll("input, select");
@@ -293,14 +297,121 @@ function CriarPacientes(json) {
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-            console.log("Deu certo")
-            }
+        var body = JSON.parse(xhr.responseText)
+            console.log(body);
+            
+              alert(body.message)
+            
+          }
           } else {
 
           }
         }
       xhr.send(JSON.stringify(json));
     }
+
+
+    // Função para preencher o formulário com dados fictícios 
+
+// Array de dados fictícios
+let dadosFicticios = [
+  {
+    cpf: "112.289.390-63",
+    nome: "Fulano da Silva",
+    rg: "1234567",
+    dataNascimento: "01/01/1990",
+    email: "fulano@example.com",
+    telefone: "(00) 12345-6789",
+    estadoCivil: "SOLTEIRO",
+    sexo: "Masculino",
+    corRaca: "Branca",
+    nomeMae: "Ciclana da Silva",
+    nomePai: "Beltrano da Silva",
+    pne: ["Hipertensão", "Diabetes"],
+    enderecoTipo: "Residencial",
+    cep: "12345-678",
+    rua: "Rua dos Exemplos",
+    numero: "123",
+    complemento: "Apto 456",
+    bairro: "Bairro das Amostras",
+    cidade: "Cidadópolis",
+  },
+  {
+    cpf: "790.588.720-09",
+    nome: "Ciclana Pereira",
+    rg: "7654321",
+    dataNascimento: "15/06/1985",
+    email: "ciclana@example.com",
+    telefone: "(00) 98765-4321",
+    estadoCivil: "CASADO",
+    sexo: "Feminino",
+    corRaca: "Parda",
+    nomeMae: "Maria Pereira",
+    nomePai: "José Pereira",
+    pne: ["Nenhum"],
+    enderecoTipo: "Residencial",
+    cep: "54321-987",
+    rua: "Avenida das Flores",
+    numero: "456",
+    complemento: "",
+    bairro: "Bairro Central",
+    cidade: "Cidadelândia",
+  },
+  {
+    cpf: "964.940.820-76",
+    nome: "Beltrano Alves",
+    rg: "11223344",
+    dataNascimento: "30/11/1982",
+    email: "beltrano@example.com",
+    telefone: "(00) 11111-2222",
+    estadoCivil: "DIVORCIADO",
+    sexo: "Masculino",
+    corRaca: "Indígena",
+    nomeMae: "Joana Alves",
+    nomePai: "Pedro Alves",
+    pne: ["Nenhum"],
+    enderecoTipo: "Comercial",
+    cep: "98765-432",
+    rua: "Rua do Comércio",
+    numero: "789",
+    complemento: "Sala 101",
+    bairro: "Centro Empresarial",
+    cidade: "Cidadeforte",
+  },
+  // Adicione mais dados fictícios aqui...
+];
+
+
+function preencherFormulario(indice) {
+  if (indice >= 0 && indice < dadosFicticios.length) {
+    const dados = dadosFicticios[indice];
+    document.getElementById("Cpf").value = dados.cpf;
+    document.getElementById("Nome").value = dados.nome;
+    document.getElementById("Rg").value = dados.rg;
+    document.getElementById("DataNasc").value = dados.dataNascimento;
+    document.getElementById("Email").value = dados.email;
+    document.getElementById("Tel").value = dados.telefone;
+    document.getElementById("EstadoCivil").value = dados.estadoCivil;
+    document.getElementById("Sexo").value = dados.sexo;
+    document.getElementById("CorRaca").value = dados.corRaca;
+    document.getElementById("NomeMae").value = dados.nomeMae;
+    document.getElementById("NomePai").value = dados.nomePai;
+    document.getElementById("PNE").value = dados.pne;
+    document.getElementById("EnderecoTipo").value = dados.enderecoTipo;
+    document.getElementById("Cep").value = dados.cep;
+    document.getElementById("Rua").value = dados.rua;
+    document.getElementById("EndNumero").value = dados.numero;
+    document.getElementById("EndComplemento").value = dados.complemento;
+    document.getElementById("Bairro").value = dados.bairro;
+    document.getElementById("Cidade").value = dados.cidade;
+  } else {
+    console.log("Índice inválido. Escolha um índice entre 0 e " + (dadosFicticios.length - 1));
+  }
+}
+
+// Exemplo de uso: preencher o formulário com o primeiro conjunto de dados fictícios (índice 0)
+//preencherFormulario(0);
+
 </script>
 
 </body>

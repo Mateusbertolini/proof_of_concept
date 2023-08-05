@@ -6,6 +6,6 @@
 
 tasks:
   - init: npx browser-sync start --server
-    command: y
+    command: npx browser-sync start --server
 
 

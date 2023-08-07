@@ -110,15 +110,15 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <div class="breadCrumb module">
     <ul>
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
-      <li>Consulta</li>
-      <li>Paciente</li>
-      <li><span id="Nometab">NOME</span></li>
+      <li>Cadastro</li>
+      <li>Paciente novo</li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     
     <div class="ui-widget-content ui-corner-all toolbar">
+      <button id="salvar" class="salvar" title="Salvar paciente" onclick="submit()" style="float: left;">Salvar</button>
       <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
       <span style="clear: both; display: block"></span>
     </div>
@@ -129,49 +129,53 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 <div id="tab" class="tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
   <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
     
-    <li class="labeltab ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tab-0" aria-labelledby="ui-id-1" aria-selected="true"><a href="#tab-0" accesskey="tab-0" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Dados pessoais</a></li>
-             
+    <li class="labeltab ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tab-0" aria-labelledby="ui-id-2" aria-selected="true"><a href="#tab-0" accesskey="tab-0" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Dados pessoais</a></li>
+
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-1" aria-labelledby="ui-id-1" aria-selected="false"><a href="#tab-1" accesskey="tab-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Encaminhamento/Demandas</a></li>
+
+        
   </ul>
+
 <!--FIM DIVISÃO EM TABS-->
 
 
 <!--INÍCIO DA TAB DADOS PESSOAIS-->
 
 
-<div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" aria-expanded="true" aria-hidden="false">
+<div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
   <br>
   <div>
     <label style="width: 120px; ;margin: 5px;">CPF</label>
-    <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;" readonly="readonly">
+    <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;">
 
     <br></div>
 
   <label style="width: 120px; ;margin: 5px;">Nome</label>
-  <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+  <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
   <br>
   
   <label style="width: 120px; ;margin: 5px;">RG</label>
-  <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+  <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
   <br>
 
   
   <label style="width: 120px; ;margin: 5px;"  >Dt. nascimento</label>
-  <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" readonly="readonly">
+  <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" />
   <br>
 
   <label style="width: 120px; ;margin: 5px;">E-mail</label>
-  <input type="text" name="Email" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+  <input type="text" name="Email" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Telefone</label>
-  <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+  <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
   <br>
   
 
 
   <label style="width: 120px; ;margin: 5px;">Estado civil</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil" disabled>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil">
       <option value="CASADO">CASADO</option>
       <option value="DIVORCIADO">DIVORCIADO</option>
       <option value="OUTROS">OUTROS</option>
@@ -182,14 +186,14 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Sexo</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="Sexo" id="Sexo" disabled>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="Sexo" id="Sexo">
       <option value="Masculino">Masculino</option>
       <option value="Feminino">Feminino</option>
         </select> 
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Cor/Raça</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca" disabled>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca">
       <option value="Amarelo">Amarelo</option>
       <option value="Branca">Branca</option>
       <option value="Indígena">Indígena</option>
@@ -199,20 +203,20 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 
 
   <hr class="ui-state-default">
-  <label style="font-weight:bold;width: 120px;" readonly="readonly">Filiação</label>
+  <label style="font-weight:bold;width: 120px;">Filiação</label>
   <br>
 
   <label style="width: 120px; margin: 5px;">Nome da mãe</label>
-  <input type="text" name="NomeMae" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+  <input type="text" name="NomeMae" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
 
   <br>
   <label style="width: 120px;margin: 5px;">Nome do pai</label>
-  <input type="text" name="NomePai" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+  <input type="text" name="NomePai" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
   
   <br>
   <hr class="ui-state-default">
   <label style="width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
-    <select class="ui-state-default" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple disabled>
+    <select class="ui-state-default" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple>
       <option value="Hipertensão">Hipertensão</option>
       <option value="Diabetes">Diabetes</option>
       <option value="Hepatite B">Hepatite B</option>
@@ -224,7 +228,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <br>
   
   <label style="width: 120px;">Tipo de endereço</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo" disabled>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo">
       <option value="Comercial">Comercial</option>
       <option value="Família">Família</option>
       <option value="Residencial">Residencial</option>
@@ -232,97 +236,284 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <br>
 
   <label style="width: 120px;">CEP</label>
-    <input type="text" name="Cep" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;" readonly="readonly">
+    <input type="text" name="Cep" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;">
     <br>
 
     <label style="width: 120px;">Endereço</label>
-    <input type="text" name="Rua" id="Rua" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <input type="text" name="Rua" id="Rua" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
     <label style="width: 120px;">Número</label>
-    <input type="text" name="EndNumero" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+    <input type="text" name="EndNumero" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
     <br>
 
     <label style="width: 120px;">Complemento</label>
-    <input type="text" name="EndComplemento" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <input type="text" name="EndComplemento" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
     <label style="width: 120px;">Bairro</label>
-    <input type="text" name="Bairro" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <input type="text" name="Bairro" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
     <label style="width: 120px;">Cidade</label>
-    <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
+    <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
-   
-
-    
+  
   
 
 
 <script type="text/javascript">
-
-function getApiUrl() {
+  function getApiUrl() {
   const storedApiUrl = localStorage.getItem('api');
   return storedApiUrl ? storedApiUrl : 'https://prontuario-ufpel-backend.onrender.com';
 }
   const api = getApiUrl()
+  function submit() {
+  const parentDiv = document.getElementById("tab-0"); // Substitua "suaDivId" pelo ID da sua div específica
+  const elements = document.querySelectorAll("input, select");
+  const jsonData = {};
 
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value; // Usar "value" em vez de "textContent" para selects
+    }
+  }
+
+  console.log(jsonData);
+  // Agora você pode enviar esse JSON com todos os inputs e selects da sua div específica para onde quiser
+  CriarPacientes(jsonData)
+
 }
 
-function buscarperfil() {
-  
+function CriarPacientes(json) {
       const xhr = new XMLHttpRequest();
-      xhr.open('POST', `${api}/perfil-cpf/`);
+      xhr.open('POST', `${api}/Criar_paciente/`);
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
           if (xhr.status === 200) {
         var body = JSON.parse(xhr.responseText)
             console.log(body);
-            preencherFormulario(body[0])
+            
+              alert(body.message)
+            
           }
           } else {
 
           }
         }
-      xhr.send(JSON.stringify({'CPF': getUrlVars()['cpf'] }));
+      xhr.send(JSON.stringify(json));
     }
 
 
-function preencherFormulario(dados) {
-  console.log(dados)
-  document.getElementById("Cpf").value = dados.CPF;
-    document.getElementById("Nome").value = dados.Nome;
-    document.getElementById("Nometab").innerText = dados.Nome;
-    document.getElementById("Rg").value = dados.Rg;
-    document.getElementById("DataNasc").value = dados.DataNasc;
-    document.getElementById("Email").value = dados.Email;
-    document.getElementById("Tel").value = dados.Tel;
-    document.getElementById("EstadoCivil").value = dados.EstadoCivil;
-    document.getElementById("Sexo").value = dados.Sexo;
-    document.getElementById("CorRaca").value = dados.CorRaca;
-    document.getElementById("NomeMae").value = dados.NomeMae;
-    document.getElementById("NomePai").value = dados.NomePai;
-    document.getElementById("PNE").value = dados.PNE;
-    document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
-    document.getElementById("Cep").value = dados.Cep;
-    document.getElementById("Rua").value = dados.Rua;
-    document.getElementById("EndNumero").value = dados.EndNumero;
-    document.getElementById("EndComplemento").value = dados.EndComplemento;
-    document.getElementById("Bairro").value = dados.Bairro;
-    document.getElementById("Cidade").value = dados.Cidade;
+    // Função para preencher o formulário com dados fictícios 
 
+// Array de dados fictícios
+let dadosFicticios = [
+  {
+    cpf: "112.289.390-63",
+    nome: "Fulano da Silva",
+    rg: "1234567",
+    dataNascimento: "01/01/1990",
+    email: "fulano@example.com",
+    telefone: "(00) 12345-6789",
+    estadoCivil: "SOLTEIRO",
+    sexo: "Masculino",
+    corRaca: "Branca",
+    nomeMae: "Ciclana da Silva",
+    nomePai: "Beltrano da Silva",
+    pne: ["Hipertensão", "Diabetes"],
+    enderecoTipo: "Residencial",
+    cep: "12345-678",
+    rua: "Rua dos Exemplos",
+    numero: "123",
+    complemento: "Apto 456",
+    bairro: "Bairro das Amostras",
+    cidade: "Cidadópolis",
+  },
+  {
+    cpf: "790.588.720-09",
+    nome: "Ciclana Pereira",
+    rg: "7654321",
+    dataNascimento: "15/06/1985",
+    email: "ciclana@example.com",
+    telefone: "(00) 98765-4321",
+    estadoCivil: "CASADO",
+    sexo: "Feminino",
+    corRaca: "Parda",
+    nomeMae: "Maria Pereira",
+    nomePai: "José Pereira",
+    pne: ["Nenhum"],
+    enderecoTipo: "Residencial",
+    cep: "54321-987",
+    rua: "Avenida das Flores",
+    numero: "456",
+    complemento: "",
+    bairro: "Bairro Central",
+    cidade: "Cidadelândia",
+  },
+  {
+    cpf: "964.940.820-76",
+    nome: "Beltrano Alves",
+    rg: "11223344",
+    dataNascimento: "30/11/1982",
+    email: "beltrano@example.com",
+    telefone: "(00) 11111-2222",
+    estadoCivil: "DIVORCIADO",
+    sexo: "Masculino",
+    corRaca: "Indígena",
+    nomeMae: "Joana Alves",
+    nomePai: "Pedro Alves",
+    pne: ["Nenhum"],
+    enderecoTipo: "Comercial",
+    cep: "98765-432",
+    rua: "Rua do Comércio",
+    numero: "789",
+    complemento: "Sala 101",
+    bairro: "Centro Empresarial",
+    cidade: "Cidadeforte",
+  },
+  // Adicione mais dados fictícios aqui...
+];
+
+
+function preencherFormulario(indice) {
+  if (indice >= 0 && indice < dadosFicticios.length) {
+    const dados = dadosFicticios[indice];
+    document.getElementById("Cpf").value = dados.cpf;
+    document.getElementById("Nome").value = dados.nome;
+    document.getElementById("Rg").value = dados.rg;
+    document.getElementById("DataNasc").value = dados.dataNascimento;
+    document.getElementById("Email").value = dados.email;
+    document.getElementById("Tel").value = dados.telefone;
+    document.getElementById("EstadoCivil").value = dados.estadoCivil;
+    document.getElementById("Sexo").value = dados.sexo;
+    document.getElementById("CorRaca").value = dados.corRaca;
+    document.getElementById("NomeMae").value = dados.nomeMae;
+    document.getElementById("NomePai").value = dados.nomePai;
+    document.getElementById("PNE").value = dados.pne;
+    document.getElementById("EnderecoTipo").value = dados.enderecoTipo;
+    document.getElementById("Cep").value = dados.cep;
+    document.getElementById("Rua").value = dados.rua;
+    document.getElementById("EndNumero").value = dados.numero;
+    document.getElementById("EndComplemento").value = dados.complemento;
+    document.getElementById("Bairro").value = dados.bairro;
+    document.getElementById("Cidade").value = dados.cidade;
+  } else {
+    console.log("Índice inválido. Escolha um índice entre 0 e " + (dadosFicticios.length - 1));
+  }
 }
-buscarperfil()
+
+// Exemplo de uso: preencher o formulário com o primeiro conjunto de dados fictícios (índice 0)
+//preencherFormulario(0);
+
 </script>
+</div>
+
+
+
+
+
+<!--INÍCIO TAB DEMANDAS-->
+<div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
+
+
+<hr class="ui-state-default"><label name="lblCorRaca" id="lblCorRaca" style="font-weight:bold;width: 120px;">Área da Saúde</label>
+
+<p>
+  <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
+    <option value="Enfermagem">Enfermagem</option>
+    <option value="Farmácia">Farmácia</option>
+    <option value="Odontologia">Odontologia</option>
+    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+  </select>
+  <br>
+     
+  
+<hr class="ui-state-default"><label style="font-weight:bold;width: 120px;">Demanda de encaminhamento</label>
+  <br>
+
+
+<!--SERIA INTERESSANTE FILTRAR A ESPECIALIDADE DE ACORDO COM A OPÇÃO DA ÁREA DA SAÚDE-->
+
+  <label name="lblespecialidade" id="lblespecialidade" style="width: 120px;">Especialidade</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="especialidade-area" id="especialidade-area">
+    <option value="Enfermagem">Endodontia</option>
+    <option value="Farmácia">Dentística</option>
+    <option value="Terapia Ocupacional">Pediatria</option>
+    <option value="Terapia Ocupacional">Periodondia</option>
+    <option value="Odontologia">Prótese Dentária</option>
+  </select>
+  <br>
+  <p></p>
+
+  <br>
+  <label name="demandaEspecífica" id="demandaEspecífica" style="width: 120px;">Demanda específica</label>
+  <input type="text" name="txtdemanda" id="txtdemanda" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px; height: 150px;">
+  <br>
+
+
+  <label name="StatusPaciente" id="StatusPaciente" style="width: 120px;">Status do encaminhamento</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;">
+    <option value="Enfermagem">Em espera</option>
+    <option value="Farmácia">Em atendimento</option>
+    <option value="Terapia Ocupacional">Alta</option>
+    <option value="Terapia Ocupacional">Abandono/Desistência</option>
+  </select>
+  <br>
+
+  <label name="lblData" id="lblData" style="width: 200px;"  >Data do encaminhamento</label>
+        <input type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" />
+    <br>
+<p></p>
+  <button name="btnAdicionar" onClick="adicionar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
+  <button name="btnCancelar" onClick="limpar()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
+  <br>
+  <p></p>
+
+<hr class="ui-state-default">
+
+  <p></p>
+ <table class="ui-jqgrid-htable" style="width: 1200px;" role="grid" aria-labelledby="gridDemanda_Paciente" cellspacing="0" cellpadding="0" border="0">
+        <thead>
+      <tr class="ui-jqgrid-labels" role="rowheader">
+        <th id="gridDemanda_Paciente_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
+          <div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
+        </th>
+        <th id="gridDemanda_data" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_data" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
+        </th>
+        <th id="gridDemanda_areaSaude" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 175px;" aria-selected="true">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_areaSaude" class="ui-jqgrid-sortable">Área da Saúde<span class="s-ico" style=""></span></div>
+        </th>
+        <th id="gridDemanda_especialidade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Espe" style="width: 175px;">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_especialidade" class="ui-jqgrid-sortable">Especialidade<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+        </th>
+        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="demandaEspecífica" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Demanda<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="StatusPaciente" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Status<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+        </th>
+      </tr>
+    <thead><tr style="align-items: center;">
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">ADD E SALVAR NO BANCO</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">Odontologia</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese dentária</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese fixa no dente 11</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">Alta</td>
+    </tr>
+    </thead>
+  </table>
+   
+<!--FIM TAB DEMANDAS-->
+ 
 
 </body>
 </html>
+

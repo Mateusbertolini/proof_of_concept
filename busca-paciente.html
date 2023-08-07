@@ -125,7 +125,7 @@ function adicionarNovaLinha(nome, email, cpf, rg, dtCadastro) {
   novaLinha.innerHTML = `
     <td><input role="checkbox" type="checkbox" class="cbox"></td>
     <td style="display: none;">ID</td>
-    <td><a href="/perfil-paciente.html?CPF=${cpf}">${nome}</a></td>
+    <td><a href="/perfil-paciente.html?cpf=${cpf}">${nome}</a></td>
     <td>${email}</td>
     <td>${cpf}</td>
     <td style="display: none;">Situação</td>
@@ -162,6 +162,11 @@ function buscar() {
 
 // Função para consultar pacientes por nome usando a API
 function consultarPacientesPorNome(nome) {
+  const tbody = document.querySelector('.ui-jqgrid-htable');
+
+while (tbody.children.length > 1) {
+    tbody.removeChild(tbody.lastChild);
+  }
   const api = getApiUrl();
 
   const xhr = new XMLHttpRequest();
@@ -194,6 +199,11 @@ function consultarPacientesPorNome(nome) {
 
 // Função para consultar pacientes por CPF usando a API
 function consultarPacientesPorCPF(cpf) {
+  const tbody = document.querySelector('.ui-jqgrid-htable');
+
+while (tbody.children.length > 1) {
+    tbody.removeChild(tbody.lastChild);
+  }
   const api = getApiUrl();
 
   const xhr = new XMLHttpRequest();
@@ -225,6 +235,15 @@ function consultarPacientesPorCPF(cpf) {
   xhr.send(JSON.stringify({ CPF: cpf }));
 }
 
+document.getElementById('txtCpf').onkeydown = function (e) {
+            if (e.key === 'Enter') {
+                consultarPacientesPorCPF(document.getElementById('txtCpf').value)
+            }}
+
+document.getElementById('txtNome').onkeydown = function (e) {
+            if (e.key === 'Enter') {
+                consultarPacientesPorNome(document.getElementById('txtNome').value)
+            }}
     </script>
   </body>
 </html>

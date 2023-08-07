@@ -125,7 +125,7 @@ function adicionarNovaLinha(nome, email, cpf, rg, dtCadastro) {
   novaLinha.innerHTML = `
     <td><input role="checkbox" type="checkbox" class="cbox"></td>
     <td style="display: none;">ID</td>
-    <td><a href="/perfil-paciente.html?cpf=${cpf}">${nome}</a></td>
+    <td><a href="perfil-paciente.html?cpf=${cpf}">${nome}</a></td>
     <td>${email}</td>
     <td>${cpf}</td>
     <td style="display: none;">Situação</td>
@@ -182,10 +182,10 @@ while (tbody.children.length > 1) {
           pacientes.forEach(paciente => {
             adicionarNovaLinha(
               paciente.Nome,
-              paciente.email,
+              paciente.Email,
               paciente.CPF,
-              paciente.RG,
-              paciente.dtCadastro
+              paciente.Rg,
+              paciente.DataNasc
             );
           });
         }
@@ -219,10 +219,10 @@ while (tbody.children.length > 1) {
           pacientes.forEach(paciente => {
             adicionarNovaLinha(
               paciente.Nome,
-              paciente.email,
+              paciente.Email,
               paciente.CPF,
-              paciente.RG,
-              paciente.dtCadastro
+              paciente.Rg,
+              paciente.DataNasc
             );
           });
         }

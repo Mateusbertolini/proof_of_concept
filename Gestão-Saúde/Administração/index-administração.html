@@ -140,11 +140,41 @@
 <style>
   #iframe{overflow: hidden;}
 </style>
- <iframe id="iframe" src="Apresentação.html"style="width: 100%; height: 5000px; overflow: hidden;" frameborder="0"></iframe>
+ <iframe id="iframe" src="../../Apresentação.html"style="width: 100%; height: 5000px; overflow: hidden;" frameborder="0"></iframe>
   </div>
 
 
   <script>
+function corrigirLinksRelativos() {
+    const links = document.querySelectorAll('a');
+    const isRoot = location.pathname === '/'; // Verifica se a página está na raiz do servidor
+    const isGithub = location.href.includes('github.io'); // Verifica se a URL da página contém "github.io"
+
+    links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('#') && !href.startsWith('mailto')) {
+            let newHref = href;
+            if (!isRoot) {
+              const pathSegments = location.pathname.split('/').filter(segment => segment !== ''); // Divide o caminho atual da página em segmentos
+              let depth = pathSegments.length - 1; // Calcula a profundidade da pasta atual em relação à raiz
+              
+              if (isGithub) {
+                 depth -= 1; 
+                }
+
+                const prefix = Array(depth).fill('..').join('/'); // Cria a marcação de retorno
+
+                newHref = prefix + '/' + href; // Adiciona a marcação de retorno ao caminho relativo
+            }
+            link.setAttribute('href', newHref);
+        }
+    });
+}
+
+// Chame a função para corrigir os links relativos quando a página carregar
+window.addEventListener('load', corrigirLinksRelativos);
+
+
     // Função para executar quando uma tag âncora for clicada
     function handleClick(event) {
       // Evitando o comportamento padrão de seguir o link

@@ -56,7 +56,7 @@ const getApiUrl = () => {
     },
   };
   
-  module.exports = {
+  window.api  = {
     pacientes,
     encaminhamentos,
   };

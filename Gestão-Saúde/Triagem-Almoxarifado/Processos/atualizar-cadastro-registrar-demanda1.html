@@ -110,7 +110,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
       <li>Processos</li>
       <li>Atualizar dados e/ou registrar demanda</li>
-      <li>IMPORTAR NOME DO BANCO DE DADOS</li>
+      <li>GET FROM id="Nome"</li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     </ul>
@@ -427,7 +427,7 @@ function preencherFormulario(indice) {
   <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
   <p>
 
-   <select class="ui-state-default" style="width: 180px; height: 20px;" name="codCurso" id="areaSaúde">
+   <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
     <option value="0">Escolher</option>
     <option value="1200">Enfermagem</option>
     <option value="7100">Farmácia</option>
@@ -481,20 +481,12 @@ function preencherFormulario(indice) {
   <p></p>
 
   <br>
-  <input type="text" name="txtdemanda" id="txtdemanda" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px; height: 150px;">
+  <textarea style="width: 380px;" name="txtdemanda" id="txtdemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
   <br>
 
-
-  <label name="StatusPaciente" id="StatusPaciente" style="width: 180px;">Status do encaminhamento</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;">
-    <option value="Enfermagem">Em espera</option>
-    <option value="Farmácia">Em atendimento</option>
-    <option value="Terapia Ocupacional">Alta</option>
-    <option value="Terapia Ocupacional">Abandono/Desistência</option>
-  </select>
   <p>
 
-  <label name="lblData" id="lblData" style="width: 180px;"  >Data do encaminhamento</label>
+  <label name="lblData" id="lblData" style="width: 180px;"  >Data do registro da demanda</label>
         <input type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
     <br>
 <p></p>
@@ -527,15 +519,20 @@ function preencherFormulario(indice) {
         </th>
       </tr>
     <thead><tr style="align-items: center;">
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">ADD E SALVAR NO BANCO</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Odontologia</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese dentária</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese fixa no dente 11</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Alta</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="lblData"</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="areaSaúde"</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="especAreaSaúde"</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="txtdemanda"</td>
+      <td role="gridcell" style="text-align:center;" title="05/06/2023">SEMPRE REGISTRAR COMO "EM ESPERA"</td>
     </tr>
     </thead>
   </table>
    
 <!--FIM TAB DEMANDAS-->
+
+
+<h1>APÓS SALVAR, DISPLAY MESSAGE: "REGISTRO SALVO COM SUCESSO" </h1>
+
+
 </body>
 </html>

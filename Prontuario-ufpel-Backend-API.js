@@ -58,6 +58,6 @@ const getApiUrl = () => {
   
   window.api  = {
     pacientes,
-    encaminhamentos,
+    encaminhamentos
   };
   

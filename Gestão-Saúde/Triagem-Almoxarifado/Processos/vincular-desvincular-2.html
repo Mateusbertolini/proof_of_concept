@@ -1,0 +1,237 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head lang="pt-br">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+    var PATH_COOKIE = '/';
+    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+</script>
+<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+<link href="stylecobalto.css" type="text/css" rel="stylesheet">
+</head>
+
+<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+      <li>Triagem/Almoxarifado</li>    
+      <li>Processos</li>
+      <li>Vincular/desvincular paciente/aluno</li>
+      <li>GET "DISCIPLINA"</li>
+      <li>GET "TURMA"</li>
+    </ul>
+    
+    <div style="clear: both;"></div></div><div style="clear: both;"></div>
+
+
+    <div class="ui-widget-content ui-corner-all toolbar">
+        <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+        <button id="salvar" class="salvar" title="Salvar paciente" onclick="submit()" style="float: left;">Salvar alterações</button>
+        <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+        <span style="clear: both; display: block"></span>
+      </div>
+
+<div id="alunosMatriculados" class="tabs">
+  <div id="tabTurmaOrigem-0" class="ui-widget tabTurmaOrigem tabTurmaOrigem-0 tabTurmaOrigem-0">
+    <ul>
+      <li class="labeltabTurmaOrigem"><a href="#tabTurmaOrigem-0" accessKey="tabTurmaOrigem-0">Vinculação</a>
+      </li>
+    </ul>
+    <p></p>
+
+    <label><b>Alunos matriculados</b></label>
+    <br>
+
+    <label style="width: 100px;"  >Ano/Período</label>
+        <input type="text" name="lblAnoOrigem" id="lblAnoOrigem" value="GET ANO/PERÍODO FROM DISCIPLINAS" maxlength="255" class="ui-state-default ui-corner-all mousetrap ano_base_periodo_origem" style="width: 246px;" readonly="readonly"/>
+
+    <label name="lblEspaco1" id="lblEspaco1" style="width: 240px;"  ></label>
+
+    <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
+        <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
+            <option value="0">Escolher</option>
+            <option value="1200">Enfermagem</option>
+            <option value="7100">Farmácia</option>
+            <option value="400">Odontologia</option>
+            <option value="7200">Terapia Ocupacional</option>
+        </select>
+
+        <br />
+        <label style="width: 100px;" >Atividade curricular</label>
+        <input type="text" name="AtividadeCurricular" id="AtividadeCurricular" value="GET NOME DA DISCIPLINA" maxlength="255" class="ui-state-default ui-corner-all mousetrap atividade_curricular_origem"
+          style="width: 246px;" readonly="readonly"/>
+
+        <label name="lblEspaco2" id="lblEspaco2" style="width: 240px;"  ></label>
+
+    <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
+        <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
+      <option> </option>
+    </select>
+    
+<script>
+  const disciplinas = [
+    {codCurso: 400, nomeEspec:'Prótese Dentária'},
+    {codCurso: 400, nomeEspec:'Odontopediatria'},
+    {codCurso: 400, nomeEspec:'Periodontia'},
+    {codCurso: 400, nomeEspec:'Dentística'},
+    {codCurso: 400, nomeEspec:'Cirurgia'},
+    {codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
+    {codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
+    {codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
+    {codCurso: 7100, nomeEspec:'Análises clínicas' },
+    {codCurso: 7100, nomeEspec:'Antroposofia' },
+    {codCurso: 7200, nomeEspec:'Contextos sociais' },
+    {codCurso: 7200, nomeEspec:'Saúde da família' },
+    // Add more options as needed
+  ];
+  
+  const areaSelect = document.getElementById('areaSaúde');
+  const disciplinasSelect = document.getElementById('especAreaSaúde');
+  
+  areaSelect.addEventListener('change', function() {
+    const selectedCodCurso = areaSelect.value;
+    
+    // Clear existing options
+    disciplinasSelect.innerHTML = '<option> </option>';
+    
+    // Filter and populate the second select
+    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
+    selectedDisciplinas.forEach(disciplina => {
+      const option = document.createElement('option');
+      option.textContent = disciplina.nomeEspec;
+      disciplinasSelect.appendChild(option);
+    });
+  });
+</script>
+
+    <br />
+    <label style="width: 100px;">Turma</label>
+    <input type="text" id="lblTurma" value="GET TURMA SELECIONADA" maxlength="255" class="ui-state-default ui-corner-all mousetrap atividade_curricular_origem"
+        style="width: 246px;" readonly="readonly"/>
+
+    <label name="lblEspaco3" id="lblEspaco3" style="width: 240px;"  ></label>
+
+       
+    <label name="lblEspaco4" id="lblEspaco4" style="width: 240px;"></label>
+        <br />
+
+
+    <style>
+        .table-container {
+        display: flex;
+        gap: 80px; /* Adjust the gap between tables */
+        }
+        
+        /* Styles for the table header cells */
+        .ui-jqgrid-titlebar {
+        background-color: #f2f2f2; /* Change this to your desired header background color */
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        }
+    
+        /* Styles for the table data cells */
+        .ui-state-default {
+        text-align: center;
+        padding: 5px;
+        }
+    </style>
+    
+    <div class="table-container">
+        <table id="gridAlunos">
+        <tr>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Matrícula</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Aluno</th>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+        </tr>
+        <!-- ... More rows ... -->
+        </table>
+    
+        <table id="gridEspera">
+        <tr>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">CPF</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Nome</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Demanda</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Data</th>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "CPF DO PACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO PACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DEMANDA"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DATA"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "CPF DO PACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO PACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DEMANDA"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DATA"</td>
+        </tr>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "CPF DO PACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO PACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DEMANDA"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DATA"</td>
+        </tr>
+        <!-- ... More rows ... -->
+        </table>
+    </div>
+
+
+
+
+<div>
+    
+    <hr class="ui-state-default">
+
+    <h2 style="color: rgb(245, 6, 6);"> LISTA DE PACIENTES "EM ESPERA" ATUALIZA DE ACORDO COM A ESPECIALIDADE SELECIONADA</h2>
+    
+    <hr class="ui-state-default">
+    <p></p>
+    <h1 style="color: rgb(245, 6, 6);">-> SELECIONA UM ALUNO E UM PACIENTE E CLICA EM SALVAR</h1>
+    <h1 style="color: rgb(245, 6, 6);">-> SALVAR INFORMAÇÃO NA VARIÁVEL DO ALUNO 'vinculo-pacientes'</h1>
+    <h1 style="color: rgb(245, 6, 6);">-> ATUALIZA O 'status do paciente' PARA "EM ATENDIMENTO"</h1>
+    <h1 style="color: rgb(245, 6, 6);">-> INCLUIR O PACIENTE VARIÁVEL 'pacientes-disciplina' no 'ano/semestre' vigente'</h1>
+</div>
+          
+       
+          
+
+
+
+			
+		<div style="clear: both; margin-top: 10px;"><!----></div>
+		<div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">
+			&copy;2010 - 2023 Cobalto
+		</div>
+	</body>
+</html>

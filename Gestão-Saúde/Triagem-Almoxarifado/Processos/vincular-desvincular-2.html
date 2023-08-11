@@ -14,7 +14,45 @@
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
 <link href="stylecobalto.css" type="text/css" rel="stylesheet">
+
 </head>
+
+<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
+<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
+    <style type="text/css">
+    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
+    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
+    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
+    .column {width: 33.3%; float: left; padding-bottom: 100px;}
+    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
+            @media (max-width: 900px){
+            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
+            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
+            .column {width: 100%; float: none; padding-bottom: 0px;}
+            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
+        }
+        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
+    .portlet {margin: 0 0 1.5em 0;}
+    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
+    .portlet-header button {float: right; height: 18px; width: 18px;}
+    .portlet-header .ui-icon {float: right;}
+    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
+    .portlet-content a:hover{text-decoration: underline!important;}
+    .portlet-content a:visited{color: #bbb!important;}
+    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
+    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
+    .portlet-content ul li:last-child {border-bottom: none!important;}
+    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
+    .ui-sortable-placeholder * {visibility: hidden;}
+  </style>
+<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
+
+
+
+
+
+
+<!-- CONTEÚDO DA PÁGINA/TELA PRINCIPAL COBALTO -->
 
 <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
       <li>Triagem/Almoxarifado</li>    
@@ -112,10 +150,16 @@
     <input type="text" id="lblTurma" value="GET TURMA SELECIONADA" maxlength="255" class="ui-state-default ui-corner-all mousetrap atividade_curricular_origem"
         style="width: 246px;" readonly="readonly"/>
 
-    <label name="lblEspaco3" id="lblEspaco3" style="width: 240px;"  ></label>
+    <label name="lblEspaco3" id="lblEspaco3" style="width: 240px;"></label>
 
        
-    <label name="lblEspaco4" id="lblEspaco4" style="width: 240px;"></label>
+    <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
+        <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
+            <option value="0">Escolher</option>
+            <option value="1">1 - Baixa</option>
+            <option value="2">2 - Média</option>
+            <option value="3">3 - Alta (Pós-graduação)</option>
+        </select>
         <br />
 
 
@@ -141,76 +185,94 @@
     </style>
     
     <div class="table-container">
-        <table id="gridAlunos">
+      <table id="table1">
         <tr>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Matrícula</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Selec.</th>
             <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Aluno</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Matrícula</th>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 1, MATRÍCULA 1"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 1</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 1</td>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 2, MATRÍCULA 2"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 2</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 2</td>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 3, MATRÍCULA 3"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 3</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 3</td>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 4, MATRÍCULA 4"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 4</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Matrícula 4</td>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 5, MATRÍCULA 5"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 5</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Matrícula 5</td>
         </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "MATRÍCULA DO ALUNO"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO ALUNOPACIENTE"</td>
-        </tr>
+        
         <!-- ... More rows ... -->
         </table>
     
-        <table id="gridEspera">
+
+        <table id="table2">
         <tr>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">CPF</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Nome</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Selec.</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Paciente</th>
             <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Demanda</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Data</th>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "CPF DO PACIENTE"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO PACIENTE"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DEMANDA"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DATA"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="João da Silva,Exodontia do 11"> </td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">João da Silva</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 11</td>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "CPF DO PACIENTE"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO PACIENTE"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DEMANDA"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DATA"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="Maria da Luz,Exodontia do 28"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Maria da Luz</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 28</td>
         </tr>
         <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "CPF DO PACIENTE"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "NOME DO PACIENTE"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DEMANDA"</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">GET "DATA"</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="Pedro Santos,Exodontia do 45"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Pedro Santos</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 45</td>
         </tr>
         <!-- ... More rows ... -->
         </table>
     </div>
+
+     
+      <button id="submitButton">Vincular</button>
+
 
 
 
 
 <div>
     
+    <hr class="ui-state-default">
+
+    <h2>Vinculação de paciente</h2>
+
+    <table id="selectedTable" class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
+      <thead>
+        <tr>
+          <th>Aluno</th>
+          <th>Paciente</th>
+          <th><input type="checkbox" name="selectAll">Selecionar</th>
+        </tr>
+      </thead>
+      <tbody id="selectedTableBody" class="ui-state-default ui-th-column ui-th-ltr">
+      </tbody>
+    </table>
+    
+    <button id="deleteButton">Deletar</button>
+
     <hr class="ui-state-default">
 
     <h2 style="color: rgb(245, 6, 6);"> LISTA DE PACIENTES "EM ESPERA" ATUALIZA DE ACORDO COM A ESPECIALIDADE SELECIONADA</h2>
@@ -224,7 +286,94 @@
 </div>
           
        
-          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  const submitButton = document.getElementById("submitButton");
+  const deleteButton = document.getElementById("deleteButton");
+  submitButton.addEventListener("click", bindSelections);
+  deleteButton.addEventListener("click", deleteRows);
+
+  // Maintain a set to track selected table2Options values
+  const selectedTable2Values = new Set();
+
+  function bindSelections() {
+    const selectedTableBody = document.getElementById("selectedTableBody");
+    const table1Options = document.getElementsByName("table1Option");
+    const table2Options = document.getElementsByName("table2Option");
+
+    let selectedTable1Option = '';
+    for (const option of table1Options) {
+      if (option.checked) {
+        selectedTable1Option = option.value;
+        break;
+      }
+    }
+
+    const selectedTable1Values = selectedTable1Option.split(',');
+
+    for (const option of table2Options) {
+      if (option.checked) {
+        const selectedTable2ValueParts = option.value.split(',');
+        const selectedTable2Value = `${selectedTable2ValueParts[1]}`; // Second column value of table2
+
+        if (!selectedTable2Values.has(selectedTable2Value)) {
+          selectedTable2Values.add(selectedTable2Value);
+
+          const newRow = document.createElement("tr");
+          const selectedTable1Cell = document.createElement("td");
+          selectedTable1Cell.textContent = `${selectedTable1Values[0]}, ${selectedTable1Values[1]}`;
+          newRow.appendChild(selectedTable1Cell);
+
+          const selectedTable2Cell = document.createElement("td");
+          selectedTable2Cell.textContent = `${selectedTable2ValueParts[0]}, ${selectedTable2ValueParts[1]}`;
+          newRow.appendChild(selectedTable2Cell);
+
+          const checkboxCell = document.createElement("td");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkboxCell.appendChild(checkbox);
+          newRow.appendChild(checkboxCell);
+
+          selectedTableBody.appendChild(newRow);
+        }
+      }
+    }
+  }
+
+  function deleteRows() {
+    const selectedTableBody = document.getElementById("selectedTableBody");
+    const rows = selectedTableBody.querySelectorAll("tr");
+    for (const row of rows) {
+      const checkbox = row.querySelector("input[type='checkbox']");
+      if (checkbox && checkbox.checked) {
+        const selectedTable2Cell = row.querySelector("td:nth-child(2)");
+        const selectedTable2Value = selectedTable2Cell.textContent.trim();
+        selectedTable2Values.delete(selectedTable2Value);
+        selectedTableBody.removeChild(row);
+      }
+    }
+  }
+</script>
+
+
+      
 
 
 

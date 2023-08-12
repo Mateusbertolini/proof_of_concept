@@ -141,7 +141,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <br>
   <div>
     <label style="width: 120px; ;margin: 5px;">CPF</label>
-    <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;">
+    <input type="text" name="Cpf" id="CPF" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;">
 
     <br></div>
 
@@ -258,15 +258,17 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
     
   
 
-
+<script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
 <script type="text/javascript">
-  function getApiUrl() {
-  const storedApiUrl = localStorage.getItem('api');
-  return storedApiUrl ? storedApiUrl : 'https://prontuario-ufpel-backend.onrender.com';
-}
-  const api = getApiUrl()
   function submit() {
-  const parentDiv = document.getElementById("tab-0"); // Substitua "suaDivId" pelo ID da sua div específica
+
+    const formdata = getformdata()
+    const response = api.pacientes.criar(formdata).then((response) => { alert(response.message)
+          ;});
+}
+
+function getformdata(){
+  const parentDiv = document.getElementById("tab-0"); 
   const elements = document.querySelectorAll("input, select");
   const jsonData = {};
 
@@ -278,38 +280,16 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
         jsonData[element.name] = element.value;
       }
     } else if (element.tagName === "SELECT") {
-      jsonData[element.id] = element.value; // Usar "value" em vez de "textContent" para selects
+      jsonData[element.id] = element.value;
     }
   }
 
   console.log(jsonData);
-  // Agora você pode enviar esse JSON com todos os inputs e selects da sua div específica para onde quiser
-  CriarPacientes(jsonData)
-
+  return jsonData;
 }
 
-function CriarPacientes(json) {
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', `${api}/Criar_paciente/`);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-        var body = JSON.parse(xhr.responseText)
-            console.log(body);
-            
-              alert(body.message)
-            
-          }
-          } else {
 
-          }
-        }
-      xhr.send(JSON.stringify(json));
-    }
-
-
-    // Função para preencher o formulário com dados fictícios 
+    // Função para preencher o formulário com dados fictícios ---------------------------------------------------------------------------------------------
 
 // Array de dados fictícios
 let dadosFicticios = [
@@ -383,7 +363,7 @@ let dadosFicticios = [
 function preencherFormulario(indice) {
   if (indice >= 0 && indice < dadosFicticios.length) {
     const dados = dadosFicticios[indice];
-    document.getElementById("Cpf").value = dados.cpf;
+    document.getElementById("CPF").value = dados.cpf;
     document.getElementById("Nome").value = dados.nome;
     document.getElementById("Rg").value = dados.rg;
     document.getElementById("DataNasc").value = dados.dataNascimento;

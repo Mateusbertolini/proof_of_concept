@@ -45,244 +45,241 @@
     .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
     .ui-sortable-placeholder * {visibility: hidden;}
   </style>
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
 
 
-
-
-
-
-<!-- CONTEÚDO DA PÁGINA/TELA PRINCIPAL COBALTO -->
-
+<!-- CONTEÚDO SUPERIOR -->
 <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-      <li>Triagem/Almoxarifado</li>    
-      <li>Processos</li>
-      <li>Vincular/desvincular paciente/aluno</li>
-      <li>GET "DISCIPLINA"</li>
-      <li>GET "TURMA"</li>
-    </ul>
+  <li>Triagem/Almoxarifado</li>    
+  <li>Processos</li>
+  <li>Vincular/desvincular paciente/aluno</li>
+  <li>GET "DISCIPLINA"</li>
+  <li>GET "TURMA"</li>
+</ul>
     
-    <div style="clear: both;"></div></div><div style="clear: both;"></div>
+<div style="clear: both;"></div></div><div style="clear: both;"></div>
+
+<!-- CONTEÚDO BOTÕES -->
+<div class="ui-widget-content ui-corner-all toolbar">
+    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+    <button id="salvar" class="salvar" title="Salvar paciente" onclick="submit()" style="float: left;">Salvar alterações</button>
+    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+    <span style="clear: both; display: block"></span>
+  </div>
 
 
-    <div class="ui-widget-content ui-corner-all toolbar">
-        <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-        <button id="salvar" class="salvar" title="Salvar paciente" onclick="submit()" style="float: left;">Salvar alterações</button>
-        <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
-        <span style="clear: both; display: block"></span>
+
+<!-- CONTEÚDO COLUNA DA DIREITA -->
+<div id="alunosMatriculados" class="tabs" style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+  <div>
+    <div id="alunosMatriculados-0" class="ui-widget alunosMatriculados alunosMatriculados-0">
+      <ul>
+          <li class="labeltablunosMatriculados"><a href="#alunosMatriculados-0" accessKey="alunosMatriculados-0">Alunos matriculados</a></li>
+      </ul>
+      
+      <br>
+      <p></p>
+      <label style="width: 100px;"  >Ano/Período</label>
+      <input type="text" name="lblAnoOrigem" id="lblAnoOrigem" value="GET ANO/PERÍODO FROM DISCIPLINAS" maxlength="255" class="ui-state-default ui-corner-all mousetrap ano_base_periodo_origem" style="width: 246px;" readonly="readonly"/>
+
+      <br>
+      <p></p>
+      <label style="width: 100px;" >Atividade curricular</label>
+      <input type="text" name="AtividadeCurricular" id="AtividadeCurricular" value="GET NOME DA DISCIPLINA" maxlength="255" class="ui-state-default ui-corner-all mousetrap atividade_curricular_origem"
+      style="width: 246px;" readonly="readonly"/>
+
+      <br>
+      <p></p>
+      <label style="width: 100px;">Turma</label>
+      <input type="text" id="lblTurma" value="GET TURMA SELECIONADA" maxlength="255" class="ui-state-default ui-corner-all mousetrap atividade_curricular_origem"
+      style="width: 246px;" readonly="readonly"/>
+        
+      <br>
+      <div class="table-container">
+        <table id="table1" style="width: 100%;">
+          <tr>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Selec.</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Aluno</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Matrícula</th>
+          </tr>
+          <tr>
+              <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 1, MATRÍCULA 1"></td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 1</td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 1</td>
+          </tr>
+          <tr>
+              <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 2, MATRÍCULA 2"></td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 2</td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 2</td>
+          </tr>
+          <tr>
+              <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 3, MATRÍCULA 3"></td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 3</td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 3</td>
+          </tr>
+          <tr>
+              <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 4, MATRÍCULA 4"></td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 4</td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Matrícula 4</td>
+          </tr>
+          <tr>
+              <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 5, MATRÍCULA 5"></td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 5</td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Matrícula 5</td>
+          </tr>
+          
+          <!-- ... More rows ... -->
+          </table></div>
       </div>
+  </div>
+</div>
+  
 
-<div id="alunosMatriculados" class="tabs">
-  <div id="tabTurmaOrigem-0" class="ui-widget tabTurmaOrigem tabTurmaOrigem-0 tabTurmaOrigem-0">
+
+<!-- CONTEÚDO COLUNA DA ESQUERDA -->
+<div id="pacientesEspera" class="tabs" style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+  <div id="pacientesEspera-0" class="ui-widget pacientesEspera pacientesEspera-0">
     <ul>
-      <li class="labeltabTurmaOrigem"><a href="#tabTurmaOrigem-0" accessKey="tabTurmaOrigem-0">Vinculação</a>
-      </li>
+        <li class="labeltabpacientesEspera"><a href="#pacientesEspera-0" accessKey="pacientesEspera-0">Pacientes em espera</a></li>
     </ul>
-    <p></p>
-
-    <label><b>Alunos matriculados</b></label>
-    <br>
-
-    <label style="width: 100px;"  >Ano/Período</label>
-        <input type="text" name="lblAnoOrigem" id="lblAnoOrigem" value="GET ANO/PERÍODO FROM DISCIPLINAS" maxlength="255" class="ui-state-default ui-corner-all mousetrap ano_base_periodo_origem" style="width: 246px;" readonly="readonly"/>
-
-    <label name="lblEspaco1" id="lblEspaco1" style="width: 240px;"  ></label>
-
-    <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
-        <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-            <option value="0">Escolher</option>
-            <option value="1200">Enfermagem</option>
-            <option value="7100">Farmácia</option>
-            <option value="400">Odontologia</option>
-            <option value="7200">Terapia Ocupacional</option>
-        </select>
-
-        <br />
-        <label style="width: 100px;" >Atividade curricular</label>
-        <input type="text" name="AtividadeCurricular" id="AtividadeCurricular" value="GET NOME DA DISCIPLINA" maxlength="255" class="ui-state-default ui-corner-all mousetrap atividade_curricular_origem"
-          style="width: 246px;" readonly="readonly"/>
-
-        <label name="lblEspaco2" id="lblEspaco2" style="width: 240px;"  ></label>
-
-    <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-        <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
-      <option> </option>
-    </select>
     
+  <br>
+  <p></p>
+
+  <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
+  <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
+      <option value="0">Escolher</option>
+      <option value="1200">Enfermagem</option>
+      <option value="7100">Farmácia</option>
+      <option value="400">Odontologia</option>
+      <option value="7200">Terapia Ocupacional</option>
+  </select>
+
+  <br>
+  <p></p>
+  <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
+  <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
+    <option> </option>
+  </select>
+
 <script>
-  const disciplinas = [
-    {codCurso: 400, nomeEspec:'Prótese Dentária'},
-    {codCurso: 400, nomeEspec:'Odontopediatria'},
-    {codCurso: 400, nomeEspec:'Periodontia'},
-    {codCurso: 400, nomeEspec:'Dentística'},
-    {codCurso: 400, nomeEspec:'Cirurgia'},
-    {codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
-    {codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
-    {codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
-    {codCurso: 7100, nomeEspec:'Análises clínicas' },
-    {codCurso: 7100, nomeEspec:'Antroposofia' },
-    {codCurso: 7200, nomeEspec:'Contextos sociais' },
-    {codCurso: 7200, nomeEspec:'Saúde da família' },
-    // Add more options as needed
-  ];
-  
-  const areaSelect = document.getElementById('areaSaúde');
-  const disciplinasSelect = document.getElementById('especAreaSaúde');
-  
-  areaSelect.addEventListener('change', function() {
-    const selectedCodCurso = areaSelect.value;
-    
-    // Clear existing options
-    disciplinasSelect.innerHTML = '<option> </option>';
-    
-    // Filter and populate the second select
-    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
-    selectedDisciplinas.forEach(disciplina => {
-      const option = document.createElement('option');
-      option.textContent = disciplina.nomeEspec;
-      disciplinasSelect.appendChild(option);
-    });
-  });
+const disciplinas = [
+{codCurso: 400, nomeEspec:'Prótese Dentária'},
+{codCurso: 400, nomeEspec:'Odontopediatria'},
+{codCurso: 400, nomeEspec:'Periodontia'},
+{codCurso: 400, nomeEspec:'Dentística'},
+{codCurso: 400, nomeEspec:'Cirurgia'},
+{codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
+{codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
+{codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
+{codCurso: 7100, nomeEspec:'Análises clínicas' },
+{codCurso: 7100, nomeEspec:'Antroposofia' },
+{codCurso: 7200, nomeEspec:'Contextos sociais' },
+{codCurso: 7200, nomeEspec:'Saúde da família' },
+// Add more options as needed
+];
+
+const areaSelect = document.getElementById('areaSaúde');
+const disciplinasSelect = document.getElementById('especAreaSaúde');
+
+areaSelect.addEventListener('change', function() {
+const selectedCodCurso = areaSelect.value;
+
+// Clear existing options
+disciplinasSelect.innerHTML = '<option> </option>';
+
+// Filter and populate the second select
+const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
+selectedDisciplinas.forEach(disciplina => {
+  const option = document.createElement('option');
+  option.textContent = disciplina.nomeEspec;
+  disciplinasSelect.appendChild(option);
+});
+});
 </script>
 
-    <br />
-    <label style="width: 100px;">Turma</label>
-    <input type="text" id="lblTurma" value="GET TURMA SELECIONADA" maxlength="255" class="ui-state-default ui-corner-all mousetrap atividade_curricular_origem"
-        style="width: 246px;" readonly="readonly"/>
-
-    <label name="lblEspaco3" id="lblEspaco3" style="width: 240px;"></label>
-
-       
-    <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
-        <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
-            <option value="0">Escolher</option>
-            <option value="1">1 - Baixa</option>
-            <option value="2">2 - Média</option>
-            <option value="3">3 - Alta (Pós-graduação)</option>
-        </select>
-        <br />
+  <br>
+  <p></p>
+  <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
+        <option value="0">Escolher</option>
+        <option value="1">1 - Baixa</option>
+        <option value="2">2 - Média</option>
+        <option value="3">3 - Alta (Pós-graduação)</option>
+    </select>
+  <br>
 
 
-    <style>
-        .table-container {
-        display: flex;
-        gap: 80px; /* Adjust the gap between tables */
-        }
-        
-        /* Styles for the table header cells */
-        .ui-jqgrid-titlebar {
-        background-color: #f2f2f2; /* Change this to your desired header background color */
-        font-weight: bold;
-        text-align: center;
-        padding: 10px;
-        }
-    
-        /* Styles for the table data cells */
-        .ui-state-default {
-        text-align: center;
-        padding: 5px;
-        }
-    </style>
-    
-    <div class="table-container">
-      <table id="table1">
-        <tr>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Selec.</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Aluno</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Matrícula</th>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 1, MATRÍCULA 1"></td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 1</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 1</td>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 2, MATRÍCULA 2"></td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 2</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 2</td>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 3, MATRÍCULA 3"></td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 3</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">MATRÍCULA 3</td>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 4, MATRÍCULA 4"></td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 4</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Matrícula 4</td>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio" name="table1Option" value="Aluno 5, MATRÍCULA 5"></td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Aluno 5</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Matrícula 5</td>
-        </tr>
-        
-        <!-- ... More rows ... -->
-        </table>
-    
+  
 
-        <table id="table2">
-        <tr>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Selec.</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Paciente</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Demanda</th>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="João da Silva,Exodontia do 11"> </td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">João da Silva</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 11</td>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="Maria da Luz,Exodontia do 28"></td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Maria da Luz</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 28</td>
-        </tr>
-        <tr>
-            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="Pedro Santos,Exodontia do 45"></td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Pedro Santos</td>
-            <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 45</td>
-        </tr>
-        <!-- ... More rows ... -->
-        </table>
-    </div>
-
-     
-      <button id="submitButton">Vincular</button>
+  <div class="table-container">
 
 
-
-
-
-<div>
-    
-    <hr class="ui-state-default">
-
-    <h2>Vinculação de paciente</h2>
-
-    <table id="selectedTable" class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">
-      <thead>
-        <tr>
-          <th>Aluno</th>
-          <th>Paciente</th>
-          <th><input type="checkbox" name="selectAll">Selecionar</th>
-        </tr>
-      </thead>
-      <tbody id="selectedTableBody" class="ui-state-default ui-th-column ui-th-ltr">
-      </tbody>
+  <table id="table2" style="width: 100%;">
+    <tr>
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Selec.</th>
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Paciente</th>
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Demanda</th>
+    </tr>
+    <tr>
+        <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="João da Silva,Exodontia do 11"> </td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">João da Silva</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 11</td>
+    </tr>
+    <tr>
+        <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="Maria da Luz,Exodontia do 28"></td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Maria da Luz</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 28</td>
+    </tr>
+    <tr>
+        <td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" name="table2Option" value="Pedro Santos,Exodontia do 45"></td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Pedro Santos</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 45</td>
+    </tr>
+    <!-- ... More rows ... -->
     </table>
-    
-    <button id="deleteButton">Deletar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <hr class="ui-state-default">
 
-    <h2 style="color: rgb(245, 6, 6);"> LISTA DE PACIENTES "EM ESPERA" ATUALIZA DE ACORDO COM A ESPECIALIDADE SELECIONADA</h2>
-    
-    <hr class="ui-state-default">
-    <p></p>
-    <h1 style="color: rgb(245, 6, 6);">-> SELECIONA UM ALUNO E UM PACIENTE E CLICA EM SALVAR</h1>
-    <h1 style="color: rgb(245, 6, 6);">-> SALVAR INFORMAÇÃO NA VARIÁVEL DO ALUNO 'vinculo-pacientes'</h1>
-    <h1 style="color: rgb(245, 6, 6);">-> ATUALIZA O 'status do paciente' PARA "EM ATENDIMENTO"</h1>
-    <h1 style="color: rgb(245, 6, 6);">-> INCLUIR O PACIENTE VARIÁVEL 'pacientes-disciplina' no 'ano/semestre' vigente'</h1>
+
+<!-- CONTEÚDO TAB-3 (ABAIXO) -->
+<div>
+
+  <div style="display: flex; align-items: center;">
+    <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button>
+    <button id="deleteButton" style="margin: 20px; padding: 5px;">Desvincular</button>
+    <label style="width: 240px; font-size: 12px; font-weight: bold; margin: 20px 10px 20px 0;">Novo status do paciente ao desvincular:</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px; margin: 20px 0;" name="novoStatus" id="novoStatus">
+        <option value="0">Escolher para desvincular</option>
+        <option value="1">Continua em tratamento na disciplina/especialidade</option>
+        <option value="2">Em espera</option>
+        <option value="3">Alta</option>
+        <option value="4">Abandono/Desistência</option>
+    </select>
+</div>
+
+  <br>
+  <hr class="ui-state-default">
+
+  <div style="margin: 20px;">
+
+  <h2>Vinculação de paciente</h2>
+
+    <table id="selectedTable" class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 100%;">
+    <thead>
+      <tr>
+        <th><input type="checkbox" name="selectAll">Selecionar</th>
+        <th>Aluno</th>
+        <th>Paciente</th>
+      </tr>
+    </thead>
+    <tbody id="selectedTableBody" class="ui-state-default ui-th-column ui-th-ltr">
+    </tbody>
+  </table>
+</div>
+
 </div>
           
        
@@ -291,18 +288,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- 
+  1) LISTA DE PACIENTES "EM ESPERA" ATUALIZA DE ACORDO COM A ESPECIALIDADE SELECIONADA;
+  2) USUÁRIO SELECIONA UM ALUNO E UM PACIENTE E CLICA EM VINCULAR
+  3) SALVAR INFORMAÇÃO NA VARIÁVEL DO ALUNO 'vinculo-pacientes'
+  4) ATUALIZA O 'status do paciente' PARA "EM ATENDIMENTO"
+  5) INCLUIR O PACIENTE NA VARIÁVEL 'pacientes-disciplina' no 'ano/semestre' vigente'
+  6) AO REMOVER O VÍNCULO (BOTÃO DESVINCULAR) O USUÁRIO DEVERÁ SELECIONAR QUAL A NOVA SITUAÇÃO DO STATUS DO PACIENTE E ATUALIZA NO BANCO DE DADOS
+ -->
 
 <script>
   const submitButton = document.getElementById("submitButton");
@@ -337,6 +330,13 @@
           selectedTable2Values.add(selectedTable2Value);
 
           const newRow = document.createElement("tr");
+          
+          const checkboxCell = document.createElement("td");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkboxCell.appendChild(checkbox);
+          newRow.appendChild(checkboxCell);
+          
           const selectedTable1Cell = document.createElement("td");
           selectedTable1Cell.textContent = `${selectedTable1Values[0]}, ${selectedTable1Values[1]}`;
           newRow.appendChild(selectedTable1Cell);
@@ -344,12 +344,6 @@
           const selectedTable2Cell = document.createElement("td");
           selectedTable2Cell.textContent = `${selectedTable2ValueParts[0]}, ${selectedTable2ValueParts[1]}`;
           newRow.appendChild(selectedTable2Cell);
-
-          const checkboxCell = document.createElement("td");
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkboxCell.appendChild(checkbox);
-          newRow.appendChild(checkboxCell);
 
           selectedTableBody.appendChild(newRow);
         }
@@ -373,14 +367,7 @@
 </script>
 
 
-      
 
-
-
-			
-		<div style="clear: both; margin-top: 10px;"><!----></div>
-		<div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">
-			&copy;2010 - 2023 Cobalto
-		</div>
-	</body>
+<div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">&copy;2010 - 2023 Cobalto </div>
+</body>
 </html>

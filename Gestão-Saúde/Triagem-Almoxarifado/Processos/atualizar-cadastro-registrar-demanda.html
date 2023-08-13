@@ -1,56 +1,3 @@
-<!-- Lista de labels página CADASTRAR NOVO PACIENTE
-
-{
-  Cpf;
-  Nome;
-  Rg;
-  DataNasc;
-  Email;
-  Tel;
-  EstadoCivil {
-    CASADO;
-    DIVORCIADO;
-    OUTROS;
-    SEPARADO;
-    SOLTEIRO;
-    VIUVO;
-    }
-  Sexo {
-    Masculino;
-    Feminino;
-    }
-  NomeMae;
-  NomePai;
-  CorRaca {
-    Amarelo;
-    Branca;
-    Indígena;
-    Parda;
-    Não quis declarar;
-    };
-  PNE {
-    Diabetes;
-    Hepatite B;
-    Hepatite C;
-    Soropositivo;
-  };
-  EnderecoTipo {
-    Comercial;
-    Família;
-    Residencial;
-    }
-  Cep;
-  Rua;
-  EndNumero;
-  EndComplemento;
-  Bairro;
-  Cidade;
-} 
-
-Lista de labels página CADASTRAR NOVO PACIENTE -->
-
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head lang="pt-br">
@@ -66,9 +13,6 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
-<link href="stylecobalto.css" type="text/css" rel="stylesheet">
-
-</head>
 
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
 <div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
@@ -100,346 +44,212 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   </style>
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
 
-<!-- CONTEÚDO DA PÁGINA/TELA PRINCIPAL COBALTO -->
 
+
+<!-- CONTEÚDO DA PÁGINA/TELA DO COBALTO COMEÇA AQUI -->
 <div id="content-center" class="ui-layout-center ui-widget-content"
     style="background: none !important; overflow: hidden !important">
     
   <div class="breadCrumb module">
     <ul>
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
+      <li>Triagem/Almoxarifado</li>
       <li>Processos</li>
-      <li>Atualizar dados e/ou registrar demanda</li>
-      <li>GET FROM id="Nome"</li>
-    </ul>
-    <div style="clear: both;"></div></div><div style="clear: both;"></div>
+      <li>Atualizar cadastro e/ou registrar demanda</li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     
     <div class="ui-widget-content ui-corner-all toolbar">
       <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-      <button id="salvar" class="salvar" title="Salvar paciente" onclick="submit()" style="float: left;">Salvar alterações</button>
+      <button id="pesquisar" class="pesquisar" title="Enter" style="float: left;" onclick="buscar()">Pesquisar</button>
       <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
       <span style="clear: both; display: block"></span>
     </div>
 
-
-<!-- INÍCIO DIVISÃO EM TABS-->
-
-<div id="tab" class="tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
-  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
-    
-    <li class="labeltab ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tab-0" aria-labelledby="ui-id-2" aria-selected="true"><a href="#tab-0" accesskey="tab-0" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Dados pessoais</a></li>
-
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-1" aria-labelledby="ui-id-1" aria-selected="false"><a href="#tab-1" accesskey="tab-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1">Encaminhamento/Demandas</a></li>
-
-        
-  </ul>
-
-<!--FIM DIVISÃO EM TABS-->
-
-
-<!--INÍCIO DA TAB DADOS PESSOAIS-->
-
-
-<div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
-
+<!-- SCRIPT PARA BUSCA - PESQUISA ALTERAR/REFAZER -->
+<script>var tabFiltroCurso = 'tabFiltroCurso';</script>
+  <div id="tabFiltroCurso" class="tabs">
+    <div id="tabFiltroCurso-0" class="ui-widget tabFiltroCurso tabFiltroCurso-0 tabFiltroCurso-0">
+      <ul>
+        <li class="labeltabFiltroCurso"><a href="#tabFiltroCurso-0" accessKey="tabFiltroCurso-0">Filtro</a></li>
+      </ul>
   <br>
+  <p>
   
-
-  <hr class="ui-state-default">
-
-  <p></p>
-  
-  <div>
-    <label style="width: 120px; ;margin: 5px;">CPF</label>
-    <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" style="width: 100px;" readonly="readonly">
-
-    <br></div>
-
-  <label style="width: 120px; ;margin: 5px;">Nome</label>
-  <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <label name="lblCpf" id="lblCpf" style="width: 80px;"  >CPF</label>
+  <input type="text" name="txtCpf" id="txtCpf" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cpf" style="width: 100px;"  />
   <br>
-  
-  <label style="width: 120px; ;margin: 5px;">RG</label>
-  <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
-  <br>
-
-  
-  <label style="width: 120px; ;margin: 5px;"  >Dt. nascimento</label>
-  <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" />
-  <br>
-
-  <label style="width: 120px; ;margin: 5px;">E-mail</label>
-  <input type="text" name="Email" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
-  <br>
-
-  <label style="width: 120px; ;margin: 5px;">Telefone</label>
-  <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
-  <br>
-  
-  <label style="width: 120px; ;margin: 5px;">Estado civil</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil">
-      <option value="CASADO">CASADO</option>
-      <option value="DIVORCIADO">DIVORCIADO</option>
-      <option value="OUTROS">OUTROS</option>
-      <option value="SEPARADO">SEPARADO JUDICIALMENTE</option>
-      <option value="SOLTEIRO">SOLTEIRO</option>
-      <option value="VIUVO">VIUVO</option>
-    </select>
-  <br>
-
-  <label style="width: 120px; ;margin: 5px;">Sexo</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="Sexo" id="Sexo">
-      <option value="Masculino">Masculino</option>
-      <option value="Feminino">Feminino</option>
-        </select> 
-  <br>
-
-  <label style="width: 120px; ;margin: 5px;">Cor/Raça</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca">
-      <option value="Amarelo">Amarelo</option>
-      <option value="Branca">Branca</option>
-      <option value="Indígena">Indígena</option>
-      <option value="Parda">Parda</option>
-      <option value="Não quis declarar">Não quis declarar</option>
-    </select> 
-
-
-  <hr class="ui-state-default">
-  <label style="font-weight:bold;width: 120px;">Filiação</label>
-  <br>
-
-  <label style="width: 120px; margin: 5px;">Nome da mãe</label>
-  <input type="text" name="NomeMae" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
-
-  <br>
-  <label style="width: 120px;margin: 5px;">Nome do pai</label>
-  <input type="text" name="NomePai" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
-  
-  <br>
-  <hr class="ui-state-default">
-  <label style="width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
-    <select class="ui-state-default" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple>
-      <option value="Hipertensão">Hipertensão</option>
-      <option value="Diabetes">Diabetes</option>
-      <option value="Hepatite B">Hepatite B</option>
-      <option value="Hepatite C">Hepatite C</option>
-      <option value="Soropositivo">Soropositivo</option>
-    </select> 
-
-  <hr class="ui-state-default"><label style="font-weight:bold;width: 120px;">Endereço:</label>
-  <br>
-  
-  <label style="width: 120px;">Tipo de endereço</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo">
-      <option value="Comercial">Comercial</option>
-      <option value="Família">Família</option>
-      <option value="Residencial">Residencial</option>
-    </select> 
-  <br>
-
-  <label style="width: 120px;">CEP</label>
-    <input type="text" name="Cep" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;">
+  <label name="lblNome" id="lblNome" style="width: 80px;"  >Nome</label>
+  <input type="text" name="txtNome" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;"  />
     <br>
+                
+    <table id="gridAluno"></table><div id="gridAlunoPager" style="margin-bottom: 5px"></div>                                                            <script>var gridAluno =  'gridAluno';$(document).ready(function (){$('#gridAluno').jqGrid({"sortname":"aluno_nome","autoload":false,"autowidth":true,"pager":"#gridAlunoPager","multiselect":true,"rowNum":25,"toppager":true,"caption":"Lista de pacientes","height":"auto","jsonReader":{"repeatitems":false,"id":0},"onSelectRow":function(rowid){try{gridAluno_onSelectRow(rowid);}catch(err){}},"onCellSelect":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_click(rowid);}catch(err){}}},"ondblClickRow":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_dblClick(rowid);}catch(err){}}},"loadBeforeSend":function(xhr){try{gridAluno_loadBeforeSend();}catch(err){}},"loadComplete":function(data){if($("#gridAluno").jqGrid('getGridParam','datatype') != 'local'){try{gridAluno_loadComplete();}catch(err){}}},"gridComplete":function(data){generateTabs();try{gridAluno_init();}catch(err){}},"loadError":function(xhr,st,err) {var url = $("#gridAluno").jqGrid('getGridParam','url');if(!$.cookie('logout'))if(xhr.status==200 && st=="parsererror"){try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: O resultado não está no formato esperado");}catch(err){}}else{try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: "+ xhr.status + " "+xhr.statusText);}catch(err){}}},"url":"https://cobalto.ufpel.edu.br/academico/consultas/aluno/listaAlunosPessoasCursos/","altRows":true,"altclass":"ui-state-default jqgrow-alt","rownumbers":false,"viewrecords":true,"datatype":"local","sortorder":"asc","forceFit":true,"headertitles":true,"colNames":["ID","Nome","E-mail","CPF","Situação","RG","Dt.Cadastro"],"colModel":[{"sortable":true,"hidden":true,"name":"id","index":"id","colName":"ID","width":0,"align":"right"},{"sortable":true,"name":"aluno_nome","index":"aluno_nome","colName":"Nome","width":450,"align":"left"},{"sortable":true,"name":"email","index":"email","colName":"E-mail","width":280,"align":"left"},{"sortable":true,"name":"cpf","index":"cpf","colName":"CPF","width":160,"align":"center"},{"sortable":true,"hidden":true,"name":"situacao","index":"situacao","colName":"Situação","width":200,"align":"center"},{"sortable":true,"name":"aluno_rg","index":"aluno_rg","colName":"RG","width":180,"align":"center"},{"sortable":true,"formatter":"date","name":"dt_cadastro","index":"dt_cadastro","colName":"Dt.Cadastro","width":200,"align":"center"}]});$('#gridAluno').setGridParam({datatype: 'json'});$('#gridAluno').setGridParam({autoload: true});});function gridAluno_resize() {$('#gbox_gridAluno').width('auto');$('#gridAluno').setGridWidth($('#gbox_gridAluno').width());};$(window).bind('resize', gridAluno_resize);$('#tabFiltroCurso').bind('tabsshow', gridAluno_resize);</script>
 
-    <label style="width: 120px;">Endereço</label>
-    <input type="text" name="Rua" id="Rua" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
-    <br>
+          <!-- Piwik -->
+      <script type="text/javascript">
+        var _paq = _paq || [];
+        _paq.push(["setDomains", ["*.cobalto.ufpel.edu.br"]]);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u="https://stats.ufpel.edu.br/";
+          _paq.push(['setTrackerUrl', u+'piwik.php']);
+          _paq.push(['setSiteId', 7]);
+          var d=document, g=d.createElement('script'),
+          s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true;
+          g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+        })();
+      </script>
+      <noscript><p><img src="https://stats.ufpel.edu.br/piwik.php?idsite=7"
+      style="border:0;" alt="" /></p></noscript>
+      <!-- End Piwik Code -->
 
-    <label style="width: 120px;">Número</label>
-    <input type="text" name="EndNumero" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
-    <br>
+    <script>
 
-    <label style="width: 120px;">Complemento</label>
-    <input type="text" name="EndComplemento" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
-    <br>
+// Função para obter a URL da API do localStorage ou usar o valor padrão
+function getApiUrl() {
+  const storedApiUrl = localStorage.getItem('api');
+  return storedApiUrl ? storedApiUrl : 'https://prontuario-ufpel-backend.onrender.com';
+}
 
-    <label style="width: 120px;">Bairro</label>
-    <input type="text" name="Bairro" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
-    <br>
+       // Função para adicionar uma nova linha à tabela usando XPath
+function adicionarNovaLinha(nome, email, cpf, rg, dtCadastro) {
+  // Seleciona o corpo da tabela usando o XPath
+    const tbody = document.querySelector('.ui-jqgrid-htable');
 
-    <label style="width: 120px;">Cidade</label>
-    <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
-    <br>
+   
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
 
-  
-  
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td><input role="checkbox" type="checkbox" class="cbox"></td>
+    <td style="display: none;">ID</td>
+    <td><a href="Perfil-edição.html?cpf=${cpf}">${nome}</a></td>
+    <td>${email}</td>
+    <td>${cpf}</td>
+    <td style="display: none;">Situação</td>
+    <td>${rg}</td>
+    <td>${dtCadastro}</td>
+  `;
 
-    <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
 
-<script type="text/javascript">
-   // Função para preencher o formulário com os dados do perfil
-   function preencherFormulario(dados) {
-      console.log(dados)
-      document.getElementById("Cpf").value = dados.CPF;
-      document.getElementById("Nome").value = dados.Nome;
-      document.getElementById("Nometab").innerText = dados.Nome;
-      document.getElementById("Rg").value = dados.Rg;
-      document.getElementById("DataNasc").value = dados.DataNasc;
-      document.getElementById("Email").value = dados.Email;
-      document.getElementById("Tel").value = dados.Tel;
-      document.getElementById("EstadoCivil").value = dados.EstadoCivil;
-      document.getElementById("Sexo").value = dados.Sexo;
-      document.getElementById("CorRaca").value = dados.CorRaca;
-      document.getElementById("NomeMae").value = dados.NomeMae;
-      document.getElementById("NomePai").value = dados.NomePai;
-      document.getElementById("PNE").value = dados.PNE;
-      document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
-      document.getElementById("Cep").value = dados.Cep;
-      document.getElementById("Rua").value = dados.Rua;
-      document.getElementById("EndNumero").value = dados.EndNumero;
-      document.getElementById("EndComplemento").value = dados.EndComplemento;
-      document.getElementById("Bairro").value = dados.Bairro;
-      document.getElementById("Cidade").value = dados.Cidade;
+
+
+// Função de busca que determina qual função de consulta chamar com base nos campos de nome e CPF
+function buscar() {
+
+  const tbody = document.querySelector('.ui-jqgrid-htable');
+
+  while (tbody.children.length > 1) {
+      tbody.removeChild(tbody.lastChild);
     }
 
-    // Função para buscar o perfil usando a API
-    function buscarPerfil() {
-      const cpf = getUrlVars()['cpf'];
-      if (cpf) {
-        api.pacientes.consultar({ CPF: cpf })
-          .then((pacientes) => {
-            if (pacientes.length === 0) {
-              console.log('Nenhum paciente encontrado');
-            } else {
-              preencherFormulario(pacientes[0]);
-            }
-          })
-          .catch((error) => {
-            console.error('Erro ao consultar perfil:', error);
+  const nome = document.getElementById('txtNome').value;
+  const cpf = document.getElementById('txtCpf').value;
+
+  if (nome.trim() !== '') {
+    consultarPacientesPorNome(nome);
+  } else if (cpf.trim() !== '') {
+    consultarPacientesPorCPF(cpf);
+  } else {
+    alert("Preencha o campo nome ou CPF para realizar a busca.");
+  }
+}
+
+// Função para consultar pacientes por nome usando a API
+function consultarPacientesPorNome(nome) {
+  const tbody = document.querySelector('.ui-jqgrid-htable');
+
+while (tbody.children.length > 1) {
+    tbody.removeChild(tbody.lastChild);
+  }
+  const api = getApiUrl();
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', `${api}/consulta-nome/`);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        const pacientes = JSON.parse(xhr.responseText);
+        if (pacientes.length === 0) {
+          alert("Nenhum paciente encontrado");
+        } else {
+          pacientes.forEach(paciente => {
+            adicionarNovaLinha(
+              paciente.Nome,
+              paciente.Email,
+              paciente.CPF,
+              paciente.Rg,
+              paciente.DataNasc
+            );
           });
+        }
       } else {
-        console.log('CPF não encontrado na URL.');
+        console.error('Erro ao consultar pacientes:', xhr.status, xhr.statusText);
       }
     }
+  };
+  xhr.send(JSON.stringify({ Nome: nome }));
+}
 
-    // Função para obter parâmetros da URL
-    function getUrlVars() {
-      var vars = {};
-      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-      });
-      return vars;
+// Função para consultar pacientes por CPF usando a API
+function consultarPacientesPorCPF(cpf) {
+  const tbody = document.querySelector('.ui-jqgrid-htable');
+
+while (tbody.children.length > 1) {
+    tbody.removeChild(tbody.lastChild);
+  }
+  const api = getApiUrl();
+
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', `${api}/consulta-CPF/`);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4) {
+      if (xhr.status === 200) {
+        const pacientes = JSON.parse(xhr.responseText);
+        if (pacientes.length === 0) {
+          alert("Nenhum paciente encontrado");
+        } else {
+          pacientes.forEach(paciente => {
+            adicionarNovaLinha(
+              paciente.Nome,
+              paciente.Email,
+              paciente.CPF,
+              paciente.Rg,
+              paciente.DataNasc
+            );
+          });
+        }
+      } else {
+        console.error('Erro ao consultar pacientes:', xhr.status, xhr.statusText);
+      }
     }
+  };
+  console.log(cpf)
+  xhr.send(JSON.stringify({ CPF: cpf }));
+}
 
-    // Chamar a função para buscar o perfil
-    buscarPerfil();
-</script>
-</div>
+document.getElementById('txtCpf').onkeydown = function (e) {
+            if (e.key === 'Enter') {
+                consultarPacientesPorCPF(document.getElementById('txtCpf').value)
+            }}
 
-
-<!--INÍCIO TAB DEMANDAS-->
-<div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
-  <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
-  <p>
-
-   <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-    <option value="0">Escolher</option>
-    <option value="1200">Enfermagem</option>
-    <option value="7100">Farmácia</option>
-    <option value="400">Odontologia</option>
-    <option value="7200">Terapia Ocupacional</option>
-  </select>
-  
-  <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
-      <option> </option>
-    </select>
-    
-<script>
-  const disciplinas = [
-    {codCurso: 400, nomeEspec:'Prótese Dentária'},
-    {codCurso: 400, nomeEspec:'Odontopediatria'},
-    {codCurso: 400, nomeEspec:'Periodontia'},
-    {codCurso: 400, nomeEspec:'Dentística'},
-    {codCurso: 400, nomeEspec:'Cirurgia'},
-    {codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
-    {codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
-    {codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
-    {codCurso: 7100, nomeEspec:'Análises clínicas' },
-    {codCurso: 7100, nomeEspec:'Antroposofia' },
-    {codCurso: 7200, nomeEspec:'Contextos sociais' },
-    {codCurso: 7200, nomeEspec:'Saúde da família' },
-    // Add more options as needed
-  ];
-  
-  const areaSelect = document.getElementById('areaSaúde');
-  const disciplinasSelect = document.getElementById('especAreaSaúde');
-  
-  areaSelect.addEventListener('change', function() {
-    const selectedCodCurso = areaSelect.value;
-    
-    // Clear existing options
-    disciplinasSelect.innerHTML = '<option> </option>';
-    
-    // Filter and populate the second select
-    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
-    selectedDisciplinas.forEach(disciplina => {
-      const option = document.createElement('option');
-      option.textContent = disciplina.nomeEspec;
-      disciplinasSelect.appendChild(option);
-    });
-  });
-</script>
-      
-
-<hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Demanda específica</label>
-  <p></p>
-
-  <br>
-  <textarea style="width: 380px;" name="txtdemanda" id="txtdemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
-  <br>
-
-  <p>
-
-  <label name="lblData" id="lblData" style="width: 180px;"  >Data do registro da demanda</label>
-        <input type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
-    <br>
-<p></p>
-  <button name="btnAdicionar" onClick="adicionar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
-  <button name="btnCancelar" onClick="limpar()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
-  <br>
-  <p></p>
-
-<hr class="ui-state-default">
-
-  <p></p>
- <table class="ui-jqgrid-htable" style="width: 1200px;" role="grid" aria-labelledby="gridDemanda_Paciente" cellspacing="0" cellpadding="0" border="0">
-        <thead>
-      <tr class="ui-jqgrid-labels" role="rowheader">
-        <th id="gridDemanda_Paciente_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
-          <div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridDemanda_data" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_data" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridDemanda_areaSaude" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 175px;" aria-selected="true">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_areaSaude" class="ui-jqgrid-sortable">Área da Saúde<span class="s-ico" style=""></span></div>
-        </th>
-        <th id="gridDemanda_especialidade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Espe" style="width: 175px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_especialidade" class="ui-jqgrid-sortable">Especialidade<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="demandaEspecífica" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Demanda<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="StatusPaciente" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Status<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-      </tr>
-    <thead><tr style="align-items: center;">
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="lblData"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="areaSaúde"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="especAreaSaúde"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="txtdemanda"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">SEMPRE REGISTRAR COMO "EM ESPERA"</td>
-    </tr>
-    </thead>
-  </table>
-   
-<!--FIM TAB DEMANDAS-->
+document.getElementById('txtNome').onkeydown = function (e) {
+            if (e.key === 'Enter') {
+                consultarPacientesPorNome(document.getElementById('txtNome').value)
+            }}
+    </script>
 
 
-<h1>APÓS SALVAR, DISPLAY MESSAGE: "REGISTRO SALVO COM SUCESSO" </h1>
+<h1><a href="atualizar-cadastro-registrar-demanda1.html">Ao selecionar um paciente da lista deve linkar para essa página</a></h1>
 
 
-</body>
+  </body>
 </html>

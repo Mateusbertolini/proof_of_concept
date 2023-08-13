@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Table Selection Example</title>
+<style>
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  th {
+    background-color: #f2f2f2;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+</style>
+</head>
+<body>
+<h2>Selecione um aluno e o(s) paciente(s) que deseja vincular</h2>
+<table id="table1">
+  <thead>
+    <tr>
+      <th>Aluno</th>
+      <th>Matrícula</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><input type="radio" name="table1Option" value="Aluno 1, 17029953">Aluno 1</td>
+        <td>17029953</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="table1Option" value="Aluno 2, 18078955">Aluno 2</td>
+        <td>18078955</td>
+    </tr>
+    <tr>
+        <td><input type="radio" name="table1Option" value="Aluno 3, 17026874">Aluno 3</td>
+        <td>17026874</td>
+    </tr>
+  </tbody>
+</table>
+
+<table id="table2">
+  <thead>
+    <tr>
+      <th>Paciente</th>
+      <th>Demanda</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td><input type="checkbox" name="table2Option" value="João da Silva,Exodontia do 11"> João da Silva</td>
+      <td>Exodontia do 11</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox" name="table2Option" value="Maria da Luz,Exodontia do 28"> Maria da Luz</td>
+      <td>Exodontia do 28</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" name="table2Option" value="Pedro Santos,Exodontia do 45"> Pedro Santos</td>
+      <td>Exodontia do 45</td>
+    </tr>
+  </tbody>
+</table>
+
+<button id="submitButton">Vincular</button>
+
+<h2>Vinculação de paciente</h2>
+<table id="selectedTable">
+  <thead >
+    <tr>
+      <th>Aluno</th>
+      <th>Paciente</th>
+      <th><input type="checkbox" name="selectAll">Selecionar</th>
+    </tr>
+  </thead>
+  <tbody id="selectedTableBody">
+  </tbody>
+</table>
+
+<button id="deleteButton">Deletar</button>
+
+<script>
+  const submitButton = document.getElementById("submitButton");
+  const deleteButton = document.getElementById("deleteButton");
+  submitButton.addEventListener("click", bindSelections);
+  deleteButton.addEventListener("click", deleteRows);
+
+  // Maintain a set to track selected table2Options values
+  const selectedTable2Values = new Set();
+
+  function bindSelections() {
+    const selectedTableBody = document.getElementById("selectedTableBody");
+    const table1Options = document.getElementsByName("table1Option");
+    const table2Options = document.getElementsByName("table2Option");
+
+    let selectedTable1Option = '';
+    for (const option of table1Options) {
+      if (option.checked) {
+        selectedTable1Option = option.value;
+        break;
+      }
+    }
+
+    const selectedTable1Values = selectedTable1Option.split(',');
+
+    for (const option of table2Options) {
+      if (option.checked) {
+        const selectedTable2ValueParts = option.value.split(',');
+        const selectedTable2Value = `${selectedTable2ValueParts[1]}`; // Second column value of table2
+
+        if (!selectedTable2Values.has(selectedTable2Value)) {
+          selectedTable2Values.add(selectedTable2Value);
+
+          const newRow = document.createElement("tr");
+          const selectedTable1Cell = document.createElement("td");
+          selectedTable1Cell.textContent = `${selectedTable1Values[0]}, ${selectedTable1Values[1]}`;
+          newRow.appendChild(selectedTable1Cell);
+
+          const selectedTable2Cell = document.createElement("td");
+          selectedTable2Cell.textContent = `${selectedTable2ValueParts[0]}, ${selectedTable2ValueParts[1]}`;
+          newRow.appendChild(selectedTable2Cell);
+
+          const checkboxCell = document.createElement("td");
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          checkboxCell.appendChild(checkbox);
+          newRow.appendChild(checkboxCell);
+
+          selectedTableBody.appendChild(newRow);
+        }
+      }
+    }
+  }
+
+  function deleteRows() {
+    const selectedTableBody = document.getElementById("selectedTableBody");
+    const rows = selectedTableBody.querySelectorAll("tr");
+    for (const row of rows) {
+      const checkbox = row.querySelector("input[type='checkbox']");
+      if (checkbox && checkbox.checked) {
+        const selectedTable2Cell = row.querySelector("td:nth-child(2)");
+        const selectedTable2Value = selectedTable2Cell.textContent.trim();
+        selectedTable2Values.delete(selectedTable2Value);
+        selectedTableBody.removeChild(row);
+      }
+    }
+  }
+</script>
+
+</body>
+</html>

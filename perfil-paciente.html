@@ -260,66 +260,62 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 
 
 <script type="text/javascript">
-
-function getApiUrl() {
-  const storedApiUrl = localStorage.getItem('api');
-  return storedApiUrl ? storedApiUrl : 'https://prontuario-ufpel-backend.onrender.com';
-}
-  const api = getApiUrl()
-
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-
-function buscarperfil() {
-  
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', `${api}/perfil-cpf/`);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-        var body = JSON.parse(xhr.responseText)
-            console.log(body);
-            preencherFormulario(body[0])
-          }
-          } else {
-
-          }
-        }
-      xhr.send(JSON.stringify({'CPF': getUrlVars()['cpf'] }));
+  // Função para preencher o formulário com os dados do perfil
+  function preencherFormulario(dados) {
+      console.log(dados)
+      document.getElementById("Cpf").value = dados.CPF;
+      document.getElementById("Nome").value = dados.Nome;
+      document.getElementById("Nometab").innerText = dados.Nome;
+      document.getElementById("Rg").value = dados.Rg;
+      document.getElementById("DataNasc").value = dados.DataNasc;
+      document.getElementById("Email").value = dados.Email;
+      document.getElementById("Tel").value = dados.Tel;
+      document.getElementById("EstadoCivil").value = dados.EstadoCivil;
+      document.getElementById("Sexo").value = dados.Sexo;
+      document.getElementById("CorRaca").value = dados.CorRaca;
+      document.getElementById("NomeMae").value = dados.NomeMae;
+      document.getElementById("NomePai").value = dados.NomePai;
+      document.getElementById("PNE").value = dados.PNE;
+      document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
+      document.getElementById("Cep").value = dados.Cep;
+      document.getElementById("Rua").value = dados.Rua;
+      document.getElementById("EndNumero").value = dados.EndNumero;
+      document.getElementById("EndComplemento").value = dados.EndComplemento;
+      document.getElementById("Bairro").value = dados.Bairro;
+      document.getElementById("Cidade").value = dados.Cidade;
     }
 
+    // Função para buscar o perfil usando a API
+    function buscarPerfil() {
+      const cpf = getUrlVars()['cpf'];
+      if (cpf) {
+        api.consultarPaciente({ CPF: cpf })
+          .then((pacientes) => {
+            if (pacientes.length === 0) {
+              console.log('Nenhum paciente encontrado');
+            } else {
+              preencherFormulario(pacientes[0]);
+            }
+          })
+          .catch((error) => {
+            console.error('Erro ao consultar perfil:', error);
+          });
+      } else {
+        console.log('CPF não encontrado na URL.');
+      }
+    }
 
-function preencherFormulario(dados) {
-  console.log(dados)
-  document.getElementById("Cpf").value = dados.CPF;
-    document.getElementById("Nome").value = dados.Nome;
-    document.getElementById("Nometab").innerText = dados.Nome;
-    document.getElementById("Rg").value = dados.Rg;
-    document.getElementById("DataNasc").value = dados.DataNasc;
-    document.getElementById("Email").value = dados.Email;
-    document.getElementById("Tel").value = dados.Tel;
-    document.getElementById("EstadoCivil").value = dados.EstadoCivil;
-    document.getElementById("Sexo").value = dados.Sexo;
-    document.getElementById("CorRaca").value = dados.CorRaca;
-    document.getElementById("NomeMae").value = dados.NomeMae;
-    document.getElementById("NomePai").value = dados.NomePai;
-    document.getElementById("PNE").value = dados.PNE;
-    document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
-    document.getElementById("Cep").value = dados.Cep;
-    document.getElementById("Rua").value = dados.Rua;
-    document.getElementById("EndNumero").value = dados.EndNumero;
-    document.getElementById("EndComplemento").value = dados.EndComplemento;
-    document.getElementById("Bairro").value = dados.Bairro;
-    document.getElementById("Cidade").value = dados.Cidade;
+    // Função para obter parâmetros da URL
+    function getUrlVars() {
+      var vars = {};
+      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+        vars[key] = value;
+      });
+      return vars;
+    }
 
-}
-buscarperfil()
+    // Chamar a função para buscar o perfil
+    buscarPerfil();
 </script>
 
 </body>

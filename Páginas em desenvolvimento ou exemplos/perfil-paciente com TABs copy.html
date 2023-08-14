@@ -4,6 +4,7 @@
   Cpf;
   Nome;
   Rg;
+  Cartão SUS (CNS);
   DataNasc;
   Email;
   Tel;
@@ -131,17 +132,17 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 
     <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-1" aria-labelledby="ui-id-2" aria-selected="false"><a href="#tab-1" accesskey="tab-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Encaminhamento/Demandas</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tab-2" accesskey="tab-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Histórico médico / odontológico</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tab-2" accesskey="tab-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Histórico</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-3" aria-labelledby="ui-id-4" aria-selected="false"><a href="#tab-3" accesskey="tab-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Exames complementares</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-3" aria-labelledby="ui-id-4" aria-selected="false"><a href="#tab-3" accesskey="tab-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Odontograma</a></li>
+
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-4" aria-labelledby="ui-id-5" aria-selected="false"><a href="#tab-4" accesskey="tab-4" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-5">Exames complementares</a></li>
              
   </ul>
 <!--FIM DIVISÃO EM TABS-->
 
 
 <!--INÍCIO DA TAB DADOS PESSOAIS-->
-
-
 <div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
   <br>
@@ -159,6 +160,9 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
   <br>
 
+  <label style="width: 120px; ;margin: 5px;">Cartão SUS (CNS)</label>
+  <input type="text" name="CNS" id="CNS" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+  <br>
   
   <label style="width: 120px; ;margin: 5px;"  >Dt. nascimento</label>
   <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" readonly="readonly">
@@ -172,8 +176,6 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
   <br>
   
-
-
   <label style="width: 120px; ;margin: 5px;">Estado civil</label>
     <select class="ui-state-default" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil" disabled>
       <option value="CASADO">CASADO</option>
@@ -259,12 +261,6 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
     <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
     <br>
 
-   
-
-    
-  
-
-
 <script type="text/javascript">
 
 function getApiUrl() {
@@ -334,7 +330,6 @@ buscarperfil()
 
 
 <!--INÍCIO DA TAB DEMANDAS-->
-
 <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
 
@@ -371,17 +366,10 @@ buscarperfil()
     </thead>
   </table>
 </div>
-   
-
-<!--FIM DA TAB DEMANDAS-->
-
-
-
-
+  
 
 
 <!--INÍCIO DA TAB HISTÓRICO-->
-
 <div id="tab-2" class="ui-widget tab tab-2 tab-2 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
  <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix"><a role="link" href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" style="right: 0px;"></a><span class="ui-jqgrid-title">Procedimentos realizados</span></div>
@@ -431,43 +419,331 @@ buscarperfil()
   </table></div>
 </div>
 
-<!--FIM DA TAB HISTÓRICO-->
 
 
+
+<!--INÍCIO DA TAB ODONTOGRAMA-->
+<div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 1000px;">
+
+
+  <div>
+    <hr class="ui-state-default"><label style="font-size: 16; font-weight: bold;">Odontograma</label></hr><br>
+    <p style="font-size: 12; font-weight: bold;">Dentição permanente</p>
+    </div>
+    
+    <!-- CONTEÚDO COLUNA DA ESQUERDA -->
+    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+    
+      <div><p>Arco superior direito</p>
+      
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">11</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+    
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">12</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">13</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">14</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">15</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">16</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">17</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">18</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+      </div>
+    
+      <div><p>Arco inferior direito</p>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">41</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">42</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">43</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">44</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">45</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">46</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">47</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">48</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+      </div>
+    </div>
+    
+    <!-- CONTEÚDO COLUNA DA DIREITA -->
+    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+          
+      <div><p>Arco superior esquerdo</p>
+      
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">21</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+    
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">22</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">23</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">24</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">25</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">26</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">27</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+  
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">28</label>
+      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+    </div>
+    
+      <div><p>Arco inferior esquerdo</p>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">31</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">32</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">33</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">34</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">35</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">36</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">37</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">38</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        </div>
+    </div>
+    
+  <!-- CONTEÚDO DECÍDUOS-->
+  <div id="deciduos">
+      <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+      
+      <hr class="ui-state-default">
+      <label for="toggleCheckbox" style="font-size: 12; font-weight: bold;">Dentição decídua:</label>
+      <input type="checkbox" id="toggleCheckbox"><br>
+      <p></p>
+    
+    
+    <div id="content" class="hidden"><br>
+    
+    
+    <!-- CONTEÚDO COLUNA DA ESQUERDA -->
+    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+    
+      <div><p>Arco superior direito</p>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">51</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+      
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">52</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">53</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">54</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">55</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+      </div>
+    
+      <div><p>Arco inferior direito</p>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">81</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">82</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">83</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">84</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">85</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        </div>
+      </div>
+    
+    
+      <!-- CONTEÚDO COLUNA DA DIREITA -->
+    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+    
+      <div><p>Arco superior esquerdo</p>
+      
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">61</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+      
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">62</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">63</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">64</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">65</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+      </div>
+    
+      <div><p>Arco inferior esquerdo</p>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">71</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">72</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+        
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">73</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">74</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+    
+        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">75</label>
+        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <br>
+      </div>
+    </div>
+  </div>
+     
+    <script>
+        const toggleCheckbox = document.getElementById('toggleCheckbox');
+        const contentDiv = document.getElementById('content');
+        
+        toggleCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                contentDiv.style.display = 'block';
+            } else {
+                contentDiv.style.display = 'none';
+            }
+        });
+    </script>
+  </div>
+</div>
+  
+        
+    
 
 
 
 
 <!--INÍCIO DA TAB EXAMES COMPLEMENTARES-->
+<div id="tab-4" class="ui-widget tab tab-4 tab-4 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-5" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
 
-<div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false">
-
-
-<hr class="ui-state-default"><label name="anexarexames" id="anexarexames" style="width:350px; font-size: 16; font-weight: bold;">Exames complementares</label>
-  <br></hr>
-
-  <p></p>
-        
-  <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="examesADDs" dir="ltr" style="width: 1707px;"><div class="ui-widget-overlay jqgrid-overlay" id="dataAnexo"></div><div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="display: none;"><a role="link" href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" style="right: 0px;"><span class="ui-icon ui-icon-circle-triangle-n"></span></a><span class="ui-jqgrid-title"></span></div><div style="width: 1707px;" class="ui-state-default ui-jqgrid-hdiv"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable" style="width: 1707px;" role="grid" aria-labelledby="gbox_gridHistoricoAluno" cellspacing="0" cellpadding="0" border="0"><thead><tr class="ui-jqgrid-labels" role="rowheader"><th id="gridHistoricoAluno_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_cod_atividade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_cod_atividade" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_disciplina" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 604px;" aria-selected="true"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_disciplina" class="ui-jqgrid-sortable">Descrição do exame<span class="s-ico" style=""><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_nota_conceito" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Tipo" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_nota_conceito" class="ui-jqgrid-sortable">Tipo<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_situacao" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Baixar" style="width: 151px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_situacao" class="ui-jqgrid-sortable">Baixar<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></th></tr></thead>
-
-  <tr class="jqgfirstrow" role="row" style="height:auto"><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 255px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 32px;"></td><td role="gridcell" style="height: 0px; width: 32px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 61px;"></td></tr>
-
+  <hr class="ui-state-default"><label name="anexarexames" id="anexarexames" style="width:350px; font-size: 16; font-weight: bold;">Exames complementares</label>
+    <br></hr>
+  
+    <p></p>
+          
+    <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="examesADDs" dir="ltr" style="width: 1707px;"><div class="ui-widget-overlay jqgrid-overlay" id="dataAnexo"></div><div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="display: none;"><a role="link" href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" style="right: 0px;"><span class="ui-icon ui-icon-circle-triangle-n"></span></a><span class="ui-jqgrid-title"></span></div><div style="width: 1707px;" class="ui-state-default ui-jqgrid-hdiv"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable" style="width: 1707px;" role="grid" aria-labelledby="gbox_gridHistoricoAluno" cellspacing="0" cellpadding="0" border="0"><thead><tr class="ui-jqgrid-labels" role="rowheader"><th id="gridHistoricoAluno_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_cod_atividade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_cod_atividade" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_disciplina" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 604px;" aria-selected="true"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_disciplina" class="ui-jqgrid-sortable">Descrição do exame<span class="s-ico" style=""><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_nota_conceito" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Tipo" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_nota_conceito" class="ui-jqgrid-sortable">Tipo<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_situacao" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Baixar" style="width: 151px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_situacao" class="ui-jqgrid-sortable">Baixar<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></th></tr></thead>
+  
+    <tr class="jqgfirstrow" role="row" style="height:auto"><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 255px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 32px;"></td><td role="gridcell" style="height: 0px; width: 32px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 61px;"></td></tr>
+  
+   
+      <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">19/04/2018</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Avaliação endodôntica do dente 15</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia periapical</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
+  
+      <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">01/03/2022</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Radiografia para exodontia do 22</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia periapical</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
+  
+      <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">05/06/2023</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Planejamento do caso</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia panorâmica</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
+  
+      </thead>
+    </table>
+  </div>
  
-    <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">19/04/2018</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Avaliação endodôntica do dente 15</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia periapical</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
-
-    <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">01/03/2022</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Radiografia para exodontia do 22</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia periapical</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
-
-    <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">05/06/2023</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Planejamento do caso</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia panorâmica</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
-
-    </thead>
-  </table>
-</div>
-
-
-
-
-
-
 </body>
 </html>

@@ -251,13 +251,12 @@ selectedDisciplinas.forEach(disciplina => {
     <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button>
     <button id="deleteButton" style="margin: 20px; padding: 5px;">Desvincular</button>
     <label style="width: 240px; font-size: 12px; font-weight: bold; margin: 20px 10px 20px 0;">Novo status do paciente ao desvincular:</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px; margin: 20px 0;" name="novoStatus" id="novoStatus">
-      <option value="0">Escolher para desvincular</option>
-      <option value="1">Em espera</option>
-      <option value="2">Em atendimento</option>
-      <option value="3">Continua em tratamento na disciplina/especialidade</option>
-      <option value="4">Alta</option>
-      <option value="5">Abandono/Desistência</option>
+    <select class="ui-state-default" style="width: 180px; height: 20px; margin: 20px 0;" name="desvincularStatus" id="desvincularStatus">
+        <option value="0">Escolher para desvincular</option>
+        <option value="1">Continua em tratamento na disciplina/especialidade</option>
+        <option value="2">Em espera</option>
+        <option value="3">Alta</option>
+        <option value="4">Abandono/Desistência</option>
     </select>
 </div>
 

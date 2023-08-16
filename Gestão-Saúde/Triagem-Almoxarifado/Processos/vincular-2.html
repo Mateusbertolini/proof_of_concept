@@ -155,64 +155,65 @@
 
   <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
   <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-      <option value="0">Escolher</option>
-      <option value="1200">Enfermagem</option>
-      <option value="7100">Farmácia</option>
-      <option value="400">Odontologia</option>
-      <option value="7200">Terapia Ocupacional</option>
+    <option value="0">Escolher</option>
+    <option value="Odontologia">Odontologia</option>
+    <option value="Enfermagem">Enfermagem</option>
+    <option value="Farmácia">Farmácia</option>
+    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
   </select>
-
+  
   <br>
   <p></p>
   <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
   <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
     <option> </option>
   </select>
-
-<script>
-const disciplinas = [
-{codCurso: 400, nomeEspec:'Prótese Dentária'},
-{codCurso: 400, nomeEspec:'Odontopediatria'},
-{codCurso: 400, nomeEspec:'Periodontia'},
-{codCurso: 400, nomeEspec:'Dentística'},
-{codCurso: 400, nomeEspec:'Cirurgia'},
-{codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
-{codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
-{codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
-{codCurso: 7100, nomeEspec:'Análises clínicas' },
-{codCurso: 7100, nomeEspec:'Antroposofia' },
-{codCurso: 7200, nomeEspec:'Contextos sociais' },
-{codCurso: 7200, nomeEspec:'Saúde da família' },
-// Add more options as needed
-];
-
-const areaSelect = document.getElementById('areaSaúde');
-const disciplinasSelect = document.getElementById('especAreaSaúde');
-
-areaSelect.addEventListener('change', function() {
-const selectedCodCurso = areaSelect.value;
-
-// Clear existing options
-disciplinasSelect.innerHTML = '<option> </option>';
-
-// Filter and populate the second select
-const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
-selectedDisciplinas.forEach(disciplina => {
-  const option = document.createElement('option');
-  option.textContent = disciplina.nomeEspec;
-  disciplinasSelect.appendChild(option);
-});
-});
-</script>
+  
+  <script>
+  const disciplinas = [
+    {codCurso: 'Odontologia', nomeEspec:'Prótese Dentária'},
+    {codCurso: 'Odontologia', nomeEspec:'Odontopediatria'},
+    {codCurso: 'Odontologia', nomeEspec:'Periodontia'},
+    {codCurso: 'Odontologia', nomeEspec:'Dentística'},
+    {codCurso: 'Odontologia', nomeEspec:'Cirurgia'},
+    {codCurso: 'Enfermagem', nomeEspec:'Pediatria e Neonatologia'},
+    {codCurso: 'Enfermagem', nomeEspec:'Terapia Intensiva e Alta Complexidade'},
+    {codCurso: 'Enfermagem', nomeEspec:'Cardiologia e Hemodinâmica'},
+    {codCurso: 'Farmácia', nomeEspec:'Análises clínicas' },
+    {codCurso: 'Farmácia', nomeEspec:'Antroposofia' },
+    {codCurso: 'Terapia Ocupacional', nomeEspec:'Contextos sociais' },
+    {codCurso: 'Terapia Ocupacional', nomeEspec:'Saúde da família' },
+    // Add more options as needed
+  ];
+  
+  const areaSelect = document.getElementById('areaSaúde');
+  const disciplinasSelect = document.getElementById('especAreaSaúde');
+  
+  areaSelect.addEventListener('change', function() {
+    const selectedCodCurso = areaSelect.value;
+  
+    // Clear existing options
+    disciplinasSelect.innerHTML = '<option> </option>';
+  
+    // Filter and populate the second select
+    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === selectedCodCurso);
+    selectedDisciplinas.forEach(disciplina => {
+      const option = document.createElement('option');
+      option.textContent = disciplina.nomeEspec;
+      disciplinasSelect.appendChild(option);
+    });
+  });
+  </script>
+  
 
   <br>
   <p></p>
   <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
     <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
         <option value="0">Escolher</option>
-        <option value="1">1 - Baixa</option>
-        <option value="2">2 - Média</option>
-        <option value="3">3 - Alta (Pós-graduação)</option>
+        <option value="Baixa">Baixa</option>
+        <option value="Média">Média</option>
+        <option value="Alta (Pós-graduação)">Alta (Pós-graduação)</option>
     </select>
   <br>
 
@@ -257,7 +258,8 @@ selectedDisciplinas.forEach(disciplina => {
 <!-- CONTEÚDO TAB-3 (ABAIXO) -->
 <div>
   <div style="display: flex; align-items: center;">
-    <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button>
+    <button id="deleteButton" style="margin: 20px; padding: 5px;">Excluir</button>
+    <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button> <p id="errorMessage" style="color: red; font-weight: bold;"></p>
   </div>
 
   <br>
@@ -282,7 +284,9 @@ selectedDisciplinas.forEach(disciplina => {
   </table>
   </div>
 </div>
-          
+
+
+<!-- FUNCTION INCLUDE IN selectedTable -->
 <script>
   const submitButton = document.getElementById("submitButton");
   submitButton.addEventListener("click", bindSelections);
@@ -294,6 +298,22 @@ selectedDisciplinas.forEach(disciplina => {
     const selectedTableBody = document.getElementById("selectedTableBody");
     const table1Options = document.getElementsByName("table1Option");
     const table2Options = document.getElementsByName("table2Option");
+    const areaSaudeSelect = document.getElementById("areaSaúde");
+    const especAreaSaudeSelect = document.getElementById("especAreaSaúde");
+    const complexidadeSelect = document.getElementById("complexidade");
+
+    const especAreaSaudeValue = especAreaSaudeSelect.value;
+    const areaSaudeValue = areaSaudeSelect.value;
+    const complexidadeValue = complexidadeSelect.value;
+
+    if (especAreaSaudeValue === "" || areaSaudeValue === "0" || complexidadeValue === "0") {
+      const errorMessage = document.getElementById("errorMessage");
+      errorMessage.textContent = "Para prosseguir você deve selecionar o curso, especialidade e nível de complexidade";
+      errorMessage.style.color = "red";
+      errorMessage.style.fontSize = "14px";
+      errorMessage.style.fontWeight = "bold";
+      return;
+    }
 
     let selectedTable1Option = '';
     for (const option of table1Options) {
@@ -333,17 +353,17 @@ selectedDisciplinas.forEach(disciplina => {
           newRow.appendChild(selectedTable2Cell);
 
           const areaSaudeCell = document.createElement("td");
-          areaSaudeCell.textContent = selectedTable2ValueParts[2];
+          areaSaudeCell.textContent = areaSaudeValue;
           areaSaudeCell.className = "ui-state-default ui-th-column ui-th-ltr";
           newRow.appendChild(areaSaudeCell);
 
           const especialidadeCell = document.createElement("td");
-          especialidadeCell.textContent = selectedTable2ValueParts[3];
+          especialidadeCell.textContent = especAreaSaudeValue;
           especialidadeCell.className = "ui-state-default ui-th-column ui-th-ltr";
           newRow.appendChild(especialidadeCell);
 
           const complexidadeCell = document.createElement("td");
-          complexidadeCell.textContent = selectedTable2ValueParts[4];
+          complexidadeCell.textContent = complexidadeValue;
           complexidadeCell.className = "ui-state-default ui-th-column ui-th-ltr";
           newRow.appendChild(complexidadeCell);
 
@@ -352,23 +372,45 @@ selectedDisciplinas.forEach(disciplina => {
       }
     }
   }
+
+  //FUNCTION DELETE FROM selectedTable
+  const selectedTableBody = document.getElementById("selectedTableBody");
+  const deleteButton = document.getElementById("deleteButton");
+  deleteButton.addEventListener("click", deleteSelectedRow);
+
+  function deleteSelectedRow() {
+    const selectedRows = selectedTableBody.querySelectorAll("tr");
+    const selectedRowToDelete = Array.from(selectedRows).find(row => {
+      const checkbox = row.querySelector("input[type='checkbox']");
+      return checkbox.checked;
+    });
+
+    if (selectedRowToDelete) {
+      selectedTableBody.removeChild(selectedRowToDelete);
+    }
+  }
 </script>
+
+
+
+
+
 
 
 
 
 <hr class="ui-state-default">     
 <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-  PRECISA FAZER:<br>
-  - GET ÁREA DA SAÚDE, ESPECIALIDADE E COMPLEXIDADE DOS INPUTS PREENCHIDOS PELO USUÁRIO
   
-  FUNCIONALIDADE PREVISTA: <br>
+    FUNCIONALIDADE PREVISTA: <br>
   1) LISTA DE PACIENTES "EM ESPERA" ATUALIZA DE ACORDO COM A ESPECIALIDADE SELECIONADA<br>
-  2) USUÁRIO SELECIONA UM ALUNO E UM PACIENTE E CLICA EM VINCULAR<br>
-  3) SALVAR INFORMAÇÃO NAS VARIÁVEIS DO ALUNO 'vinculoPacientes' E 'pacientesAtendidos'<br>
-  4) ATUALIZA O 'status do paciente' PARA "EM ATENDIMENTO"<br>
-  5) INCLUIR O PACIENTE NA VARIÁVEL 'pacientes-disciplina' no 'ano/semestre' vigente'<br>
-  6) AO REMOVER O VÍNCULO (BOTÃO DESVINCULAR) O USUÁRIO DEVERÁ SELECIONAR QUAL A NOVA SITUAÇÃO DO STATUS DO PACIENTE E ATUALIZA NO BANCO DE DADOS<br>
+  2) USUÁRIO SELECIONA UM ALUNO, PACIENTE(s), CURSO, ESPECIALIDADE E NÍVEL DE COMPLEXIDADE E CLICA EM VINCULAR<br>
+  3) AO INCLUIR, O PACIENTE SAI DA TABELA DE PACIENTES EM ESPERA E APARECE NA TABELA DE VINCULAÇÃO<br>
+  4) AO EXCLUIR O VÍNCULO, O PACIENTE RETORNA PARA A TABELA DE PACIENTES EM ESPERA<br>
+  8) QUANDO O USUÁRIO CLICAR EM SALVAR ALTERAÇÕES, O BANCO DE DADOS DEVE SER O USUÁRIO DEVERÁ SELECIONAR QUAL A NOVA SITUAÇÃO DO STATUS DO PACIENTE E ATUALIZA NO BANCO DE DADOS<br>
+     - SALVAR INFORMAÇÃO NAS VARIÁVEIS DO ALUNO 'vinculoPacientes' E 'pacientesAtendidos'<br>
+     - ATUALIZA O 'status do paciente' PARA "EM ATENDIMENTO"<br>
+     - INCLUIR O PACIENTE NA VARIÁVEL 'pacientes-disciplina' no 'ano/semestre' vigente'<br>
 </h2>
 
 

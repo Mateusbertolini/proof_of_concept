@@ -1,57 +1,3 @@
-<!-- Lista de labels página CADASTRAR NOVO PACIENTE
-
-{
-  Cpf;
-  Nome;
-  Rg;
-  Cartão SUS (CNS);
-  DataNasc;
-  Email;
-  Tel;
-  EstadoCivil {
-    CASADO;
-    DIVORCIADO;
-    OUTROS;
-    SEPARADO;
-    SOLTEIRO;
-    VIUVO;
-    }
-  Sexo {
-    Masculino;
-    Feminino;
-    }
-  NomeMae;
-  NomePai;
-  CorRaca {
-    Amarelo;
-    Branca;
-    Indígena;
-    Parda;
-    Não quis declarar;
-    };
-  PNE {
-    Diabetes;
-    Hepatite B;
-    Hepatite C;
-    Soropositivo;
-  };
-  EnderecoTipo {
-    Comercial;
-    Família;
-    Residencial;
-    }
-  Cep;
-  Rua;
-  EndNumero;
-  EndComplemento;
-  Bairro;
-  Cidade;
-} 
-
-Lista de labels página CADASTRAR NOVO PACIENTE -->
-
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head lang="pt-br">
@@ -347,7 +293,9 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
     <option value="7200">Terapia Ocupacional</option>
   </select>
   
-  <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
+
+  <br><p></p>
+  <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
     <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
       <option> </option>
     </select>
@@ -390,8 +338,17 @@ const event = new Event('change');
 areaSelect.dispatchEvent(event);
 </script>
       
+<p></p>
+  <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
+        <option value="0">Escolher</option>
+        <option value="Baixa">Baixa</option>
+        <option value="Média">Média</option>
+        <option value="Alta (Pós-graduação)">Alta (Pós-graduação)</option>
+    </select>
 
-<hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Demanda específica</label>
+<hr class="ui-state-default">
+<label style="font-weight:bold;width: 180px;">Demanda específica</label>
   <p></p>
 
   <br>

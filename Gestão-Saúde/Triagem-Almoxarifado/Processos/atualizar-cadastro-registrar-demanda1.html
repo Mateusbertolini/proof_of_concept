@@ -111,7 +111,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
       <li>Processos</li>
       <li>Atualizar dados e/ou registrar demanda</li>
-      <li>GET FROM id="Nome"</li>
+      <li id="Nometab"></li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     </ul>
@@ -483,12 +483,20 @@ function getDataFromTab(TabId){
   console.log(jsonData);
   return jsonData;
 }
+const codtonome = {
+  "0": "Escolher",
+  "1200": "Enfermagem",
+  "7100": "Farmácia",
+  "400": "Odontologia",
+  "7200": "Terapia Ocupacional"
+}
 
 
   function encaminhar(){
     let Encaminhamentos = getDataFromTab("encaminhamento") 
     Encaminhamentos.CPF = getUrlVars()["cpf"]
     Encaminhamentos.Status = "Em espera"
+    Encaminhamentos.Curso = codtonome[Encaminhamentos.Curso]
     console.log(Encaminhamentos)
     api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
 alert(result.message)

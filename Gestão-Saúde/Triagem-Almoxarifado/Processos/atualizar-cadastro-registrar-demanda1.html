@@ -334,6 +334,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 
 
 <!--INÍCIO TAB DEMANDAS-->
+<div id="encaminhamento">
 <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
   <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
   <p>
@@ -401,7 +402,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
         <input type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
     <br>
 <p></p>
-  <button name="btnAdicionar" onClick="adicionar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
+  <button name="btnAdicionar" onClick="encaminhar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
   <button name="btnCancelar" onClick="limpar()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
   <br>
   <p></p>
@@ -430,17 +431,75 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
         </th>
       </tr>
     <thead><tr style="align-items: center;">
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="lblData"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="areaSaúde"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="especAreaSaúde"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="txtdemanda"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">SEMPRE REGISTRAR COMO "EM ESPERA"</td>
+      <td role="gridcell" style="text-align:center;">lblData</td>
+      <td role="gridcell" style="text-align:center;">areaSaúde</td>
+      <td role="gridcell" style="text-align:center;">especAreaSaúde</td>
+      <td role="gridcell" style="text-align:center;">txtdemanda</td>
+      <td role="gridcell" style="text-align:center;">status</td>
     </tr>
     </thead>
   </table>
-   
+</div>
 <!--FIM TAB DEMANDAS-->
+<!--Script DEMANDAS-->
+<script>
+  function adicionarNovaLinha(Data, areaSaude, especAreaSaude, txtdemanda, status) {
+  // Seleciona o corpo da tabela usando o XPath
+  const tbody = document.querySelector('.ui-jqgrid-htable tbody');
 
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
+  novaLinha.style.alignItems = 'center';
+
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td role="gridcell" style="text-align:center;">${Data}</td>
+    <td role="gridcell" style="text-align:center;">${areaSaude}</td>
+    <td role="gridcell" style="text-align:center;">${especAreaSaude}</td>
+    <td role="gridcell" style="text-align:center;">${txtdemanda}</td>
+    <td role="gridcell" style="text-align:center;">${status}</td>
+  `;
+
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
+
+
+  function getDataFromTab(TabId){
+  const parentDiv = document.getElementById(TabId); 
+  const elements = parentDiv.querySelectorAll("input, select");
+  const jsonData = {};
+
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value;
+    }
+  }
+
+  console.log(jsonData);
+  return jsonData;
+}
+
+  function encaminhar(){
+    let Encaminhamentos = getDataFromTab("encaminhamento") 
+    Encaminhamentos.CPF = getUrlVars()["cpf"]
+    console.log(Encaminhamentos)
+    api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
+alert(result.message)
+console.log(result)
+    })
+  }
+  const CPF = getUrlVars()["cpf"]
+  api.encaminhamentos.consultar({CPF}).then((result)=>{
+    console.log(result)
+  })
+</script>
 
 <h1>APÓS SALVAR, DISPLAY MESSAGE: "REGISTRO SALVO COM SUCESSO" </h1>
 

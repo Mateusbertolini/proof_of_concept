@@ -339,16 +339,16 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
   <p>
 
-   <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
+   <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="Curso">
     <option value="0">Escolher</option>
     <option value="1200">Enfermagem</option>
     <option value="7100">Farmácia</option>
-    <option value="400">Odontologia</option>
+    <option selected value="400">Odontologia</option>
     <option value="7200">Terapia Ocupacional</option>
   </select>
   
   <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
       <option> </option>
     </select>
     
@@ -369,8 +369,8 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
     // Add more options as needed
   ];
   
-  const areaSelect = document.getElementById('areaSaúde');
-  const disciplinasSelect = document.getElementById('especAreaSaúde');
+  const areaSelect = document.getElementById('Curso');
+  const disciplinasSelect = document.getElementById('Especialidade');
   
   areaSelect.addEventListener('change', function() {
     const selectedCodCurso = areaSelect.value;
@@ -386,6 +386,8 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
       disciplinasSelect.appendChild(option);
     });
   });
+const event = new Event('change');
+areaSelect.dispatchEvent(event);
 </script>
       
 
@@ -393,13 +395,13 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <p></p>
 
   <br>
-  <textarea style="width: 380px;" name="txtdemanda" id="txtdemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
+  <textarea id="Demanda" style="width: 380px;" name="txtdemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
   <br>
 
   <p>
 
-  <label name="lblData" id="lblData" style="width: 180px;"  >Data do registro da demanda</label>
-        <input type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
+  <label name="lblData"  style="width: 180px;"  >Data do registro da demanda</label>
+        <input id="Data" type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
     <br>
 <p></p>
   <button name="btnAdicionar" onClick="encaminhar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
@@ -430,34 +432,28 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
         <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="StatusPaciente" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Status<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
         </th>
       </tr>
-    <thead><tr style="align-items: center;">
-      <td role="gridcell" style="text-align:center;">lblData</td>
-      <td role="gridcell" style="text-align:center;">areaSaúde</td>
-      <td role="gridcell" style="text-align:center;">especAreaSaúde</td>
-      <td role="gridcell" style="text-align:center;">txtdemanda</td>
-      <td role="gridcell" style="text-align:center;">status</td>
-    </tr>
+    <thead id="tabelaencaminhamentos">
     </thead>
   </table>
 </div>
 <!--FIM TAB DEMANDAS-->
 <!--Script DEMANDAS-->
 <script>
-  function adicionarNovaLinha(Data, areaSaude, especAreaSaude, txtdemanda, status) {
+  function adicionarNovaLinha(data) {
+    console.log(data)
   // Seleciona o corpo da tabela usando o XPath
-  const tbody = document.querySelector('.ui-jqgrid-htable tbody');
-
+  const tbody = document.getElementById("tabelaencaminhamentos")
   // Cria um novo elemento de linha (<tr>)
   const novaLinha = document.createElement('tr');
   novaLinha.style.alignItems = 'center';
 
   // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
   novaLinha.innerHTML = `
-    <td role="gridcell" style="text-align:center;">${Data}</td>
-    <td role="gridcell" style="text-align:center;">${areaSaude}</td>
-    <td role="gridcell" style="text-align:center;">${especAreaSaude}</td>
-    <td role="gridcell" style="text-align:center;">${txtdemanda}</td>
-    <td role="gridcell" style="text-align:center;">${status}</td>
+    <td role="gridcell" style="text-align:center;">${data.Data}</td>
+    <td role="gridcell" style="text-align:center;">${data.Curso}</td>
+    <td role="gridcell" style="text-align:center;">${data.Especialidade}</td>
+    <td role="gridcell" style="text-align:center;">${data.Demanda}</td>
+    <td role="gridcell" style="text-align:center;">${data.Status}</td>
   `;
 
   // Adiciona a nova linha ao corpo da tabela
@@ -465,9 +461,9 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 }
 
 
-  function getDataFromTab(TabId){
+function getDataFromTab(TabId){
   const parentDiv = document.getElementById(TabId); 
-  const elements = parentDiv.querySelectorAll("input, select");
+  const elements = parentDiv.querySelectorAll("input, select, textarea"); // Include textarea elements
   const jsonData = {};
 
   for (const element of elements) {
@@ -479,6 +475,8 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
       }
     } else if (element.tagName === "SELECT") {
       jsonData[element.id] = element.value;
+    } else if (element.tagName === "TEXTAREA") { // Handle textarea elements
+      jsonData[element.id] = element.value;
     }
   }
 
@@ -486,9 +484,11 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   return jsonData;
 }
 
+
   function encaminhar(){
     let Encaminhamentos = getDataFromTab("encaminhamento") 
     Encaminhamentos.CPF = getUrlVars()["cpf"]
+    Encaminhamentos.Status = "Em espera"
     console.log(Encaminhamentos)
     api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
 alert(result.message)
@@ -496,8 +496,12 @@ console.log(result)
     })
   }
   const CPF = getUrlVars()["cpf"]
-  api.encaminhamentos.consultar({CPF}).then((result)=>{
-    console.log(result)
+  api.encaminhamentos.consultar({CPF}).then((encaminhamentos)=>{
+    console.log(encaminhamentos)
+    encaminhamentos.forEach(encaminhamento => {
+      adicionarNovaLinha(encaminhamento)
+    })
+    
   })
 </script>
 

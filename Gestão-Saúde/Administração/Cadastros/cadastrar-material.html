@@ -73,7 +73,7 @@
     <div style="margin: 10px;">
       <button name="btnAdicionar" onClick="salvar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
       <button name="btnExcluir" onClick="excluir()" id="btnExcluir" value="Excluir" class="button"  >Excluir</button>
-      <button name="btnCancelar" onClick="Adicionar()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
+      <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
     </div>
 
     <div>
@@ -101,7 +101,7 @@
     </div>
 
     <hr class="ui-state-default">
-      
+    
     <div style="margin: 10px;"></div>
     <table id="listaMaterial" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
       <thead>
@@ -155,11 +155,7 @@
   </div>
 
 
-
-  <!-- "altclass":"ui-state-default jqgrow-alt"
-  "rownumbers":false,
-  "align":"center" -->
-    
+ 
 
 
 
@@ -230,9 +226,28 @@
       }
       return numStr;
     }
+
+    function limparCampos() {
+      document.getElementById("nomeMaterial").value = "";
+      document.getElementById("tipoMaterial").value = "0";
+      document.getElementById("qtdMaterial").value = "";
+    }
   </script>
-  
-  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 

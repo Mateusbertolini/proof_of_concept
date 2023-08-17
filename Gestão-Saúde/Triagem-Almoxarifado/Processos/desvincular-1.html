@@ -25,22 +25,54 @@
 <div style="clear: both;"></div></div><div style="clear: both;"></div>
   <div class="ui-widget-content ui-corner-all toolbar">
     <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+    <button id="pesquisar" class="pesquisar" title="Enter" style="float: left;">Pesquisar</button>
     <span style="clear: both; display: block"></span></div>
+
+    
   
-    <div id="tabFiltro" class="tabs"><ul></ul>    <div id="tabFiltro-0" class="ui-widget tabFiltro tabFiltro-0 tabFiltro-0">
-      <ul><li class="labeltabFiltro"><a href="#tabFiltro-0" accessKey="tabFiltro-0">Filtro</a></li></ul>
-      <label name="areaSaúde" id="areaSaúde" style="width: 120px;">Curso</label>
+<div id="tabFiltro" class="tabs"><ul></ul>    <div id="tabFiltro-0" class="ui-widget tabFiltro tabFiltro-0 tabFiltro-0">
+  <ul><li class="labeltabFiltro"><a href="#tabFiltro-0" accessKey="tabFiltro-0">Filtro</a></li></ul>
+  
+  <label style="width: 80px;">Matrícula</label>
+  <input type="text" name="lblCodMatricula" id="lblCodMatricula" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 100px;">
+  <br>
 
-      <input type="hidden" name="areaSaúde" id="areaSaúdeiD" value="" />
-      <input type="text" name="txtAtividadeCodigo" id="txtAtividadeCodigo" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: right;width: 100px;" onblur="openInputTextHit('https://cobalto.ufpel.edu.br/academico/processos/migrarTurma/bthDisciplina/true/returnButtonHitAtividade', returnButtonHitAtividade, 'txtAtividadeId', 'txtAtividadeCodigo', 'txtAtividadeDescricao');"  />
-      <button id="atividadeButton" style="margin: 0px 1px 0px -4px; height: 24px; display: block; float: left;" class="button-hit">Pesquisar</button>
-      <input type="text" name="txtAtividadeDescricao" id="txtAtividadeDescricao" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: left;width: 400px;" readonly="readonly" tabindex="-1" />
-      
+  <label name="lblAluno" id="lblAluno" style="width: 80px;">Nome</label>
+  <input type="text" name="txtAluno" id="txtAluno" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;"><br>
+  
+  <br>
+  <label name="lblCurso" id="lblCurso" style="width: 80px;"  >Curso</label>
+  <input type="hidden" name="txtCursoId" id="txtCursoId" value="" />
 
-      <br /></div></div>
-  <table id="gridTurma"></table><div id="gridTurmaPager" style="padding: 20px"></div>                                <script>var gridTurma =  'gridTurma';$(document).ready(function (){$('#gridTurma').jqGrid({"autoload":false,"sortname":"cod_atividade, cod_turma","sortorder":"asc","autowidth":true,"toppager":true,"rowNum":25,"pager":"#gridTurmaPager","caption":"Lista de Turmas","height":"auto","jsonReader":{"repeatitems":false,"id":0},"onSelectRow":function(rowid){try{gridTurma_onSelectRow(rowid);}catch(err){}},"onCellSelect":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridTurma").resetSelection();try{gridTurma_click(rowid);}catch(err){}}},"ondblClickRow":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridTurma").resetSelection();try{gridTurma_dblClick(rowid);}catch(err){}}},"loadBeforeSend":function(xhr){try{gridTurma_loadBeforeSend();}catch(err){}},"loadComplete":function(data){if($("#gridTurma").jqGrid('getGridParam','datatype') != 'local'){try{gridTurma_loadComplete();}catch(err){}}},"gridComplete":function(data){generateTabs();try{gridTurma_init();}catch(err){}},"loadError":function(xhr,st,err) {var url = $("#gridTurma").jqGrid('getGridParam','url');if(!$.cookie('logout'))if(xhr.status==200 && st=="parsererror"){try{console.log("Grid: gridTurma; URL: "+url+"; Type: "+st+"; Response: O resultado não está no formato esperado");}catch(err){}}else{try{console.log("Grid: gridTurma; URL: "+url+"; Type: "+st+"; Response: "+ xhr.status + " "+xhr.statusText);}catch(err){}}},"url":"https://cobalto.ufpel.edu.br/academico/processos/migrarTurma/listarTurmas/","altRows":true,"altclass":"ui-state-default jqgrow-alt","rownumbers":false,"viewrecords":true,"datatype":"local","multiselect":true,"forceFit":true,"headertitles":true,"colNames":["ID","Cód. atividade","Turma","Atividade curricular","Cursos","Ano","Período","Dt. Cadastro"],"colModel":[{"sortable":true,"hidden":true,"name":"id","index":"id","colName":"ID","width":0,"align":"right"},{"sortable":true,"name":"cod_atividade","index":"cod_atividade","colName":"Cód. atividade","width":10,"align":"center"},{"sortable":true,"name":"cod_turma","index":"cod_turma","colName":"Turma","width":5,"align":"center"},{"sortable":true,"name":"atividade_curricular","index":"atividade_curricular","colName":"Atividade curricular","width":35,"align":"left"},{"sortable":true,"name":"cursos","index":"cursos","colName":"Cursos","width":25,"align":"left"},{"sortable":true,"name":"ano","index":"ano","colName":"Ano","width":5,"align":"center"},{"sortable":true,"name":"base_periodo","index":"base_periodo","colName":"Período","width":10,"align":"center"},{"sortable":true,"formatter":"datetime","name":"dt_cadastro","index":"dt_cadastro","colName":"Dt. Cadastro","width":10,"align":"center"}]});$('#gridTurma').setGridParam({datatype: 'json'});$('#gridTurma').setGridParam({autoload: true});});function gridTurma_resize() {$('#gbox_gridTurma').width('auto');$('#gridTurma').setGridWidth($('#gbox_gridTurma').width());};$(window).bind('resize', gridTurma_resize);$('#tabFiltroTurma').bind('tabsshow', gridTurma_resize);</script>
-  <script type="text/javascript">var globalData = {"controllerURL":"https:\/\/cobalto.ufpel.edu.br\/academico\/processos\/migrarTurma\/"};</script><script type="text/javascript" src="https://cobalto.ufpel.edu.br/academico/assets/processos/migrarTurmaFiltroView.js?GDjvoLyq"></script>
-  </div>
+
+  <script>var txtCursoId = $('#txtCursoId');</script><input type="text" name="txtCursoCodigo" id="txtCursoCodigo" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: right;width: 100px;" onblur="openInputTextHit('https://cobalto.ufpel.edu.br/academico/cadastros/buttonHits/buscarCurso/returnButtonHitCurso', returnButtonHitCurso, 'txtCursoId', 'txtCursoCodigo', 'txtCursoDescricao');"  />
+  <script>var txtCursoCodigo = $('#txtCursoCodigo');</script>
+  <button id="cursoButton" onclick="openButtonHit('https://cobalto.ufpel.edu.br/academico/cadastros/buttonHits/buscarCurso/parent.returnButtonHitCurso', 'Selecione o curso', 900);" style="margin: 0px 1px 0px -4px; height: 24px; display: block; float: left;" class="button-hit">Pesquisar</button><input type="text" name="txtCursoDescricao" id="txtCursoDescricao" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: left;width: 400px;" readonly="readonly" tabindex="-1"  />
+  <script>var txtCursoDescricao = $('#txtCursoDescricao');</script>
+  <script>
+            var txtCursoId = $('#txtCursoId');
+            var txtCursoCodigo = $('#txtCursoCodigo');
+        var txtCursoDescricao = $('#txtCursoDescricao');
+        var cursoButton = $('#cursoButton');
+        </script>            <br />            <label name="lblVinculo" id="lblVinculo" for="chkVinculo" style="width: 80px;"  >Somente com vínculo</label>
+            <input type="checkbox" name="chkVinculo" id="chkVinculo" value="" class="mousetrap " checked="checked"  /><label for='chkVinculo' style="width: auto;"  ></label>
+  
+  <script type="text/javascript">var chkVinculo = $.extend($("#chkVinculo"), {
+                val:() => {
+                        return $("#chkVinculo").is(':checked');
+                    }
+                });
+            var chkVinculo = chkVinculo</script>
+        <br /></div>    </div>
+    <table id="gridAluno"></table><div id="gridAlunoPager" style="margin-bottom: 5px"></div>                                                            <script>var gridAluno =  'gridAluno';$(document).ready(function (){$('#gridAluno').jqGrid({"sortname":"aluno_nome","autoload":false,"autowidth":true,"pager":"#gridAlunoPager","multiselect":true,"rowNum":25,"toppager":true,"caption":"Lista de alunos","height":"auto","jsonReader":{"repeatitems":false,"id":0},"onSelectRow":function(rowid){try{gridAluno_onSelectRow(rowid);}catch(err){}},"onCellSelect":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_click(rowid);}catch(err){}}},"ondblClickRow":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_dblClick(rowid);}catch(err){}}},"loadBeforeSend":function(xhr){try{gridAluno_loadBeforeSend();}catch(err){}},"loadComplete":function(data){if($("#gridAluno").jqGrid('getGridParam','datatype') != 'local'){try{gridAluno_loadComplete();}catch(err){}}},"gridComplete":function(data){generateTabs();try{gridAluno_init();}catch(err){}},"loadError":function(xhr,st,err) {var url = $("#gridAluno").jqGrid('getGridParam','url');if(!$.cookie('logout'))if(xhr.status==200 && st=="parsererror"){try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: O resultado não está no formato esperado");}catch(err){}}else{try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: "+ xhr.status + " "+xhr.statusText);}catch(err){}}},"url":"https://cobalto.ufpel.edu.br/academico/consultas/aluno/listaAlunosPessoasCursos/","altRows":true,"altclass":"ui-state-default jqgrow-alt","rownumbers":false,"viewrecords":true,"datatype":"local","sortorder":"asc","forceFit":true,"headertitles":true,"colNames":["ID","Nome","E-mail","CPF","Situação","RG","Dt.Cadastro"],"colModel":[{"sortable":true,"hidden":true,"name":"id","index":"id","colName":"ID","width":0,"align":"right"},{"sortable":true,"name":"aluno_nome","index":"aluno_nome","colName":"Nome","width":450,"align":"left"},{"sortable":true,"name":"email","index":"email","colName":"E-mail","width":280,"align":"left"},{"sortable":true,"name":"cpf","index":"cpf","colName":"CPF","width":160,"align":"center"},{"sortable":true,"hidden":true,"name":"situacao","index":"situacao","colName":"Situação","width":200,"align":"center"},{"sortable":true,"name":"aluno_rg","index":"aluno_rg","colName":"RG","width":180,"align":"center"},{"sortable":true,"formatter":"date","name":"dt_cadastro","index":"dt_cadastro","colName":"Dt.Cadastro","width":200,"align":"center"}]});$('#gridAluno').setGridParam({datatype: 'json'});$('#gridAluno').setGridParam({autoload: true});});function gridAluno_resize() {$('#gbox_gridAluno').width('auto');$('#gridAluno').setGridWidth($('#gbox_gridAluno').width());};$(window).bind('resize', gridAluno_resize);$('#tabFiltroCurso').bind('tabsshow', gridAluno_resize);</script>
+  <script type="text/javascript">var globalData = {"controllerURL":"https:\/\/cobalto.ufpel.edu.br\/academico\/consultas\/aluno\/","path_bread":"Gest\u00e3o Acad\u00eamica \/ Consultas \/ Aluno"};</script><script type="text/javascript" src="https://cobalto.ufpel.edu.br/academico/assets/consultas/alunoFiltroView.js?oOuqfhJD"></script>
+    </div>		
+        
+
+    <p></p> .
+
+
+
 
 <h1><a href="desvincular-2.html" style="padding: 20px;">LISTAR AS DIFERENTES DISCIPLINAS E TURMA DE CADA CURSO E, AO SELECIONAR UMA DELAS AVANÇA PARA ESSA PÁGINA</a>
   
@@ -52,13 +84,7 @@
 
 
 
-
-
-
-
-
-
-
+   
 
 
 

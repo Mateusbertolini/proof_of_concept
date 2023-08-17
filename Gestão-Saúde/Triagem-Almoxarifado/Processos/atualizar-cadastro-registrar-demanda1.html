@@ -57,7 +57,7 @@
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
       <li>Processos</li>
       <li>Atualizar dados e/ou registrar demanda</li>
-      <li>GET FROM id="Nome"</li>
+      <li id="Nometab"></li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     </ul>
@@ -83,19 +83,13 @@
         
   </ul>
 
-<!--FIM DIVISÃO EM TABS-->
 
 
 <!--INÍCIO DA TAB DADOS PESSOAIS-->
-
-
 <div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
   <br>
-  
-
   <hr class="ui-state-default">
-
   <p></p>
   
   <div>
@@ -214,9 +208,7 @@
     <br>
 
   
-  
-
-    <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
+<script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
 
 <script type="text/javascript">
    // Função para preencher o formulário com os dados do perfil
@@ -279,126 +271,293 @@
 </div>
 
 
+
+
 <!--INÍCIO TAB DEMANDAS-->
-<div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
-  <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
-  <p>
-
-   <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-    <option value="0">Escolher</option>
-    <option value="1200">Enfermagem</option>
-    <option value="7100">Farmácia</option>
-    <option value="400">Odontologia</option>
-    <option value="7200">Terapia Ocupacional</option>
-  </select>
+<div id="encaminhamento">
+  <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
+    <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área da saúde</label>
+    <p>
   
-  <br><p></p>
-  <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
-      <option> </option>
+     <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
+      <option value="0">Escolher</option>
+      <option value="1200">Enfermagem</option>
+      <option value="7100">Farmácia</option>
+      <option selected value="400">Odontologia</option>
+      <option value="7200">Terapia Ocupacional</option>
     </select>
     
-<script>
-  const disciplinas = [
-    {codCurso: 400, nomeEspec:'Prótese Dentária'},
-    {codCurso: 400, nomeEspec:'Odontopediatria'},
-    {codCurso: 400, nomeEspec:'Periodontia'},
-    {codCurso: 400, nomeEspec:'Dentística'},
-    {codCurso: 400, nomeEspec:'Cirurgia'},
-    {codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
-    {codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
-    {codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
-    {codCurso: 7100, nomeEspec:'Análises clínicas' },
-    {codCurso: 7100, nomeEspec:'Antroposofia' },
-    {codCurso: 7200, nomeEspec:'Contextos sociais' },
-    {codCurso: 7200, nomeEspec:'Saúde da família' },
-    // Add more options as needed
-  ];
   
-  const areaSelect = document.getElementById('areaSaúde');
-  const disciplinasSelect = document.getElementById('especAreaSaúde');
-  
-  areaSelect.addEventListener('change', function() {
-    const selectedCodCurso = areaSelect.value;
-    
-    // Clear existing options
-    disciplinasSelect.innerHTML = '<option> </option>';
-    
-    // Filter and populate the second select
-    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
-    selectedDisciplinas.forEach(disciplina => {
-      const option = document.createElement('option');
-      option.textContent = disciplina.nomeEspec;
-      disciplinasSelect.appendChild(option);
-    });
-  });
-</script>
+    <br><p></p>
+    <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
+      <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
+        <option> </option>
+      </select>
       
-<p></p>
-  <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
-        <option value="0">Escolher</option>
-        <option value="Baixa">Baixa</option>
-        <option value="Média">Média</option>
-        <option value="Alta (Pós-graduação)">Alta (Pós-graduação)</option>
-    </select>
-
-<hr class="ui-state-default">
+  <script>
+    const disciplinas = [
+      {codCurso: 400, nomeEspec:'Prótese Dentária'},
+      {codCurso: 400, nomeEspec:'Odontopediatria'},
+      {codCurso: 400, nomeEspec:'Periodontia'},
+      {codCurso: 400, nomeEspec:'Dentística'},
+      {codCurso: 400, nomeEspec:'Cirurgia'},
+      {codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
+      {codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
+      {codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
+      {codCurso: 7100, nomeEspec:'Análises clínicas' },
+      {codCurso: 7100, nomeEspec:'Antroposofia' },
+      {codCurso: 7200, nomeEspec:'Contextos sociais' },
+      {codCurso: 7200, nomeEspec:'Saúde da família' },
+      // Add more options as needed
+    ];
+    
+    const areaSelect = document.getElementById('areaSaúde');
+    const disciplinasSelect = document.getElementById('Especialidade');
+    
+    areaSelect.addEventListener('change', function() {
+      const selectedCodCurso = areaSelect.value;
+      
+      // Clear existing options
+      disciplinasSelect.innerHTML = '<option> </option>';
+      
+      // Filter and populate the second select
+      const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
+      selectedDisciplinas.forEach(disciplina => {
+        const option = document.createElement('option');
+        option.textContent = disciplina.nomeEspec;
+        disciplinasSelect.appendChild(option);
+      });
+    });
+  const event = new Event('change');
+  areaSelect.dispatchEvent(event);
+  </script>
+        
+  <p></p>
+    <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
+      <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
+          <option value="0">Escolher</option>
+          <option value="Baixa">Baixa</option>
+          <option value="Média">Média</option>
+          <option value="Alta (Pós-graduação)">Alta (Pós-graduação)</option>
+      </select>
+  
+  <hr class="ui-state-default">
 <label style="font-weight:bold;width: 180px;">Demanda específica</label>
   <p></p>
 
   <br>
-  <textarea style="width: 380px;" name="txtdemanda" id="txtdemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
+  <textarea id="Demanda" style="width: 380px;" name="txtdemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
   <br>
 
   <p>
 
-  <label name="lblData" id="lblData" style="width: 180px;"  >Data do registro da demanda</label>
-        <input type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
+  <label name="lblData"  style="width: 180px;"  >Data do registro da demanda</label>
+        <input id="Data" type="text" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
     <br>
 <p></p>
-  <button name="btnAdicionar" onClick="adicionar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
-  <button name="btnCancelar" onClick="limpar()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
+  <button name="btnAdicionar" onClick="encaminhar(); addTable()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
+  <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
   <br>
   <p></p>
 
 <hr class="ui-state-default">
 
   <p></p>
- <table class="ui-jqgrid-htable" style="width: 1200px;" role="grid" aria-labelledby="gridDemanda_Paciente" cellspacing="0" cellpadding="0" border="0">
-        <thead>
-      <tr class="ui-jqgrid-labels" role="rowheader">
-        <th id="gridDemanda_Paciente_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
-          <div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridDemanda_data" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_data" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridDemanda_areaSaude" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 175px;" aria-selected="true">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_areaSaude" class="ui-jqgrid-sortable">Área da Saúde<span class="s-ico" style=""></span></div>
-        </th>
-        <th id="gridDemanda_especialidade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Espe" style="width: 175px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_especialidade" class="ui-jqgrid-sortable">Especialidade<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="demandaEspecífica" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Demanda<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="StatusPaciente" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Status<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-      </tr>
-    <thead><tr style="align-items: center;">
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="lblData"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="areaSaúde"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="especAreaSaúde"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">GET FROM id="txtdemanda"</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">SEMPRE REGISTRAR COMO "EM ESPERA"</td>
+ 
+<table id="tableDemanda" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
+  <thead>
+    <tr class="ui-jqgrid-labels" role="rowheader">
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">Data</th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Área da Saúde</th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">Especialidade</th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 32.5%;">Demanda</th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Complexidade</th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">Status </th>
     </tr>
     </thead>
-  </table>
-   
-<!--FIM TAB DEMANDAS-->
+</table>
+</div>
 
 
-<h1>APÓS SALVAR, DISPLAY MESSAGE: "REGISTRO SALVO COM SUCESSO" </h1>
+<!-- SCRIPT ADD NA TABELA -->
+<script>
+  function addTable() {
+    var areaSaúde = document.getElementById("areaSaúde").value;
+    var Especialidade = document.getElementById("Especialidade").value;
+    var complexidade = document.getElementById("complexidade").value;
+    var Demanda = document.getElementById("Demanda").value;
+    var Data = document.getElementById("Data").value;
+    
+    if (areaSaúde && Especialidade && complexidade && Demanda && Data) {
+      var table = document.getElementById("tableDemanda");
+      var newRow = table.insertRow(-1);
+      
+      // Add cells for the new variables
+      var dateCell = newRow.insertCell(0);
+      dateCell.innerHTML = new Date().toLocaleDateString(); // Add the current date
+      dateCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var areaSaúdeCell = newRow.insertCell(1);
+      areaSaúdeCell.innerHTML = areaSaúde;
+      areaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var EspecialidadeCell = newRow.insertCell(2);
+      EspecialidadeCell.innerHTML = Especialidade;
+      EspecialidadeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var DemandaCell = newRow.insertCell(3);
+      DemandaCell.innerHTML = Demanda;
+      DemandaCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var complexidadeCell = newRow.insertCell(4);
+      complexidadeCell.innerHTML = complexidade;
+      complexidadeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var statusCell = newRow.insertCell(5);
+      statusCell.innerHTML = "Em espera";
+      statusCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      // Clear input fields after adding row
+      document.getElementById("areaSaúde").value = "";
+      document.getElementById("Especialidade").value = "";
+      document.getElementById("complexidade").value = "";
+      document.getElementById("Demanda").value = "";
+      document.getElementById("Data").value = "";
+    }
+  }
+
+    function limparCampos() {
+    document.getElementById("areaSaúde").value = "";
+    document.getElementById("Especialidade").value = "";
+    document.getElementById("complexidade").value = "";
+    document.getElementById("Demanda").value = "";
+    document.getElementById("Data").value = "";
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Script DEMANDAS-->
+<script>
+  function adicionarNovaLinha(data) {
+    console.log(data)
+  // Seleciona o corpo da tabela usando o XPath
+  const tbody = document.getElementById("tabelaencaminhamentos")
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
+  novaLinha.style.alignItems = 'center';
+
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td role="gridcell" style="text-align:center;">${data.Data}</td>
+    <td role="gridcell" style="text-align:center;">${data.Curso}</td>
+    <td role="gridcell" style="text-align:center;">${data.Especialidade}</td>
+    <td role="gridcell" style="text-align:center;">${data.Demanda}</td>
+    <td role="gridcell" style="text-align:center;">${data.Status}</td>
+  `;
+
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
+
+
+function getDataFromTab(TabId){
+  const parentDiv = document.getElementById(TabId); 
+  const elements = parentDiv.querySelectorAll("input, select, textarea"); // Include textarea elements
+  const jsonData = {};
+
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value;
+    } else if (element.tagName === "TEXTAREA") { // Handle textarea elements
+      jsonData[element.id] = element.value;
+    }
+  }
+
+  console.log(jsonData);
+  return jsonData;
+}
+const codtonome = {
+  "0": "Escolher",
+  "1200": "Enfermagem",
+  "7100": "Farmácia",
+  "400": "Odontologia",
+  "7200": "Terapia Ocupacional"
+}
+
+
+  function encaminhar(){
+    let Encaminhamentos = getDataFromTab("encaminhamento") 
+    Encaminhamentos.CPF = getUrlVars()["cpf"]
+    Encaminhamentos.Status = "Em espera"
+    Encaminhamentos.Curso = codtonome[Encaminhamentos.Curso]
+    console.log(Encaminhamentos)
+    api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
+alert(result.message)
+console.log(result)
+    })
+  }
+  const CPF = getUrlVars()["cpf"]
+  api.encaminhamentos.consultar({CPF}).then((encaminhamentos)=>{
+    console.log(encaminhamentos)
+    encaminhamentos.forEach(encaminhamento => {
+      adicionarNovaLinha(encaminhamento)
+    })
+    
+  })
+</script>
+
 
 
 </body>

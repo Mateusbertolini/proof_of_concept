@@ -1,0 +1,360 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head lang="pt-br">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+    var PATH_COOKIE = '/';
+    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+</script>
+<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+<link href="stylecobalto.css" type="text/css" rel="stylesheet">
+</head>
+
+<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
+<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
+    <style type="text/css">
+    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
+    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
+    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
+    .column {width: 33.3%; float: left; padding-bottom: 100px;}
+    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
+            @media (max-width: 900px){
+            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
+            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
+            .column {width: 100%; float: none; padding-bottom: 0px;}
+            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
+        }
+        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
+    .portlet {margin: 0 0 1.5em 0;}
+    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
+    .portlet-header button {float: right; height: 18px; width: 18px;}
+    .portlet-header .ui-icon {float: right;}
+    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
+    .portlet-content a:hover{text-decoration: underline!important;}
+    .portlet-content a:visited{color: #bbb!important;}
+    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
+    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
+    .portlet-content ul li:last-child {border-bottom: none!important;}
+    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
+    .ui-sortable-placeholder * {visibility: hidden;}
+  </style>
+
+
+<!-- CONTEÚDO SUPERIOR -->
+<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+    <li>Triagem/Almoxarifado</li>    
+    <li>Processos</li>
+    <li>Tramitar requisição de material</li>
+    </ul>
+      
+  <div style="clear: both;"></div></div><div style="clear: both;"></div>
+
+  <button id="voltar-pagina" class="voltar-pagina ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" style="float: left;" role="button" aria-disabled="false" title="Voltar página"><span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-w"></span><span class="ui-button-text">Voltar página</span></button>
+  <button id="salvar" class="salvar ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" title="Ctrl + S" style="float: left;" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-disk"></span><span class="ui-button-text">Salvar</span></button>
+  
+  <span style="clear: both; display: block"></span></div>
+
+
+  <!-- CONTEÚDO DA PÁGINA -->
+<div id="tabRequisições" class="tabs ui-tabs ui-widget ui-widget-content ui-corner-all" style="height: 70%;">
+  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+    <li class="labeltabRequisições ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tabRequisições-0" aria-labelledby="ui-id-2" aria-selected="true">
+      <a href="#tabRequisições-0" accesskey="tabRequisições-0" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Tramitar requisição de material</a>
+    </li>
+  </ul>
+
+
+  <div id="tabRequisições-0" class="ui-widget tabRequisições tabRequisições-0 tabRequisições-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
+    <label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold;">Solicitação</label><br>
+          
+    <table id="materiaisDisponiveis" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 20px;">
+    <thead>
+        <tr class="ui-jqgrid-labels" role="rowheader">
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
+            Cód.
+        </th>
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">
+            Material
+        </th>
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">
+            Tipo de material
+        </th>
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
+            Qtd. disponível
+        </th>
+        </tr>
+    </thead>
+    <tr>
+        <td class="ui-state-default ui-th-column ui-th-ltr">0001</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Gaze</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Hospitalar</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">100</td>
+    </tr>
+    <tr>
+        <td class="ui-state-default ui-th-column ui-th-ltr">0002</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Silicone de Condensação</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Moldagem</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">9</td>
+    </tr>
+    <tr>
+        <td class="ui-state-default ui-th-column ui-th-ltr">0003</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Cimento resinoso cor:A2</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Cimento</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">10</td>
+    </tr>
+    <tr>
+        <td class="ui-state-default ui-th-column ui-th-ltr">0004</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Resina composta - Bisnaga Cor:A1</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">Resina composta</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">18</td>
+    </tr>
+    <!-- Table body rows go here -->
+    </table>
+    </div>
+      
+    <div>
+    <label style="width: 120px; ;margin: 5px;">Cód.</label>
+    <input type="text" id="selectedCod" placeholder="Cód." class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
+    <br>
+    <label style="width: 120px; ;margin: 5px;">Material</label>
+    <input type="text" id="selectedMaterial" placeholder="Material" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
+    <br>
+    <label style="width: 120px; ;margin: 5px;">Tipo</label>
+    <input type="text" id="selectedTipo" placeholder="Tipo de material" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
+    <br>
+    </div>
+      
+<!-- Populate the input fields by clicking on a row -->
+<script>
+var table = document.getElementById("materiaisDisponiveis");
+var rows = table.getElementsByTagName("tr");
+
+// Attach a click event listener to each row
+for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
+    rows[i].addEventListener("click", function () {
+    var cells = this.getElementsByTagName("td");
+
+    // Extract data from the clicked row
+    var cod = cells[0].textContent;
+    var material = cells[1].textContent;
+    var tipo = cells[2].textContent;
+    
+    // Populate input fields with row data
+    document.getElementById("selectedCod").value = cod;
+    document.getElementById("selectedMaterial").value = material;
+    document.getElementById("selectedTipo").value = tipo;
+    });
+}
+</script>
+
+
+<label style="width: 120px; ;margin: 5px;">Qtd solicitada</label>
+<input type="text" id="selectedQtd" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;"  placeholder="Qtd. solicitada">
+<br>
+
+<label style="width: 120px; ;margin: 5px;">Setor</label>
+<select class="ui-state-default" style="width: 180px; height: 20px;" name="setor" id="setor"><option value=''>&nbsp;</option>
+    <option value="Clínica 1º Andar - Sul">1º Andar - Sul</option>
+    <option value="Clínica Oeste">Clínica Oeste</option>
+    <option value="Clínica Sul 2º Andar">Clínica Sul 2º Andar</option>
+    <option value="Enfermagem 3º Andar">Enfermagem 3º Andar</option>
+    <option value="Clínica 4º Andar">Clínica 4º Andar</option>
+    <option value="Laboratórios pré-clínica">Laboratórios pré-clínica</option>
+    <option value="Laboratórios patologia">Laboratórios patologia</option>
+</select>
+    
+<div style="margin: 20px;">
+<button name="btnAdicionar" onClick="addTable()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
+<button name="btnExcluir" onClick="deleteSelectedRows()" id="btnExcluir" value="Excluir" class="button"  >Excluir</button>
+<button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
+</div>
+
+
+<hr class="ui-state-default">
+
+<label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold; margin: 15px;">Materiais solicitados</label><br>
+<div style="margin: 10px;"></div>
+<table id="requisicaoMaterial" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 15px;">
+<thead>
+    <tr class="ui-jqgrid-labels" role="rowheader">
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Data</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Cód.</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">Material</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">Tipo</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Qtd.</th>
+    </tr>
+</thead>
+</table>
+</div>
+
+<!-- SCRIPT ADD NA TABELA -->
+<script>
+function addTable() {
+    var selectedCod = document.getElementById("selectedCod").value;
+    var selectedMaterial = document.getElementById("selectedMaterial").value;
+    var selectedTipo = document.getElementById("selectedTipo").value;
+    var qtdDisponível = document.getElementById("selectedQtd").value;
+    var selectedQtd = parseInt(document.getElementById("selectedQtd").value); // Parse the quantity as an integer
+    
+    var currentDate = new Date();
+    var day = String(currentDate.getDate()).padStart(2, '0');
+    var month = String(currentDate.getMonth() + 1).padStart(2, '0');
+    var year = currentDate.getFullYear();
+    var dataSolicitacao = day + '/' + month + '/' + year;
+
+    if (selectedCod && selectedMaterial && selectedTipo && selectedQtd > 0) {
+    var table = document.getElementById("requisicaoMaterial");
+    var existingRow = null;
+
+    // Check if the selected material already exists in the table
+    for (var i = 1; i < table.rows.length; i++) {
+        if (table.rows[i].cells[3].innerHTML === selectedMaterial) {
+        existingRow = table.rows[i];
+        break;
+        }
+    }
+
+    if (existingRow) {
+        var existingQtd = parseInt(existingRow.cells[5].innerHTML);
+        existingRow.cells[5].innerHTML = (existingQtd + selectedQtd).toString();
+    } else {
+        var newRow = table.insertRow(-1);
+        
+        // Add a cell for the checkbox
+        var checkboxCell = newRow.insertCell(0);
+        var checkboxInput = document.createElement("input");
+        checkboxInput.type = "checkbox";
+        checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
+        checkboxCell.appendChild(checkboxInput);
+
+        // Add cells for the new variables
+        var dateCell = newRow.insertCell(1);
+        dateCell.innerHTML = dataSolicitacao;
+        dateCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+        var selectedCodCell = newRow.insertCell(2);
+        selectedCodCell.innerHTML = selectedCod;
+        selectedCodCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+        var selectedMaterialCell = newRow.insertCell(3);
+        selectedMaterialCell.innerHTML = selectedMaterial;
+        selectedMaterialCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+        var selectedTipoCell = newRow.insertCell(4);
+        selectedTipoCell.innerHTML = selectedTipo;
+        selectedTipoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+        var selectedQtdCell = newRow.insertCell(5);
+        selectedQtdCell.innerHTML = selectedQtd.toString();
+        selectedQtdCell.className = "ui-state-default ui-th-column ui-th-ltr";
+    }
+
+    // Clear input fields after adding row
+    document.getElementById("selectedCod").value = "";
+    document.getElementById("selectedMaterial").value = "";
+    document.getElementById("selectedTipo").value = "";
+    document.getElementById("selectedQtd").value = "";
+    document.getElementById("selectedQtd").value = "";
+    }
+}
+
+function deleteSelectedRows() {
+    var table = document.getElementById("requisicaoMaterial");
+    var rowsToDelete = [];
+
+    for (var i = 1; i < table.rows.length; i++) {
+    var checkbox = table.rows[i].cells[0].querySelector("input[type='checkbox']");
+    if (checkbox.checked) {
+        rowsToDelete.push(table.rows[i]);
+    }
+    }
+
+    for (var i = 0; i < rowsToDelete.length; i++) {
+    table.deleteRow(rowsToDelete[i].rowIndex);
+    }
+}
+
+function limparCampos() {
+    document.getElementById("selectedCod").value = "";
+    document.getElementById("selectedMaterial").value = "";
+    document.getElementById("selectedTipo").value = "";
+    document.getElementById("selectedQtd").value = "";
+}
+</script>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <hr class="ui-state-default"/>
+      <label name="lblProcessarSolicitacao" id="lblProcessarSolicitacao" style="font-weight: bold; margin-bottom: 15px;width: 150px;"  >Processar solicitação</label>
+      <br />
+          <form id="formProcessarSolicitacao" action="https://cobalto.ufpel.edu.br/academico/processos/solicitacaoSegundaChamada/salvarSolicitacao" method="post">
+<script language="JavaScript"> function formProcessarSolicitacao_submit() {     btnSalvarTemp = document.getElementById('salvar');    if(btnSalvarTemp){      btnSalvarTemp.disabled = true;      btnSalvarTemp.setAttribute('aria-disabled', true);      btnSalvarTemp.classList.add('ui-state-disabled');    }    _.each(document.getElementsByClassName('btn_bloqueio'), (element) => {          element.disabled = true;          element.setAttribute('aria-disabled', true);          element.classList.add('ui-state-disabled');    });    $('#formProcessarSolicitacao').ajaxSubmit({     dataType:'json',     clearForm: false,     beforeSubmit: formProcessarSolicitacao_beforeSubmit,    success:  formProcessarSolicitacao_sucefull,     complete:  formProcessarSolicitacao_complete     }); } function formProcessarSolicitacao_confirmaSenha() {     var action = $('#formProcessarSolicitacao').attr('action');    var dados = $('#formProcessarSolicitacao').serialize();    openWindow(action+'/?'+dados, 'Confirmação de senha', 400); }function formProcessarSolicitacao_sucefull(data) {    try{ formProcessarSolicitacao_callback(data); } catch(err){}}function formProcessarSolicitacao_complete(data) {    btnSalvarTemp = document.getElementById('salvar');    if(btnSalvarTemp){      document.getElementById('salvar').disabled = false;      document.getElementById('salvar').setAttribute('aria-disabled', false);      document.getElementById('salvar').classList.remove('ui-state-disabled');    }    _.each(document.getElementsByClassName('btn_bloqueio'), (element) => {          element.disabled = false;          element.setAttribute('aria-disabled', false);          element.classList.remove('ui-state-disabled');    });    btnCarregandoTemp = document.getElementById('carregando');    if(btnCarregandoTemp){      document.getElementById('carregando').style.display = 'none';    }}function formProcessarSolicitacao_beforeSubmit(formData, jqForm, options) { return beforeSubmit(formData, jqForm, options, 'formProcessarSolicitacao');}</script>
+              
+<input type="hidden" name="solicitacao_segunda_chamada_id" id="solicitacao_segunda_chamada_id" value="1779" />
+<script>var solicitacao_segunda_chamada_id = $('#solicitacao_segunda_chamada_id');</script>
+              <label name="lblSolicitacaoSegundaChamadaStatus" id="lblSolicitacaoSegundaChamadaStatus" style="width: 150px;"  >Situação</label>
+              <select class="mousetrap" style="width: 300px;" name="cmbSolicitacaoSegundaChamadaStatus" id="cmbSolicitacaoSegundaChamadaStatus" ><option value=''>&nbsp;</option>
+<option value="1" selected="selected">SOLICITADO</option>
+<option value="2">EM ANÁLISE</option>
+<option value="3">FAVORÁVEL</option>
+<option value="4">DESFAVORÁVEL</option>
+</select><script type='text/javascript'>
+          var cmbSolicitacaoSegundaChamadaStatus = 'cmbSolicitacaoSegundaChamadaStatus';
+          $(document).ready(function(){
+              $('#cmbSolicitacaoSegundaChamadaStatus').selectmenu({style:'dropdown'});
+          });
+      </script>
+              <br />
+              <label name="lblJustificativaColegiado" id="lblJustificativaColegiado" style="width: 150px;"  >Justificativa em caso de tramitação desfavorável</label>
+              <textarea style="width: 520px;" name="txtJustificativaColegiado" id="txtJustificativaColegiado" rows="10" maxlength="2000" class="ui-state-default ui-corner-all" ></textarea>
+<script>var txtJustificativaColegiado = $('#txtJustificativaColegiado');</script>
+
+          </form>
+      <br />
+  <br /></div></div>
+
+
+
+
+
+      
+      <hr class="ui-state-default">
+      <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+      
+      
+      
+
+
+        
+      
+        FUNCIONALIDADE PREVISTA: <br>
+        1) LISTA DE MATERIAIS ATUALIZA DE ACORDO COM A ÁREA DA SAÚDE SELECIONADA<br>
+        2) IMPLEMENTAR IF STATEMENT PARA NÃO PERMITIR SOLICITAÇÕES DE QTD. MAIOR DO QUE A DISPONIVEL
+        3) AO SALVAR A REQUISIÇÃO ELE ENCAMINHA A MESMA PARA O ALMOXARIFADO -> salvar em uma variável qual setor está encaminhando o pedido
+        
+      </h2>
+      
+
+      
+      </body>
+      </html>

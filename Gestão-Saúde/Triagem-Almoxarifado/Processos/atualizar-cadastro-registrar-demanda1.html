@@ -275,6 +275,7 @@
 
 <!--INÍCIO TAB DEMANDAS-->
 <div id="encaminhamento">
+<<<<<<< HEAD
   <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
     <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área da saúde</label>
     <p>
@@ -285,14 +286,56 @@
       <option value="7100">Farmácia</option>
       <option selected value="400">Odontologia</option>
       <option value="7200">Terapia Ocupacional</option>
+=======
+<div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
+  <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
+  <p>
+
+   <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="Curso">
+    <option value="0">Escolher</option>
+    <option value="1200">Enfermagem</option>
+    <option value="7100">Farmácia</option>
+    <option selected value="400">Odontologia</option>
+    <option value="7200">Terapia Ocupacional</option>
+  </select>
+  
+
+  <br><p></p>
+  <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
+      <option> </option>
+>>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
     </select>
     
   
+<<<<<<< HEAD
     <br><p></p>
     <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
       <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
         <option> </option>
       </select>
+=======
+  const areaSelect = document.getElementById('Curso');
+  const disciplinasSelect = document.getElementById('Especialidade');
+  
+  areaSelect.addEventListener('change', function() {
+    const selectedCodCurso = areaSelect.value;
+    
+    // Clear existing options
+    disciplinasSelect.innerHTML = '<option> </option>';
+    
+    // Filter and populate the second select
+    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
+    selectedDisciplinas.forEach(disciplina => {
+      const option = document.createElement('option');
+      option.textContent = disciplina.nomeEspec;
+      disciplinasSelect.appendChild(option);
+    });
+  });
+const event = new Event('change');
+areaSelect.dispatchEvent(event);
+</script>
+>>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
       
   <script>
     const disciplinas = [
@@ -352,17 +395,26 @@
   <p>
 
   <label name="lblData"  style="width: 180px;"  >Data do registro da demanda</label>
+<<<<<<< HEAD
         <input id="Data" type="text" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
     <br>
 <p></p>
   <button name="btnAdicionar" onClick="encaminhar(); addTable()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
   <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
+=======
+        <input id="Data" type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
+    <br>
+<p></p>
+  <button name="btnAdicionar" onClick="encaminhar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
+  <button name="btnCancelar" onClick="limpar()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
+>>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
   <br>
   <p></p>
 
 <hr class="ui-state-default">
 
   <p></p>
+<<<<<<< HEAD
  
 <table id="tableDemanda" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
   <thead>
@@ -377,7 +429,108 @@
     </thead>
 </table>
 </div>
+=======
+ <table class="ui-jqgrid-htable" style="width: 1200px;" role="grid" aria-labelledby="gridDemanda_Paciente" cellspacing="0" cellpadding="0" border="0">
+        <thead>
+      <tr class="ui-jqgrid-labels" role="rowheader">
+        <th id="gridDemanda_Paciente_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
+          <div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
+        </th>
+        <th id="gridDemanda_data" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_data" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
+        </th>
+        <th id="gridDemanda_areaSaude" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 175px;" aria-selected="true">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_areaSaude" class="ui-jqgrid-sortable">Área da Saúde<span class="s-ico" style=""></span></div>
+        </th>
+        <th id="gridDemanda_especialidade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Espe" style="width: 175px;">
+          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_especialidade" class="ui-jqgrid-sortable">Especialidade<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+        </th>
+        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="demandaEspecífica" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Demanda<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="StatusPaciente" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Status<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
+        </th>
+      </tr>
+    <thead id="tabelaencaminhamentos">
+    </thead>
+  </table>
+</div>
+<!--FIM TAB DEMANDAS-->
+<!--Script DEMANDAS-->
+<script>
+  function adicionarNovaLinha(data) {
+    console.log(data)
+  // Seleciona o corpo da tabela usando o XPath
+  const tbody = document.getElementById("tabelaencaminhamentos")
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
+  novaLinha.style.alignItems = 'center';
+>>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
 
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td role="gridcell" style="text-align:center;">${data.Data}</td>
+    <td role="gridcell" style="text-align:center;">${data.Curso}</td>
+    <td role="gridcell" style="text-align:center;">${data.Especialidade}</td>
+    <td role="gridcell" style="text-align:center;">${data.Demanda}</td>
+    <td role="gridcell" style="text-align:center;">${data.Status}</td>
+  `;
+
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
+
+
+function getDataFromTab(TabId){
+  const parentDiv = document.getElementById(TabId); 
+  const elements = parentDiv.querySelectorAll("input, select, textarea"); // Include textarea elements
+  const jsonData = {};
+
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value;
+    } else if (element.tagName === "TEXTAREA") { // Handle textarea elements
+      jsonData[element.id] = element.value;
+    }
+  }
+
+  console.log(jsonData);
+  return jsonData;
+}
+const codtonome = {
+  "0": "Escolher",
+  "1200": "Enfermagem",
+  "7100": "Farmácia",
+  "400": "Odontologia",
+  "7200": "Terapia Ocupacional"
+}
+
+
+  function encaminhar(){
+    let Encaminhamentos = getDataFromTab("encaminhamento") 
+    Encaminhamentos.CPF = getUrlVars()["cpf"]
+    Encaminhamentos.Status = "Em espera"
+    Encaminhamentos.Curso = codtonome[Encaminhamentos.Curso]
+    console.log(Encaminhamentos)
+    api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
+alert(result.message)
+console.log(result)
+    })
+  }
+  const CPF = getUrlVars()["cpf"]
+  api.encaminhamentos.consultar({CPF}).then((encaminhamentos)=>{
+    console.log(encaminhamentos)
+    encaminhamentos.forEach(encaminhamento => {
+      adicionarNovaLinha(encaminhamento)
+    })
+    
+  })
+</script>
 
 <!-- SCRIPT ADD NA TABELA -->
 <script>

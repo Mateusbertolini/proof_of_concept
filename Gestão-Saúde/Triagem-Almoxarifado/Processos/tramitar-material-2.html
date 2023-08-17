@@ -86,6 +86,9 @@
             Tipo de material
         </th>
         <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
+            Qtd. solicitada
+        </th>
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
             Qtd. disponível
         </th>
         </tr>
@@ -95,24 +98,28 @@
         <td class="ui-state-default ui-th-column ui-th-ltr">Gaze</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">Hospitalar</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">100</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">150</td>
     </tr>
     <tr>
         <td class="ui-state-default ui-th-column ui-th-ltr">0002</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">Silicone de Condensação</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">Moldagem</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">9</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">90</td>
     </tr>
     <tr>
         <td class="ui-state-default ui-th-column ui-th-ltr">0003</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">Cimento resinoso cor:A2</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">Cimento</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">10</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">75</td>
     </tr>
     <tr>
         <td class="ui-state-default ui-th-column ui-th-ltr">0004</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">Resina composta - Bisnaga Cor:A1</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">Resina composta</td>
         <td class="ui-state-default ui-th-column ui-th-ltr">18</td>
+        <td class="ui-state-default ui-th-column ui-th-ltr">78</td>
     </tr>
     <!-- Table body rows go here -->
     </table>
@@ -154,8 +161,8 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 </script>
 
 
-<label style="width: 120px; ;margin: 5px;">Qtd solicitada</label>
-<input type="text" id="selectedQtd" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;"  placeholder="Qtd. solicitada">
+<label style="width: 120px; ;margin: 5px;">Qtd. atendida</label>
+<input type="text" id="qtdAtendida" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;"  placeholder="Qtd. atendida">
 <br>
 
 <label style="width: 120px; ;margin: 5px;">Setor</label>
@@ -178,7 +185,7 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 
 <hr class="ui-state-default">
 
-<label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold; margin: 15px;">Materiais solicitados</label><br>
+<label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold; margin: 15px;">Materiais liberados para retirada</label><br>
 <div style="margin: 10px;"></div>
 <table id="requisicaoMaterial" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 15px;">
 <thead>
@@ -196,96 +203,152 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 
 <!-- SCRIPT ADD NA TABELA -->
 <script>
+function subtractQuantityFromAvailable(selectedMaterial, qtdAtendida) {
+    var table = document.getElementById("materiaisDisponiveis");
+    var rows = table.getElementsByTagName("tr");
+
+    for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
+        var cells = rows[i].getElementsByTagName("td");
+
+        if (cells[1].textContent === selectedMaterial) {
+            var qtdDisponivelCell = cells[4];
+            var qtdDisponivel = parseInt(qtdDisponivelCell.textContent);
+
+            if (qtdDisponivel >= qtdAtendida) {
+                qtdDisponivelCell.textContent = (qtdDisponivel - qtdAtendida).toString();
+            } else {
+                // Handle case where available quantity is less than requested
+                console.log("Insufficient quantity available.");
+            }
+            break; // No need to continue searching after finding the material
+        }
+    }
+}
+
+
+// Define the 'table' variable in a higher scope
+var table = document.getElementById("requisicaoMaterial");
+
 function addTable() {
     var selectedCod = document.getElementById("selectedCod").value;
     var selectedMaterial = document.getElementById("selectedMaterial").value;
     var selectedTipo = document.getElementById("selectedTipo").value;
-    var qtdDisponível = document.getElementById("selectedQtd").value;
-    var selectedQtd = parseInt(document.getElementById("selectedQtd").value); // Parse the quantity as an integer
+    var qtdAtendida = parseInt(document.getElementById("qtdAtendida").value); // Parse the quantity as an integer
     
-    var currentDate = new Date();
-    var day = String(currentDate.getDate()).padStart(2, '0');
-    var month = String(currentDate.getMonth() + 1).padStart(2, '0');
-    var year = currentDate.getFullYear();
-    var dataSolicitacao = day + '/' + month + '/' + year;
-
-    if (selectedCod && selectedMaterial && selectedTipo && selectedQtd > 0) {
-    var table = document.getElementById("requisicaoMaterial");
     var existingRow = null;
 
     // Check if the selected material already exists in the table
     for (var i = 1; i < table.rows.length; i++) {
         if (table.rows[i].cells[3].innerHTML === selectedMaterial) {
-        existingRow = table.rows[i];
-        break;
+            existingRow = table.rows[i];
+            break;
         }
     }
 
     if (existingRow) {
         var existingQtd = parseInt(existingRow.cells[5].innerHTML);
-        existingRow.cells[5].innerHTML = (existingQtd + selectedQtd).toString();
-    } else {
-        var newRow = table.insertRow(-1);
+        existingRow.cells[5].innerHTML = (existingQtd + qtdAtendida).toString();
+        subtractQuantityFromAvailable(selectedMaterial, qtdAtendida);
         
-        // Add a cell for the checkbox
-        var checkboxCell = newRow.insertCell(0);
-        var checkboxInput = document.createElement("input");
-        checkboxInput.type = "checkbox";
-        checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
-        checkboxCell.appendChild(checkboxInput);
+        // Clear input fields after adding row
+        document.getElementById("selectedCod").value = "";
+        document.getElementById("selectedMaterial").value = "";
+        document.getElementById("selectedTipo").value = "";
+        document.getElementById("qtdAtendida").value = "";
 
-        // Add cells for the new variables
-        var dateCell = newRow.insertCell(1);
-        dateCell.innerHTML = dataSolicitacao;
-        dateCell.className = "ui-state-default ui-th-column ui-th-ltr";
+    } else {
+        var qtdDisponivelCell = getQtdDisponivelCell(selectedMaterial);
+        var qtdDisponivel = parseInt(qtdDisponivelCell.textContent);
 
-        var selectedCodCell = newRow.insertCell(2);
-        selectedCodCell.innerHTML = selectedCod;
-        selectedCodCell.className = "ui-state-default ui-th-column ui-th-ltr";
+        if (qtdDisponivel >= qtdAtendida) {
+            subtractQuantityFromAvailable(selectedMaterial, qtdAtendida);
 
-        var selectedMaterialCell = newRow.insertCell(3);
-        selectedMaterialCell.innerHTML = selectedMaterial;
-        selectedMaterialCell.className = "ui-state-default ui-th-column ui-th-ltr";
+            var newRow = table.insertRow(-1);
 
-        var selectedTipoCell = newRow.insertCell(4);
-        selectedTipoCell.innerHTML = selectedTipo;
-        selectedTipoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+            var checkboxCell = newRow.insertCell(0);
+            var checkboxInput = document.createElement("input");
+            checkboxInput.type = "checkbox";
+            checkboxCell.appendChild(checkboxInput);
 
-        var selectedQtdCell = newRow.insertCell(5);
-        selectedQtdCell.innerHTML = selectedQtd.toString();
-        selectedQtdCell.className = "ui-state-default ui-th-column ui-th-ltr";
-    }
+            var currentDate = new Date();
+            var day = String(currentDate.getDate()).padStart(2, '0');
+            var month = String(currentDate.getMonth() + 1).padStart(2, '0');
+            var year = currentDate.getFullYear();
+            var dataSolicitacao = day + '/' + month + '/' + year;
 
-    // Clear input fields after adding row
-    document.getElementById("selectedCod").value = "";
-    document.getElementById("selectedMaterial").value = "";
-    document.getElementById("selectedTipo").value = "";
-    document.getElementById("selectedQtd").value = "";
-    document.getElementById("selectedQtd").value = "";
+            var dateCell = newRow.insertCell(1);
+            dateCell.innerHTML = dataSolicitacao;
+
+            var selectedCodCell = newRow.insertCell(2);
+            selectedCodCell.innerHTML = selectedCod;
+
+            var selectedMaterialCell = newRow.insertCell(3);
+            selectedMaterialCell.innerHTML = selectedMaterial;
+
+            var selectedTipoCell = newRow.insertCell(4);
+            selectedTipoCell.innerHTML = selectedTipo;
+
+            var qtdAtendidaCell = newRow.insertCell(5);
+            qtdAtendidaCell.innerHTML = qtdAtendida;
+
+            // Clear input fields after adding row
+            document.getElementById("selectedCod").value = "";
+            document.getElementById("selectedMaterial").value = "";
+            document.getElementById("selectedTipo").value = "";
+            document.getElementById("qtdAtendida").value = "";
+        } else {
+            alert("Quantidade de material disponível é insuficiente.");
+        }
     }
 }
 
 function deleteSelectedRows() {
-    var table = document.getElementById("requisicaoMaterial");
     var rowsToDelete = [];
 
     for (var i = 1; i < table.rows.length; i++) {
-    var checkbox = table.rows[i].cells[0].querySelector("input[type='checkbox']");
-    if (checkbox.checked) {
-        rowsToDelete.push(table.rows[i]);
-    }
+        var checkbox = table.rows[i].cells[0].querySelector("input[type='checkbox']");
+        if (checkbox.checked) {
+            rowsToDelete.push(table.rows[i]);
+        }
     }
 
     for (var i = 0; i < rowsToDelete.length; i++) {
-    table.deleteRow(rowsToDelete[i].rowIndex);
+        var selectedMaterial = rowsToDelete[i].cells[3].innerHTML;
+        var deletedQuantity = parseInt(rowsToDelete[i].cells[5].innerHTML);
+
+        var qtdDisponivelCell = getQtdDisponivelCell(selectedMaterial);
+        var qtdDisponivel = parseInt(qtdDisponivelCell.textContent);
+
+        // Check if adding the deleted quantity won't result in a negative value
+        if (qtdDisponivel + deletedQuantity >= 0) {
+            qtdDisponivelCell.textContent = (qtdDisponivel + deletedQuantity).toString();
+            table.deleteRow(rowsToDelete[i].rowIndex);
+        } else {
+            alert("Adicionar a quantidade excluída resultaria em um valor negativo.");
+        }
     }
 }
+
+function getQtdDisponivelCell(selectedMaterial) {
+    var materialsTable = document.getElementById("materiaisDisponiveis");
+    var materialsRows = materialsTable.getElementsByTagName("tr");
+
+    for (var j = 1; j < materialsRows.length; j++) {
+        var cells = materialsRows[j].getElementsByTagName("td");
+
+        if (cells[1].textContent === selectedMaterial) {
+            return cells[4];
+        }
+    }
+    return null;
+}
+
 
 function limparCampos() {
     document.getElementById("selectedCod").value = "";
     document.getElementById("selectedMaterial").value = "";
     document.getElementById("selectedTipo").value = "";
-    document.getElementById("selectedQtd").value = "";
+    document.getElementById("qtdAtendida").value = "";
 }
 </script>
       
@@ -301,59 +364,6 @@ function limparCampos() {
 
 
 
-
-
-
-      <hr class="ui-state-default"/>
-      <label name="lblProcessarSolicitacao" id="lblProcessarSolicitacao" style="font-weight: bold; margin-bottom: 15px;width: 150px;"  >Processar solicitação</label>
-      <br />
-          <form id="formProcessarSolicitacao" action="https://cobalto.ufpel.edu.br/academico/processos/solicitacaoSegundaChamada/salvarSolicitacao" method="post">
-<script language="JavaScript"> function formProcessarSolicitacao_submit() {     btnSalvarTemp = document.getElementById('salvar');    if(btnSalvarTemp){      btnSalvarTemp.disabled = true;      btnSalvarTemp.setAttribute('aria-disabled', true);      btnSalvarTemp.classList.add('ui-state-disabled');    }    _.each(document.getElementsByClassName('btn_bloqueio'), (element) => {          element.disabled = true;          element.setAttribute('aria-disabled', true);          element.classList.add('ui-state-disabled');    });    $('#formProcessarSolicitacao').ajaxSubmit({     dataType:'json',     clearForm: false,     beforeSubmit: formProcessarSolicitacao_beforeSubmit,    success:  formProcessarSolicitacao_sucefull,     complete:  formProcessarSolicitacao_complete     }); } function formProcessarSolicitacao_confirmaSenha() {     var action = $('#formProcessarSolicitacao').attr('action');    var dados = $('#formProcessarSolicitacao').serialize();    openWindow(action+'/?'+dados, 'Confirmação de senha', 400); }function formProcessarSolicitacao_sucefull(data) {    try{ formProcessarSolicitacao_callback(data); } catch(err){}}function formProcessarSolicitacao_complete(data) {    btnSalvarTemp = document.getElementById('salvar');    if(btnSalvarTemp){      document.getElementById('salvar').disabled = false;      document.getElementById('salvar').setAttribute('aria-disabled', false);      document.getElementById('salvar').classList.remove('ui-state-disabled');    }    _.each(document.getElementsByClassName('btn_bloqueio'), (element) => {          element.disabled = false;          element.setAttribute('aria-disabled', false);          element.classList.remove('ui-state-disabled');    });    btnCarregandoTemp = document.getElementById('carregando');    if(btnCarregandoTemp){      document.getElementById('carregando').style.display = 'none';    }}function formProcessarSolicitacao_beforeSubmit(formData, jqForm, options) { return beforeSubmit(formData, jqForm, options, 'formProcessarSolicitacao');}</script>
-              
-<input type="hidden" name="solicitacao_segunda_chamada_id" id="solicitacao_segunda_chamada_id" value="1779" />
-<script>var solicitacao_segunda_chamada_id = $('#solicitacao_segunda_chamada_id');</script>
-              <label name="lblSolicitacaoSegundaChamadaStatus" id="lblSolicitacaoSegundaChamadaStatus" style="width: 150px;"  >Situação</label>
-              <select class="mousetrap" style="width: 300px;" name="cmbSolicitacaoSegundaChamadaStatus" id="cmbSolicitacaoSegundaChamadaStatus" ><option value=''>&nbsp;</option>
-<option value="1" selected="selected">SOLICITADO</option>
-<option value="2">EM ANÁLISE</option>
-<option value="3">FAVORÁVEL</option>
-<option value="4">DESFAVORÁVEL</option>
-</select><script type='text/javascript'>
-          var cmbSolicitacaoSegundaChamadaStatus = 'cmbSolicitacaoSegundaChamadaStatus';
-          $(document).ready(function(){
-              $('#cmbSolicitacaoSegundaChamadaStatus').selectmenu({style:'dropdown'});
-          });
-      </script>
-              <br />
-              <label name="lblJustificativaColegiado" id="lblJustificativaColegiado" style="width: 150px;"  >Justificativa em caso de tramitação desfavorável</label>
-              <textarea style="width: 520px;" name="txtJustificativaColegiado" id="txtJustificativaColegiado" rows="10" maxlength="2000" class="ui-state-default ui-corner-all" ></textarea>
-<script>var txtJustificativaColegiado = $('#txtJustificativaColegiado');</script>
-
-          </form>
-      <br />
-  <br /></div></div>
-
-
-
-
-
-      
-      <hr class="ui-state-default">
-      <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-      
-      
-      
-
-
-        
-      
-        FUNCIONALIDADE PREVISTA: <br>
-        1) LISTA DE MATERIAIS ATUALIZA DE ACORDO COM A ÁREA DA SAÚDE SELECIONADA<br>
-        2) IMPLEMENTAR IF STATEMENT PARA NÃO PERMITIR SOLICITAÇÕES DE QTD. MAIOR DO QUE A DISPONIVEL
-        3) AO SALVAR A REQUISIÇÃO ELE ENCAMINHA A MESMA PARA O ALMOXARIFADO -> salvar em uma variável qual setor está encaminhando o pedido
-        
-      </h2>
-      
 
       
       </body>

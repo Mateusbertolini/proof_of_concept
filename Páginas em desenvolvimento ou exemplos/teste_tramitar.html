@@ -72,6 +72,29 @@
 
   <div id="tabRequisições-0" class="ui-widget tabRequisições tabRequisições-0 tabRequisições-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
     <label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold;">Solicitação</label><br>
+
+    
+    <hr class="ui-state-default">
+
+    <label style="width: 120px; ;margin: 5px;">Solicitado por:</label>
+    <input type="text" id="idSolicitante" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;"  placeholder="Digitar o seu nome">
+    <br>
+
+
+    <label style="width: 120px; ;margin: 5px; font-size: 14px;">Setor</label>
+    <select class="ui-state-default" style="width: 180px; height: 20px;" id="setorSolicitante"><option value=''>&nbsp;</option>
+        <option value="Clínica 1º Andar - Sul">1º Andar - Sul</option>
+        <option value="Clínica Oeste">Clínica Oeste</option>
+        <option value="Clínica Sul 2º Andar">Clínica Sul 2º Andar</option>
+        <option value="Enfermagem 3º Andar">Enfermagem 3º Andar</option>
+        <option value="Clínica 4º Andar">Clínica 4º Andar</option>
+        <option value="Laboratórios pré-clínica">Laboratórios pré-clínica</option>
+        <option value="Laboratórios patologia">Laboratórios patologia</option>
+    </select><br>
+
+
+    <hr class="ui-state-default">
+
           
     <table id="materiaisDisponiveis" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 20px;">
     <thead>
@@ -165,17 +188,6 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 <input type="text" id="qtdAtendida" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;"  placeholder="Qtd. atendida">
 <br>
 
-<label style="width: 120px; ;margin: 5px;">Setor</label>
-<select class="ui-state-default" style="width: 180px; height: 20px;" name="setor" id="setor"><option value=''>&nbsp;</option>
-    <option value="Clínica 1º Andar - Sul">1º Andar - Sul</option>
-    <option value="Clínica Oeste">Clínica Oeste</option>
-    <option value="Clínica Sul 2º Andar">Clínica Sul 2º Andar</option>
-    <option value="Enfermagem 3º Andar">Enfermagem 3º Andar</option>
-    <option value="Clínica 4º Andar">Clínica 4º Andar</option>
-    <option value="Laboratórios pré-clínica">Laboratórios pré-clínica</option>
-    <option value="Laboratórios patologia">Laboratórios patologia</option>
-</select>
-    
 <div style="margin: 20px;">
 <button name="btnAdicionar" onClick="addTable()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
 <button name="btnExcluir" onClick="deleteSelectedRows()" id="btnExcluir" value="Excluir" class="button"  >Excluir</button>
@@ -187,7 +199,7 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 
 <label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold; margin: 15px;">Materiais liberados para retirada</label><br>
 <div style="margin: 10px;"></div>
-<table id="requisicaoMaterial" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 15px;">
+<table id="materiaisAtendidos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 15px;">
 <thead>
     <tr class="ui-jqgrid-labels" role="rowheader">
     <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.</th>
@@ -201,13 +213,16 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 </table>
 </div>
 
+
 <!-- SCRIPT ADD NA TABELA -->
 <script>
+var table = document.getElementById("materiaisAtendidos");
+
 function subtractQuantityFromAvailable(selectedMaterial, qtdAtendida) {
     var table = document.getElementById("materiaisDisponiveis");
     var rows = table.getElementsByTagName("tr");
 
-    for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
+    for (var i = 1; i < rows.length; i++) {
         var cells = rows[i].getElementsByTagName("td");
 
         if (cells[1].textContent === selectedMaterial) {
@@ -217,58 +232,32 @@ function subtractQuantityFromAvailable(selectedMaterial, qtdAtendida) {
             if (qtdDisponivel >= qtdAtendida) {
                 qtdDisponivelCell.textContent = (qtdDisponivel - qtdAtendida).toString();
             } else {
-                // Handle case where available quantity is less than requested
                 console.log("Insufficient quantity available.");
             }
-            break; // No need to continue searching after finding the material
+            break;
         }
     }
 }
-
-
-// Define the 'table' variable in a higher scope
-var table = document.getElementById("requisicaoMaterial");
 
 function addTable() {
     var selectedCod = document.getElementById("selectedCod").value;
     var selectedMaterial = document.getElementById("selectedMaterial").value;
     var selectedTipo = document.getElementById("selectedTipo").value;
-    var qtdAtendida = parseInt(document.getElementById("qtdAtendida").value); // Parse the quantity as an integer
-    
-    var existingRow = null;
+    var qtdAtendida = parseInt(document.getElementById("qtdAtendida").value);
 
-    // Check if the selected material already exists in the table
-    for (var i = 1; i < table.rows.length; i++) {
-        if (table.rows[i].cells[3].innerHTML === selectedMaterial) {
-            existingRow = table.rows[i];
-            break;
-        }
-    }
+    var qtdDisponivelCell = getQtdDisponivelCell(selectedMaterial);
+    var qtdDisponivel = parseInt(qtdDisponivelCell.textContent);
 
-    if (existingRow) {
-        var existingQtd = parseInt(existingRow.cells[5].innerHTML);
-        existingRow.cells[5].innerHTML = (existingQtd + qtdAtendida).toString();
+    if (qtdDisponivel >= qtdAtendida) {
         subtractQuantityFromAvailable(selectedMaterial, qtdAtendida);
-        
-        // Clear input fields after adding row
-        document.getElementById("selectedCod").value = "";
-        document.getElementById("selectedMaterial").value = "";
-        document.getElementById("selectedTipo").value = "";
-        document.getElementById("qtdAtendida").value = "";
 
-    } else {
-        var qtdDisponivelCell = getQtdDisponivelCell(selectedMaterial);
-        var qtdDisponivel = parseInt(qtdDisponivelCell.textContent);
+        var existingRow = findExistingRow(selectedMaterial);
 
-        if (qtdDisponivel >= qtdAtendida) {
-            subtractQuantityFromAvailable(selectedMaterial, qtdAtendida);
-
+        if (existingRow) {
+            var existingQtd = parseInt(existingRow.cells[5].textContent);
+            existingRow.cells[5].textContent = (existingQtd + qtdAtendida).toString();
+        } else {
             var newRow = table.insertRow(-1);
-
-            var checkboxCell = newRow.insertCell(0);
-            var checkboxInput = document.createElement("input");
-            checkboxInput.type = "checkbox";
-            checkboxCell.appendChild(checkboxInput);
 
             var currentDate = new Date();
             var day = String(currentDate.getDate()).padStart(2, '0');
@@ -276,57 +265,46 @@ function addTable() {
             var year = currentDate.getFullYear();
             var dataSolicitacao = day + '/' + month + '/' + year;
 
-            var dateCell = newRow.insertCell(1);
-            dateCell.innerHTML = dataSolicitacao;
+            var cells = [
+                newRow.insertCell(0),
+                newRow.insertCell(1),
+                newRow.insertCell(2),
+                newRow.insertCell(3),
+                newRow.insertCell(4),
+                newRow.insertCell(5)
+            ];
 
-            var selectedCodCell = newRow.insertCell(2);
-            selectedCodCell.innerHTML = selectedCod;
-
-            var selectedMaterialCell = newRow.insertCell(3);
-            selectedMaterialCell.innerHTML = selectedMaterial;
-
-            var selectedTipoCell = newRow.insertCell(4);
-            selectedTipoCell.innerHTML = selectedTipo;
-
-            var qtdAtendidaCell = newRow.insertCell(5);
-            qtdAtendidaCell.innerHTML = qtdAtendida;
-
-            // Clear input fields after adding row
-            document.getElementById("selectedCod").value = "";
-            document.getElementById("selectedMaterial").value = "";
-            document.getElementById("selectedTipo").value = "";
-            document.getElementById("qtdAtendida").value = "";
-        } else {
-            alert("Quantidade de material disponível é insuficiente.");
+            cells[0].appendChild(document.createElement("input"));
+            cells[0].querySelector("input").type = "checkbox";
+            cells[0].className = "ui-state-default ui-th-column ui-th-ltr";
+            cells[1].textContent = dataSolicitacao;
+            cells[1].className = "ui-state-default ui-th-column ui-th-ltr";
+            cells[2].textContent = selectedCod;
+            cells[2].className = "ui-state-default ui-th-column ui-th-ltr";
+            cells[3].textContent = selectedMaterial;
+            cells[3].className = "ui-state-default ui-th-column ui-th-ltr";
+            cells[4].textContent = selectedTipo;
+            cells[4].className = "ui-state-default ui-th-column ui-th-ltr";
+            cells[5].textContent = qtdAtendida;
+            cells[5].className = "ui-state-default ui-th-column ui-th-ltr";
         }
+
+        // Clear input fields after adding row
+        limparCampos();
+    } else {
+        alert("Quantidade de material disponível é insuficiente.");
+        // Clear input fields after adding row
+        limparCampos();
     }
 }
 
-function deleteSelectedRows() {
-    var rowsToDelete = [];
-
+function findExistingRow(selectedMaterial) {
     for (var i = 1; i < table.rows.length; i++) {
-        var checkbox = table.rows[i].cells[0].querySelector("input[type='checkbox']");
-        if (checkbox.checked) {
-            rowsToDelete.push(table.rows[i]);
+        if (table.rows[i].cells[3].textContent === selectedMaterial) {
+            return table.rows[i];
         }
     }
-
-    for (var i = 0; i < rowsToDelete.length; i++) {
-        var selectedMaterial = rowsToDelete[i].cells[3].innerHTML;
-        var deletedQuantity = parseInt(rowsToDelete[i].cells[5].innerHTML);
-
-        var qtdDisponivelCell = getQtdDisponivelCell(selectedMaterial);
-        var qtdDisponivel = parseInt(qtdDisponivelCell.textContent);
-
-        // Check if adding the deleted quantity won't result in a negative value
-        if (qtdDisponivel + deletedQuantity >= 0) {
-            qtdDisponivelCell.textContent = (qtdDisponivel + deletedQuantity).toString();
-            table.deleteRow(rowsToDelete[i].rowIndex);
-        } else {
-            alert("Adicionar a quantidade excluída resultaria em um valor negativo.");
-        }
-    }
+    return null;
 }
 
 function getQtdDisponivelCell(selectedMaterial) {
@@ -343,6 +321,28 @@ function getQtdDisponivelCell(selectedMaterial) {
     return null;
 }
 
+function deleteSelectedRows() {
+var rowsToDelete = [];
+
+for (var i = 1; i < table.rows.length; i++) {
+    var checkbox = table.rows[i].cells[0].querySelector("input[type='checkbox']");
+    if (checkbox.checked) {
+        rowsToDelete.push(table.rows[i]);
+    }
+}
+
+for (var i = 0; i < rowsToDelete.length; i++) {
+    var selectedMaterial = rowsToDelete[i].cells[3].textContent;
+    var deletedQuantity = parseInt(rowsToDelete[i].cells[5].textContent);
+
+    var qtdDisponivelCell = getQtdDisponivelCell(selectedMaterial);
+    var qtdDisponivel = parseInt(qtdDisponivelCell.textContent);
+
+    qtdDisponivelCell.textContent = (qtdDisponivel + deletedQuantity).toString();
+    table.deleteRow(rowsToDelete[i].rowIndex);
+}
+}
+
 
 function limparCampos() {
     document.getElementById("selectedCod").value = "";
@@ -351,20 +351,7 @@ function limparCampos() {
     document.getElementById("qtdAtendida").value = "";
 }
 </script>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-      </body>
-      </html>
+    
+    
+</body>
+</html>

@@ -187,7 +187,7 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 
 <label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold; margin: 15px;">Materiais liberados para retirada</label><br>
 <div style="margin: 10px;"></div>
-<table id="requisicaoMaterial" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 15px;">
+<table id="materiaisAtendidos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 15px;">
 <thead>
     <tr class="ui-jqgrid-labels" role="rowheader">
     <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.</th>
@@ -201,8 +201,15 @@ for (var i = 1; i < rows.length; i++) { // Start from 1 to skip header row
 </table>
 </div>
 
+
 <!-- SCRIPT ADD NA TABELA -->
 <script>
+
+
+// Define the 'table' variable in a higher scope
+var table = document.getElementById("materiaisAtendidos");
+var cumulativeQuantities = {}; // Store cumulative quantities for each material
+
 function subtractQuantityFromAvailable(selectedMaterial, qtdAtendida) {
     var table = document.getElementById("materiaisDisponiveis");
     var rows = table.getElementsByTagName("tr");
@@ -225,16 +232,19 @@ function subtractQuantityFromAvailable(selectedMaterial, qtdAtendida) {
     }
 }
 
-
-// Define the 'table' variable in a higher scope
-var table = document.getElementById("requisicaoMaterial");
-
 function addTable() {
     var selectedCod = document.getElementById("selectedCod").value;
     var selectedMaterial = document.getElementById("selectedMaterial").value;
     var selectedTipo = document.getElementById("selectedTipo").value;
     var qtdAtendida = parseInt(document.getElementById("qtdAtendida").value); // Parse the quantity as an integer
     
+    // Update cumulative quantity for the selected material
+    if (cumulativeQuantities[selectedMaterial]) {
+        cumulativeQuantities[selectedMaterial] += qtdAtendida;
+    } else {
+        cumulativeQuantities[selectedMaterial] = qtdAtendida;
+    }
+
     var existingRow = null;
 
     // Check if the selected material already exists in the table
@@ -289,7 +299,7 @@ function addTable() {
             selectedTipoCell.innerHTML = selectedTipo;
 
             var qtdAtendidaCell = newRow.insertCell(5);
-            qtdAtendidaCell.innerHTML = qtdAtendida;
+            qtdAtendidaCell.innerHTML = cumulativeQuantities[selectedMaterial]; // Display the cumulative quantity
 
             // Clear input fields after adding row
             document.getElementById("selectedCod").value = "";
@@ -301,6 +311,8 @@ function addTable() {
         }
     }
 }
+
+
 
 function deleteSelectedRows() {
     var rowsToDelete = [];

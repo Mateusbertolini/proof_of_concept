@@ -106,11 +106,10 @@
         <label style="width: 240px; font-size: 12px; font-weight: bold; margin: 20px 10px 20px 0;">Novo status do paciente ao desvincular:</label>
         <select class="ui-state-default" style="width: 180px; height: 20px; margin: 20px 0;" name="novoStatus" id="novoStatus">
           <option value="0">Escolher para desvincular</option>
-          <option value="1">Em espera</option>
-          <option value="2">Em atendimento</option>
-          <option value="3">Continua em tratamento na disciplina/especialidade</option>
-          <option value="4">Alta</option>
-          <option value="5">Abandono/Desistência</option>
+          <option value="emEspera">Em espera</option>
+          <option value="continuaTratamento">Continua em tratamento</option>
+          <option value="altaPaciente">Alta</option>
+          <option value="abandonoPaciente">Abandono/Desistência</option>
         </select>
         <br>
         <button id="deleteButton" style="margin: 20px; padding: 5px;">Desvincular</button>
@@ -180,14 +179,44 @@
   </div>
 </div>
 
+
+
+<script>
+// FUNÇÃO PARA ALTERAR O STATUS DO PACIENTE NO FRONT-END
+document.getElementById("deleteButton").addEventListener("click", function() {
+  const selectedRows = document.querySelectorAll("#vinculadosTable input[type='checkbox']:checked");
+
+  if (selectedRows.length > 0) {
+    const novoStatusSelect = document.getElementById("novoStatus");
+    const selectedOption = novoStatusSelect.options[novoStatusSelect.selectedIndex];
+    const novoStatusText = selectedOption.textContent;
+
+    for (const checkbox of selectedRows) {
+      const selectedRow = checkbox.closest("tr");
+      const lastCell = selectedRow.cells[selectedRow.cells.length - 1];
+      lastCell.textContent = novoStatusText;
+    }
+
+    // Clear selected checkboxes
+    for (const checkbox of selectedRows) {
+      checkbox.checked = false;
+    }
+  }
+});
+
+</script>
+
+
+
+
       
 <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
   FUNCIONALIDADE PREVISTA: <br>
   1) USUÁRIO SELECIONA UM OU MAIS PACIENTES, ESCOLHE O NOVO STATUS DO PACIENTE E CLICA EM VINCULAR <br>
-  2) ATUALIZA LISTAGEM NA VARIÁVEL DO ALUNO 'vinculoPacientes' (EXCLUI O PACIENTE DA LIST) MAS MANTÉM O REGISTRO NA VARIÁVEL 'pacientesAtendidos'  <br>
-  5) ATUALIZA LISTAGEM NA VARIÁVEL 'pacientesDisciplina' no 'ano/semestre' vigente' (ALTERA STATUS MAS NÃO DELETA DA LISTA) <br>
+  2) ATUALIZA LISTAGEM NA VARIÁVEL DO ALUNO 'vinculoPacientes' (EXCLUI O PACIENTE DA LISTA) MAS MANTÉM O REGISTRO NA VARIÁVEL 'pacientesAtendidos'<br>
+  5) ATUALIZA LISTAGEM NA VARIÁVEL 'pacientesDisciplina' no 'ano/semestre' vigente' (ALTERA STATUS MAS NÃO DELETA DA LISTA)<br>
   3) ATUALIZA O 'status do paciente' PARA A OPÇÃO SELECIONADA <br>
-  4) QUANDO FOR CONTINUAR O TRATAMENTO, VARIÁVEL 'prioridade' FICA "TRUE" E DEVE PERMANECER NO TOPO DA LISTAGEM DE PACIENTES DISPONÍVEIS PARA VINCULAÇÃO (OUTRA PÁGINA), CASO CONTRÁRIO FICA COMO "FALSE" <br>
+  4) STATUS 'continuaTratamento' deve ter maior prioridade que a data de inclusão da demanda<br>
 </h2>
 
 <div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">&copy;2010 - 2023 Cobalto </div>

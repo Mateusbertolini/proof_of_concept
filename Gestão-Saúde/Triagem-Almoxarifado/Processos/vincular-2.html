@@ -95,53 +95,47 @@
         
       <br>
       <div class="table-container">
-        <table id="table1" style="width: 100%;">
+        <table id="tableAlunos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 85%; font-size: 14px; margin: 20px;">
           <thead>
-          <tr class="ui-jqgrid-labels" role="rowheader">
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 2.5%;">
-              Selec.
-            </th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">
-              Matrícula
-            </th>
-            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 30%;">
-              Aluno
-            </th>
+             <tr class="ui-jqgrid-labels" role="rowheader">
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">
+                  Selec.
+              </th>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">
+                  Matrícula
+              </th>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 55%;">
+                  Aluno
+              </th>
             </tr>
-        </thead>
-        <tr>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="radio" name="table1Option" value="Aluno 1, MATRÍCULA 1"></td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">Aluno 1</td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">MATRÍCULA 1</td>
-        </tr>
-        <tr>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="radio" name="table1Option" value="Aluno 2, MATRÍCULA 2"></td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">Aluno 2</td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">MATRÍCULA 2</td>
-        </tr>
-        <tr>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="radio" name="table1Option" value="Aluno 3, MATRÍCULA 3"></td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">Aluno 3</td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">MATRÍCULA 3</td>
-        </tr>
-        <tr>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="radio" name="table1Option" value="Aluno 4, MATRÍCULA 4"></td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">Aluno 4</td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">Matrícula 4</td>
-        </tr>
-        <tr>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="radio" name="table1Option" value="Aluno 5, MATRÍCULA 5"></td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">Aluno 5</td>
-          <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;">Matrícula 5</td>
-        </tr>
-          
-          <!-- ... More rows ... -->
-          </table></div>
+          </thead>
+          <tr>
+              <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">'matrículaAluno'</td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">'nomeAluno'</td>
+          </tr>
+          <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">0000981</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Ciclano da Luz</td>
+          </tr>
+          <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">0000071</td>
+              <td class="ui-state-default ui-th-column ui-th-ltr">Eder da Silva</td>
+          </tr>
+          <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">0000009</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Beltrano de Souza</td>
+          </tr>
+          <!-- Table body rows go here -->
+          </table>
+        </div>
       </div>
   </div>
 </div>
   
-
 
 <!-- CONTEÚDO COLUNA DA DIREITA -->
 <div id="pacientesEspera" class="tabs" style="width: 65%; float: left; padding-bottom: 8px; box-sizing: border-box;">
@@ -154,23 +148,24 @@
   <p></p>
 
   <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
-  <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-    <option value="0">Escolher</option>
-    <option value="Odontologia">Odontologia</option>
-    <option value="Enfermagem">Enfermagem</option>
-    <option value="Farmácia">Farmácia</option>
-    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-  </select>
-  
-  <br>
-  <p></p>
-  <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-  <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
-    <option> </option>
-  </select>
-  
-  <script>
+<select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
+  <option value="0">Escolher</option>
+  <option value="Odontologia">Odontologia</option>
+  <option value="Enfermagem">Enfermagem</option>
+  <option value="Farmácia">Farmácia</option>
+  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+</select>
+
+<br>
+<p></p>
+<label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
+<select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
+  <option value="0">Selecione uma especialidade</option>
+</select>
+
+<script>
   const disciplinas = [
+    {codCurso: '0', nomeEspec:'Selecione uma especialidade'},
     {codCurso: 'Odontologia', nomeEspec:'Prótese Dentária'},
     {codCurso: 'Odontologia', nomeEspec:'Odontopediatria'},
     {codCurso: 'Odontologia', nomeEspec:'Periodontia'},
@@ -193,20 +188,20 @@
     const selectedCodCurso = areaSelect.value;
   
     // Clear existing options
-    disciplinasSelect.innerHTML = '<option> </option>';
+    disciplinasSelect.innerHTML = '<option value="0">Selecione uma especialidade</option>';
   
     // Filter and populate the second select
     const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === selectedCodCurso);
     selectedDisciplinas.forEach(disciplina => {
       const option = document.createElement('option');
+      option.value = disciplina.nomeEspec;
       option.textContent = disciplina.nomeEspec;
       disciplinasSelect.appendChild(option);
     });
   });
-  </script>
-  
+</script>
 
-  <br>
+<br>
   <p></p>
   <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
     <select class="ui-state-default" style="width: 180px; height: 20px;" name="complexidade" id="complexidade">
@@ -218,34 +213,39 @@
   <br>
 
   <div class="table-container">
-  <table id="table2" style="width: 100%;">
+  <table id="tablePacientes" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 85%; font-size: 14px; margin: 20px;">
     <thead>
       <tr class="ui-jqgrid-labels" role="rowheader">
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">
           Selec.
         </th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 30%;">
           Paciente
         </th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 25%;">
+        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 60%;">
           Demanda
         </th>
         </tr>
       </thead>
     <tr>
-      <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="checkbox" name="table2Option" value="João da Silva,Exodontia do 11, Odontologia, Cirurgia, Baixa"> </td>
-      <td class="ui-state-default ui-th-column ui-th-ltr">João da Silva</td>
-      <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 11</td>
+      <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="checkbox"></td>
+      <td class="ui-state-default ui-th-column ui-th-ltr">'nomePaciente'</td>
+      <td class="ui-state-default ui-th-column ui-th-ltr">'demandaDescrição'</td>
     </tr>
     <tr>
-      <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="checkbox" name="table2Option" value="Maria da Luz,Exodontia do 28, Odontologia, Cirurgia, Alta"></td>
+      <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="checkbox"></td>
       <td class="ui-state-default ui-th-column ui-th-ltr">Maria da Luz</td>
       <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 28</td>
     </tr>
     <tr>
-      <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="checkbox" name="table2Option" value="Pedro Santos,Exodontia do 45, Odontologia, Cirurgia, Média"></td>
+      <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="checkbox"></td>
       <td class="ui-state-default ui-th-column ui-th-ltr">Pedro Santos</td>
       <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 45</td>
+    </tr>
+    <tr>
+      <td class="ui-state-default ui-th-column ui-th-ltr" style="text-align: center;"><input type="checkbox"></td>
+      <td class="ui-state-default ui-th-column ui-th-ltr">Odair José</td>
+      <td class="ui-state-default ui-th-column ui-th-ltr">Exodontia do 22</td>
     </tr>
     <!-- ... More rows ... -->
     </table>
@@ -256,208 +256,189 @@
 
 
 <!-- CONTEÚDO TAB-3 (ABAIXO) -->
-<div>
-  <div style="display: flex; align-items: center;">
-    <button id="deleteButton" style="margin: 20px; padding: 5px;">Excluir</button>
-    <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button> <p id="errorMessage" style="color: red; font-weight: bold;"></p>
-  </div>
-
-  <br>
-  <hr class="ui-state-default">
-
-  <div style="margin: 20px;">
-  <h2>Vinculação de paciente</h2>
-  <table id="selectedTable" class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 100%; font-size: 14px;">
-      
-    <thead>
-      <tr class="ui-jqgrid-labels" role="rowheader">
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.</th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Aluno (matrícula)</th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Paciente (CPF)</th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Área da Saúde</th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Especialidade</th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 18%;">Descrição</th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 8%;">Data da demanda</th>
-        <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Complexidade</th>
-      </tr>
-    </thead>
-    <tbody id="selectedTableBody" class="ui-state-default ui-th-column ui-th-ltr">
-    </tbody>
-  </table>
-  </div>
+<div style="display: flex; align-items: center;">
+  <button id="deleteButton" style="margin: 20px; padding: 5px;">Excluir</button>
+  <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button> <p id="errorMessage" style="color: red; font-weight: bold;"></p>
 </div>
 
+<br>
+  
+<hr class="ui-state-default">
 
+<div style="margin: 20px;">
+  <h2>Vinculação de paciente</h2>
 
+  <table id="selectedTable" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 95%; font-size: 14px; margin: 15px;">
+  <thead>
+    <tr class="ui-jqgrid-labels" role="rowheader">
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Aluno (matrícula)</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Paciente</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Área da Saúde</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Especialidade</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Descrição da demanda</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Complexidade</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Data da demanda</th>
+    </tr>
+  </thead>
+  </table>
+</div>
 
+  
 
-
-
-
-<!-- FUNCTION INCLUDE IN selectedTable -->
+<!-- FUNCTION BIND INFORMATION IN 'selectedTable' -->
 <script>
-  const submitButton = document.getElementById("submitButton");
-  submitButton.addEventListener("click", bindSelections);
+document.getElementById("submitButton").addEventListener("click", function() {
+    const complexidadeValue = document.getElementById("complexidade").value;
+    const areaSaúdeValue = document.getElementById("areaSaúde").value;
+    const especAreaSaúdeValue = document.getElementById("especAreaSaúde").value;
 
-  // Maintain a set to track selected table2Options values
-  const selectedTable2Values = new Set();
+    if (complexidadeValue !== "0" && areaSaúdeValue !== "0" && especAreaSaúdeValue !== "0") {
+        const selectedAlunoRow = document.querySelector("#tableAlunos input[type='radio']:checked").closest("tr");
+        const selectedPacienteRowCheckboxes = document.querySelectorAll("#tablePacientes input[type='checkbox']:checked");
 
-  function bindSelections() {
-    const selectedTableBody = document.getElementById("selectedTableBody");
-    const table1Options = document.getElementsByName("table1Option");
-    const table2Options = document.getElementsByName("table2Option");
-    const areaSaudeSelect = document.getElementById("areaSaúde");
-    const especAreaSaudeSelect = document.getElementById("especAreaSaúde");
-    const demandaDescriçãoSelect = document.getElementById("demandaDescrição");
-    const demandaDataSelect = document.getElementById("demandaData");
-    const complexidadeSelect = document.getElementById("complexidade");
+        if (selectedAlunoRow && selectedPacienteRowCheckboxes.length > 0) {
+            const alunoMatricula = selectedAlunoRow.cells[2].textContent + ' ('  + selectedAlunoRow.cells[1].textContent + ')';
+            const selectedTable = document.getElementById("selectedTable");
 
-    const especAreaSaudeValue = especAreaSaudeSelect.value;
-    const areaSaudeValue = areaSaudeSelect.value;
-    const demandaDescriçãoValue = demandaDescriçãoSelect.value;
-    const demandaDataValue = demandaDataSelect.value;
-    const complexidadeValue = complexidadeSelect.value;
+            for (const checkbox of selectedPacienteRowCheckboxes) {
+                const selectedPacienteRow = checkbox.closest("tr");
+                const pacienteNome = selectedPacienteRow.cells[1].textContent;
+                const demandaDescricao = selectedPacienteRow.cells[2].textContent;
 
-    if (especAreaSaudeValue === "" || areaSaudeValue === "0" || complexidadeValue === "0") {
-      const errorMessage = document.getElementById("errorMessage");
-      errorMessage.textContent = "Para prosseguir você deve selecionar o curso, especialidade e nível de complexidade";
-      errorMessage.style.color = "red";
-      errorMessage.style.fontSize = "14px";
-      errorMessage.style.fontWeight = "bold";
-      return;
-    }
+                // Check if pacienteNome already exists in the selectedTable
+                let isDuplicate = false;
+                const selectedTableRows = selectedTable.getElementsByTagName("tr");
+                for (let i = 1; i < selectedTableRows.length; i++) { // Skip the header row
+                    const existingPacienteNome = selectedTableRows[i].cells[2].textContent;
+                    if (existingPacienteNome === pacienteNome) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
 
-    let selectedTable1Option = '';
-    for (const option of table1Options) {
-      if (option.checked) {
-        selectedTable1Option = option.value;
-        break;
-      }
-    }
+                if (!isDuplicate) {
+                    const newRow = selectedTable.insertRow(-1);
+                    newRow.className = "ui-state-default ui-th-column ui-th-ltr";
 
-    const selectedTable1Values = selectedTable1Option.split(',');
+                    const checkBoxCell = newRow.insertCell(0);
+                    checkBoxCell.innerHTML = '<input type="checkbox">';
+                    checkBoxCell.className = "ui-state-default ui-th-column ui-th-ltr";
 
-    for (const option of table2Options) {
-      if (option.checked) {
-        const selectedTable2ValueParts = option.value.split(',');
-        const selectedTable2Value = `${selectedTable2ValueParts[1]}`; // Second column value of table2
+                    const alunoMatriculaCell = newRow.insertCell(1);
+                    alunoMatriculaCell.textContent = alunoMatricula;
+                    alunoMatriculaCell.className = "ui-state-default ui-th-column ui-th-ltr";
 
-        if (!selectedTable2Values.has(selectedTable2Value)) {
-          selectedTable2Values.add(selectedTable2Value);
+                    const pacienteNomeCell = newRow.insertCell(2);
+                    pacienteNomeCell.textContent = pacienteNome;
+                    pacienteNomeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+                                    
+                    const areaSaúdeCell = newRow.insertCell(3);
+                    areaSaúdeCell.textContent = areaSaúdeValue;
+                    areaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
 
-          const newRow = document.createElement("tr");
-          
-          const checkboxCell = document.createElement("td");
-          const checkbox = document.createElement("input");
-          checkbox.type = "checkbox";
-          checkboxCell.appendChild(checkbox);
-          checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
-          checkboxCell.style = "text-align: center";
-          newRow.appendChild(checkboxCell);
-          
-          const selectedTable1Cell = document.createElement("td");
-          selectedTable1Cell.textContent = `${selectedTable1Values[0]} (${selectedTable1Values[1]})`;
-          selectedTable1Cell.className = "ui-state-default ui-th-column ui-th-ltr";
-          newRow.appendChild(selectedTable1Cell);
+                    const especAreaSaúdeCell = newRow.insertCell(4);
+                    especAreaSaúdeCell.textContent = especAreaSaúdeValue;
+                    especAreaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
 
-          const selectedTable2Cell = document.createElement("td");
-          selectedTable2Cell.textContent = `${selectedTable2ValueParts[0]} (${selectedTable2ValueParts[1]})`;
-          selectedTable2Cell.className = "ui-state-default ui-th-column ui-th-ltr";
-          newRow.appendChild(selectedTable2Cell);
+                    const demandaDescricaoCell = newRow.insertCell(5);
+                    demandaDescricaoCell.textContent = demandaDescricao;
+                    demandaDescricaoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+                    
+                    const complexidadeCell = newRow.insertCell(6);
+                    complexidadeCell.textContent = complexidadeValue;
+                    complexidadeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+                    
+                    const dateCell = newRow.insertCell(7);
+                    dateCell.textContent = new Date().toLocaleDateString();
+                    dateCell.className = "ui-state-default ui-th-column ui-th-ltr";
 
-          const areaSaudeCell = document.createElement("td");
-          areaSaudeCell.textContent = areaSaudeValue;
-          areaSaudeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-          newRow.appendChild(areaSaudeCell);
+                    checkbox.closest("tr").remove(); // Remove the entire row from tablePacientes
+                }
+            }
 
-          const especialidadeCell = document.createElement("td");
-          especialidadeCell.textContent = especAreaSaudeValue;
-          especialidadeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-          newRow.appendChild(especialidadeCell);
+            // Clear selected radio button
+            const radioButtons = document.querySelectorAll("#tableAlunos input[type='radio']");
+            for (const radioButton of radioButtons) {
+                radioButton.checked = false;
+            }
 
-          const demandaDescrição = document.createElement("td");
-          demandaDescrição.textContent = demandaDescriçãoValue;
-          demandaDescrição.className = "ui-state-default ui-th-column ui-th-ltr";
-          newRow.appendChild(demandaDescrição);
-
-          const demandaData = document.createElement("td");
-          demandaData.textContent = demandaDataValue;
-          demandaData.className = "ui-state-default ui-th-column ui-th-ltr";
-          newRow.appendChild(demandaData);
-
-          const complexidadeCell = document.createElement("td");
-          complexidadeCell.textContent = complexidadeValue;
-          complexidadeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-          newRow.appendChild(complexidadeCell);
-
-          selectedTableBody.appendChild(newRow);
+            // Clear error message
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.textContent = "";
+        } else {
+            const errorMessage = document.getElementById("errorMessage");
+            errorMessage.textContent = "Selecione um aluno e pelo menos um paciente.";
+            errorMessage.style.color = "red";
+            errorMessage.style.fontSize = "16px";
+            errorMessage.style.fontWeight = "bold";
         }
-      }
+    } else {
+        const errorMessage = document.getElementById("errorMessage");
+        errorMessage.textContent = "Selecione uma área da saúde, especialidade e complexidade válidos.";
+        errorMessage.style.color = "red";
+        errorMessage.style.fontSize = "16px";
+        errorMessage.style.fontWeight = "bold";
     }
-  }
+});
 
-  //FUNCTION DELETE FROM selectedTable
-  const selectedTableBody = document.getElementById("selectedTableBody");
-  const deleteButton = document.getElementById("deleteButton");
-  deleteButton.addEventListener("click", deleteSelectedRow);
 
-  function deleteSelectedRow() {
-    const selectedRows = selectedTableBody.querySelectorAll("tr");
-    const selectedRowToDelete = Array.from(selectedRows).find(row => {
-      const checkbox = row.querySelector("input[type='checkbox']");
-      return checkbox.checked;
-    });
+//DELETE ROW AND RE-ADD TO 'tablePacientes' FUNCTION
+document.getElementById("deleteButton").addEventListener("click", function() {
+    const selectedSelectedTableRows = document.querySelectorAll("#selectedTable input[type='checkbox']:checked");
 
-    if (selectedRowToDelete) {
-      selectedTableBody.removeChild(selectedRowToDelete);
+    if (selectedSelectedTableRows.length > 0) {
+        const tablePacientes = document.getElementById("tablePacientes");
+
+        for (const row of selectedSelectedTableRows) {
+            const selectedRow = row.closest("tr");
+            const pacienteNome = selectedRow.cells[2].textContent;
+            const demandaDescricao = selectedRow.cells[5].textContent;
+
+            // Check if pacienteNome already exists in the tablePacientes
+            let isDuplicate = false;
+            const tablePacientesRows = tablePacientes.getElementsByTagName("tr");
+            for (let i = 1; i < tablePacientesRows.length; i++) { // Skip the header row
+                const existingPacienteNome = tablePacientesRows[i].cells[1].textContent;
+                if (existingPacienteNome === pacienteNome) {
+                    isDuplicate = true;
+                    break;
+                }
+            }
+
+            if (!isDuplicate) {
+                const newRow = tablePacientes.insertRow(-1);
+                newRow.className = "ui-state-default ui-th-column ui-th-ltr";
+
+                const checkBoxCell = newRow.insertCell(0);
+                checkBoxCell.innerHTML = '<input type="checkbox">';
+                checkBoxCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+                const pacienteNomeCell = newRow.insertCell(1);
+                pacienteNomeCell.textContent = pacienteNome;
+                pacienteNomeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+                
+                const demandaDescricaoCell = newRow.insertCell(2);
+                demandaDescricaoCell.textContent = demandaDescricao;
+                demandaDescricaoCell.className = "ui-state-default ui-th-column ui-th-ltr";                
+            }
+
+            // Remove the row from selectedTable
+            selectedRow.remove();
+        }
     }
-  }
+});
 </script>
 
 
 
-
-
-
-<!-- ALTERAR ISSO PARA UM SCRIPT QUE PUXA DO BANCO DE DADOS!!! -->
-<div> <p>-</p>- </div>
-
-<div>
-  <label style="width: 400px;margin: 20px; font-weight: bold;">DATA SERÁ PUXADA DO BANCO DE DADOS - PREENCHER AQUI EM FASE DE TESTE</label>
-  <input type="date" name="demandaData" id="demandaData" maxlength="10" class="ui-state-default ui-corner-all style="width: 50px;>
-
-  <br>
-  <label style="width: 400px;margin: 20px; font-weight: bold;">DESCRIÇÃO SERÁ PUXADA DO BANCO DE DADOS - PREENCHER AQUI EM FASE DE TESTE</label>
-  <input type="text" name="demandaDescrição" id="demandaDescrição" maxlength="100" class="ui-state-default ui-corner-all style="width: 100px;>
-  <br>    
-</div>
-
-
-
-
-
-<hr class="ui-state-default">     
+      
 <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-
-
-
-
-
-    FUNCIONALIDADE PREVISTA: <br>
-  1) LISTA DE PACIENTES "EM ESPERA" ATUALIZA DE ACORDO COM A ESPECIALIDADE SELECIONADA<br>
-  2) USUÁRIO SELECIONA UM ALUNO, PACIENTE(s), CURSO, ESPECIALIDADE E NÍVEL DE COMPLEXIDADE E CLICA EM VINCULAR<br>
-  3) AO INCLUIR, O PACIENTE SAI DA TABELA DE PACIENTES EM ESPERA E APARECE NA TABELA DE VINCULAÇÃO<br>
-  4) AO EXCLUIR O VÍNCULO, O PACIENTE RETORNA PARA A TABELA DE PACIENTES EM ESPERA<br>
-  8) QUANDO O USUÁRIO CLICAR EM SALVAR ALTERAÇÕES, O BANCO DE DADOS DEVE SER O USUÁRIO DEVERÁ SELECIONAR QUAL A NOVA SITUAÇÃO DO STATUS DO PACIENTE E ATUALIZA NO BANCO DE DADOS<br>
-     - SALVAR INFORMAÇÃO NAS VARIÁVEIS DO ALUNO 'vinculoPacientes' E 'pacientesAtendidos'<br>
-     - ATUALIZA O 'status do paciente' PARA "EM ATENDIMENTO"<br>
-     - INCLUIR O PACIENTE NA VARIÁVEL 'pacientes-disciplina' no 'ano/semestre' vigente'<br>
+  FUNCIONALIDADE PREVISTA: <br>
+  1) AO CRIAR O VÍNCULO O 'statusPaciente' automaticamente altera de 'em espera' ou 'continuaTratamento' para 'Em atendimento' <br>
+  2) ATUALIZA LISTAGEM NA VARIÁVEL DO ALUNO 'vinculoPacientes' (INCLUI O PACIENTE NA LISTAGEM) E TAMBÉM NA VARIÁVEL 'pacientesAtendidos'<br>
+  3) ATUALIZA LISTAGEM NA VARIÁVEL 'pacientesDisciplina' no 'ano/semestre' vigente'<br>
 </h2>
-
-
-
-
-
 
 <div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">&copy;2010 - 2023 Cobalto </div>
 </body>

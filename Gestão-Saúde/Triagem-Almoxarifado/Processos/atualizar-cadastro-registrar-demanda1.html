@@ -275,18 +275,6 @@
 
 <!--INÍCIO TAB DEMANDAS-->
 <div id="encaminhamento">
-<<<<<<< HEAD
-  <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
-    <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área da saúde</label>
-    <p>
-  
-     <select class="ui-state-default" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-      <option value="0">Escolher</option>
-      <option value="1200">Enfermagem</option>
-      <option value="7100">Farmácia</option>
-      <option selected value="400">Odontologia</option>
-      <option value="7200">Terapia Ocupacional</option>
-=======
 <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
   <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
   <p>
@@ -304,17 +292,9 @@
   <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
     <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
       <option> </option>
->>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
     </select>
     
   
-<<<<<<< HEAD
-    <br><p></p>
-    <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-      <select class="ui-state-default" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
-        <option> </option>
-      </select>
-=======
   const areaSelect = document.getElementById('Curso');
   const disciplinasSelect = document.getElementById('Especialidade');
   
@@ -335,7 +315,6 @@
 const event = new Event('change');
 areaSelect.dispatchEvent(event);
 </script>
->>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
       
   <script>
     const disciplinas = [
@@ -395,41 +374,17 @@ areaSelect.dispatchEvent(event);
   <p>
 
   <label name="lblData"  style="width: 180px;"  >Data do registro da demanda</label>
-<<<<<<< HEAD
-        <input id="Data" type="text" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
-    <br>
-<p></p>
-  <button name="btnAdicionar" onClick="encaminhar(); addTable()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
-  <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
-=======
         <input id="Data" type="text" name="dtencaminhamento" id="dtencaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 180px;" />
     <br>
 <p></p>
   <button name="btnAdicionar" onClick="encaminhar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
   <button name="btnCancelar" onClick="limpar()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
->>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
   <br>
   <p></p>
 
 <hr class="ui-state-default">
 
   <p></p>
-<<<<<<< HEAD
- 
-<table id="tableDemanda" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
-  <thead>
-    <tr class="ui-jqgrid-labels" role="rowheader">
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">Data</th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Área da Saúde</th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">Especialidade</th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 32.5%;">Demanda</th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Complexidade</th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">Status </th>
-    </tr>
-    </thead>
-</table>
-</div>
-=======
  <table class="ui-jqgrid-htable" style="width: 1200px;" role="grid" aria-labelledby="gridDemanda_Paciente" cellspacing="0" cellpadding="0" border="0">
         <thead>
       <tr class="ui-jqgrid-labels" role="rowheader">
@@ -464,7 +419,6 @@ areaSelect.dispatchEvent(event);
   // Cria um novo elemento de linha (<tr>)
   const novaLinha = document.createElement('tr');
   novaLinha.style.alignItems = 'center';
->>>>>>> 33014cb44df5bb10d6ea72ef6279fb5248d6a98c
 
   // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
   novaLinha.innerHTML = `

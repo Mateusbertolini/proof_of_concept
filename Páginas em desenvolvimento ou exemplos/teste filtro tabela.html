@@ -1,0 +1,91 @@
+
+<label style="width: 200px; margin: 5px;">Local que será realizado o atendimento</label>
+<select class="ui-state-default" style="width: 200px; height: 20px;" id="localAgendamento">
+    <option value="Escolher">Escolher</option>
+    <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
+    <option value="Clínica Oeste">Clínica Oeste</option>
+    <option value="Clínica Sul - 2º Andar">Clínica Sul - 2º Andar</option>
+    <option value="Clínica Norte - 2º Andar">Clínica Norte - 2º Andar</option>
+    <option value="Bloco - 3º Andar">Bloco - 3º Andar</option>
+    <option value="Ambulatório - 3º Andar">Ambulatório - 3º Andar</option>
+    <option value="Consultório individualizado - 3º Andar">Consultório individualizado - 3º Andar</option>
+    <option value="Clínica 4º Andar">Clínica 4º Andar</option>
+    <option value="Radiologia">Clínica de Radiologia</option>
+</select>
+<p></p>
+
+
+
+
+<table id="listaAtendimentos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 100%; font-size: 14px;">
+    <thead>
+      <tr class="ui-jqgrid-labels" role="rowheader">
+        <th class="ui-state-default ui-th-column ui-th-ltr" style="width: 5%;">
+          Data
+        </th>
+        <th class="ui-state-default ui-th-column ui-th-ltr" style="width: 10%;">
+          Material
+        </th>
+        <th class="ui-state-default ui-th-column ui-th-ltr" style="width: 25%;">
+          Tipo de material
+        </th>
+        <th class="ui-state-default ui-th-column ui-th-ltr" style="width: 25%;">
+          Qtd.
+        </th>
+      </tr>
+      </thead>
+      <tr>
+          <th>21/08/2023</th>
+          <th>Gaze</th>
+          <th>Radiologia</th>
+          <th>100</th>
+      </tr>
+      <tr>
+          <th>29/08/2023</th>
+          <th>Silicone de Condensação</th>
+          <th>Clínica Sul - 2º Andar</th>
+          <th>9</th>
+      </tr>
+      <tr>
+          <th>01/08/2023</th>
+          <th>Cimento resinoso cor:A2</th>
+          <th>Clínica Sul - 2º Andar</th>
+          <th>10</th>
+      </tr>
+      <tr>
+          <th>15/01/1985</th>
+          <th>Resina composta - Bisnaga Cor:A1</th>
+          <th>Clínica Oeste</th>
+          <th>18</th>
+      </tr>
+    <!-- Table body rows go here -->
+  </table>
+
+
+
+
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const listaAtendimentos = document.getElementById("listaAtendimentos");
+      const sortButton = document.getElementById("sortButton");
+    
+      sortButton.addEventListener("click", function() {
+        const rows = Array.from(listaAtendimentos.querySelectorAll("tbody tr"));
+        rows.sort((a, b) => {
+          const dateA = new Date(a.cells[0].textContent.split('/').reverse().join('/'));
+          const dateB = new Date(b.cells[0].textContent.split('/').reverse().join('/'));
+          return dateA - dateB;
+        });
+    
+        const tbody = listaAtendimentos.querySelector("tbody");
+        rows.forEach(row => tbody.appendChild(row));
+      });
+    });
+    </script>
+    
+
+
+    <button id="sortButton">Sort</button>
+
+    

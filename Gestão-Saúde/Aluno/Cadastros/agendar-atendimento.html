@@ -88,7 +88,7 @@
 
       <br>
       <label style="width: 200px; margin: 5px;">Data do agendamento</label>
-        <input type="text" id="dataAgendamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 200px;" />
+        <input type="date" id="dataAgendamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 200px; height: 15px;" />
       <br>
 
       <label style="width: 200px; margin: 5px;">Turno do agendamento</label>
@@ -153,72 +153,83 @@ function salvar() {
   var localAgendamento = document.getElementById("localAgendamento").value;
   var turnoAgendamento = document.getElementById("turnoAgendamento").value;
   var disciplinaAgendamento = document.getElementById("disciplinaAgendamento").value;
+
+  var today = new Date();
+  today.setDate(today.getDate() + 1); // Add one day to the current date
+
+  var selectedDate = new Date(dataAgendamento);
+
+  if (selectedDate < today) {
+    alert("Data de agendamento deve ser a partir do dia seguinte.");
+    return; // Prevent further execution of salvar function
+  }
+    // Check if localAgendamento and turnoAgendamento are not 'Escolher'
+    if (localAgendamento !== "Escolher" && turnoAgendamento !== "Escolher") {
+      var table = document.getElementById("listaAgendamento");
   
-  if (dataAgendamento && pacienteAgendamento && procedimentoAgendamento && localAgendamento && turnoAgendamento && disciplinaAgendamento) {
-    var table = document.getElementById("listaAgendamento");
-
-    // Check if the combination of pacienteAgendamento, dataAgendamento, and turnoAgendamento already exists
-    var duplicateExists = false;
-    for (var i = 1; i < table.rows.length; i++) {
-      var rowDataCell = table.rows[i].cells[1]; // Cell containing dataAgendamento
-      var rowData = rowDataCell.textContent.trim();
-      var rowPacienteCell = table.rows[i].cells[2]; // Cell containing pacienteAgendamento
-      var rowPaciente = rowPacienteCell.textContent.trim();
-      var rowTurnoCell = table.rows[i].cells[5]; // Cell containing turnoAgendamento
-      var rowTurno = rowTurnoCell.textContent.trim();
-      
-      if (rowData === dataAgendamento && rowPaciente === pacienteAgendamento && rowTurno === turnoAgendamento) {
-        duplicateExists = true;
-        break;
+      // Check if the combination of pacienteAgendamento, dataAgendamento, and turnoAgendamento already exists
+      var duplicateExists = false;
+      for (var i = 1; i < table.rows.length; i++) {
+        var rowDataCell = table.rows[i].cells[1]; // Cell containing dataAgendamento
+        var rowData = rowDataCell.textContent.trim();
+        var rowPacienteCell = table.rows[i].cells[2]; // Cell containing pacienteAgendamento
+        var rowPaciente = rowPacienteCell.textContent.trim();
+        var rowTurnoCell = table.rows[i].cells[5]; // Cell containing turnoAgendamento
+        var rowTurno = rowTurnoCell.textContent.trim();
+        
+        if (rowData === dataAgendamento && rowPaciente === pacienteAgendamento && rowTurno === turnoAgendamento) {
+          duplicateExists = true;
+          break;
+        }
       }
-    }
-
-    if (!duplicateExists) {
-      var newRow = table.insertRow(-1);
+  
+      if (!duplicateExists) {
+        var newRow = table.insertRow(-1);
+        
+        var checkboxCell = newRow.insertCell(0);
+        checkboxCell.innerHTML = '<input type="checkbox">';
+        checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var dataCell = newRow.insertCell(1);
+        dataCell.innerHTML = dataAgendamento;
+        dataCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var pacienteCell = newRow.insertCell(2);
+        pacienteCell.innerHTML = pacienteAgendamento;
+        pacienteCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var procedimentoCell = newRow.insertCell(3);
+        procedimentoCell.innerHTML = procedimentoAgendamento;
+        procedimentoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var localCell = newRow.insertCell(4);
+        localCell.innerHTML = localAgendamento;
+        localCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var turnoCell = newRow.insertCell(5);
+        turnoCell.innerHTML = turnoAgendamento;
+        turnoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var disciplinaCell = newRow.insertCell(6);
+        disciplinaCell.innerHTML = disciplinaAgendamento;
+        disciplinaCell.className = "ui-state-default ui-th-column ui-th-ltr";
       
-      var checkboxCell = newRow.insertCell(0);
-      checkboxCell.innerHTML = '<input type="checkbox">';
-      checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var dataCell = newRow.insertCell(1);
-      dataCell.innerHTML = dataAgendamento;
-      dataCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var pacienteCell = newRow.insertCell(2);
-      pacienteCell.innerHTML = pacienteAgendamento;
-      pacienteCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var procedimentoCell = newRow.insertCell(3);
-      procedimentoCell.innerHTML = procedimentoAgendamento;
-      procedimentoCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var localCell = newRow.insertCell(4);
-      localCell.innerHTML = localAgendamento;
-      localCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var turnoCell = newRow.insertCell(5);
-      turnoCell.innerHTML = turnoAgendamento;
-      turnoCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var disciplinaCell = newRow.insertCell(6);
-      disciplinaCell.innerHTML = disciplinaAgendamento;
-      disciplinaCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-
-      // Clear input fields after adding/updating row
-      document.getElementById("dataAgendamento").value = "";
-      document.getElementById("pacienteAgendamento").value = "";
-      document.getElementById("procedimentoAgendamento").value = "";
-      document.getElementById("localAgendamento").value = "Escolher";
-      document.getElementById("turnoAgendamento").value = "Escolher"; 
-      document.getElementById("disciplinaAgendamento").value = "";
+  
+        // Clear input fields after adding/updating row
+        document.getElementById("dataAgendamento").value = "";
+        document.getElementById("pacienteAgendamento").value = "";
+        document.getElementById("procedimentoAgendamento").value = "";
+        document.getElementById("localAgendamento").value = "Escolher";
+        document.getElementById("turnoAgendamento").value = "Escolher"; 
+        document.getElementById("disciplinaAgendamento").value = "";
+      } else {
+        alert("Agendamentos devem ser realizados com no mínimo 24 horas de antecedência.");
+      }
     } else {
-      alert("Paciente já tem atendimento agendado para este mesmo dia e turno.");
+      alert("Por favor, selecione um local e turno válidos.");
     }
   }
-}
 
-      
   function excluir() {
     var table = document.getElementById("listaAgendamento");
     var rowsToDelete = [];
@@ -247,12 +258,61 @@ function salvar() {
 
 </script>
 
+
+
+
+<hr class="ui-state-default">
+
+<h2> PARA A PÁGINA CONSULTA > AGENDA DE CLÍNICAS</h2>
+
+<label style="width: 190px; margin: 15px;">Filtrar tabela pelo Local o atendimento</label>
+<select class="ui-state-default" style="width: 200px; height: 20px; margin: 15px;" id="filtroLocalAgendamento">
+    <option value="Todos">Todos</option>
+    <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
+    <option value="Clínica Oeste">Clínica Oeste</option>
+    <option value="Clínica Sul - 2º Andar">Clínica Sul - 2º Andar</option>
+    <option value="Clínica Norte - 2º Andar">Clínica Norte - 2º Andar</option>
+    <option value="Bloco - 3º Andar">Bloco - 3º Andar</option>
+    <option value="Ambulatório - 3º Andar">Ambulatório - 3º Andar</option>
+    <option value="Consultório individualizado - 3º Andar">Consultório individualizado - 3º Andar</option>
+    <option value="Clínica 4º Andar">Clínica 4º Andar</option>
+    <option value="Radiologia">Clínica de Radiologia</option>
+</select>
+<p></p>
+
+<button id="sortButton" style="margin: 15px;">Ordenar por data</button>
+
+<script>
+// filtro por local de atendimento
+document.addEventListener("DOMContentLoaded", function() {
+  const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
+  const listaAgendamento = document.getElementById("listaAgendamento");
+
+  filtroLocalAgendamentoSelect.addEventListener("change", function() {
+    const selectedOption = filtroLocalAgendamentoSelect.value;
+    const rows = listaAgendamento.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) { // Skip the header row (index 0)
+      const row = rows[i];
+      const localCell = row.cells[4]; // Assuming the "Local" cell is at index 4
+
+      if (selectedOption === "Todos" || localCell.textContent === selectedOption) {
+        row.style.display = ""; // Show the row
+      } else {
+        row.style.display = "none"; // Hide the row
+      }
+    }
+  });
+});
+</script>
+
   
   <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
     FUNCIONALIDADE PREVISTA: <br>
     1- O USUÁRIO (ALUNO OU PROFESSOR) CRIA UM AGENDAMENTO NOVO<br>
     2- USUÁRIO PODE INCLUIR VÁRIOS AGENDAMENTOS DE DIFERENTES PACIENTES DISCIPLINAS DE UMA VEZ SÓ<br>
-  </h2>
+    3- CRIAR UM SCRIPT PARA ORDENAR A TABELA POR DATA<br>
+    </h2>
   
 
 </body>

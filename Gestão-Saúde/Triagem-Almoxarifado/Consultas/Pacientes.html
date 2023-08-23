@@ -82,32 +82,98 @@
   <input type="text" name="txtNome" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;"  />
     <br>
                 
-    <table id="gridAluno"></table><div id="gridAlunoPager" style="margin-bottom: 5px"></div>                                                            <script>var gridAluno =  'gridAluno';$(document).ready(function (){$('#gridAluno').jqGrid({"sortname":"aluno_nome","autoload":false,"autowidth":true,"pager":"#gridAlunoPager","multiselect":true,"rowNum":25,"toppager":true,"caption":"Lista de pacientes","height":"auto","jsonReader":{"repeatitems":false,"id":0},"onSelectRow":function(rowid){try{gridAluno_onSelectRow(rowid);}catch(err){}},"onCellSelect":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_click(rowid);}catch(err){}}},"ondblClickRow":function(rowid, iRow, iCol, e){if(iRow != 0){$("#gridAluno").resetSelection();try{gridAluno_dblClick(rowid);}catch(err){}}},"loadBeforeSend":function(xhr){try{gridAluno_loadBeforeSend();}catch(err){}},"loadComplete":function(data){if($("#gridAluno").jqGrid('getGridParam','datatype') != 'local'){try{gridAluno_loadComplete();}catch(err){}}},"gridComplete":function(data){generateTabs();try{gridAluno_init();}catch(err){}},"loadError":function(xhr,st,err) {var url = $("#gridAluno").jqGrid('getGridParam','url');if(!$.cookie('logout'))if(xhr.status==200 && st=="parsererror"){try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: O resultado não está no formato esperado");}catch(err){}}else{try{console.log("Grid: gridAluno; URL: "+url+"; Type: "+st+"; Response: "+ xhr.status + " "+xhr.statusText);}catch(err){}}},"url":"https://cobalto.ufpel.edu.br/academico/consultas/aluno/listaAlunosPessoasCursos/","altRows":true,"altclass":"ui-state-default jqgrow-alt","rownumbers":false,"viewrecords":true,"datatype":"local","sortorder":"asc","forceFit":true,"headertitles":true,"colNames":["ID","Nome","E-mail","CPF","Situação","RG","Dt.Cadastro"],"colModel":[{"sortable":true,"hidden":true,"name":"id","index":"id","colName":"ID","width":0,"align":"right"},{"sortable":true,"name":"aluno_nome","index":"aluno_nome","colName":"Nome","width":450,"align":"left"},{"sortable":true,"name":"email","index":"email","colName":"E-mail","width":280,"align":"left"},{"sortable":true,"name":"cpf","index":"cpf","colName":"CPF","width":160,"align":"center"},{"sortable":true,"hidden":true,"name":"situacao","index":"situacao","colName":"Situação","width":200,"align":"center"},{"sortable":true,"name":"aluno_rg","index":"aluno_rg","colName":"RG","width":180,"align":"center"},{"sortable":true,"formatter":"date","name":"dt_cadastro","index":"dt_cadastro","colName":"Dt.Cadastro","width":200,"align":"center"}]});$('#gridAluno').setGridParam({datatype: 'json'});$('#gridAluno').setGridParam({autoload: true});});function gridAluno_resize() {$('#gbox_gridAluno').width('auto');$('#gridAluno').setGridWidth($('#gbox_gridAluno').width());};$(window).bind('resize', gridAluno_resize);$('#tabFiltroCurso').bind('tabsshow', gridAluno_resize);</script>
+   
 
-          <!-- Piwik -->
-      <script type="text/javascript">
-        var _paq = _paq || [];
-        _paq.push(["setDomains", ["*.cobalto.ufpel.edu.br"]]);
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-          var u="https://stats.ufpel.edu.br/";
-          _paq.push(['setTrackerUrl', u+'piwik.php']);
-          _paq.push(['setSiteId', 7]);
-          var d=document, g=d.createElement('script'),
-          s=d.getElementsByTagName('script')[0];
-            g.type='text/javascript'; g.async=true; g.defer=true;
-          g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-        })();
-      </script>
-      <noscript><p><img src="https://stats.ufpel.edu.br/piwik.php?idsite=7"
-      style="border:0;" alt="" /></p></noscript>
-      <!-- End Piwik Code -->
-      <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
+<table id="gridPaciente"></table>
+<div id="gridPacientePager" style="margin-bottom: 5px"></div>
+<script>
+    var gridPaciente = 'gridPaciente';
+    $(document).ready(function () {
+        $('#gridPaciente').jqGrid({
+            "sortname": "paciente_nome",
+            "autoload": false,
+            "autowidth": true,
+            "pager": "#gridPacientePager",
+            "rowNum": 25,
+            "toppager": true,
+            "caption": "Lista de pacientes",
+            "height": "auto",
+            "jsonReader": { "repeatitems": false, "id": 0 },
+            "onSelectRow": function (rowid) {
+                try { gridPaciente_onSelectRow(rowid); } catch (err) { }
+            },
+            "onCellSelect": function (rowid, iRow, iCol, e) {
+                if (iRow != 0) {
+                    $("#gridPaciente").resetSelection();
+                    try { gridPaciente_click(rowid); } catch (err) { }
+                }
+            },
+            "ondblClickRow": function (rowid, iRow, iCol, e) {
+                if (iRow != 0) {
+                    $("#gridPaciente").resetSelection();
+                    try { gridPaciente_dblClick(rowid); } catch (err) { }
+                }
+            },
+            "loadBeforeSend": function (xhr) {
+                try { gridPaciente_loadBeforeSend(); } catch (err) { }
+            },
+            "loadComplete": function (data) {
+                if ($("#gridPaciente").jqGrid('getGridParam', 'datatype') != 'local') {
+                    try { gridPaciente_loadComplete(); } catch (err) { }
+                }
+            },
+            "gridComplete": function (data) {
+                generateTabs();
+                try { gridPaciente_init(); } catch (err) { }
+            },
+            "loadError": function (xhr, st, err) {
+                var url = $("#gridPaciente").jqGrid('getGridParam', 'url');
+                if (!$.cookie('logout')) if (xhr.status == 200 && st == "parsererror") {
+                    try { console.log("Grid: gridPaciente; URL: " + url + "; Type: " + st + "; Response: O resultado não está no formato esperado"); } catch (err) { }
+                } else {
+                    try { console.log("Grid: gridPaciente; URL: " + url + "; Type: " + st + "; Response: " + xhr.status + " " + xhr.statusText); } catch (err) { }
+                }
+            },
+            "url": "https://cobalto.ufpel.edu.br/academico/consultas/paciente/listaPacientesPessoasCursos/",
+            "altRows": true,
+            "altclass": "ui-state-default jqgrow-alt",
+            "rownumbers": false,
+            "viewrecords": true,
+            "datatype": "local",
+            "sortorder": "asc",
+            "forceFit": true,
+            "headertitles": true,
+            "colNames": ["ID", "Nome", "Telefone", "CPF", "Disciplina", "Demanda"],
+            "colModel": [
+                { "sortable": true, "hidden": true, "name": "id", "index": "id", "colName": "ID", "width": 0, "align": "right" },
+                { "sortable": true, "name": "paciente_nome", "index": "paciente_nome", "colName": "Nome", "width": 16.67, "align": "left" }, // 100 / 6 = 16.67
+                { "sortable": true, "name": "telefone", "index": "telefone", "colName": "Telefone", "width": 16.67, "align": "center" },
+                { "sortable": true, "name": "cpf", "index": "cpf", "colName": "CPF", "width": 16.67, "align": "center" },
+                { "sortable": true, "name": "disciplina", "index": "disciplina", "colName": "Disciplina", "width": 16.67, "align": "center" },
+                { "sortable": true, "name": "demanda", "index": "demanda", "colName": "Demanda", "width": 16.67, "align": "center" }
+            ]
+        });
+        $('#gridPaciente').setGridParam({ datatype: 'json' });
+        $('#gridPaciente').setGridParam({ autoload: true });
+    });
+
+    function gridPaciente_resize() {
+        $('#gbox_gridPaciente').width('auto');
+        $('#gridPaciente').setGridWidth($('#gbox_gridPaciente').width());
+    }
+
+    $(window).bind('resize', gridPaciente_resize);
+    $('#tabFiltroCurso').bind('tabsshow', gridPaciente_resize);
+</script>
+    
+    
+    
+    
+    <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
 
     <script>
        // Função para adicionar uma nova linha à tabela usando XPath
-    function adicionarNovaLinha(nome, email, cpf, rg, dtCadastro) {
+    function adicionarNovaLinha(nome, Tel, cpf, rg, dtCadastro) {
       // Seleciona o corpo da tabela usando o XPath
       const tbody = document.querySelector('.ui-jqgrid-htable');
 
@@ -116,10 +182,9 @@
 
       // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
       novaLinha.innerHTML = `
-        <td><input role="checkbox" type="checkbox" class="cbox"></td>
         <td style="display: none;">ID</td>
         <td><a href="perfil-paciente.html?cpf=${cpf}">${nome}</a></td>
-        <td>${email}</td>
+        <td>${Tel}</td>
         <td>${cpf}</td>
         <td style="display: none;">Situação</td>
         <td>${rg}</td>
@@ -157,10 +222,10 @@
             pacientes.forEach(paciente => {
               adicionarNovaLinha(
                 paciente.Nome,
-                paciente.Email,
+                paciente.Tel,
                 paciente.CPF,
                 paciente.Rg,
-                paciente.DataNasc
+                paciente.Demanda
               );
             });
           }
@@ -183,10 +248,10 @@
             pacientes.forEach(paciente => {
               adicionarNovaLinha(
                 paciente.Nome,
-                paciente.Email,
+                paciente.Tel,
                 paciente.CPF,
                 paciente.Rg,
-                paciente.DataNasc
+                paciente.Demanda
               );
             });
           }
@@ -217,4 +282,6 @@
     }
     </script>
   </body>
+  
 </html>
+

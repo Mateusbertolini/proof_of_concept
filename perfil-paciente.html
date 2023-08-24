@@ -90,10 +90,33 @@
   <div>
     <p></p>
     <label style="width: 180px; margin: 5px; font-weight: bold;">INFORMAÇÕES IMPORTANTES</label>
-    <input type="text"  id="informaçõesImportantes" maxlength="255" class="important-ui" style="width: 340px; margin: 5px;"><br>
+    <input type="text" id="informacoesImportantes" maxlength="255" style="width: 340px; margin: 5px;"><br>
+
+    <script>
+       // TROCAR STYLE SE O CAMPO 'informaçõesImportantes' for preenchido
+      document.addEventListener('DOMContentLoaded', function() {
+        const inputField = document.getElementById('informacoesImportantes');
+    
+        function applyStyles() {
+          if (inputField.value.trim() === '') {
+            inputField.classList.add('ui-state-default');
+            inputField.classList.remove('important-ui');
+          } else {
+            inputField.classList.add('important-ui');
+            inputField.classList.remove('ui-state-default');
+          }
+        }
+    
+        inputField.addEventListener('input', applyStyles);
+    
+        // Apply styles once the page loads
+        applyStyles();
+      });
+    </script>
     <p style="margin: 10px;"><span style="margin-left: 15px;">Descrever informações imprescindíveis ao profissional de saúde (ALERGIAS, RELATO DE ABUSO, ETC.)</span></p>
     <p></p>
     <br>
+    
     <p></p>
     <br>
     <hr class="ui-state-default">

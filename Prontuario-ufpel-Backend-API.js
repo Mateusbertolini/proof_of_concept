@@ -38,7 +38,7 @@ const pacientes = {
   atualizar: async (data) => {
     const url = `${getApiUrl()}/pacientes/atualizar`;
     return sendRequest(url, 'POST', data);
-  },
+  }
 };
 
 const encaminhamentos = {
@@ -66,9 +66,16 @@ criar: async (data) => {
   return sendRequest(url, 'POST', data);
 }
 }
+const alunos = {
+  pacientes: async (data) => {
+    const url = `${getApiUrl()}/alunos/pacientes`;
+    return sendRequest(url, 'POST', data);
+  }
+};
 
 window.api = {
   pacientes,
   encaminhamentos,
-  usuarios
+  usuarios,
+  alunos
 };

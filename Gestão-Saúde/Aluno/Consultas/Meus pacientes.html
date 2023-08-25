@@ -282,7 +282,51 @@ document.getElementById('txtNome').onkeydown = function (e) {
 </script>
 
   </body>
+<script>
+  // buscar pacientes do aluno logado
+  api.alunos.pacientes({ Matricula: 'Pedro' })
+    .then((pacientes) => {
+      const tbody = document.querySelector('.ui-jqgrid-htable');
+      limparTabela(tbody);
+      
+      if (pacientes.length === 0) {
+        alert("Nenhum paciente encontrado");
+      } else {
+        pacientes.forEach(paciente => {
+          adicionarNovaLinha(
+            paciente.Nome,
+            paciente.Tel,
+            paciente.CPF,
+            paciente.Rg,
+            paciente.Demanda
+          );
+        });
+      }
+    })
+    .catch((error) => {
+      console.error('Erro ao consultar pacientes:', error);
+    });
+    function adicionarNovaLinha(nome, Tel, cpf, diciplina, demanda) {
+  // Seleciona o corpo da tabela usando o XPath
+  const tbody = document.querySelector('.ui-jqgrid-htable');
 
+  
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
+
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td><a href="perfil-paciente.html?cpf=${cpf}">${nome}</a></td>
+    <td>${Tel}</td>
+    <td>${cpf}</td>
+    <td>${diciplina}</td>
+    <td>${demanda}</td>
+  `;
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
+
+</script>
      
 <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
   FUNCIONALIDADE PREVISTA: <br>

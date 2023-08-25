@@ -56,9 +56,10 @@
   <div class="breadCrumb module">
     <ul>
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
-      <li>Aluno</li>
-      <li>Cadastro</li>
-      <li>Registrar atendimento</li>
+      <li>Responsável técnico</li>
+      <li>Processos</li>
+      <li>Avaliar atendimento</li>
+      <li>'get aluno''</li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     </ul>
@@ -67,7 +68,7 @@
     <!-- CONTEÚDO BOTÕES -->
 <div class="ui-widget-content ui-corner-all toolbar">
   <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-  <button id="salvar" class="salvar" title="Salvar paciente" onclick="submit()" style="float: left;">Registrar procedimento</button>
+  <button id="salvar" class="salvar" title="Salvar paciente" onclick="submit()" style="float: left;">Avaliar procedimento</button>
   <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
   <span style="clear: both; display: block"></span>
 </div>
@@ -85,6 +86,8 @@
     <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tab-2" accesskey="tab-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Odontograma</a></li>
 
     <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-3" aria-labelledby="ui-id-4" aria-selected="false"><a href="#tab-3" accesskey="tab-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Anexar exames complementares</a></li>
+
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-4" aria-labelledby="ui-id-5" aria-selected="false"><a href="#tab-4" accesskey="tab-4" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-5">Avaliar o atendimento</a></li>
   </ul>
 <!--FIM DIVISÃO EM TABS-->
 
@@ -98,7 +101,8 @@
     <label style="width: 180px; margin: 5px; font-weight: bold;">INFORMAÇÕES IMPORTANTES</label>
     <input type="text" id="informacoesImportantes" maxlength="255" style="width: 340px; margin: 5px;" readonly="readonly"><br>
   
-    <script>
+
+   <script>
         // TROCAR STYLE SE O CAMPO 'informaçõesImportantes' for preenchido
       document.addEventListener('DOMContentLoaded', function() {
         const inputField = document.getElementById('informacoesImportantes');
@@ -454,24 +458,26 @@ buscarperfil()
       Data
     <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">
       Área da Saúde
-    </th>
+    
     <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 12.5%;">
       Especialidade
-    </th>
+    
     <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 40%;">
       Descrição do procedimento
-    </th>
+    
     <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
       Responsável técnico
-    </th>
+    
     <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">
       Disciplina/Estágio
-    </th>
+    
   </tr>
   </thead>
   <!-- Table body rows go here -->
 </table>
 
+
+<!-- ADD DADOS NA TABELA DE ATENDIMENTO -->
 <script>
   function addTable() {
     var atendimentoData = document.getElementById("atendimentoData").value;
@@ -548,7 +554,8 @@ buscarperfil()
 </table>
 
 <button name="btnDeletar" onClick="adicionar()" id="btnDeletar" value="Deletar" class="button" style="margin: 15px;">Remover código SUS</button>
-  <!-- ADD DADOS NA TABELA DE ATENDIMENTO -->
+
+<!-- ADD CÓDIGOS SUS NA TABELA DE ATENDIMENTO -->
 <script>
 document.getElementById("btnAddCodSus").addEventListener("click", function () {
     var atendimentoCodSUS = document.getElementById("atendimentoCodSUS").value;
@@ -940,16 +947,24 @@ function deleteSelectedRows() {
   <table id="listaExames" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
       <thead>
           <tr class="ui-jqgrid-labels" role="rowheader">
-              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.</th>
-              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Data</th>
-              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">Descrição do exame</th>
-              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 18%;">Tipo de exame</th>
-              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 17%;">Nome do arquivo</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Data
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">Descrição do exame
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 18%;">Tipo de exame
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 17%;">Nome do arquivo
           </tr>
       </thead>
       <!-- Table body rows go here -->
   </table>
+
+  <hr class="ui-state-default">
+  <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+    
+    1- COLOCAR UM LINK PARA UMA PÁGIA EXTERNA (SITE DA FO??) ONDE FICARÃO TODOS OS PRONTUÁRIOS, FORMULÁRIOS PADRONIZADOS<br>
+  </h2>
   
+
+<!--SCRIPT ADD EXAMES-->  
   <script>
       function addExame() {
           var exameData = document.getElementById("exameData").value;
@@ -1016,12 +1031,127 @@ function deleteSelectedRows() {
 </script>
 </div>
 
-<hr class="ui-state-default">
-<h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+
+
+
+
+
+
+
+
+
+
+
+<!--INÍCIO DA TAB AVALIAR ATENDIMENTO-->
+<div id="tab-4" class="ui-widget tab tab-4 tab-4 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-5" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 450px;">
+
+
+<h2>Avaliação de atendimento</h2>
+<br>
+    <label  style="width: 550px; margin: 5px;">1- Quanto ao cumprimento do horário e ao comparecimento às aulas:</label>
+    <select id="avaliarPontualidade" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+    
+    <label style="width: 550px; margin: 5px;">2- Quanto ao comportamento do aluno no ambiente de atendimento:</label>
+    <select id="avaliarComportamento" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+    
+    <label style="width: 550px; margin: 5px;">3- Quanto a apresentação dos materiais/instrumentais necessários para a realização do atendimento:</label>
+    <select id="avaliarMateriais" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+
+    <label style="width: 550px; margin: 5px;">4- Quanto ao conhecimento do aluno sobre o conteúdo da disciplina e a forma como o relaciona os atendimentos:</label>
+    <select id="avaliarConhecimento" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+
+    <label style="width: 550px; margin: 5px;">5- Quanto ao cuidado e respeito para com o paciente:</label>
+    <select id="avaliarCuidado" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+
+    <label style="width: 550px; margin: 5px;">6- Quanto ao comportamento do aluno frente a eventuais limitações ou insucessos nos atendimentos:</label>
+    <select id="avaliarAdversidades" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+
+    <label style="width: 550px; margin: 5px;">7- Quanto ao comportamento da dupla/auxiliar do aluno durante o atendimento:</label>
+    <select id="avaliarDupla" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+
+    <label style="width: 550px; margin: 5px;">8- Quanto à autoavaliação do aluno sobre o atendimento:</label>
+    <select id="avaliarAuto" class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;">
+        <option>Insatisfatório</option>
+        <option>Parcialmente</option>
+        <option selected>Satisfatório</option>
+        <option>Bom</option>
+        <option>Muito bom</option>
+    </select>
+    <br>
+
+    <label style="width: 550px; margin: 5px;">9- Observações sobre o procedimento:</label><br>
+    <textarea style="width: 750px; margin: 5px;" id="avaliarObservações" rows="5" maxlength="1000" class="ui-state-default ui-corner-all" style="margin-top: 5px;" ></textarea>
+    <br>
+    </div>   
   
-  1- COLOCAR UM LINK PARA UMA PÁGIA EXTERNA (SITE DA FO??) ONDE FICARÃO TODOS OS PRONTUÁRIOS, FORMULÁRIOS PADRONIZADOS<br>
-</h2>
-</div>   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -84,7 +84,7 @@
       <br>
 
       <label style="width: 200px; margin: 5px;">Filtrar por turno</label>
-      <select class="ui-state-default" style="width: 200px; height: 20px;" id="filtroTurnoAgendamento">
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px;" id="filtroTurnoAgendamento">
           <option value="Escolher">Todos</option>
           <option value="Manhã">Manhã</option>
           <option value="Tarde">Tarde</option>
@@ -93,7 +93,7 @@
       <br>
 
       <label style="width: 195px; margin: 5px;">Filtrar tabela pelo Local o atendimento</label>
-      <select class="ui-state-default" style="width: 200px; height: 20px; margin: 5px;" id="filtroLocalAgendamento">
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroLocalAgendamento">
           <option value="Todos">Todos</option>
           <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
           <option value="Clínica Oeste">Clínica Oeste</option>
@@ -320,8 +320,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
 FUNCIONALIDADE PREVISTA: <br>
-1- TABELA ATUALIZA DE ACORDO COM O a 'listaAgendamento'<br>
-2- O USUÁRIO PODE CONSULTAR A LISTA DE AGENDAMENTO E ATUALIZAR O STATUS DO AGENDAMENTO QUANDO O PACIENTE CHEGAR<br>
+1- TABELA ATUALIZA DE ACORDO COM O a 'listaAgendamento' e apresenta apenas os dados de agendamento para o  dia 'currentDay'<br>
+2- O USUÁRIO PODE ATUALIZAR O STATUS DO AGENDAMENTO QUANDO O PACIENTE CHEGAR<br>
 3- 'statusAgendamento' é atualizado na página agenda de clínicas (repetir o script de styling lá tbem)<br>
 4- Status 'em atendimento??? como seria o fluxo durante o atendimento? aluno teria que abrir o cobalto só pra isso?<br>
 </h2>

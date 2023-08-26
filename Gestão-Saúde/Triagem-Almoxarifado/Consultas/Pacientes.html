@@ -179,7 +179,7 @@
       const tbody = document.querySelector('.ui-jqgrid-htable');
 
       // Cria um novo elemento de linha (<tr>)
-      const novaLinha = document.createElement('tr');
+      const novaLinha = document.createElement('tr'); 
 
       // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
       novaLinha.innerHTML = `
@@ -190,7 +190,7 @@
         <td style="display: none;">Situação</td>
         <td>${rg}</td>
         <td>${dtCadastro}</td>
-      `;
+      `; 
 
       // Adiciona a nova linha ao corpo da tabela
       tbody.appendChild(novaLinha);

@@ -219,11 +219,15 @@
               const usuario = data[0];
               console.log(usuario);
                 if (data.length > 0) {
-                  localStorage.setItem('usuario', JSON.stringify(usuario));
-                  if (usuario.Tipo == "Aluno"){ window.location.href = "/Gestão-Saúde/Aluno/index-aluno.html"}
-                  else if (usuario.Tipo == "Administrador"){ window.location.href = "/Gestão-Saúde/Administração/index-administração.html"}
-                  else if (usuario.Tipo == "Triagem"){ window.location.href = "/Gestão-Saúde/Triagem-Almoxarifado/index-triagem.html"}
-                  
+                  localStorage.setItem('usuario', JSON.stringify(usuario));        
+                if (usuario.Tipo == "Aluno") {
+                  window.location.href = "./Gestão-Saúde/Aluno/index-aluno.html";
+                } else if (usuario.Tipo == "Administrador") {
+                  window.location.href = "./Gestão-Saúde/Administração/index-administração.html";
+                } else if (usuario.Tipo == "Triagem") {
+                  window.location.href = "./Gestão-Saúde/Triagem-Almoxarifado/index-triagem.html";
+                } 
+
                 } else {
                     
                 }

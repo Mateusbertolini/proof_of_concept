@@ -284,10 +284,11 @@ document.getElementById('txtNome').onkeydown = function (e) {
   </body>
 <script>
   // buscar pacientes do aluno logado
-  api.alunos.pacientes({ Matricula: 'Pedro' })
+  const aluno = JSON.parse(localStorage.getItem('usuario'));
+  api.alunos.pacientes({ Matricula: aluno.Matricula })
     .then((pacientes) => {
       const tbody = document.querySelector('.ui-jqgrid-htable');
-      limparTabela(tbody);
+    //  limparTabela(tbody);
       
       if (pacientes.length === 0) {
         alert("Nenhum paciente encontrado");
@@ -306,6 +307,11 @@ document.getElementById('txtNome').onkeydown = function (e) {
     .catch((error) => {
       console.error('Erro ao consultar pacientes:', error);
     });
+    function limparTabela(tbody) {
+  while (tbody.children.length > 1) {
+    tbody.removeChild(tbody.lastChild);
+  }
+}
     function adicionarNovaLinha(nome, Tel, cpf, diciplina, demanda) {
   // Seleciona o corpo da tabela usando o XPath
   const tbody = document.querySelector('.ui-jqgrid-htable');
@@ -316,7 +322,7 @@ document.getElementById('txtNome').onkeydown = function (e) {
 
   // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
   novaLinha.innerHTML = `
-    <td><a href="perfil-paciente.html?cpf=${cpf}">${nome}</a></td>
+    <td><a href="perfil-visualização.html?cpf=${cpf}">${nome}</a></td>
     <td>${Tel}</td>
     <td>${cpf}</td>
     <td>${diciplina}</td>
@@ -325,7 +331,6 @@ document.getElementById('txtNome').onkeydown = function (e) {
   // Adiciona a nova linha ao corpo da tabela
   tbody.appendChild(novaLinha);
 }
-
 </script>
      
 <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">

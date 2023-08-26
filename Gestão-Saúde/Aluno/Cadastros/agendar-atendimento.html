@@ -92,7 +92,7 @@
       <br>
 
       <label style="width: 200px; margin: 5px;">Turno do agendamento</label>
-      <select class="ui-state-default" style="width: 200px; height: 20px;" id="turnoAgendamento">
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px;" id="turnoAgendamento">
           <option value="Escolher">Escolher</option>
           <option value="Manhã">Manhã</option>
           <option value="Tarde">Tarde</option>
@@ -101,7 +101,7 @@
       <br>
 
       <label style="width: 200px; margin: 5px;">Local que será realizado o atendimento</label>
-      <select class="ui-state-default" style="width: 200px; height: 20px;" id="localAgendamento">
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px;" id="localAgendamento">
           <option value="Escolher">Escolher</option>
           <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
           <option value="Clínica Oeste">Clínica Oeste</option>
@@ -266,7 +266,7 @@ function salvar() {
 <h2> PARA A PÁGINA CONSULTA > AGENDA DE CLÍNICAS</h2>
 
 <label style="width: 190px; margin: 15px;">Filtrar tabela pelo Local o atendimento</label>
-<select class="ui-state-default" style="width: 200px; height: 20px; margin: 15px;" id="filtroLocalAgendamento">
+<select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 15px;" id="filtroLocalAgendamento">
     <option value="Todos">Todos</option>
     <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
     <option value="Clínica Oeste">Clínica Oeste</option>
@@ -312,6 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
     1- O USUÁRIO (ALUNO OU PROFESSOR) CRIA UM AGENDAMENTO NOVO<br>
     2- USUÁRIO PODE INCLUIR VÁRIOS AGENDAMENTOS DE DIFERENTES PACIENTES DISCIPLINAS DE UMA VEZ SÓ<br>
     3- CRIAR UM SCRIPT PARA ORDENAR A TABELA POR DATA<br>
+    4- ATUALIZA A VARIÁVEL 'statusAgendamento' para 'Agendado'<br>
     </h2>
   
 

@@ -1,57 +1,3 @@
-<!-- Lista de labels página CADASTRAR NOVO PACIENTE
-
-{
-  Cpf;
-  Nome;
-  Rg;
-  Cartão SUS (CNS);
-  DataNasc;
-  Email;
-  Tel;
-  EstadoCivil {
-    CASADO;
-    DIVORCIADO;
-    OUTROS;
-    SEPARADO;
-    SOLTEIRO;
-    VIUVO;
-    }
-  Sexo {
-    Masculino;
-    Feminino;
-    }
-  NomeMae;
-  NomePai;
-  CorRaca {
-    Amarelo;
-    Branca;
-    Indígena;
-    Parda;
-    Não quis declarar;
-    };
-  PNE {
-    Diabetes;
-    Hepatite B;
-    Hepatite C;
-    Soropositivo;
-  };
-  EnderecoTipo {
-    Comercial;
-    Família;
-    Residencial;
-    }
-  Cep;
-  Rua;
-  EndNumero;
-  EndComplemento;
-  Bairro;
-  Cidade;
-} 
-
-Lista de labels página CADASTRAR NOVO PACIENTE -->
-
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head lang="pt-br">
@@ -68,6 +14,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
 <link href="stylecobalto.css" type="text/css" rel="stylesheet">  
+<link href="stylecobaltomodificado.css" type="text/css" rel="stylesheet">  
 
 </head>
 
@@ -145,13 +92,51 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 
 <!--INÍCIO DA TAB DADOS PESSOAIS-->
 <div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
+<br>
+   
+<div>
+  <p></p>
+  <label style="width: 180px; margin: 5px; font-weight: bold;">INFORMAÇÕES IMPORTANTES</label>
+  <input type="text" id="informacoesImportantes" maxlength="255" style="width: 340px; margin: 5px;"><br>
 
+  <script>
+      // TROCAR STYLE SE O CAMPO 'informaçõesImportantes' for preenchido
+    document.addEventListener('DOMContentLoaded', function() {
+      const inputField = document.getElementById('informacoesImportantes');
+  
+      function applyStyles() {
+        if (inputField.value.trim() === '') {
+          inputField.classList.add('ui-state-default');
+          inputField.classList.remove('important-ui');
+        } else {
+          inputField.classList.add('important-ui');
+          inputField.classList.remove('ui-state-default');
+        }
+      }
+  
+      inputField.addEventListener('input', applyStyles);
+  
+      // Apply styles once the page loads
+      applyStyles();
+    });
+  </script>
+  <p style="margin: 10px;"><span style="margin-left: 15px;">Descrever informações imprescindíveis ao profissional de saúde (ALERGIAS, RELATO DE ABUSO, ETC.)</span></p>
+  <p></p>
   <br>
-  <div>
-    <label style="width: 120px; ;margin: 5px;">CPF</label>
-    <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;" readonly="readonly">
 
-    <br></div>
+  <p></p>
+  <br>
+  <hr class="ui-state-default">
+</div>
+  
+
+  <div>
+  <p></p>
+  <br>
+  <label style="width: 120px; ;margin: 5px;">CPF</label>
+  <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;" readonly="readonly">
+
+  <br></div>
 
   <label style="width: 120px; ;margin: 5px;">Nome</label>
   <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
@@ -176,9 +161,17 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <label style="width: 120px; ;margin: 5px;">Telefone</label>
   <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
   <br>
+
+  <label style="width: 120px; ;margin: 5px;">Telefone 2 (Opcional)</label>
+  <input type="text" name="Tel2" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+  <br>
+
+  <label style="width: 120px; ;margin: 5px;">Telefone 3 (Opcional)</label>
+  <input type="text" name="Tel3" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+  <br>
   
   <label style="width: 120px; ;margin: 5px;">Estado civil</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil" disabled>
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil" disabled>
       <option value="CASADO">CASADO</option>
       <option value="DIVORCIADO">DIVORCIADO</option>
       <option value="OUTROS">OUTROS</option>
@@ -189,14 +182,14 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Sexo</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="Sexo" id="Sexo" disabled>
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="Sexo" id="Sexo" disabled>
       <option value="Masculino">Masculino</option>
       <option value="Feminino">Feminino</option>
         </select> 
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Cor/Raça</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca" disabled>
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca" disabled>
       <option value="Amarelo">Amarelo</option>
       <option value="Branca">Branca</option>
       <option value="Indígena">Indígena</option>
@@ -219,7 +212,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <br>
   <hr class="ui-state-default">
   <label style="width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
-    <select class="ui-state-default" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple disabled>
+    <select class="ui-state-default ui-corner-all" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple disabled>
       <option value="Hipertensão">Hipertensão</option>
       <option value="Diabetes">Diabetes</option>
       <option value="Hepatite B">Hepatite B</option>
@@ -231,7 +224,7 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
   <br>
   
   <label style="width: 120px;">Tipo de endereço</label>
-    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo" disabled>
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo" disabled>
       <option value="Comercial">Comercial</option>
       <option value="Família">Família</option>
       <option value="Residencial">Residencial</option>
@@ -424,165 +417,170 @@ buscarperfil()
 
 
 <!--INÍCIO DA TAB ODONTOGRAMA-->
-<div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 1000px;">
-
-
+<div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: auto;">
+ 
   <div>
-    <hr class="ui-state-default"><label style="font-size: 16; font-weight: bold;">Odontograma</label></hr><br>
+    <hr class="ui-state-default"><label style="font-size: 16; font-weight: bold;">Odontograma simplificado</label></hr>
+    <br>
+    <p style="font-size: 12; margin: 5px;">    Descrever / Relatar informações que julgar necessário (EX: Ausente, Hígido, etc.)</p>
+    <br>
+  
+    <hr class="ui-state-default">
     <p style="font-size: 12; font-weight: bold;">Dentição permanente</p>
     </div>
     
-    <!-- CONTEÚDO COLUNA DA ESQUERDA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+  <!-- CONTEÚDO COLUNA DA ESQUERDA -->
+  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+  
+  <div><p style="margin-top: 20px; font-weight: bold;">Arco superior direito</p>
     
-      <div><p>Arco superior direito</p>
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">11</label>
+    <input type="text" id="odontograma11" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">12</label>
+    <input type="text" id="odontograma12" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">13</label>
+    <input type="text" id="odontograma13" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">14</label>
+    <input type="text" id="odontograma14" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">15</label>
+    <input type="text" id="odontograma15" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">16</label>
+    <input type="text" id="odontograma16" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">17</label>
+    <input type="text" id="odontograma17" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+    
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">18</label>
+    <input type="text" id="odontograma18" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+  
+  </div>
+  
+  <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior direito</p>
       
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">11</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">41</label>
+    <input type="text" id="odontograma41" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
     
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">12</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">13</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">14</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">15</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">16</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">17</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">18</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-      </div>
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">42</label>
+    <input type="text" id="odontograma42" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
     
-      <div><p>Arco inferior direito</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">41</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">42</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">43</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">43</label>
+    <input type="text" id="odontograma43" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">44</label>
+    <input type="text" id="odontograma44" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">45</label>
+    <input type="text" id="odontograma45" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
     
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">44</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">46</label>
+    <input type="text" id="odontograma46" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">47</label>
+    <input type="text" id="odontograma47" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">48</label>
+    <input type="text" id="odontograma48" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
     
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">45</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">46</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">47</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">48</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-      </div>
-    </div>
+  </div>
+</div>
     
     <!-- CONTEÚDO COLUNA DA DIREITA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-          
-      <div><p>Arco superior esquerdo</p>
+  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+        
+  <div><p style="margin-top: 20px; font-weight: bold;">Arco superior esquerdo</p>
+    
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">21</label>
+    <input type="text" id="odontograma21" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+  
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">22</label>
+    <input type="text" id="odontograma22" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">23</label>
+    <input type="text" id="odontograma23" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">24</label>
+    <input type="text" id="odontograma24" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">25</label>
+    <input type="text" id="odontograma25" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">26</label>
+    <input type="text" id="odontograma26" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">27</label>
+    <input type="text" id="odontograma27" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+
+    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">28</label>
+    <input type="text" id="odontograma28" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+    <br>
+  </div>
+  
+  <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior esquerdo</p>
       
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">21</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">31</label>
+      <input type="text" id="odontograma31" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
       <br>
-    
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">22</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">32</label>
+      <input type="text" id="odontograma32" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
       <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">23</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">24</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">33</label>
+      <input type="text" id="odontograma33" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
       <br>
   
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">25</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">34</label>
+      <input type="text" id="odontograma34" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
       <br>
   
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">26</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">35</label>
+      <input type="text" id="odontograma35" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <br>
+      
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">36</label>
+      <input type="text" id="odontograma36" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
       <br>
   
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">27</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">37</label>
+      <input type="text" id="odontograma37" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
       <br>
   
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">28</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">38</label>
+      <input type="text" id="odontograma38" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
       <br>
-    </div>
+  </div>
+</div>
+<br>
     
-      <div><p>Arco inferior esquerdo</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">31</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">32</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">33</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">34</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">35</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">36</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">37</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">38</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        </div>
-    </div>
-    
-  <!-- CONTEÚDO DECÍDUOS-->
+<!-- CONTEÚDO DECÍDUOS-->
   <div id="deciduos">
       <style>
         .hidden {
@@ -602,49 +600,49 @@ buscarperfil()
     <!-- CONTEÚDO COLUNA DA ESQUERDA -->
     <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
     
-      <div><p>Arco superior direito</p>
+      <div><p style="margin-top: 20px; font-weight: bold;">Arco superior direito</p>
         
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">51</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma51" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
       
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">52</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma52" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">53</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma53" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">54</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma54" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">55</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma55" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
       </div>
     
-      <div><p>Arco inferior direito</p>
+      <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior direito</p>
         
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">81</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma81" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
         
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">82</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma82" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
         
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">83</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma83" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">84</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma84" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">85</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma85" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
         </div>
       </div>
@@ -653,72 +651,69 @@ buscarperfil()
       <!-- CONTEÚDO COLUNA DA DIREITA -->
     <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
     
-      <div><p>Arco superior esquerdo</p>
+      <div><p style="margin-top: 20px; font-weight: bold;">Arco superior esquerdo</p>
       
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">61</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma61" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
       
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">62</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma62" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">63</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma63" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">64</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma64" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">65</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma65" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
       </div>
     
-      <div><p>Arco inferior esquerdo</p>
+      <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior esquerdo</p>
         
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">71</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma71" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
         
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">72</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma72" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
         
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">73</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma73" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">74</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma74" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
     
         <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">75</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
+        <input type="text" id="odontograma75" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
         <br>
       </div>
     </div>
   </div>
-     
-    <script>
-        const toggleCheckbox = document.getElementById('toggleCheckbox');
-        const contentDiv = document.getElementById('content');
-        
-        toggleCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                contentDiv.style.display = 'block';
-            } else {
-                contentDiv.style.display = 'none';
-            }
-        });
-    </script>
-  </div>
-</div>
-  
-        
-    
-
+         
+        <script>
+            const toggleCheckbox = document.getElementById('toggleCheckbox');
+            const contentDiv = document.getElementById('content');
+            
+            toggleCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    contentDiv.style.display = 'block';
+                } else {
+                    contentDiv.style.display = 'none';
+                }
+            });
+        </script>
+      </div>
+    </div>
+      
 
 
 

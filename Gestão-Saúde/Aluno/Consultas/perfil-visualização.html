@@ -269,70 +269,67 @@ Lista de labels página CADASTRAR NOVO PACIENTE -->
 
     
   
+    <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
 
-
-<script type="text/javascript">
-
-function getApiUrl() {
-  const storedApiUrl = localStorage.getItem('api');
-  return storedApiUrl ? storedApiUrl : 'https://prontuario-ufpel-backend.onrender.com';
-}
-  const api = getApiUrl()
-
-function getUrlVars() {
-    var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-    });
-    return vars;
-}
-
-function buscarperfil() {
-  
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', `${api}/perfil-cpf/`);
-      xhr.setRequestHeader('Content-Type', 'application/json');
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-        var body = JSON.parse(xhr.responseText)
-            console.log(body);
-            preencherFormulario(body[0])
-          }
-          } else {
-
-          }
-        }
-      xhr.send(JSON.stringify({'CPF': getUrlVars()['cpf'] }));
-    }
-
-
-function preencherFormulario(dados) {
-  console.log(dados)
-  document.getElementById("Cpf").value = dados.CPF;
-    document.getElementById("Nome").value = dados.Nome;
-    document.getElementById("Nometab").innerText = dados.Nome;
-    document.getElementById("Rg").value = dados.Rg;
-    document.getElementById("DataNasc").value = dados.DataNasc;
-    document.getElementById("Email").value = dados.Email;
-    document.getElementById("Tel").value = dados.Tel;
-    document.getElementById("EstadoCivil").value = dados.EstadoCivil;
-    document.getElementById("Sexo").value = dados.Sexo;
-    document.getElementById("CorRaca").value = dados.CorRaca;
-    document.getElementById("NomeMae").value = dados.NomeMae;
-    document.getElementById("NomePai").value = dados.NomePai;
-    document.getElementById("PNE").value = dados.PNE;
-    document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
-    document.getElementById("Cep").value = dados.Cep;
-    document.getElementById("Rua").value = dados.Rua;
-    document.getElementById("EndNumero").value = dados.EndNumero;
-    document.getElementById("EndComplemento").value = dados.EndComplemento;
-    document.getElementById("Bairro").value = dados.Bairro;
-    document.getElementById("Cidade").value = dados.Cidade;
-
-}
-buscarperfil()
-</script>
+    <script type="text/javascript">
+      // Função para preencher o formulário com os dados do perfil
+      function preencherFormulario(dados) {
+           console.log(dados)
+           document.getElementById("Cpf").value = dados.CPF;
+           document.getElementById("Nome").value = dados.Nome;
+           document.getElementById("Nometab").innerText = dados.Nome;
+           document.getElementById("Rg").value = dados.Rg;
+           document.getElementById("DataNasc").value = dados.DataNasc;
+           document.getElementById("Email").value = dados.Email;
+           document.getElementById("Tel").value = dados.Tel;
+           document.getElementById("EstadoCivil").value = dados.EstadoCivil;
+           document.getElementById("Sexo").value = dados.Sexo;
+           document.getElementById("CorRaca").value = dados.CorRaca;
+           document.getElementById("NomeMae").value = dados.NomeMae;
+           document.getElementById("NomePai").value = dados.NomePai;
+           document.getElementById("PNE").value = dados.PNE;
+           document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
+           document.getElementById("Cep").value = dados.Cep;
+           document.getElementById("Rua").value = dados.Rua;
+           document.getElementById("EndNumero").value = dados.EndNumero;
+           document.getElementById("EndComplemento").value = dados.EndComplemento;
+           document.getElementById("Bairro").value = dados.Bairro;
+           document.getElementById("Cidade").value = dados.Cidade;
+         }
+     
+         // Função para buscar o perfil usando a API
+         function buscarPerfil() {
+           const cpf = getUrlVars()['cpf'];
+           if (cpf) {
+             api.pacientes.consultar({ CPF: cpf })
+               .then((pacientes) => {
+                 if (pacientes.length === 0) {
+                   console.log('Nenhum paciente encontrado');
+                 } else {
+                   preencherFormulario(pacientes[0]);
+                 }
+               })
+               .catch((error) => {
+                 console.error('Erro ao consultar perfil:', error);
+               });
+           } else {
+             console.log('CPF não encontrado na URL.');
+           }
+         }
+     
+         // Função para obter parâmetros da URL
+         function getUrlVars() {
+           var vars = {};
+           var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+             vars[key] = value;
+           });
+           return vars;
+      
+         }
+     
+         // Chamar a função para buscar o perfil
+         buscarPerfil();
+     </script>
 </div>
 <!--FIM DA TAB DADOS PESSOAIS-->
 
@@ -367,20 +364,90 @@ buscarperfil()
         <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="StatusPaciente" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Status<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
         </th>
       </tr>
-    <thead><tr style="align-items: center;">
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">BUSCAR DEMANDAS SALVAS NO BANCO</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Odontologia</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese dentária</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese fixa no dente 11</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Alta</td>
-    </tr>
+    <thead id="tabelaencaminhamentos"><tr style="align-items: center;">
+
     </thead>
   </table>
 </div>
    
 
 <!--FIM DA TAB DEMANDAS-->
+<!--Script DEMANDAS-->
+<script>
+  function adicionarNovaLinha(data) {
+    console.log(data)
+  // Seleciona o corpo da tabela usando o XPath
+  const tbody = document.getElementById("tabelaencaminhamentos")
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
+  novaLinha.style.alignItems = 'center';
 
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td role="gridcell" style="text-align:center;">${data.Data}</td>
+    <td role="gridcell" style="text-align:center;">${data.Curso}</td>
+    <td role="gridcell" style="text-align:center;">${data.Especialidade}</td>
+    <td role="gridcell" style="text-align:center;">${data.Demanda}</td>
+    <td role="gridcell" style="text-align:center;">${data.Status}</td>
+  `;
+
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
+
+
+function getDataFromTab(TabId){
+  const parentDiv = document.getElementById(TabId); 
+  const elements = parentDiv.querySelectorAll("input, select, textarea"); // Include textarea elements
+  const jsonData = {};
+
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value;
+    } else if (element.tagName === "TEXTAREA") { // Handle textarea elements
+      jsonData[element.id] = element.value;
+    }
+  }
+
+  console.log(jsonData);
+  return jsonData;
+}
+const codtonome = {
+  "0": "Escolher",
+  "1200": "Enfermagem",
+  "7100": "Farmácia",
+  "400": "Odontologia",
+  "7200": "Terapia Ocupacional"
+}
+
+
+  function encaminhar(){
+    let Encaminhamentos = getDataFromTab("encaminhamento") 
+    Encaminhamentos.CPF = getUrlVars()["cpf"]
+    Encaminhamentos.Status = "Em espera"
+    Encaminhamentos.Curso = codtonome[Encaminhamentos.Curso]
+    console.log(Encaminhamentos)
+    api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
+alert(result.message)
+console.log(result)
+adicionarNovaLinha(Encaminhamentos)
+    })
+  }
+  const CPF = getUrlVars()["cpf"]
+  api.encaminhamentos.consultar({CPF}).then((encaminhamentos)=>{
+    console.log(encaminhamentos)
+    encaminhamentos.forEach(encaminhamento => {
+      adicionarNovaLinha(encaminhamento)
+    })
+    
+  })
+</script>
 
 
 

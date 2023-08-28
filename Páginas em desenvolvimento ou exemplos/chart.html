@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Table to Bar Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <table id="minhasAvaliações">
+    <thead>
+      <th style="width: 50%;">Critério</th>
+      <th style="width: 10%;">Insatisfatório</th>
+      <th style="width: 10%;">Parcialmente satisfatório</th>
+      <th style="width: 10%;">Satisfatório</th>
+      <th style="width: 10%;">Bom</th>
+      <th style="width: 10%;">Muito bom</th>
+    </thead>
+    <tr class="ui-state-default">
+      <th>1- Quanto ao cumprimento do horário e ao comparecimento às aulas:</th>
+      <th>0</th>
+      <th>0</th>
+      <th>0</th>
+      <th>3</th>
+      <th>0</th>
+    </tr>
+    <tr class="ui-state-default">
+      <th>2- Quanto ao comportamento do aluno no ambiente de atendimento:</th>
+      <th>0</th>
+      <th>1</th>
+      <th>1</th>
+      <th>1</th>
+      <th>0</th>
+    </tr>
+  </table>
+  <canvas id="chart"></canvas>
+
+  <script>
+    // Get the table element
+    const table = document.getElementById("minhasAvaliações");
+    // Get the canvas element for the chart
+    const canvas = document.getElementById("chart");
+    
+    // Initialize data arrays for the chart
+    const labels = [];
+    const data = [];
+    
+    // Loop through each row (skipping the first row which contains headers)
+    for (let i = 1; i < table.rows.length; i++) {
+      const row = table.rows[i];
+      const critério = row.cells[0].textContent;
+      const values = Array.from(row.cells).slice(1).map(cell => parseInt(cell.textContent));
+      
+      labels.push(critério);
+      data.push(values);
+    }
+    
+    // Create the chart
+    const ctx = canvas.getContext("2d");
+    new Chart(ctx, {
+      type: "bar",
+      data: {
+        labels: labels,
+        datasets: [
+          { label: "Insatisfatório", data: data.map(d => d[0]), backgroundColor: "red" },
+          { label: "Parcialmente Satisfatório", data: data.map(d => d[1]), backgroundColor: "orange" },
+          { label: "Satisfatório", data: data.map(d => d[2]), backgroundColor: "yellow" },
+          { label: "Bom", data: data.map(d => d[3]), backgroundColor: "green" },
+          { label: "Muito Bom", data: data.map(d => d[4]), backgroundColor: "blue" }
+        ]
+      },
+      options: {
+        scales: {
+          x: { stacked: true },
+          y: { stacked: true }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

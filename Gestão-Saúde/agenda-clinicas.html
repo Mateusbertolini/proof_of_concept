@@ -102,13 +102,23 @@
           <option value="Clínica 4º Andar">Clínica 4º Andar</option>
           <option value="Radiologia">Clínica de Radiologia</option>
       </select>
+      <br>
+
+      <label style="width: 195px; margin: 5px;">Filtrar tabela pelo componente curricular (disciplina/estágio)</label>
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroDisciplina">
+          <option value="Todos">Todos</option>
+          <option value="ESTÁGIO EM PRONTO ATENDIMENTO (EPA)">ESTÁGIO EM PRONTO ATENDIMENTO (EPA)</option>
+          <option value="ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
+          <option value="PERIODONTIA CLÍNICA">PERIODONTIA CLÍNICA</option>
+          <option value="PRÓTESE DENTÁRIA PARCIAL III">PRÓTESE DENTÁRIA PARCIAL III</option>
+          <option value="CIRURGIA BUCO-MAXILAR III">CIRURGIA BUCO-MAXILAR III</option>
+          <option value="RADIOLOGIA E IMAGINOLOGIA">RADIOLOGIA E IMAGINOLOGIA</option>
+      </select>
       <p></p>
       
       <hr class="ui-state-default">
       <div style="margin: 5px;"></div>
       <button id="sortButton" style="margin: 10px;">Ordenar por data</button>
-      
-      
       
       
       <table id="listaAgendamento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin: 20px;">
@@ -129,7 +139,7 @@
           <th>Aluno A</th>
           <th>Radiologia</th>
           <th>Manhã</th>
-          <th>UDE-1</th>
+          <th>RADIOLOGIA E IMAGINOLOGIA</th>
           <th id="statusAgendamento">noLocal</th>
         </tr>
         <tr>
@@ -138,7 +148,7 @@
             <th>Aluno B</th>
             <th>Clínica Oeste</th>
             <th>Manhã</th>
-            <th>UPD-3</th>
+            <th>PRÓTESE DENTÁRIA PARCIAL III</th>
             <th id="statusAgendamento">Agendado</th>
         </tr>
         <tr>
@@ -147,7 +157,7 @@
             <th>Aluno C</th>
             <th>Clínica Oeste</th>
             <th>Tarde</th>
-            <th>UCO-1</th>
+            <th>ODONTOPEDIATRIA</th>
             <th id="statusAgendamento">noLocal</th>
         </tr>
         <tr>
@@ -156,62 +166,62 @@
             <th>Aluno D</th>
             <th>Radiologia</th>
             <th>Tarde</th>
-            <th>UDE-1</th>
+            <th>RADIOLOGIA E IMAGINOLOGIA</th>
             <th id="statusAgendamento">Agendado</th>
         </tr>
       </table>
       
 
-
       <hr class="ui-state-default">
       
 <script>
-// FILTRO POR TURNO E LOCAL
-document.addEventListener("DOMContentLoaded", function() {
-    const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
-    const filtroTurnoAgendamentoSelect = document.getElementById("filtroTurnoAgendamento");
-    const listaAgendamento = document.getElementById("listaAgendamento");
-
-    const applyFilters = () => {
-    const selectedLocalOption = filtroLocalAgendamentoSelect.value;
-    const selectedTurnoOption = filtroTurnoAgendamentoSelect.value;
-            
-    const rows = listaAgendamento.getElementsByTagName("tr");
-
-    for (let i = 1; i < rows.length; i++) {
-        const row = rows[i];
-        const localCell = row.cells[3]; // Assuming the "Local" cell is at index 3
-        const turnoCell = row.cells[4]; // Assuming the "Turno" cell is at index 4
-
-        const localMatch = selectedLocalOption === "Todos" || localCell.textContent === selectedLocalOption;
-        const turnoMatch = selectedTurnoOption === "Todos" || selectedTurnoOption === "Escolher" || turnoCell.textContent === selectedTurnoOption;
-
-        if (localMatch && turnoMatch) {
-        row.style.display = ""; // Show the row
-        } else {
-        row.style.display = "none"; // Hide the row
-        }
-    }
-    };
-
-    filtroLocalAgendamentoSelect.addEventListener("change", applyFilters);
-    filtroTurnoAgendamentoSelect.addEventListener("change", applyFilters);
-
-    const sortButton = document.getElementById("sortButton");
-
-    sortButton.addEventListener("click", function() {
-    const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
-    rows.sort((a, b) => {
-        const dateA = new Date(a.cells[0].textContent.split('/').reverse().join('/'));
-        const dateB = new Date(b.cells[0].textContent.split('/').reverse().join('/'));
-        return dateA - dateB;
-    });
-
-    const tbody = listaAgendamento.querySelector("tbody");
-    rows.forEach(row => tbody.appendChild(row));
-    });
-});
-</script>
+  // FILTRO POR TURNO, LOCAL E DISCIPLINA
+  document.addEventListener("DOMContentLoaded", function() {
+      const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
+      const filtroTurnoAgendamentoSelect = document.getElementById("filtroTurnoAgendamento");
+      const filtroDisciplinaSelect = document.getElementById("filtroDisciplina");
+      const listaAgendamento = document.getElementById("listaAgendamento");
+  
+      const applyFilters = () => {
+          const selectedLocalOption = filtroLocalAgendamentoSelect.value;
+          const selectedTurnoOption = filtroTurnoAgendamentoSelect.value;
+          const selectedDisciplinaOption = filtroDisciplinaSelect.value;
+  
+          const rows = listaAgendamento.querySelectorAll("tbody tr"); // Use querySelectorAll for better performance
+  
+          rows.forEach(row => {
+              const localCell = row.cells[3].textContent;
+              const turnoCell = row.cells[4].textContent;
+              const disciplinaCell = row.cells[5].textContent;
+  
+              const localMatch = selectedLocalOption === "Todos" || localCell === selectedLocalOption;
+              const turnoMatch = selectedTurnoOption === "Todos" || selectedTurnoOption === "Escolher" || turnoCell === selectedTurnoOption;
+              const disciplinaMatch = selectedDisciplinaOption === "Todos" || selectedDisciplinaOption === "Escolher" || disciplinaCell === selectedDisciplinaOption;
+  
+              row.style.display = localMatch && turnoMatch && disciplinaMatch ? "" : "none";
+          });
+      };
+  
+      filtroLocalAgendamentoSelect.addEventListener("change", applyFilters);
+      filtroTurnoAgendamentoSelect.addEventListener("change", applyFilters);
+      filtroDisciplinaSelect.addEventListener("change", applyFilters);
+  
+      const sortButton = document.getElementById("sortButton");
+  
+      sortButton.addEventListener("click", function() {
+          const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
+          rows.sort((a, b) => {
+              const dateA = new Date(a.cells[0].textContent.split('/').reverse().join('/'));
+              const dateB = new Date(b.cells[0].textContent.split('/').reverse().join('/'));
+              return dateA - dateB;
+          });
+  
+          const tbody = listaAgendamento.querySelector("tbody");
+          rows.forEach(row => tbody.appendChild(row));
+      });
+  });
+  </script>
+        
 
 
 <script>
@@ -281,14 +291,5 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   </script>
      
-
-
-
-<h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-FUNCIONALIDADE PREVISTA: <br>
-1- O USUÁRIO PODE CONSULTAR BASEAD EM LOCAL, TURNO E DATA<br>
-</h2>
-  
-
 </body>
 </html>

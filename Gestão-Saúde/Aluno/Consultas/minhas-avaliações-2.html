@@ -1,5 +1,3 @@
-
-
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head lang="pt-br">
@@ -15,6 +13,8 @@
 <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
 <div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
@@ -112,7 +112,7 @@
     <input type="text" id="txtTotalAvaliações" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: left;width: 175px;" readonly="1" placeholder="GET NÚMERO DE AVALIAÇÕES">
     <br>
     
-    <table id="gridResultadoAvaliacaoDocente" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 70%; height: auto;">
+    <table id="minhasAvaliações" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 70%; height: auto;">
       <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: 10px;">
         <th style="width: 50%;">Critério</th>
         <th style="width: 10%;">Insatisfatório</th>
@@ -122,7 +122,7 @@
         <th style="width: 10%;">Muito bom</th>
       </thead>
       <tr class="ui-state-default">
-        <th>Quanto ao cumprimento do horário e ao comparecimento às aulas:</th>
+        <th>1- Quanto ao cumprimento do horário e ao comparecimento às aulas:</th>
         <th>0</th>
         <th>0</th>
         <th>0</th>
@@ -130,7 +130,7 @@
         <th>0</th>
       </tr>
       <tr class="ui-state-default">
-        <th>Quanto ao comportamento do aluno no ambiente de atendimento:</th>
+        <th>2- Quanto ao comportamento do aluno no ambiente de atendimento:</th>
         <th>0</th>
         <th>1</th>
         <th>1</th>
@@ -138,7 +138,7 @@
         <th>0</th>
       </tr>
       <tr class="ui-state-default">
-        <th>Quanto a apresentação dos materiais/instrumentais necessários para a realização do atendimento:</th>
+        <th>3- Quanto a apresentação dos materiais/instrumentais necessários para a realização do atendimento:</th>
         <th>0</th>
         <th>3</th>
         <th>0</th>
@@ -146,7 +146,7 @@
         <th>0</th>
       </tr>
       <tr class="ui-state-default">
-        <th>Quanto ao conhecimento do aluno sobre o conteúdo da disciplina e a forma como o relaciona os atendimentos:</th>
+        <th>4- Quanto ao conhecimento do aluno sobre o conteúdo da disciplina e a forma como o relaciona os atendimentos:</th>
         <th>0</th>
         <th>0</th>
         <th>1</th>
@@ -154,7 +154,7 @@
         <th>0</th>
       </tr>
       <tr class="ui-state-default">
-        <th>Quanto ao cuidado e respeito para com o paciente:</th>
+        <th>5- Quanto ao cuidado e respeito para com o paciente:</th>
         <th>0</th>
         <th>0</th>
         <th>0</th>
@@ -162,7 +162,7 @@
         <th>0</th>
       </tr>
       <tr class="ui-state-default">
-        <th>Quanto ao comportamento do aluno frente a eventuais limitações ou insucessos nos atendimentos:</th>
+        <th>6- Quanto ao comportamento do aluno frente a eventuais limitações ou insucessos nos atendimentos:</th>
         <th>0</th>
         <th>0</th>
         <th>2</th>
@@ -170,8 +170,16 @@
         <th>0</th>
       </tr>
       <tr class="ui-state-default">
-        <th>Quanto à autoavaliação do aluno sobre o atendimento:</th>
+        <th>7- Quanto ao comportamento da dupla/auxiliar do aluno durante o atendimento:</th>
         <th>0</th>
+        <th>5</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+      </tr>
+      <tr class="ui-state-default">
+        <th>8- Quanto à autoavaliação do aluno sobre o atendimento:</th>
+        <th>1</th>
         <th>5</th>
         <th>0</th>
         <th>0</th>
@@ -179,8 +187,20 @@
       </tr>
     </table>
     <br>
-  </div>	
 
+
+    <hr class="ui-state-default">     
+    <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+      FUNCIONALIDADE PREVISTA: <br>
+      1- PUXAR DADOS DAS VARIÁVEIS 'dataAvaliação', 'avaliarPontualidade', 'avaliarComportamento', 'avaliarMateriais', 'avaliarConhecimento', 'avaliarCuidado', 'avaliarAdversidades', 'avaliarDupla', 'avaliarAuto'
+
+      
+    </h2>
+
+
+
+  </div>
+  	
 
 
 <!-- TAB GRÁFICO -->
@@ -189,63 +209,111 @@
   <li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-2" accessKey="tabResultadoAvaliacaoDocente-2">Gráfico</a></li></ul>
   
 
+  <div>
+    <canvas id="chartMinhasAvaliações" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 5px; margin-top: 15px; width: 60%; height: 30%;"></canvas>
+  </div>
+  
+<script>
+  // CREATE CHART FROM 'minhasAvaliações' TABLE
+  const table = document.getElementById("minhasAvaliações");
+  const canvas = document.getElementById("chartMinhasAvaliações");
+  const labels = [];
+  const data = [];
 
+  // Loop through each row (skipping the first row which contains headers)
+  for (let i = 1; i < table.rows.length; i++) {
+    const row = table.rows[i];
+    const critério = row.cells[0].textContent;
+    const values = Array.from(row.cells).slice(1).map(cell => parseInt(cell.textContent));
 
+    labels.push(critério);
+    data.push(values);
+  }
 
-  <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-    
-    FAZER  SCRIPT PARA CRIAR UM GRÁFICO BASEADO NOS VALORES DA TAB ANTERIOR<br>
-    
-  </h2>
+  // Calculate percentages based on row values
+  const percentages = data.map(row => {
+    const total = row.reduce((sum, value) => sum + value, 0);
+    return row.map(value => (value / total) * 100);
+  });
 
+  // Custom labels for the Y-axis (transposed from X-axis)
+  const customLabels = ["Insatisfatório", "Parcialmente Satisfatório", "Satisfatório", "Bom", "Muito Bom"];
+
+  // Create the chart
+  const ctx = canvas.getContext("2d");
+  new Chart(ctx, {
+    type: "horizontalBar", // Use horizontalBar to transpose the chart
+    data: {
+      labels: labels, // Use the critério labels as Y-axis labels
+      datasets: [
+        { label: "Insatisfatório", data: percentages.map(row => row[0]), backgroundColor: "#FF0000", stack: 'Stack 0',},
+        { label: "Parcialmente Satisfatório", data: percentages.map(row => row[1]), backgroundColor: "#F18200", stack: 'Stack 0', },
+        { label: "Satisfatório", data: percentages.map(row => row[2]), backgroundColor: "#D2E400",stack: 'Stack 0', },
+        { label: "Bom", data: percentages.map(row => row[3]), backgroundColor: "#52D700", stack: 'Stack 0', },
+        { label: "Muito Bom", data: percentages.map(row => row[4]), backgroundColor: "#00CA1F", stack: 'Stack 0', }
+      ]
+    },
+    options: {
+      indexAxis: 'y',
+      scales: {
+        y: {
+          stacked: true
+        },
+        x: {
+          stacked: true,
+          ticks: {
+            beginAtZero: true,
+            max: 100,
+            callback: function (value) {
+              return value + "%";
+            }
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'right',
+          labels: {
+            usePointStyle: true,
+            formatter: function (legendItem, _) {
+              const datasetIndex = legendItem.datasetIndex;
+              const dataIndex = legendItem.index;
+              const percentage = percentages[dataIndex][datasetIndex];
+              return `${customLabels[datasetIndex]} (${percentage.toFixed(1)}%)`;
+            }
+          }
+        }
+      }
+    }
+  });
+</script>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- TAB OBSERVAÇÕES -->
-  <div id="tabResultadoAvaliacaoDocente-3" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-3 tabResultadoAvaliacaoDocente-3">
-    <ul>
-      <li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-3" accessKey="tabResultadoAvaliacaoDocente-3">Observações</a>
-      </li>
-    </ul>
-  
+<div id="tabResultadoAvaliacaoDocente-3" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-3 tabResultadoAvaliacaoDocente-3">
+  <ul>
+    <li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-3" accessKey="tabResultadoAvaliacaoDocente-3">Observações</a>
+    </li>
+  </ul>
 
-   
-
-  <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-    
-    TABELA COM LINHAS DE ENTRADA SOBRE ANOTAÇÕES NO CAMPO 'avaliarObservações'<br>
-    
-  </h2>
-
-
+  <table id="listaObervações" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 70%; height: auto;">
+    <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: 10px;">
+      <th style="width: 15%;">Data</th>
+      <th style="width: 85%;">Observação</th>
+    </thead>
+    <tr class="ui-state-default">
+      <th>GET 'dataAvaliação'</th>
+      <th>GET 'avaliarObservações'</th>
+    </tr>
+    <tr class="ui-state-default">
+      <th>GET 'dataAvaliação'</th>
+      <th>GET 'avaliarObservações'</th>
+    </tr>
+  </table>
 </div>
-
-
-
-
-
-
 
 
 

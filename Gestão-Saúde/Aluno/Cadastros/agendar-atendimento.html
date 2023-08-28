@@ -123,7 +123,7 @@
 
 
     <div style="margin-top: 20px; margin-left: 10px;">
-      <button name="btnAdicionar" onClick="salvar()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
+      <button name="btnAdicionar" onClick="addAgendamento(), orderTableByDate()" id="btnAdicionar" value="Adicionar" class="button"  >Adicionar</button>
       <button name="btnExcluir" onClick="excluir()" id="btnExcluir" value="Excluir" class="button"  >Excluir</button>
       <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
     </div>
@@ -131,22 +131,26 @@
   
     <hr class="ui-state-default">
     <div style="margin: 5px;"></div>
-    <table id="listaAgendamento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin: 30px;">
+    <table id="listaAgendamento" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin: 30px;">
       <thead>
         <tr class="ui-jqgrid-labels" role="rowheader">
-          <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 2.55%;">Selec.</th>
-          <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Data</th>
-          <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 25%;">Paciente</th>
-          <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Procedimento</th>
-          <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Local</th>
-          <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">Turno</th>
-          <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 22.5%;">Disciplina/Estágio</th>
+          <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 2.55%;">Selec.</th>
+          <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 5%;">Data</th>
+          <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 25%;">Paciente</th>
+          <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 20%;">Procedimento</th>
+          <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 20%;">Local</th>
+          <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 10%;">Turno</th>
+          <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 22.5%;">Disciplina/Estágio</th>
         </tr>
+        <tbody>
+          <!-- NEW ENTRIES WILL BE ADDED HERE! -->
+        </tbody>
       </thead>
     </table>
-    
+
+
 <script>
-function salvar() {
+ function addAgendamento() {
   var dataAgendamento = document.getElementById("dataAgendamento").value;
   var pacienteAgendamento = document.getElementById("pacienteAgendamento").value;
   var procedimentoAgendamento = document.getElementById("procedimentoAgendamento").value;
@@ -160,8 +164,8 @@ function salvar() {
   var selectedDate = new Date(dataAgendamento);
 
   if (selectedDate < today) {
-    alert("Data de agendamento deve ser a partir do dia seguinte.");
-    return; // Prevent further execution of salvar function
+      alert("Data de agendamento deve ser a partir do dia seguinte.");
+      return; // Prevent further execution of salvar function
   }
     // Check if localAgendamento and turnoAgendamento are not 'Escolher'
     if (localAgendamento !== "Escolher" && turnoAgendamento !== "Escolher") {
@@ -191,7 +195,8 @@ function salvar() {
         checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
   
         var dataCell = newRow.insertCell(1);
-        dataCell.innerHTML = dataAgendamento;
+        var formattedDate = formatDate(dataAgendamento);
+        dataCell.innerHTML = formattedDate;
         dataCell.className = "ui-state-default ui-th-column ui-th-ltr";
   
         var pacienteCell = newRow.insertCell(2);
@@ -222,6 +227,10 @@ function salvar() {
         document.getElementById("localAgendamento").value = "Escolher";
         document.getElementById("turnoAgendamento").value = "Escolher"; 
         document.getElementById("disciplinaAgendamento").value = "";
+
+        // Reorder the table based on the 'dataAgendamento' after adding a new entry
+        orderTableByDate();
+
       } else {
         alert("Agendamentos devem ser realizados com no mínimo 24 horas de antecedência.");
       }
@@ -256,65 +265,43 @@ function salvar() {
     document.getElementById("disciplinaAgendamento").value = "";
     }
 
+  // Format date as dd/mm/yyyy
+  function formatDate(date) {
+    const parts = date.split("-");
+    const formattedDate = `${parts[2]}/${parts[1]}/${parts[0]}`;
+    return formattedDate;
+  }
+
+  function orderTableByDate() {
+    const table = document.getElementById("listaAgendamento");
+    const rows = Array.from(table.querySelectorAll("tr")).slice(1); // Exclude the header row
+
+    rows.sort((a, b) => {
+      const dateA = new Date(a.cells[1].textContent.split('/').reverse().join('/'));
+      const dateB = new Date(b.cells[1].textContent.split('/').reverse().join('/'));
+      return dateA - dateB;
+    });
+
+    // Clear the existing rows from the table body
+    const tbody = table.querySelector("tbody");
+    tbody.innerHTML = ""; // Remove all rows
+
+    // Append the sorted rows back to the table body
+    rows.forEach(row => tbody.appendChild(row));
+  }
+
 </script>
 
+</div>
 
-
-
-<hr class="ui-state-default">
-
-<h2> PARA A PÁGINA CONSULTA > AGENDA DE CLÍNICAS</h2>
-
-<label style="width: 190px; margin: 15px;">Filtrar tabela pelo Local o atendimento</label>
-<select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 15px;" id="filtroLocalAgendamento">
-    <option value="Todos">Todos</option>
-    <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
-    <option value="Clínica Oeste">Clínica Oeste</option>
-    <option value="Clínica Sul - 2º Andar">Clínica Sul - 2º Andar</option>
-    <option value="Clínica Norte - 2º Andar">Clínica Norte - 2º Andar</option>
-    <option value="Bloco - 3º Andar">Bloco - 3º Andar</option>
-    <option value="Ambulatório - 3º Andar">Ambulatório - 3º Andar</option>
-    <option value="Consultório individualizado - 3º Andar">Consultório individualizado - 3º Andar</option>
-    <option value="Clínica 4º Andar">Clínica 4º Andar</option>
-    <option value="Radiologia">Clínica de Radiologia</option>
-</select>
-<p></p>
-
-<button id="sortButton" style="margin: 15px;">Ordenar por data</button>
-
-<script>
-// filtro por local de atendimento
-document.addEventListener("DOMContentLoaded", function() {
-  const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
-  const listaAgendamento = document.getElementById("listaAgendamento");
-
-  filtroLocalAgendamentoSelect.addEventListener("change", function() {
-    const selectedOption = filtroLocalAgendamentoSelect.value;
-    const rows = listaAgendamento.getElementsByTagName("tr");
-
-    for (let i = 1; i < rows.length; i++) { // Skip the header row (index 0)
-      const row = rows[i];
-      const localCell = row.cells[4]; // Assuming the "Local" cell is at index 4
-
-      if (selectedOption === "Todos" || localCell.textContent === selectedOption) {
-        row.style.display = ""; // Show the row
-      } else {
-        row.style.display = "none"; // Hide the row
-      }
-    }
-  });
-});
-</script>
-
-  
   <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+   
     FUNCIONALIDADE PREVISTA: <br>
-    1- O USUÁRIO (ALUNO OU PROFESSOR) CRIA UM AGENDAMENTO NOVO<br>
-    2- USUÁRIO PODE INCLUIR VÁRIOS AGENDAMENTOS DE DIFERENTES PACIENTES DISCIPLINAS DE UMA VEZ SÓ<br>
-    3- CRIAR UM SCRIPT PARA ORDENAR A TABELA POR DATA<br>
-    4- ATUALIZA A VARIÁVEL 'statusAgendamento' para 'Agendado'<br>
+    1- O USUÁRIO (ALUNO OU PROFESSOR) CRIA UM AGENDAMENTO / PODE INCLUIR VÁRIOS AGENDAMENTOS DE DIFERENTES PACIENTES DISCIPLINAS DE UMA VEZ SÓ<br>
+    2- ATUALIZA A VARIÁVEL 'statusAgendamento' para 'Agendado'<br>
     </h2>
   
+    
 
 </body>
 </html>

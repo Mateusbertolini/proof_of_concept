@@ -1,5 +1,4 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head lang="pt-br">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
@@ -16,6 +15,33 @@
 <link href="stylecobalto.css" type="text/css" rel="stylesheet">
 <link href="../../../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
 
+<!--ALERT MESSAGES-->
+<link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
+<script src="../../../scripts/alertMessage.js"></script>
+
+    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+    <div id="customAlert" class="modal">
+        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+            <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
+            <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
+            </button>
+        </div>
+        <p></p>
+        <br>
+        <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+            <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
+            <p id="alertMessage"></p>
+        </div>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <div><button id="okButton" class="centered-button">OK</button></div>
+        </div>
+    </div>
+    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+<!--ALERT MESSAGES-->
 </head>
 
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
@@ -124,48 +150,46 @@
   </div>
     
   
-    <div>
     <p></p>
     <br>
     <label style="width: 120px; ;margin: 5px;">CPF</label>
-    <input type="text" name="Cpf" id="Cpf" maxlength="" class="ui-state-default ui-corner-all mousetrap cpf" onblur="pesquisaPessoa()" style="width: 100px;" readonly="readonly">
-  
-    <br></div>
-  
+    <input type="text" id="Cpf" maxlength="11" class="ui-state-default ui-corner-all" style="width: 100px;">
+    <br> 
+    
     <label style="width: 120px; ;margin: 5px;">Nome</label>
-    <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+    <input type="text" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
     <br>
     
     <label style="width: 120px; ;margin: 5px;">RG</label>
-    <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+    <input type="text" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Cartão SUS (CNS)</label>
-    <input type="text" name="CNS" id="CNS" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+    <input type="text" id="CNS" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
     <br>
     
     <label style="width: 120px; ;margin: 5px;"  >Dt. nascimento</label>
-    <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" readonly="readonly">
+    <input type="text" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">E-mail</label>
-    <input type="text" name="Email" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+    <input type="text" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Telefone</label>
-    <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+    <input type="text" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Telefone 2 (Opcional)</label>
-    <input type="text" name="Tel2" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+    <input type="text" id="Tel2" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Telefone 3 (Opcional)</label>
-    <input type="text" name="Tel3" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+    <input type="text" id="Tel3" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
     <br>
     
   <label style="width: 120px; ;margin: 5px;">Estado civil</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil">
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="EstadoCivil">
       <option value="CASADO">CASADO</option>
       <option value="DIVORCIADO">DIVORCIADO</option>
       <option value="OUTROS">OUTROS</option>
@@ -176,14 +200,14 @@
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Sexo</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="Sexo" id="Sexo">
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="Sexo">
       <option value="Masculino">Masculino</option>
       <option value="Feminino">Feminino</option>
         </select> 
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Cor/Raça</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca">
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="CorRaca">
       <option value="Amarelo">Amarelo</option>
       <option value="Branca">Branca</option>
       <option value="Indígena">Indígena</option>
@@ -197,16 +221,16 @@
   <br>
 
   <label style="width: 120px; margin: 5px;">Nome da mãe</label>
-  <input type="text" name="NomeMae" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
 
   <br>
   <label style="width: 120px;margin: 5px;">Nome do pai</label>
-  <input type="text" name="NomePai" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
   
   <br>
   <hr class="ui-state-default">
   <label style="width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
-    <select class="ui-state-default ui-corner-all" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple>
+    <select class="ui-state-default ui-corner-all" style="width: 100px;margin: 5px;" id="PNE" multiple>
       <option value="Hipertensão">Hipertensão</option>
       <option value="Diabetes">Diabetes</option>
       <option value="Hepatite B">Hepatite B</option>
@@ -218,7 +242,7 @@
   <br>
   
   <label style="width: 120px;">Tipo de endereço</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo">
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="EnderecoTipo">
       <option value="Comercial">Comercial</option>
       <option value="Família">Família</option>
       <option value="Residencial">Residencial</option>
@@ -226,7 +250,7 @@
   <br>
 
   <label style="width: 120px;">CEP</label>
-    <input type="text" name="Cep" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;">
+    <input type="text" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;">
     <br>
 
     <label style="width: 120px;">Endereço</label>
@@ -234,24 +258,23 @@
     <br>
 
     <label style="width: 120px;">Número</label>
-    <input type="text" name="EndNumero" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
+    <input type="text" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
     <br>
 
     <label style="width: 120px;">Complemento</label>
-    <input type="text" name="EndComplemento" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
     <label style="width: 120px;">Bairro</label>
-    <input type="text" name="Bairro" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
     <label style="width: 120px;">Cidade</label>
-    <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
    
-
-    
+  
   
 
 <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
@@ -290,12 +313,16 @@ function getformdata(){
 // Array de dados fictícios
 let dadosFicticios = [
   {
+    informacoesImportantes: "Paciente com alergia a penicilina",
     cpf: "112.289.390-63",
     nome: "Fulano da Silva",
     rg: "1234567",
+    CNS: "456789012345678",
     dataNascimento: "01/01/1990",
     email: "fulano@example.com",
     telefone: "(00) 12345-6789",
+    telefone2: "(00) 98765-4321",
+    telefone3: "(00) 11111-2222",
     estadoCivil: "SOLTEIRO",
     sexo: "Masculino",
     corRaca: "Branca",
@@ -311,12 +338,16 @@ let dadosFicticios = [
     cidade: "Cidadópolis",
   },
   {
+    informacoesImportantes: "",
     cpf: "790.588.720-09",
     nome: "Ciclana Pereira",
     rg: "7654321",
+    CNS: "987654321098765",
     dataNascimento: "15/06/1985",
     email: "ciclana@example.com",
     telefone: "(00) 98765-4321",
+    telefone2: "(00) 12345-6789",
+    telefone3: "",
     estadoCivil: "CASADO",
     sexo: "Feminino",
     corRaca: "Parda",
@@ -332,12 +363,16 @@ let dadosFicticios = [
     cidade: "Cidadelândia",
   },
   {
+    informacoesImportantes: "",
     cpf: "964.940.820-76",
     nome: "Beltrano Alves",
     rg: "11223344",
+    CNS: "123456789012345",
     dataNascimento: "30/11/1982",
     email: "beltrano@example.com",
     telefone: "(00) 11111-2222",
+    telefone2: "",
+    telefone3: "",
     estadoCivil: "DIVORCIADO",
     sexo: "Masculino",
     corRaca: "Indígena",
@@ -359,12 +394,17 @@ let dadosFicticios = [
 function preencherFormulario(indice) {
   if (indice >= 0 && indice < dadosFicticios.length) {
     const dados = dadosFicticios[indice];
-    document.getElementById("CPF").value = dados.cpf;
+    
+    document.getElementById("informacoesImportantes").value = dados.informacoesImportantes;
+    document.getElementById("Cpf").value = dados.cpf;
     document.getElementById("Nome").value = dados.nome;
     document.getElementById("Rg").value = dados.rg;
+    document.getElementById("CNS").value = dados.CNS;
     document.getElementById("DataNasc").value = dados.dataNascimento;
     document.getElementById("Email").value = dados.email;
     document.getElementById("Tel").value = dados.telefone;
+    document.getElementById("Tel2").value = dados.telefone2;
+    document.getElementById("Tel3").value = dados.telefone3;
     document.getElementById("EstadoCivil").value = dados.estadoCivil;
     document.getElementById("Sexo").value = dados.sexo;
     document.getElementById("CorRaca").value = dados.corRaca;

@@ -1,5 +1,4 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
-
 <head lang="pt-br">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
@@ -14,9 +13,38 @@
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
 <link href="stylecobalto.css" type="text/css" rel="stylesheet">
-<link href="../../../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
 
+<!--ALERT MESSAGES-->
+<link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
+<script src="../../../scripts/alertMessage.js"></script>
+
+    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+    <div id="customAlert" class="modal">
+        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+            <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
+            <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
+            </button>
+        </div>
+        <p></p>
+        <br>
+        <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+            <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
+            <p id="alertMessage"></p>
+        </div>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <div><button id="okButton" class="centered-button">OK</button></div>
+        </div>
+    </div>
+    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+<!--ALERT MESSAGES-->
 </head>
+
+
+
 
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
 <div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
@@ -323,59 +351,63 @@
 <!--INÍCIO TAB DEMANDAS-->
 <div id="encaminhamento">
 <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-1" role="tabpanel" style="display: none;" aria-expanded="false" aria-hidden="true">
-  <hr class="ui-state-default"><label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
-  <p>
+  <p></p>
 
-   <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="areaSaúde" id="Curso">
+  <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
     <option value="0">Escolher</option>
-    <option value="1200">Enfermagem</option>
-    <option value="7100">Farmácia</option>
-    <option selected value="400">Odontologia</option>
-    <option value="7200">Terapia Ocupacional</option>
+    <option value="Odontologia">Odontologia</option>
+    <option value="Enfermagem">Enfermagem</option>
+    <option value="Farmácia">Farmácia</option>
+    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
   </select>
+  
+  <br>
   <p></p>
   <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="especAreaSaúde" id="Especialidade">
-      <option> </option>
-    </select>
-    
-<script>
-  const disciplinas = [
-    {codCurso: 400, nomeEspec:'Prótese Dentária'},
-    {codCurso: 400, nomeEspec:'Odontopediatria'},
-    {codCurso: 400, nomeEspec:'Periodontia'},
-    {codCurso: 400, nomeEspec:'Dentística'},
-    {codCurso: 400, nomeEspec:'Cirurgia'},
-    {codCurso: 1200, nomeEspec:'Pediatria e Neonatologia'},
-    {codCurso: 1200, nomeEspec:'Terapia Intensiva e Alta Complexidade'},
-    {codCurso: 1200, nomeEspec:'Cardiologia e Hemodinâmica'},
-    {codCurso: 7100, nomeEspec:'Análises clínicas' },
-    {codCurso: 7100, nomeEspec:'Antroposofia' },
-    {codCurso: 7200, nomeEspec:'Contextos sociais' },
-    {codCurso: 7200, nomeEspec:'Saúde da família' },
-    // Add more options as needed
-  ];
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
+    <option value="0">Selecione uma especialidade</option>
+  </select>
   
-  const areaSelect = document.getElementById('Curso');
-  const disciplinasSelect = document.getElementById('Especialidade');
-  
-  areaSelect.addEventListener('change', function() {
-    const selectedCodCurso = areaSelect.value;
+  <script>
+    let componentesCurriculares = [
+      {codCurso: '0', nomeEspec:'Selecione uma especialidade'},
+      {codCurso: 'Odontologia', nomeEspec:'Prótese Dentária'},
+      {codCurso: 'Odontologia', nomeEspec:'Odontopediatria'},
+      {codCurso: 'Odontologia', nomeEspec:'Periodontia'},
+      {codCurso: 'Odontologia', nomeEspec:'Dentística'},
+      {codCurso: 'Odontologia', nomeEspec:'Cirurgia'},
+      {codCurso: 'Enfermagem', nomeEspec:'Pediatria e Neonatologia'},
+      {codCurso: 'Enfermagem', nomeEspec:'Terapia Intensiva e Alta Complexidade'},
+      {codCurso: 'Enfermagem', nomeEspec:'Cardiologia e Hemodinâmica'},
+      {codCurso: 'Farmácia', nomeEspec:'Análises clínicas' },
+      {codCurso: 'Farmácia', nomeEspec:'Antroposofia' },
+      {codCurso: 'Terapia Ocupacional', nomeEspec:'Contextos sociais' },
+      {codCurso: 'Terapia Ocupacional', nomeEspec:'Saúde da família' },
+      // Add more options as needed
+    ];
     
-    // Clear existing options
-    disciplinasSelect.innerHTML = '<option> </option>';
+    const areaSelect = document.getElementById('areaSaúde');
+    const componentesCurricularesSelect = document.getElementById('especAreaSaúde');
     
-    // Filter and populate the second select
-    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === parseInt(selectedCodCurso));
-    selectedDisciplinas.forEach(disciplina => {
-      const option = document.createElement('option');
-      option.textContent = disciplina.nomeEspec;
-      disciplinasSelect.appendChild(option);
+    areaSelect.addEventListener('change', function() {
+      const selectedCodCurso = areaSelect.value;
+    
+      // Clear existing options
+      componentesCurricularesSelect.innerHTML = '<option value="0">Selecione uma especialidade</option>';
+    
+      // Filter and populate the second select
+      const selectedcomponentesCurriculares = componentesCurriculares.filter(disciplina => disciplina.codCurso === selectedCodCurso);
+      selectedcomponentesCurriculares.forEach(disciplina => {
+        const option = document.createElement('option');
+        option.value = disciplina.nomeEspec;
+        option.textContent = disciplina.nomeEspec;
+        componentesCurricularesSelect.appendChild(option);
+      });
     });
-  });
-const event = new Event('change');
-areaSelect.dispatchEvent(event);
-</script>
+  </script>
+
+
 <p></p>
 <label style="width: 180px; font-weight: bold;">Nível de complexidade</label>
 <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="complexidade" id="Complexidade">
@@ -430,6 +462,7 @@ areaSelect.dispatchEvent(event);
   </table>
 </div>
 <!--FIM TAB DEMANDAS-->
+
 <!--Script DEMANDAS-->
 <script>
   function adicionarNovaLinha(data) {
@@ -492,7 +525,7 @@ const codtonome = {
     Encaminhamentos.Curso = codtonome[Encaminhamentos.Curso]
     console.log(Encaminhamentos)
     api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
-alert(result.message)
+showCustomAlert(result.message)
 console.log(result)
 adicionarNovaLinha(Encaminhamentos)
     })

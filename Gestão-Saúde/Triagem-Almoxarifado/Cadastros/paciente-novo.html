@@ -112,8 +112,8 @@
 
 
 <div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
-  <br>
-   
+
+
   <div>
     <p></p>
     <label style="width: 180px; margin: 5px; font-weight: bold;">INFORMAÇÕES IMPORTANTES</label>
@@ -139,6 +139,7 @@
         // Apply styles once the page loads
         applyStyles();
       });
+      
     </script>
     <p style="margin: 10px;"><span style="margin-left: 15px;">Descrever informações imprescindíveis ao profissional de saúde (ALERGIAS, RELATO DE ABUSO, ETC.)</span></p>
     <p></p>
@@ -153,7 +154,7 @@
     <p></p>
     <br>
     <label style="width: 120px; ;margin: 5px;">CPF</label>
-    <input type="text" id="Cpf" maxlength="11" class="ui-state-default ui-corner-all" style="width: 100px;">
+    <input type="text" name="Cpf" id="CPF" maxlength="11" class="ui-state-default ui-corner-all" style="width: 100px;">
     <br> 
     
     <label style="width: 120px; ;margin: 5px;">Nome</label>
@@ -189,7 +190,7 @@
     <br>
     
   <label style="width: 120px; ;margin: 5px;">Estado civil</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="EstadoCivil">
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil">
       <option value="CASADO">CASADO</option>
       <option value="DIVORCIADO">DIVORCIADO</option>
       <option value="OUTROS">OUTROS</option>
@@ -200,14 +201,14 @@
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Sexo</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="Sexo">
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="Sexo" id="Sexo">
       <option value="Masculino">Masculino</option>
       <option value="Feminino">Feminino</option>
         </select> 
   <br>
 
   <label style="width: 120px; ;margin: 5px;">Cor/Raça</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="CorRaca">
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="CorRaca" id="CorRaca">
       <option value="Amarelo">Amarelo</option>
       <option value="Branca">Branca</option>
       <option value="Indígena">Indígena</option>
@@ -221,16 +222,16 @@
   <br>
 
   <label style="width: 120px; margin: 5px;">Nome da mãe</label>
-  <input type="text" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" name="NomeMae" id="NomeMae" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
 
   <br>
   <label style="width: 120px;margin: 5px;">Nome do pai</label>
-  <input type="text" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
+  <input type="text" name="NomePai" id="NomePai" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
   
   <br>
   <hr class="ui-state-default">
   <label style="width: 600px;">Condição sistêmica/Necessidade especial: (Segurar control para fazer seleçoes múltiplas)</label><br>
-    <select class="ui-state-default ui-corner-all" style="width: 100px;margin: 5px;" id="PNE" multiple>
+    <select class="ui-state-default" style="width: 100px;margin: 5px;" name="PNE" id="PNE" multiple>
       <option value="Hipertensão">Hipertensão</option>
       <option value="Diabetes">Diabetes</option>
       <option value="Hepatite B">Hepatite B</option>
@@ -242,7 +243,7 @@
   <br>
   
   <label style="width: 120px;">Tipo de endereço</label>
-    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="EnderecoTipo">
+    <select class="ui-state-default" style="width: 180px; height: 20px;" name="EnderecoTipo" id="EnderecoTipo">
       <option value="Comercial">Comercial</option>
       <option value="Família">Família</option>
       <option value="Residencial">Residencial</option>
@@ -250,7 +251,7 @@
   <br>
 
   <label style="width: 120px;">CEP</label>
-    <input type="text" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;">
+    <input type="text" name="Cep" id="Cep" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cep" style="width: 100px;">
     <br>
 
     <label style="width: 120px;">Endereço</label>
@@ -258,23 +259,24 @@
     <br>
 
     <label style="width: 120px;">Número</label>
-    <input type="text" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
+    <input type="text" name="EndNumero" id="EndNumero" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
     <br>
 
     <label style="width: 120px;">Complemento</label>
-    <input type="text" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" name="EndComplemento" id="EndComplemento" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
     <label style="width: 120px;">Bairro</label>
-    <input type="text" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" name="Bairro" id="Bairro" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
     <label style="width: 120px;">Cidade</label>
-    <input type="text" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
+    <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;">
     <br>
 
    
-  
+
+    
   
 
 <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
@@ -282,7 +284,7 @@
   function submit() {
 
     const formdata = getformdata()
-    const response = api.pacientes.criar(formdata).then((response) => { alert(response.message)
+    const response = api.pacientes.criar(formdata).then((response) => { showCustomAlert(response.message)
           ;});
 }
 
@@ -396,7 +398,7 @@ function preencherFormulario(indice) {
     const dados = dadosFicticios[indice];
     
     document.getElementById("informacoesImportantes").value = dados.informacoesImportantes;
-    document.getElementById("Cpf").value = dados.cpf;
+    document.getElementById("CPF").value = dados.cpf;
     document.getElementById("Nome").value = dados.nome;
     document.getElementById("Rg").value = dados.rg;
     document.getElementById("CNS").value = dados.CNS;

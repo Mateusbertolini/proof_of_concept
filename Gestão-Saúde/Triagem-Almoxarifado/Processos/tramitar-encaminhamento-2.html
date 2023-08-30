@@ -1,0 +1,387 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="pt-br">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+    var PATH_COOKIE = '/';
+    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+</script>
+<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+<link href="stylecobalto.css" type="text/css" rel="stylesheet">
+
+<!--ALERT MESSAGES-->
+<link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
+<script src="../../../scripts/alertMessage.js"></script>
+
+    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+    <div id="customAlert" class="modal">
+        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
+        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+            <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
+            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
+            <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
+            </button>
+        </div>
+        <p></p>
+        <br>
+        <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+            <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
+            <p id="alertMessage"></p>
+        </div>
+        <p> </p><br>
+        <p> </p><br>
+        <p> </p><br>
+        <div><button id="okButton" class="centered-button">OK</button></div>
+        </div>
+    </div>
+    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+<!--ALERT MESSAGES-->
+</head>
+
+<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
+<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
+    <style type="text/css">
+    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
+    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
+    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
+    .column {width: 33.3%; float: left; padding-bottom: 100px;}
+    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
+            @media (max-width: 900px){
+            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
+            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
+            .column {width: 100%; float: none; padding-bottom: 0px;}
+            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
+        }
+        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
+    .portlet {margin: 0 0 1.5em 0;}
+    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
+    .portlet-header button {float: right; height: 18px; width: 18px;}
+    .portlet-header .ui-icon {float: right;}
+    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
+    .portlet-content a:hover{text-decoration: underline!important;}
+    .portlet-content a:visited{color: #bbb!important;}
+    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
+    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
+    .portlet-content ul li:last-child {border-bottom: none!important;}
+    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
+    .ui-sortable-placeholder * {visibility: hidden;}
+  </style>
+
+
+<!-- CONTEÚDO SUPERIOR -->
+<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+  <li>Triagem/Almoxarifado</li>    
+  <li>Processos</li>
+  <li>Tramitar encaminhamento/alta de paciente</li>
+  </ul>
+    
+<div style="clear: both;"></div></div><div style="clear: both;"></div>
+
+<!-- CONTEÚDO BOTÕES -->
+<div class="ui-widget-content ui-corner-all toolbar">
+    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+    <button id="salvar" class="salvar" title="Salvar paciente" onclick="submitFunction()" style="float: left;">Salvar alterações</button>
+    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+    <span style="clear: both; display: block"></span>
+  </div>
+
+
+
+<!-- CONTEÚDO DIV PACIENTE-->
+<div id="paciente" class="tabs">
+  <div>
+    <div id="paciente-0" class="ui-widget pacientes-0">
+      <ul>
+          <li class="labeltabpaciente"><a href="#paciente-0" accessKey="paciente-0">Paciente</a></li>
+      </ul>
+      <p></p><br>
+      <p></p><br>
+      <label style="width: 100px;" >CPF</label>
+      <input type="text" id="pacienteCPF" value="GET CPF PACIENTE" maxlength="255" class="ui-state-default ui-corner-all mousetrap"
+      style="width: 150px;" readonly="readonly"/>
+      <label style="width: 100px;margin-left: 35px;">Paciente</label>
+      <input type="text" id="pacienteNome" value="GET NOME DO PACIENTE" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 350px;" readonly="readonly"/>
+      <p></p><br>
+      
+  <hr class="ui-state-default">
+  <p></p><br>
+
+      <label style="font-size: 13px;font-weight: bold;">Vínculos atuais <span style="font-weight: 100;">(Selecionar uma ou mais linhas na tabela para modificar o vínculo)</span></label>
+        <br>
+        <table id="vinculadosTable" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px;margin-top: 15px;">
+        <thead>
+            <tr class="ui-jqgrid-labels" role="rowheader">
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
+                Selec.
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">
+                Matrícula
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 25%;">
+                Aluno
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 25%;">
+                Disciplina
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">
+                Demanda
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">
+                Área da Saúde
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">
+                Status
+            </th>
+            </tr>
+        </thead>
+        <tr>
+            <th class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox"></th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">0000000</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">João da Silva </th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Unidade de Prótese Dentária 2</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Prótese Dentária</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Odonto</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Em atendimento</th>
+        </tr>
+        <tr>
+            <th class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox"></th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">111111111</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Maria da Luz</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Pronto Atendimento</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Urgência</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Odonto</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Em atendimento</th>
+        </tr>
+        <tr>
+            <th class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox"></th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">88888888</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Pedro Costa</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Unidade de Clínica Odontologia 2</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Endodontia</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Odonto</th>
+            <th class="ui-state-default ui-th-column ui-th-ltr">Em atendimento</th>
+        </tr>
+        <!-- Table body rows go here -->
+        </table>
+        <p></p><br>
+
+        <div style="display: flex; align-items: center;">
+            <label style="width: 320px; font-size: 12px;font-weight: bold;">Alterar status do paciente sem vinculá-lo a outro aluno:</label>
+            <select class="ui-state-default ui-corner-all" style="width: 150px; height: 20px; margin: 20px 0;" name="novoStatus" id="novoStatus">
+              <option value="0">Escolher</option>
+              <option value="emEspera">Em espera</option>
+              <option value="continuaTratamento">Continua em tratamento na especialidade</option>
+              <option value="altaPaciente">Alta</option>
+              <option value="abandonoPaciente">Abandono/Desistência</option>
+            </select>
+            <br>
+            <button id="deleteButton" style="margin: 20px; padding: 5px;">Alterar vínculo</button>
+          </div>
+          <p></p><br>
+        </div>
+    </div>
+  </div>
+   
+
+
+
+
+<!-- CONTEÚDO COLUNA DA ESQUERDA -->
+<div id="labeltabencaminhamentoAlta" class="tabs" style="width: 35%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+    <div>
+      <div id="labeltabencaminhamentoAlta-0" class="ui-widget labeltabencaminhamentoAlta labeltabencaminhamentoAlta-0">
+        <ul>
+            <li class="labeltabencaminhamentoAlta"><a href="#encaminhamentoAlta-0" accessKey="encaminhamentoAlta-0">Descrição do encaminhamento / alta</a></li>
+        </ul>
+        <p></p><br>
+  
+                    
+        <label style="width: 300px;margin-left: 20px;margin-top: 5px;">Data do encaminhamento</label>
+        <input type="text" id="encaminhamentoData" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 150px;" />
+        <br>
+      
+        <label style="width: 300px;margin-left: 20px;margin-top: 5px;">Origem do encaminhamento</label>
+        <input type="text" id="encaminhamentoOrigem" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="GET NOME DA DISCIPLINA">
+        <br>
+      
+        <label style="width: 300px;margin-left: 20px;margin-top: 5px;">Encaminhado por:</label>
+        <input type="text" id="encaminhamentoAluno" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="GET NOME ALUNO">
+        <br>
+
+        <label style="width: 300px;margin-left: 20px;margin-top: 5px;">Responsável técnico</label>
+        <input type="text" id="encaminhamentoResponsavel" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="GET NOME RESP.">
+        <br>
+      
+        <label style="width: 300px;margin-left: 20px;margin-top: 5px;">Complexidade</label>
+        <input type="text" id="encaminhamentoComplexidade" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="GET COMPLEXIDADE?">
+        <br>
+
+        <label style="width: 300px;margin-left: 20px;margin-top: 5px;">Justificativa/Descrição do encaminhamento/alta:</label><br>
+        <textarea style="width: 560px; height: 100px;margin-left: 20px;margin-top: 5px;" id="encaminhamentoDemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" placeholder="GET DESCRIÇÃO DO ENCAMINHAMENTO/ALTA"></textarea>
+        <br>
+
+        
+        
+
+
+        </div>
+    </div>
+  </div>
+    
+  
+  <!-- CONTEÚDO COLUNA DA DIREITA -->
+  <div id="encaminhar" class="tabs" style="width: 65%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+    <div id="encaminhar-0" class="ui-widget encaminhar encaminhar-0">
+      <ul>
+          <li class="labeltabencaminhar"><a href="#encaminhar-0" accessKey="encaminhar-0">Encaminhar paciente para:</a></li>
+      </ul>
+      
+    <br>
+    <p></p>
+  
+    <label style="width: 150px;">Área/Curso da saúde</label>
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="areaSaúde">
+    <option value="0">Escolher</option>
+    <option value="Odontologia">Odontologia</option>
+    <option value="Enfermagem">Enfermagem</option>
+    <option value="Farmácia">Farmácia</option>
+    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+  </select>
+  
+  <br>
+  <p></p>
+    
+  
+    <hr class="ui-state-default">
+
+    <br>
+    <p></p>
+    <label style="width: 150px;">Ano/Período</label>
+    <input type="text" name="lblAnoOrigem" id="lblAnoOrigem" value="GET ANO/PERÍODO" maxlength="255" class="ui-state-default ui-corner-all mousetrap ano_base_periodo_origem" style="width: 150px;" readonly="readonly"/>
+
+    <br>
+    <p></p>
+    <label style="width: 150px;">Componente curricular</label>
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="componenteCurricular">
+        <option value="0">Escolher</option>
+        <option value="1">DISCIPLINA 1</option>
+        <option value="2">DISCIPLINA 2</option>
+        <option value="3">DISCIPLINA 3</option>
+        <option value="4">DISCIPLINA 4</option>
+        <option value="5">DISCIPLINA 5</option>
+        <option value="6">DISCIPLINA 6</option>
+        <option value="7">DISCIPLINA 7</option>
+    </select>
+
+    
+    <br>
+    <p></p>
+    <label style="width: 150px;">Turma</label>
+    <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="componenteCurricularTurma">
+        <option value="0">Escolher</option>
+        <option value="1">M1</option>
+        <option value="2">M2</option>
+    </select>
+      
+    <br>
+    <div class="table-container">
+      <table id="tableAlunos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 85%; font-size: 14px; margin: 20px;">
+        <thead>
+           <tr class="ui-jqgrid-labels" role="rowheader">
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 10%;">
+                Selec.
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">
+                Matrícula
+            </th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 55%;">
+                Aluno
+            </th>
+          </tr>
+        </thead>
+        <tr>
+            <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">'matrículaAluno'</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">'nomeAluno'</td>
+        </tr>
+        <tr>
+          <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+          <td class="ui-state-default ui-th-column ui-th-ltr">0000981</td>
+          <td class="ui-state-default ui-th-column ui-th-ltr">Ciclano da Luz</td>
+        </tr>
+        <tr>
+          <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">0000071</td>
+            <td class="ui-state-default ui-th-column ui-th-ltr">Eder da Silva</td>
+        </tr>
+        <tr>
+          <td class="ui-state-default ui-th-column ui-th-ltr"><input type="radio"></td>
+          <td class="ui-state-default ui-th-column ui-th-ltr">0000009</td>
+          <td class="ui-state-default ui-th-column ui-th-ltr">Beltrano de Souza</td>
+        </tr>
+        <!-- Table body rows go here -->
+        </table>
+      </div>
+
+
+      
+      
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+<script>
+// FUNÇÃO PARA ALTERAR O STATUS DO PACIENTE NO FRONT-END
+document.getElementById("deleteButton").addEventListener("click", function() {
+  const selectedRows = document.querySelectorAll("#vinculadosTable input[type='checkbox']:checked");
+
+  if (selectedRows.length > 0) {
+    const novoStatusSelect = document.getElementById("novoStatus");
+    const selectedOption = novoStatusSelect.options[novoStatusSelect.selectedIndex];
+    const novoStatusText = selectedOption.textContent;
+
+    for (const checkbox of selectedRows) {
+      const selectedRow = checkbox.closest("tr");
+      const lastCell = selectedRow.cells[selectedRow.cells.length - 1];
+      lastCell.textContent = novoStatusText;
+    }
+
+    // Clear selected checkboxes
+    for (const checkbox of selectedRows) {
+      checkbox.checked = false;
+    }
+  }
+});
+</script>
+
+
+<script>
+  function submitFunction() {
+    // CHAMAR ESSA MENSAGEM APENAS SE A FUNÇÃO FOR REALIZADA COM SUCESSO
+    showCustomAlert("Encaminhamento/Alta registrados com sucesso.")
+  }
+  </script>
+  
+
+
+      
+<div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">&copy;2010 - 2023 Cobalto </div>
+</body>
+</html>
+

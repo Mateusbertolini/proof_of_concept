@@ -82,7 +82,7 @@
 
       <label style="width: 200px; margin: 5px;">Filtrar por turno</label>
       <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px;" id="filtroTurnoAgendamento">
-          <option value="Escolher">Todos</option>
+          <option value="Todos">Todos</option>
           <option value="Manhã">Manhã</option>
           <option value="Tarde">Tarde</option>
           <option value="Noite">Noite</option>
@@ -116,10 +116,20 @@
       </select>
       <p></p>
       
+      <label style="width: 195px; margin: 5px;">Filtrar por status do agendamento</label>
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroStatus">
+          <option value="Todos">Todos</option>
+          <option value="noLocal">No local</option>
+          <option value="Agendado">Agendado</option>
+          <option value="Atendido">Atendido</option>
+      </select>
+      <p></p>
+
+      
       <hr class="ui-state-default">
       <div style="margin: 5px;"></div>
-      <button id="sortButton" style="margin: 10px;">Ordenar por data</button>
-      
+      <button id="limparFiltrosButton" style="margin: 10px;">Limpar filtros</button>
+            
       
       <table id="listaAgendamento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin: 20px;">
         <thead>
@@ -167,60 +177,88 @@
             <th>Radiologia</th>
             <th>Tarde</th>
             <th>RADIOLOGIA E IMAGINOLOGIA</th>
-            <th id="statusAgendamento">Agendado</th>
+            <th id="statusAgendamento">Atendido</th>
         </tr>
       </table>
       
 
       <hr class="ui-state-default">
       
-<script>
-  // FILTRO POR TURNO, LOCAL E DISCIPLINA
-  document.addEventListener("DOMContentLoaded", function() {
-      const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
-      const filtroTurnoAgendamentoSelect = document.getElementById("filtroTurnoAgendamento");
-      const filtroDisciplinaSelect = document.getElementById("filtroDisciplina");
-      const listaAgendamento = document.getElementById("listaAgendamento");
-  
-      const applyFilters = () => {
-          const selectedLocalOption = filtroLocalAgendamentoSelect.value;
-          const selectedTurnoOption = filtroTurnoAgendamentoSelect.value;
-          const selectedDisciplinaOption = filtroDisciplinaSelect.value;
-  
-          const rows = listaAgendamento.querySelectorAll("tbody tr"); // Use querySelectorAll for better performance
-  
-          rows.forEach(row => {
-              const localCell = row.cells[3].textContent;
-              const turnoCell = row.cells[4].textContent;
-              const disciplinaCell = row.cells[5].textContent;
-  
-              const localMatch = selectedLocalOption === "Todos" || localCell === selectedLocalOption;
-              const turnoMatch = selectedTurnoOption === "Todos" || selectedTurnoOption === "Escolher" || turnoCell === selectedTurnoOption;
-              const disciplinaMatch = selectedDisciplinaOption === "Todos" || selectedDisciplinaOption === "Escolher" || disciplinaCell === selectedDisciplinaOption;
-  
-              row.style.display = localMatch && turnoMatch && disciplinaMatch ? "" : "none";
-          });
-      };
-  
-      filtroLocalAgendamentoSelect.addEventListener("change", applyFilters);
-      filtroTurnoAgendamentoSelect.addEventListener("change", applyFilters);
-      filtroDisciplinaSelect.addEventListener("change", applyFilters);
-  
-      const sortButton = document.getElementById("sortButton");
-  
-      sortButton.addEventListener("click", function() {
-          const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
-          rows.sort((a, b) => {
-              const dateA = new Date(a.cells[0].textContent.split('/').reverse().join('/'));
-              const dateB = new Date(b.cells[0].textContent.split('/').reverse().join('/'));
-              return dateA - dateB;
-          });
-  
-          const tbody = listaAgendamento.querySelector("tbody");
-          rows.forEach(row => tbody.appendChild(row));
-      });
-  });
-  </script>
+      <script>
+        // FILTRO POR TURNO, LOCAL, DISCIPLINA, STATUS E DATA
+        document.addEventListener("DOMContentLoaded", function() {
+            const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
+            const filtroTurnoAgendamentoSelect = document.getElementById("filtroTurnoAgendamento");
+            const filtroDisciplinaSelect = document.getElementById("filtroDisciplina");
+            const filtroStatusSelect = document.getElementById("filtroStatus");
+            const filtroDataAgendamentoInput = document.getElementById("filtroDataAgendamento");
+            const listaAgendamento = document.getElementById("listaAgendamento");
+            const limparFiltrosButton = document.getElementById("limparFiltrosButton");
+      
+            const formatDateForComparison = (date) => {
+                const parts = date.split('-');
+                return parts[2] + '/' + parts[1] + '/' + parts[0]; // Convert to "DD/MM/YYYY" format
+            };
+      
+            const applyFilters = () => {
+                const selectedLocalOption = filtroLocalAgendamentoSelect.value;
+                const selectedTurnoOption = filtroTurnoAgendamentoSelect.value;
+                const selectedDisciplinaOption = filtroDisciplinaSelect.value;
+                const selectedStatusOption = filtroStatusSelect.value;
+                const selectedDate = filtroDataAgendamentoInput.value;
+      
+                const rows = listaAgendamento.querySelectorAll("tbody tr");
+      
+                rows.forEach(row => {
+                    const localCell = row.cells[3].textContent;
+                    const turnoCell = row.cells[4].textContent;
+                    const disciplinaCell = row.cells[5].textContent;
+                    const statusCell = row.cells[6].textContent;
+                    const dataCell = row.cells[0].textContent; // Assuming the "Data" cell is at index 0
+      
+                    const localMatch = selectedLocalOption === "Todos" || localCell === selectedLocalOption;
+                    const turnoMatch = selectedTurnoOption === "Todos" || selectedTurnoOption === "Escolher" || turnoCell === selectedTurnoOption;
+                    const disciplinaMatch = selectedDisciplinaOption === "Todos" || selectedDisciplinaOption === "Escolher" || disciplinaCell === selectedDisciplinaOption;
+                    const statusMatch = selectedStatusOption === "Todos" || selectedStatusOption === "Escolher" || statusCell === selectedStatusOption;
+                    const dateMatch = selectedDate === "" || dataCell === formatDateForComparison(selectedDate);
+      
+                    row.style.display = localMatch && turnoMatch && disciplinaMatch && statusMatch && dateMatch ? "" : "none";
+                });
+            };
+      
+            filtroLocalAgendamentoSelect.addEventListener("change", applyFilters);
+            filtroTurnoAgendamentoSelect.addEventListener("change", applyFilters);
+            filtroDisciplinaSelect.addEventListener("change", applyFilters);
+            filtroStatusSelect.addEventListener("change", applyFilters);
+            filtroDataAgendamentoInput.addEventListener("change", applyFilters);
+      
+            // Automatically sort by date on page load
+            const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
+            rows.sort((a, b) => {
+                const dateA = formatDateForComparison(a.cells[0].textContent);
+                const dateB = formatDateForComparison(b.cells[0].textContent);
+                return dateA.localeCompare(dateB);
+            });
+      
+            const tbody = listaAgendamento.querySelector("tbody");
+            rows.forEach(row => tbody.appendChild(row));
+      
+            // Function to clear all select fields
+            limparFiltrosButton.addEventListener("click", () => {
+                filtroLocalAgendamentoSelect.value = "Todos";
+                filtroTurnoAgendamentoSelect.value = "Todos";
+                filtroDisciplinaSelect.value = "Todos";
+                filtroStatusSelect.value = "Todos";
+                filtroDataAgendamentoInput.value = "";
+                applyFilters(); // Apply filters after clearing
+            });
+        });
+      </script>
+      
+      
+      
+      
+      
         
 
 
@@ -271,25 +309,26 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
   
-
-
 <script>
-    // ALTERA CCS DE ACORDO COM O INPUT DE 'statusAgendamento'
-    const rows = document.querySelectorAll('#listaAgendamento tbody tr');
-  
-    rows.forEach(row => {
-      const seventhColumn = row.querySelector('th#statusAgendamento');
-      const textContent = seventhColumn.textContent.trim();
-  
-      if (textContent === 'Agendado') {
-        row.classList.add('ui-state-default');
-        row.classList.remove('agendamento-ui');
-      } else if (textContent === 'noLocal') {
-        row.classList.add('agendamento-ui');
-        row.classList.remove('ui-state-default');
-      }
-    });
-  </script>
-     
+  // ALTERA CCS DE ACORDO COM O INPUT DE 'statusAgendamento'
+  const rows = document.querySelectorAll('#listaAgendamento tbody tr');
+
+  rows.forEach(row => {
+    const seventhColumn = row.querySelector('th#statusAgendamento');
+    const textContent = seventhColumn.textContent.trim();
+
+    if (textContent === 'Agendado') {
+      row.classList.add('ui-state-default');
+      row.classList.remove('agendamento-ui', 'atendido-ui');
+    } else if (textContent === 'noLocal') {
+      row.classList.add('agendamento-ui');
+      row.classList.remove('ui-state-default', 'atendido-ui');
+    } else if (textContent === 'Atendido') {
+      row.classList.add('atendido-ui');
+      row.classList.remove('ui-state-default', 'agendamento-ui');
+    }
+  });
+</script>
+
 </body>
 </html>

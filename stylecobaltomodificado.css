@@ -18,6 +18,16 @@
     border-radius:5px;
     }
 
+.atendido-ui{
+    border:1px solid #006d05;
+    background:#09a716;
+    background-color:#0eca27;
+    font-weight:bold;
+    color:#000000;
+    border-radius:5px;
+    }
+
+
 .container {
   height: 200px;
   position: relative;

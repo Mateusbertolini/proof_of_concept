@@ -205,6 +205,107 @@
             .then((response) => {
                 console.log(response);
             })}
+
+            // array com dados fictícios de disciplinas
+            let disciplinas = [
+                {
+                    Nome: "periodontia",
+                    turma: "m1",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },
+                {
+                    Nome: "pediatria",
+                    turma: "m1",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },
+                {
+                    Nome: "ortodontia",
+                    turma: "m1",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },// m2
+                {
+                    Nome: "periodontia",
+                    turma: "m2",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },
+                {
+                    Nome: "pediatria",
+                    turma: "m2",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },
+                {
+                    Nome: "ortodontia",
+                    turma: "m2",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },// m3
+                {
+                    Nome: "periodontia",
+                    turma: "m3",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },
+                {
+                    Nome: "pediatria",
+                    turma: "m3",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                },
+                {
+                    Nome: "ortodontia",
+                    turma: "m3",
+                    periodo: "2020/1",
+                    alunos: '["Pedro", "Aluno"]',
+                    ano: "2020",
+                    curso: "Odontologia",
+                    codigo: "123456",
+                    datadecadastro: "01/01/2020"
+                }
+            ];
+            // função para inserir os dados no banco
+            for (let i = 0; i < disciplinas.length; i++) {
+                const disciplina = disciplinas[i];
+                api.disciplinas.criar(disciplina)
+                .then((response) => {
+                    console.log(response);
+                })}
      
             
      

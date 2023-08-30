@@ -70,6 +70,21 @@ const alunos = {
   pacientes: async (data) => {
     const url = `${getApiUrl()}/alunos/pacientes`;
     return sendRequest(url, 'POST', data);
+  },
+  vincular: async (data) => {
+    const url = `${getApiUrl()}/alunos/vincular`;
+    return sendRequest(url, 'POST', data);
+  }
+};
+
+const disciplinas = {
+  criar: async (data) => {
+    const url = `${getApiUrl()}/disciplinas/criar`;
+    return sendRequest(url, 'POST', data);
+  },
+  consultar: async (data) => {
+    const url = `${getApiUrl()}/disciplinas/consultar`;
+    return sendRequest(url, 'POST', data);
   }
 };
 
@@ -77,5 +92,6 @@ window.api = {
   pacientes,
   encaminhamentos,
   usuarios,
-  alunos
+  alunos,
+  disciplinas
 };

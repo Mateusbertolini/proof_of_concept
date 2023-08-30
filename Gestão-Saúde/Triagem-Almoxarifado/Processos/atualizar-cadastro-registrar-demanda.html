@@ -137,7 +137,7 @@
 
     <script>
        // Função para adicionar uma nova linha à tabela usando XPath
-    function adicionarNovaLinha(nome, email, cpf, rg, dtCadastro) {
+    function adicionarNovaLinha(nome, email, cpf, rg, dtCadastro) { // Recebe os valores a serem inseridos na tabela
       // Seleciona o corpo da tabela usando o XPath
       const tbody = document.querySelector('.ui-jqgrid-htable');
 
@@ -176,7 +176,7 @@
 
     // Função para consultar pacientes por nome usando a API
     function consultarPacientesPorNome(nome) {
-      api.pacientes.consultar({ Nome: nome })
+      api.pacientes.consultar({ Nome: nome }) // Chama a função de consulta da API
         .then((pacientes) => {
           const tbody = document.querySelector('.ui-jqgrid-htable');
           limparTabela(tbody);

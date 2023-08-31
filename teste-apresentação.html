@@ -133,7 +133,7 @@
 <div class="tabs" style="width: 30%; float: left; padding-bottom: 8px; box-sizing: border-box;">
   <p></p>
   <br>
-  <div id="gadget_1435802772" class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+  <div id="gadget_1435802772" style="position: fixed;top: 36px;right: 0px;width: 310px;" class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
     <div class="portlet-header ui-widget-header ui-corner-all ui-state-highlight">Acessar conta</div>
     <div class="portlet-content" style="padding: 10px;">
       <form id="formLogin">
@@ -166,18 +166,19 @@ function login() {
         if (data.length > 0) {
           localStorage.setItem('usuario', JSON.stringify(usuario));        
         if (usuario.Tipo == "Aluno") {
-          window.location.href = "./Gestão-Saúde/Aluno/index-aluno.html";
+          window.open("./Gestão-Saúde/Aluno/index-aluno.html", '_blank');
         } else if (usuario.Tipo == "Administrador") {
-          window.location.href = "./Gestão-Saúde/Administração/index-administração.html";
+          window.open("./Gestão-Saúde/Administração/index-administração.html", '_blank');
         } else if (usuario.Tipo == "Triagem") {
-          window.location.href = "./Gestão-Saúde/Triagem-Almoxarifado/index-triagem.html";
+          window.open("./Gestão-Saúde/Triagem-Almoxarifado/index-triagem.html", '_blank');
         } 
 
         } else {
-            
+            alert("Usuario não encontrado")
         }
     });
 }
+
 </script>
 
   

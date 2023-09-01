@@ -8,7 +8,6 @@
     border-radius:5px;
     }
 
-
 .agendamento-ui{
     border:1px solid #84a800;
     background:#FFFF00;
@@ -32,4 +31,9 @@
   height: 200px;
   position: relative;
   border: 3px solid green;
+}
+
+.disabled-tab {
+    background-color: #8DB8D9;
+    color: #669CC4;
 }

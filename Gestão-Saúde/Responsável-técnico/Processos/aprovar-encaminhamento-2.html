@@ -371,11 +371,11 @@ buscarperfil()
   <br>
 
   <label style="width: 240px; ;">Descrição da demanda do paciente:</label><br>
-  <textarea style="width: 460px;" id="encaminhamentoDemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all"  placeholder="DESCREVER TODAS AS NECESSIDADES DO PACIENTE"></textarea>
+  <textarea style="width: 460px;" id="encaminhamentoDemanda" rows="10" maxlength="1000" class="ui-state-default ui-corner-all"  placeholder="GET 'encaminhamentoDemanda'"></textarea>
   <br>
 
   <label style="width: 180px;">Responsável técnico</label>
-  <input type="text" id="encaminhamentoResponsavel" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="SELECT BOX OU BUSCAR O NOME?">
+  <input type="text" id="responsavelEncaminhamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="GET 'responsavelEncaminhamento'">
   <br>
 
 
@@ -406,7 +406,7 @@ buscarperfil()
   
   <label style="width: 180px;">Área/Curso da saúde</label>
   <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-  <option value="0">Escolher</option>
+  <option value="Escolher">Escolher</option>
   <option value="Odontologia">Odontologia</option>
   <option value="Enfermagem">Enfermagem</option>
   <option value="Farmácia">Farmácia</option>
@@ -417,23 +417,24 @@ buscarperfil()
   <p></p>
   <label style="width: 180px;">Lista de especialidades</label>
   <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
-    <option value="0">Selecione uma especialidade</option>
+    <option value="Escolher">Selecione uma especialidade</option>
   </select>
   <br>
   <p></p>
 
   <label style="width: 180px;">Nível de complexidade</label>
 <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="encaminhamentoComplexidade">
-    <option value="0">Escolher</option>
+    <option value="Escolher">Escolher</option>
     <option value="Baixa">Baixa</option>
     <option value="Média">Média</option>
     <option value="Alta (Pós-graduação)">Alta (Pós-graduação)</option>
 </select>
 <br>
  
+
 <script>
   const disciplinas = [
-    {codCurso: '0', nomeEspec:'Selecione uma especialidade'},
+    {codCurso: 'Escolher', nomeEspec:'Selecione uma especialidade'},
     {codCurso: 'Odontologia', nomeEspec:'Prótese Dentária'},
     {codCurso: 'Odontologia', nomeEspec:'Odontopediatria'},
     {codCurso: 'Odontologia', nomeEspec:'Periodontia'},
@@ -456,7 +457,7 @@ buscarperfil()
     const selectedCodCurso = areaSelect.value;
   
     // Clear existing options
-    disciplinasSelect.innerHTML = '<option value="0">Selecione uma especialidade</option>';
+    disciplinasSelect.innerHTML = '<option value="Escolher">Selecione uma especialidade</option>';
   
     // Filter and populate the second select
     const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === selectedCodCurso);
@@ -473,11 +474,13 @@ buscarperfil()
 <p></p>
 <br>
 
+<label style="color: red;">APAGAR ISSO DEPOIS - PEGAR DO USUÁRIO (ALUNO)</label> <input type="text" id="alunoEncaminhamento" placeholder="Aluno"><br>
 
 
 <p></p>
-  <button id="btnAdicionar" onclick="addTable()" value="Adicionar" class="button"  >Adicionar</button>
-  <button id="btnCancelar" onclick="limparCampos()" value="Cancelar" class="button"  >Cancelar</button>
+  <button id="btnAdicionar" onclick="addTableRow()" value="Adicionar" class="button"  >Adicionar</button>
+  <button id="btnCancelar" onclick="clearInputFields()" value="Cancelar" class="button"  >Cancelar</button>
+  <button id="btnDeletar" onclick="deleteRow()" value="Remover" class="button">Remover</button>
   <br>
   <p></p>
 
@@ -485,88 +488,98 @@ buscarperfil()
 
 <p></p>
 
-<h2> Descrição do registro de atendimento</h2>
+<h2> Listagem de encaminhamentos</h2>
 <div style="margin: 10px;"></div>
-<table id="listaProcedimento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 90%; font-size: 14px; margin: 15px;">
+<table id="listaEncaminhamentos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 90%; font-size: 14px; margin: 15px;">
 <thead>
   <tr class="ui-jqgrid-labels" role="rowheader">
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
-      Data
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">
-      Área da Saúde
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 12.5%;">
-      Especialidade
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 40%;">
-      Descrição do procedimento
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
-      Responsável técnico
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">
-      Disciplina/Estágio
-    </th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 3%;">Selec.</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 5%;">Data</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 7%;">Área da Saúde</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 12%;">Especialidade</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 25%;">Descrição da demanda</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 5%;">Complexidade</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 15%;">Origem</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 14%;">Aluno</th>
+    <th class="ui-jqgrid-titlebar ui-widget-header ui-helper-clearfix" style="width: 14%;">Responsável técnico</th>
   </tr>
   </thead>
   <!-- Table body rows go here -->
 </table>
 
+
 <script>
-  function addTable() {
-    var atendimentoData = document.getElementById("atendimentoData").value;
-    var areaSaúde = document.getElementById("areaSaúde").value;
-    var especAreaSaúde = document.getElementById("especAreaSaúde").value;
-    var atendimentoDescrição = document.getElementById("atendimentoDescrição").value;
-    var responsavelProcedimento = document.getElementById("responsavelProcedimento").value;
-    var componenteCurricular = document.getElementById("componenteCurricular").value;
+function deleteRow() {
+    var table = document.getElementById("listaEncaminhamentos");
+    var rowCount = table.rows.length;
 
-    if (atendimentoData && areaSaúde && especAreaSaúde && atendimentoDescrição && responsavelProcedimento && componenteCurricular) {
-      var table = document.getElementById("listaProcedimento");
-      var newRow = table.insertRow(-1);
+    for (var i = rowCount - 1; i >= 0; i--) {
+      var row = table.rows[i];
+      var checkbox = row.cells[0].getElementsByTagName("input")[0];
 
-      var atendimentoDataCell = newRow.insertCell(0);
-      atendimentoDataCell.innerHTML = atendimentoData;
-      atendimentoDataCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var areaSaúdeCell = newRow.insertCell(1);
-      areaSaúdeCell.innerHTML = areaSaúde;
-      areaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var especAreaSaúdeCell = newRow.insertCell(2);
-      especAreaSaúdeCell.innerHTML = especAreaSaúde;
-      especAreaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var atendimentoDescriçãoCell = newRow.insertCell(3);
-      atendimentoDescriçãoCell.innerHTML = atendimentoDescrição;
-      atendimentoDescriçãoCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var responsavelProcedimentoCell = newRow.insertCell(4);
-      responsavelProcedimentoCell.innerHTML = responsavelProcedimento;
-      responsavelProcedimentoCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var componenteCurricularCell = newRow.insertCell(4);
-      componenteCurricularCell.innerHTML = componenteCurricular;
-      componenteCurricularCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      // Clear input fields after adding row
-      document.getElementById("atendimentoData").value = "";
-      document.getElementById("areaSaúde").value = "";
-      document.getElementById("especAreaSaúde").value = "";
-      document.getElementById("atendimentoDescrição").value = "";
-      document.getElementById("responsavelProcedimento").value = "";
-      document.getElementById("componenteCurricular").value = "";
+      if (checkbox && checkbox.type === "checkbox" && checkbox.checked) {
+        table.deleteRow(i);
+      }
     }
   }
 
-  function limparCampos() {
-    document.getElementById("atendimentoData").value = "";
-    document.getElementById("areaSaúde").value = "";
-    document.getElementById("especAreaSaúde").value = "";
-    document.getElementById("atendimentoDescrição").value = "";
-    document.getElementById("responsavelProcedimento").value = "";
-    document.getElementById("componenteCurricular").value = "";
+function addTableRow() {
+  var encaminhamentoData = getValue("encaminhamentoData");
+  var encaminhamentoOrigem = getValue("encaminhamentoOrigem");
+  var encaminhamentoDemanda = getValue("encaminhamentoDemanda");
+  var responsavelEncaminhamento = getValue("responsavelEncaminhamento");
+  var encaminhamentoComplexidade = getValue("encaminhamentoComplexidade");
+  var areaSaúde = getValue("areaSaúde");
+  var especAreaSaúde = getValue("especAreaSaúde");
+  var alunoEncaminhamento = getValue("alunoEncaminhamento");
+
+  if (
+    encaminhamentoData && encaminhamentoOrigem && encaminhamentoDemanda &&
+    responsavelEncaminhamento && alunoEncaminhamento &&
+    !isEscolherOption(areaSaúde) && !isEscolherOption(especAreaSaúde) && !isEscolherOption(encaminhamentoComplexidade)
+  ) {
+    var table = document.getElementById("listaEncaminhamentos");
+    var newRow = table.insertRow(-1);
+
+    var checkboxCell = newRow.insertCell();
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkboxCell.appendChild(checkbox);
+    checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+    var values = [encaminhamentoData, areaSaúde, especAreaSaúde, encaminhamentoDemanda, encaminhamentoComplexidade, encaminhamentoOrigem, alunoEncaminhamento, responsavelEncaminhamento];
+    
+    for (var i = 0; i < values.length; i++) {
+      insertCell(newRow, values[i]);
+    }
+
+    clearInputFields();
+  } else {
+    showCustomAlert("Por favor, preencha todos os campos.");
   }
+}
+
+function getValue(id) {
+  return document.getElementById(id).value;
+}
+
+function insertCell(row, value) {
+  var cell = row.insertCell();
+  cell.innerHTML = value;
+  cell.className = "ui-state-default ui-th-column ui-th-ltr";
+}
+
+function clearInputFields() {
+  var inputIds = ["encaminhamentoData", "areaSaúde", "especAreaSaúde", "encaminhamentoDemanda", "encaminhamentoComplexidade", "encaminhamentoOrigem", "alunoEncaminhamento", "responsavelEncaminhamento"];
+  
+  for (var i = 0; i < inputIds.length; i++) {
+    document.getElementById(inputIds[i]).value = "";
+  }
+}
+
+function isEscolherOption(value) {
+  return value === "Escolher";
+}
 </script>
 
 
@@ -576,9 +589,9 @@ buscarperfil()
 <script>
   function submitFunction() {
     // CHAMAR ESSA MENSAGEM APENAS SE A FUNÇÃO FOR REALIZADA COM SUCESSO
-    showCustomAlert("Encaminhamento/Alta registrado(a) com sucesso e encaminhado para o setor de triagem.")
+    showCustomAlert("Encaminhamento/Alta registrado(a) com sucesso e encaminhado para o responsável.")
   }
-  </script>
+  </script>  
 
   </body>
 </html>

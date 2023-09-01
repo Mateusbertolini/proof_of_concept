@@ -284,7 +284,7 @@
 <!-- CONTEÚDO TAB-3 (ABAIXO) -->
 <div style="display: flex; align-items: center;">
   <button id="deleteButton" style="margin: 20px; padding: 5px;">Excluir</button>
-  <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button> <p id="errorMessage" style="color: red; font-weight: bold;"></p>
+  <button id="submitButton" style="margin: 20px; padding: 5px;">Vincular</button>
 </div>
 
 <br>
@@ -389,22 +389,12 @@ document.getElementById("submitButton").addEventListener("click", function() {
                 radioButton.checked = false;
             }
 
-            // Clear error message
-            const errorMessage = document.getElementById("errorMessage");
-            errorMessage.textContent = "";
+          
         } else {
-            const errorMessage = document.getElementById("errorMessage");
-            errorMessage.textContent = "Selecione um aluno e pelo menos um paciente.";
-            errorMessage.style.color = "red";
-            errorMessage.style.fontSize = "16px";
-            errorMessage.style.fontWeight = "bold";
-        }
+            showCustomAlert("Selecione um aluno e pelo menos um paciente.");
+          }
     } else {
-        const errorMessage = document.getElementById("errorMessage");
-        errorMessage.textContent = "Selecione uma área da saúde, especialidade e complexidade válidos.";
-        errorMessage.style.color = "red";
-        errorMessage.style.fontSize = "16px";
-        errorMessage.style.fontWeight = "bold";
+        showCustomAlert("Selecione uma área da saúde, especialidade e complexidade válidos.");
     }
 });
 

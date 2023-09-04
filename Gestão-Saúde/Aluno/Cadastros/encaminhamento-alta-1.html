@@ -1,4 +1,5 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head lang="pt-br">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
@@ -12,38 +13,6 @@
 <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
-<link href="stylecobalto.css" type="text/css" rel="stylesheet">
-<link href="../../../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
-
-<!--ALERT MESSAGES-->
-<link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
-<script src="../../../scripts/alertMessage.js"></script>
-
-    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
-    <div id="customAlert" class="modal">
-        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
-        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-            <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
-            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
-            <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
-            </button>
-        </div>
-        <p></p>
-        <br>
-        <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
-            <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
-            <p id="alertMessage"></p>
-        </div>
-        <p> </p><br>
-        <p> </p><br>
-        <p> </p><br>
-        <div><button id="okButton" class="centered-button">OK</button></div>
-        </div>
-    </div>
-    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
-<!--ALERT MESSAGES-->
-</head>
-
 
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
 <div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
@@ -84,9 +53,9 @@
   <div class="breadCrumb module">
     <ul>
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
-      <li>Responsável técnico</li>
-      <li>Processos</li>
-      <li>Avaliar atendimento</li>
+      <li>Aluno</li>
+      <li>Cadastros</li>
+      <li>Encaminhamento/Alta de paciente</li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     
@@ -235,7 +204,7 @@ function buscar() {
   } else if (cpf.trim() !== '') {
     consultarPacientesPorCPF(cpf);
   } else {
-    showCustomAlert("Preencha o campo nome ou CPF para realizar a busca.");
+    alert("Preencha o campo nome ou CPF para realizar a busca.");
   }
 }
 
@@ -247,7 +216,7 @@ function consultarPacientesPorNome(nome) {
       limparTabela(tbody);
       
       if (pacientes.length === 0) {
-        showCustomAlert("Nenhum paciente encontrado");
+        alert("Nenhum paciente encontrado");
       } else {
         pacientes.forEach(paciente => {
           adicionarNovaLinha(
@@ -273,7 +242,7 @@ function consultarPacientesPorCPF(cpf) {
       limparTabela(tbody);
 
       if (pacientes.length === 0) {
-        showCustomAlert("Nenhum paciente encontrado");
+        alert("Nenhum paciente encontrado");
       } else {
         pacientes.forEach(paciente => {
           adicionarNovaLinha(
@@ -322,7 +291,7 @@ document.getElementById('txtNome').onkeydown = function (e) {
     //  limparTabela(tbody);
       
       if (pacientes.length === 0) {
-        show("Nenhum paciente encontrado");
+        alert("Nenhum paciente encontrado");
       } else {
         pacientes.forEach(paciente => {
           adicionarNovaLinha(
@@ -353,7 +322,7 @@ document.getElementById('txtNome').onkeydown = function (e) {
 
   // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
   novaLinha.innerHTML = `
-    <td><a href="avaliar-atendimento-2.html?cpf=${cpf}">${nome}</a></td>
+    <td><a href="encaminhamento-alta-2.html?cpf=${cpf}">${nome}</a></td>
     <td>${Tel}</td>
     <td>${cpf}</td>
     <td>${diciplina}</td>

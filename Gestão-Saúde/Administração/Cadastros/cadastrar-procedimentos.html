@@ -151,53 +151,58 @@
   </div>
 
 <script>
-  function salvar() {
+ function salvar() {
   var codSUS = document.getElementById("codSUS").value;
   var procedimentoSUS = document.getElementById("procedimentoSUS").value;
   var complexidadeSUS = document.getElementById("complexidadeSUS").value;
   
-  if (procedimentoSUS && complexidadeSUS && codSUS) {
-      var table = document.getElementById("listaSUS");
-      var existingRow = null;
-
-      // Check for duplicate Cód. values and update the row
-      for (var i = 1; i < table.rows.length; i++) {
-          var codCell = table.rows[i].cells[1];
-          if (codCell.innerText === codSUS) {
-              existingRow = table.rows[i];
-              break;
-          }
-      }
-
-      if (existingRow) {
-          showAlert("Dados foram atualizados na tabela por já existir uma entrada com o mesmo Código SUS");
-          existingRow.cells[2].innerText = procedimentoSUS;
-          existingRow.cells[3].innerText = complexidadeSUS;
+  if (procedimentoSUS && codSUS) {
+      if (complexidadeSUS === 'Escolher') {
+          showCustomAlert("Por favor, escolha uma opção válida para a complexidade do procedimento");
       } else {
-          var newRow = table.insertRow(-1);
-          var checkboxCell = newRow.insertCell(0);
-          checkboxCell.innerHTML = '<input type="checkbox">';
-          checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
+          var table = document.getElementById("listaSUS");
+          var existingRow = null;
 
-          var codCell = newRow.insertCell(1);
-          codCell.innerHTML = codSUS;
-          codCell.className = "ui-state-default ui-th-column ui-th-ltr";
+          // Check for duplicate Cód. values and update the row
+          for (var i = 1; i < table.rows.length; i++) {
+              var codCell = table.rows[i].cells[1];
+              if (codCell.innerText === codSUS) {
+                  existingRow = table.rows[i];
+                  break;
+              }
+          }
 
-          var nomeCell = newRow.insertCell(2);
-          nomeCell.innerHTML = procedimentoSUS;
-          nomeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+          if (existingRow) {
+              showCustomAlert("Dados foram atualizados na tabela por já existir uma entrada com o mesmo Código SUS");
+              existingRow.cells[2].innerText = procedimentoSUS;
+              existingRow.cells[3].innerText = complexidadeSUS;
+          } else {
+              var newRow = table.insertRow(-1);
+              var checkboxCell = newRow.insertCell(0);
+              checkboxCell.innerHTML = '<input type="checkbox">';
+              checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
 
-          var tipoCell = newRow.insertCell(3);
-          tipoCell.innerHTML = complexidadeSUS;
-          tipoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+              var codCell = newRow.insertCell(1);
+              codCell.innerHTML = codSUS;
+              codCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+              var nomeCell = newRow.insertCell(2);
+              nomeCell.innerHTML = procedimentoSUS;
+              nomeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+              var tipoCell = newRow.insertCell(3);
+              tipoCell.innerHTML = complexidadeSUS;
+              tipoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+          }
+
+          // Clear input fields after adding/updating row
+          document.getElementById("codSUS").value = "";
+          document.getElementById("procedimentoSUS").value = "";
+          document.getElementById("complexidadeSUS").value = "0";
       }
-
-      // Clear input fields after adding/updating row
-      document.getElementById("codSUS").value = "";
-      document.getElementById("procedimentoSUS").value = "";
-      document.getElementById("complexidadeSUS").value = "0";
   }
 }
+
 
   function excluir() {
     var table = document.getElementById("listaSUS");

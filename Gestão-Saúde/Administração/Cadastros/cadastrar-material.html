@@ -193,42 +193,47 @@
     var lastCodMaterial = 4; // Initialize with the last value in your example
   
     function salvar() {
-      var nomeMaterial = document.getElementById("nomeMaterial").value;
-      var tipoMaterial = document.getElementById("tipoMaterial").value;
-      var qtdMaterial = document.getElementById("qtdMaterial").value;
-  
-      if (nomeMaterial && tipoMaterial && qtdMaterial) {
-        var table = document.getElementById("listaMaterial");
-        var newRow = table.insertRow(-1);
-  
-        var checkboxCell = newRow.insertCell(0);
-        checkboxCell.innerHTML = '<input type="checkbox">';
-        checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
-  
-        var codCell = newRow.insertCell(1);
-        lastCodMaterial++;
-        var codMaterial = padNumber(lastCodMaterial, 4);
-        codCell.innerHTML = codMaterial;
-        codCell.className = "ui-state-default ui-th-column ui-th-ltr";
-  
-        var nomeCell = newRow.insertCell(2);
-        nomeCell.innerHTML = nomeMaterial;
-        nomeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-  
-        var tipoCell = newRow.insertCell(3);
-        tipoCell.innerHTML = tipoMaterial;
-        tipoCell.className = "ui-state-default ui-th-column ui-th-ltr";
-  
-        var qtdCell = newRow.insertCell(4);
-        qtdCell.innerHTML = qtdMaterial;
-        qtdCell.className = "ui-state-default ui-th-column ui-th-ltr";
-  
-        // Clear input fields after adding row
-        document.getElementById("nomeMaterial").value = "";
-        document.getElementById("tipoMaterial").value = "0";
-        document.getElementById("qtdMaterial").value = "";
-      }
+  var nomeMaterial = document.getElementById("nomeMaterial").value;
+  var tipoMaterial = document.getElementById("tipoMaterial").value;
+  var qtdMaterial = document.getElementById("qtdMaterial").value;
+
+  if (nomeMaterial && qtdMaterial) {
+    if (tipoMaterial === 'Escolher') {
+      showCustomAlert("Por favor, escolha uma opção válida para Tipo de Material");
+    } else {
+      var table = document.getElementById("listaMaterial");
+      var newRow = table.insertRow(-1);
+
+      var checkboxCell = newRow.insertCell(0);
+      checkboxCell.innerHTML = '<input type="checkbox">';
+      checkboxCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var codCell = newRow.insertCell(1);
+      lastCodMaterial++;
+      var codMaterial = padNumber(lastCodMaterial, 4);
+      codCell.innerHTML = codMaterial;
+      codCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var nomeCell = newRow.insertCell(2);
+      nomeCell.innerHTML = nomeMaterial;
+      nomeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var tipoCell = newRow.insertCell(3);
+      tipoCell.innerHTML = tipoMaterial;
+      tipoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      var qtdCell = newRow.insertCell(4);
+      qtdCell.innerHTML = qtdMaterial;
+      qtdCell.className = "ui-state-default ui-th-column ui-th-ltr";
+
+      // Clear input fields after adding row
+      document.getElementById("nomeMaterial").value = "";
+      document.getElementById("tipoMaterial").value = "0";
+      document.getElementById("qtdMaterial").value = "";
     }
+  }
+}
+
   
     function excluir() {
       var table = document.getElementById("listaMaterial");

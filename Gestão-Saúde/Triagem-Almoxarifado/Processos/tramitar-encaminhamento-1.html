@@ -78,16 +78,13 @@
 
 
 <!-- CONTEÚDO DA PÁGINA/TELA DO COBALTO COMEÇA AQUI -->
-<div id="content-center" class="ui-layout-center ui-widget-content"
-    style="background: none !important; overflow: hidden !important">
+<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+  <li>Triagem/Almoxarifado</li>    
+  <li>Processos</li>
+  <li>Tramitar encaminhamento/alta de paciente</li>
+  </ul>
+
     
-  <div class="breadCrumb module">
-    <ul>
-      <li><a href="index.html"></a></li><li>Gestão Saúde</li>
-      <li>Responsável técnico</li>
-      <li>Processos</li>
-      <li>Avaliar atendimento</li>
-    </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     
     <div class="ui-widget-content ui-corner-all toolbar">
@@ -353,7 +350,7 @@ document.getElementById('txtNome').onkeydown = function (e) {
 
   // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
   novaLinha.innerHTML = `
-    <td><a href="avaliar-atendimento-2.html?cpf=${cpf}">${nome}</a></td>
+    <td><a href="tramitar-encaminhamento-2.html?cpf=${cpf}">${nome}</a></td>
     <td>${Tel}</td>
     <td>${cpf}</td>
     <td>${diciplina}</td>

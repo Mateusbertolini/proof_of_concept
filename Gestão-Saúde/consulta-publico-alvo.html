@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head lang="pt-br">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+    var PATH_COOKIE = '/';
+    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+</script>
+<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+<link href="stylecobalto.css" type="text/css" rel="stylesheet">
+</head>
+
+<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+      <li>Consultas</li>    
+      <li>Público-alvo de disciplinas/estágios</li>
+    </ul>
+    
+<div style="clear: both;"></div></div><div style="clear: both;"></div>
+  <div class="ui-widget-content ui-corner-all toolbar">
+    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+    <span style="clear: both; display: block"></span></div>
+  
+    <div id="tabFiltro" class="tabs"><ul></ul>    <div id="tabFiltro-0" class="ui-widget tabFiltro tabFiltro-0 tabFiltro-0">
+      <ul><li class="labeltabFiltro"><a href="#tabFiltro-0" accessKey="tabFiltro-0">Filtro</a></li></ul>
+      <label name="areaSaúde" id="areaSaúde" style="width: 120px;">Curso</label>
+
+      <input type="hidden" name="areaSaúde" id="areaSaúdeiD" value="" />
+      <input type="text" name="txtAtividadeCodigo" id="txtAtividadeCodigo" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: right;width: 100px;" onblur="openInputTextHit('https://cobalto.ufpel.edu.br/academico/processos/migrarTurma/bthDisciplina/true/returnButtonHitAtividade', returnButtonHitAtividade, 'txtAtividadeId', 'txtAtividadeCodigo', 'txtAtividadeDescricao');"  />
+      <button id="atividadeButton" style="margin: 0px 1px 0px -4px; height: 24px; display: block; float: left;" class="button-hit">Pesquisar</button>
+      <input type="text" name="txtAtividadeDescricao" id="txtAtividadeDescricao" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: left;width: 400px;" readonly="readonly" tabindex="-1" />
+      
+
+      <br /></div></div>
+ <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="gbox_gridTurma" dir="ltr" style="width: 99%;"><div class="ui-widget-overlay jqgrid-overlay" id="lui_gridTurma"></div><div class="loading ui-state-default ui-state-active" id="load_gridTurma" style="display: none;">Carregando...</div><div class="ui-jqgrid-view" id="gview_gridTurma" style="width: 100%;"><div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix"><a role="link" href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" style="right: 0px;"><span class="ui-icon ui-icon-circle-triangle-n"></span></a><span class="ui-jqgrid-title">Lista de Turmas</span></div><div id="gridTurma_toppager" class="ui-state-default ui-jqgrid-toppager" style="width: 100%;" dir="ltr"><div id="pg_gridTurma_toppager" class="ui-pager-control" role="group"><table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="width:100%;table-layout:fixed;height:100%;" role="row"><tbody><tr><td id="gridTurma_toppager_left" align="left"></td><td id="gridTurma_toppager_center" align="center" style="white-space: pre; width: 253px;"><table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table"><tbody><tr><td id="first_t_gridTurma_toppager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first"></span></td><td id="prev_t_gridTurma_toppager" class="ui-pg-button ui-corner-all ui-state-disabled" style="cursor: default;"><span class="ui-icon ui-icon-seek-prev"></span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td dir="ltr">Página <input class="ui-pg-input" type="text" size="2" maxlength="7" value="0" role="textbox"> de <span id="sp_1_gridTurma_toppager">0</span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td id="next_t_gridTurma_toppager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-next"></span></td><td id="last_t_gridTurma_toppager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-end"></span></td></tr></tbody></table></td><td id="gridTurma_toppager_right" align="right"><div dir="ltr" style="text-align:right" class="ui-paging-info">Nenhum registro para visualizar</div></td></tr></tbody></table></div></div><div style="width: 100%;" class="ui-state-default ui-jqgrid-hdiv"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable" style="width: 100%;" role="grid" aria-labelledby="gbox_gridTurma" cellspacing="0" cellpadding="0" border="0"><thead><tr class="ui-jqgrid-labels" role="rowheader"><th id="gridTurma_cb" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="" style="width: 20px;"><div id="jqgh_gridTurma_cb"><input role="checkbox" id="cb_gridTurma" class="cbox" type="checkbox"><span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridTurma_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_cod_atividade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Cód. atividade" style="width: 89px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridTurma_cod_atividade" class="ui-jqgrid-sortable">Cód. atividade<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_cod_turma" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Turma" style="width: 45px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridTurma_cod_turma" class="ui-jqgrid-sortable">Turma<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_atividade_curricular" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Atividade curricular" style="width: 313px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridTurma_atividade_curricular" class="ui-jqgrid-sortable">Atividade curricular<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_cursos" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Cursos" style="width: 224px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridTurma_cursos" class="ui-jqgrid-sortable">Cursos<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_ano" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Ano" style="width: 45px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridTurma_ano" class="ui-jqgrid-sortable">Ano<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_base_periodo" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Período" style="width: 89px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridTurma_base_periodo" class="ui-jqgrid-sortable">Período<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridTurma_dt_cadastro" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Dt. Cadastro" style="width: 89px;"><div id="jqgh_gridTurma_dt_cadastro" class="ui-jqgrid-sortable">Dt. Cadastro<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th></tr></thead></table></div></div><div class="ui-jqgrid-bdiv" style="height: auto; width: 100%;"><div style="position:relative;"><div></div><table id="gridTurma" tabindex="0" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="true" aria-labelledby="gbox_gridTurma" class="ui-jqgrid-btable" style="width: 100%;"><tbody><tr class="jqgfirstrow" role="row" style="height:auto"><td role="gridcell" style="height:0px;width:20px;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height: 0px; width: 89px;"></td><td role="gridcell" style="height: 0px; width: 45px;"></td><td role="gridcell" style="height: 0px; width: 313px;"></td><td role="gridcell" style="height: 0px; width: 224px;"></td><td role="gridcell" style="height: 0px; width: 45px;"></td><td role="gridcell" style="height: 0px; width: 89px;"></td><td role="gridcell" style="height: 0px; width: 89px;"></td></tr></tbody></table></div></div></div><div class="ui-jqgrid-resize-mark" id="rs_mgridTurma">&nbsp;</div><div id="gridTurmaPager" style="padding: 20px; width: 100%;" class="ui-state-default ui-jqgrid-pager ui-corner-bottom" dir="ltr"><div id="pg_gridTurmaPager" class="ui-pager-control" role="group"><table cellspacing="0" cellpadding="0" border="0" class="ui-pg-table" style="width:100%;table-layout:fixed;height:100%;" role="row"><tbody><tr><td id="gridTurmaPager_left" align="left"></td><td id="gridTurmaPager_center" align="center" style="white-space: pre; width: 253px;"><table cellspacing="0" cellpadding="0" border="0" style="table-layout:auto;" class="ui-pg-table"><tbody><tr><td id="first_gridTurmaPager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-first"></span></td><td id="prev_gridTurmaPager" class="ui-pg-button ui-corner-all ui-state-disabled"><span class="ui-icon ui-icon-seek-prev"></span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td dir="ltr">Página <input class="ui-pg-input" type="text" size="2" maxlength="7" value="0" role="textbox"> de <span id="sp_1_gridTurmaPager">0</span></td><td class="ui-pg-button ui-state-disabled" style="width:4px;"><span class="ui-separator"></span></td><td id="next_gridTurmaPager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-next"></span></td><td id="last_gridTurmaPager" class="ui-pg-button ui-corner-all"><span class="ui-icon ui-icon-seek-end"></span></td></tr></tbody></table></td><td id="gridTurmaPager_right" align="right"><div dir="ltr" style="text-align:right" class="ui-paging-info">Nenhum registro para visualizar</div></td></tr></tbody></table></div></div></div> </div>
+
+
+<h1><a href="consulta-publico-alvo-2.html" style="padding: 20px;">LISTAR AS DIFERENTES DISCIPLINAS/ESTÁGIOS E, AO SELECIONAR UMA DELAS, AVANÇA PARA ESSA PÁGINA</a>
+  
+  
+<script src="../../../Prontuario-ufpel-Backend-API.js"></script>
+<script>
+  function adicionarNovaLinha(codigo, turma, atividade, curso, ano, periodo, data) {
+    var table = document.getElementById("gridTurma");
+
+    const novaLinha = document.createElement('tr');
+    novaLinha.innerHTML = `
+    <td><input type="checkbox" name="checkbox" id="checkbox" value="checkbox"></td>
+    <td>${codigo}</td>
+    <td>${turma}</td>
+    <td>${atividade}</td>
+    <td>${curso}</td>
+    <td>${ano}</td>
+    <td>${periodo}</td>
+    <td>${data}</td>
+    `;
+    table.appendChild(novaLinha);
+
+
+
+ 
+  }
+  api.disciplinas.consultar().then(function (disciplinas) {
+    console.log(disciplinas);
+    disciplinas.forEach(function (disciplina) {
+      console.log(disciplina);
+      adicionarNovaLinha(disciplina.codigo, disciplina.turma, disciplina.Nome, disciplina.curso, disciplina.ano, disciplina.periodo, disciplina.datadecadastro);
+    });
+    
+  });
+</script>
+
+
+
+
+
+
+    
+    
+    
+    <div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">
+		
+    &copy;2010 - 2023 Cobalto
+		</div>
+</html>

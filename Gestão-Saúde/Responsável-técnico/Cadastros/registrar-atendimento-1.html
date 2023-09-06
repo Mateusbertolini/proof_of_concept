@@ -53,7 +53,7 @@
   <div class="breadCrumb module">
     <ul>
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
-      <li>Aluno</li>
+      <li>Responsável técnico</li>
       <li>Cadastros</li>
       <li>Registrar atendimento</li>
     </ul>
@@ -66,22 +66,24 @@
     </div>
 
 <!-- SCRIPT PARA BUSCA - PESQUISA ALTERAR/REFAZER -->
-
-  <div id="tabMeusPacientes" class="tabs">
-    <div id="tabMeusPacientes-0" class="ui-widget tabMeusPacientes tabMeusPacientes-0 tabMeusPacientes-0">
+<script>var tabFiltroCurso = 'tabFiltroCurso';</script>
+  <div id="tabFiltroCurso" class="tabs">
+    <div id="tabFiltroCurso-0" class="ui-widget tabFiltroCurso tabFiltroCurso-0 tabFiltroCurso-0">
       <ul>
-        <li class="labeltabMeusPacientes"><a href="#tabMeusPacientes-0" accessKey="tabMeusPacientes-0">Filtro</a></li>
+        <li class="labeltabFiltroCurso"><a href="#tabFiltroCurso-0" accessKey="tabFiltroCurso-0">Filtro</a></li>
       </ul>
   <br>
   <p></p>
   <br>
   
-
-
-<p></p>
-<br>
-
-
+  <label name="lblCpf" id="lblCpf" style="width: 80px;"  >CPF</label>
+  <input type="text" name="txtCpf" id="txtCpf" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cpf" style="width: 100px;"  />
+  <br>
+  <label name="lblNome" id="lblNome" style="width: 80px;"  >Nome</label>
+  <input type="text" name="txtNome" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;"  />
+    <br>
+                
+   
 
 <table id="gridPaciente"></table>
 <div id="gridPacientePager" style="margin-bottom: 5px"></div>
@@ -164,172 +166,132 @@
     $(window).bind('resize', gridPaciente_resize);
     $('#tabFiltroCurso').bind('tabsshow', gridPaciente_resize);
 </script>
+    
+    
+    
+    
+    <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
 
-  
-
- 
-<script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
-
-<script>
-   // Função para adicionar uma nova linha à tabela usando XPath
-function adicionarNovaLinha(nome, Tel, cpf, rg, dtCadastro) {
-  // Seleciona o corpo da tabela usando o XPath
-  const tbody = document.querySelector('.ui-jqgrid-htable');
-
-  // Cria um novo elemento de linha (<tr>)
-  const novaLinha = document.createElement('tr');
-
-  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
-  novaLinha.innerHTML = `
-    <td style="display: none;">ID</td>
-    <td><a href="perfil-paciente.html?cpf=${cpf}">${nome}</a></td>
-    <td>${Tel}</td>
-    <td>${cpf}</td>
-    <td style="display: none;">Situação</td>
-    <td>${rg}</td>
-    <td>${dtCadastro}</td>
-  `;
-
-  // Adiciona a nova linha ao corpo da tabela
-  tbody.appendChild(novaLinha);
-}
-
-// Função de busca que determina qual função de consulta chamar com base nos campos de nome e CPF
-function buscar() {
-  const nome = document.getElementById('txtNome').value;
-  const cpf = document.getElementById('txtCpf').value;
-
-  if (nome.trim() !== '') {
-    consultarPacientesPorNome(nome);
-  } else if (cpf.trim() !== '') {
-    consultarPacientesPorCPF(cpf);
-  } else {
-    alert("Preencha o campo nome ou CPF para realizar a busca.");
-  }
-}
-
-// Função para consultar pacientes por nome usando a API
-function consultarPacientesPorNome(nome) {
-  api.pacientes.consultar({ Nome: nome })
-    .then((pacientes) => {
+    <script>
+       // Função para adicionar uma nova linha à tabela usando XPath
+    function adicionarNovaLinha(nome, Tel, cpf, rg, dtCadastro) {
+      // Seleciona o corpo da tabela usando o XPath
       const tbody = document.querySelector('.ui-jqgrid-htable');
-      limparTabela(tbody);
-      
-      if (pacientes.length === 0) {
-        alert("Nenhum paciente encontrado");
+
+      // Cria um novo elemento de linha (<tr>)
+      const novaLinha = document.createElement('tr'); 
+
+      // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+      novaLinha.innerHTML = `
+        <td style="display: none;">ID</td>
+        <td><a href="registrar-atendimento-2.html?cpf=${cpf}">${nome}</a></td>
+        <td>${Tel}</td>
+        <td>${cpf}</td>
+        <td style="display: none;">Situação</td>
+        <td>${rg}</td>
+        <td>${dtCadastro}</td>
+      `; 
+
+      // Adiciona a nova linha ao corpo da tabela
+      tbody.appendChild(novaLinha);
+    }
+
+    // Função de busca que determina qual função de consulta chamar com base nos campos de nome e CPF
+    function buscar() {
+      const nome = document.getElementById('txtNome').value;
+      const cpf = document.getElementById('txtCpf').value;
+
+      if (nome.trim() !== '') {
+        consultarPacientesPorNome(nome);
+      } else if (cpf.trim() !== '') {
+        consultarPacientesPorCPF(cpf);
       } else {
-        pacientes.forEach(paciente => {
-          adicionarNovaLinha(
-            paciente.Nome,
-            paciente.Tel,
-            paciente.CPF,
-            paciente.Rg,
-            paciente.Demanda
-          );
-        });
+        alert("Preencha o campo nome ou CPF para realizar a busca.");
       }
-    })
-    .catch((error) => {
-      console.error('Erro ao consultar pacientes:', error);
-    });
-}
+    }
 
-// Função para consultar pacientes por CPF usando a API
-function consultarPacientesPorCPF(cpf) {
-  api.paciente.consultar({ CPF: cpf })
-    .then((pacientes) => {
-      const tbody = document.querySelector('.ui-jqgrid-htable');
-      limparTabela(tbody);
-
-      if (pacientes.length === 0) {
-        alert("Nenhum paciente encontrado");
-      } else {
-        pacientes.forEach(paciente => {
-          adicionarNovaLinha(
-            paciente.Nome,
-            paciente.Tel,
-            paciente.CPF,
-            paciente.Rg,
-            paciente.Demanda
-          );
+    // Função para consultar pacientes por nome usando a API
+    function consultarPacientesPorNome(nome) {
+      api.pacientes.consultar({ Nome: nome })
+        .then((pacientes) => {
+          const tbody = document.querySelector('.ui-jqgrid-htable');
+          limparTabela(tbody);
+          
+          if (pacientes.length === 0) {
+            alert("Nenhum paciente encontrado");
+          } else {
+            pacientes.forEach(paciente => {
+              adicionarNovaLinha(
+                paciente.Nome,
+                paciente.Tel,
+                paciente.CPF,
+                paciente.Rg,
+                paciente.Demanda
+              );
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Erro ao consultar pacientes:', error);
         });
-      }
-    })
-    .catch((error) => {
-      console.error('Erro ao consultar pacientes:', error);
-    });
-}
+    }
 
-// Função para limpar a tabela
-function limparTabela(tbody) {
-  while (tbody.children.length > 1) {
-    tbody.removeChild(tbody.lastChild);
-  }
-}
+    // Função para consultar pacientes por CPF usando a API
+    function consultarPacientesPorCPF(cpf) {
+      api.paciente.consultar({ CPF: cpf })
+        .then((pacientes) => {
+          const tbody = document.querySelector('.ui-jqgrid-htable');
+          limparTabela(tbody);
 
-// Adicionar eventos de busca nos campos de entrada
-document.getElementById('txtCpf').onkeydown = function (e) {
-  if (e.key === 'Enter') {
-    consultarPacientesPorCPF(document.getElementById('txtCpf').value);
-  }
-}
-
-document.getElementById('txtNome').onkeydown = function (e) {
-  if (e.key === 'Enter') {
-    consultarPacientesPorNome(document.getElementById('txtNome').value);
-  }
-}
-</script>
-
-  </body>
-<script>
-  // buscar pacientes do aluno logado
-  const aluno = JSON.parse(localStorage.getItem('usuario'));
-  api.alunos.pacientes({ Matricula: aluno.Matricula })
-    .then((pacientes) => {
-      const tbody = document.querySelector('.ui-jqgrid-htable');
-    //  limparTabela(tbody);
-      
-      if (pacientes.length === 0) {
-        alert("Nenhum paciente encontrado");
-      } else {
-        pacientes.forEach(paciente => {
-          adicionarNovaLinha(
-            paciente.Nome,
-            paciente.Tel,
-            paciente.CPF,
-            paciente.Rg,
-            paciente.Demanda
-          );
+          if (pacientes.length === 0) {
+            alert("Nenhum paciente encontrado");
+          } else {
+            pacientes.forEach(paciente => {
+              adicionarNovaLinha(
+                paciente.Nome,
+                paciente.Tel,
+                paciente.CPF,
+                paciente.Rg,
+                paciente.Demanda
+              );
+            });
+          }
+        })
+        .catch((error) => {
+          console.error('Erro ao consultar pacientes:', error);
         });
-      }
-    })
-    .catch((error) => {
-      console.error('Erro ao consultar pacientes:', error);
-    });
+    }
+
+    // Função para limpar a tabela
     function limparTabela(tbody) {
-  while (tbody.children.length > 1) {
-    tbody.removeChild(tbody.lastChild);
-  }
-}
-    function adicionarNovaLinha(nome, Tel, cpf, diciplina, demanda) {
-  // Seleciona o corpo da tabela usando o XPath
-  const tbody = document.querySelector('.ui-jqgrid-htable');
+      while (tbody.children.length > 1) {
+        tbody.removeChild(tbody.lastChild);
+      }
+    }
 
-  
-  // Cria um novo elemento de linha (<tr>)
-  const novaLinha = document.createElement('tr');
+    // Adicionar eventos de busca nos campos de entrada
+    document.getElementById('txtCpf').onkeydown = function (e) {
+      if (e.key === 'Enter') {
+        consultarPacientesPorCPF(document.getElementById('txtCpf').value);
+      }
+    }
 
-  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
-  novaLinha.innerHTML = `
-    <td><a href="registrar-atendimento-2.html?cpf=${cpf}">${nome}</a></td>
-    <td>${Tel}</td>
-    <td>${cpf}</td>
-    <td>${diciplina}</td>
-    <td>${demanda}</td>
-  `;
-  // Adiciona a nova linha ao corpo da tabela
-  tbody.appendChild(novaLinha);
-}
+    document.getElementById('txtNome').onkeydown = function (e) {
+      if (e.key === 'Enter') {
+        consultarPacientesPorNome(document.getElementById('txtNome').value);
+      }
+    }
+    
 </script>
+
+
+   
+<h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+  FUNCIONALIDADE PREVISTA: <br>
+  1) BUSCAR UM PACIENTE <br>
+  2) <a href="registrar-atendimento-2.html"> SELECIONA O NOME DO PACIENTE E AVANÇA PARA A PRÓXIMA PÁGINA</a> 
+ 
+</h2>
+
+
 </html>

@@ -143,75 +143,91 @@
         // array com dados fictícios de pacientes
         let pacientes = [
             {
-              CPF: "112.289.390-63",
-              Nome: "Fulano da Silva",
-              Rg: "1234567",
-              DataNascimento: "01/01/1990",
-              Email: "fulano@example.com",
-              Telefone: "(00) 12345-6789",
-              EstadoCivil: "SOLTEIRO",
-              Sexo: "Masculino",
-              corRaca: "Branca",
-              NomeMae: "Ciclana da Silva",
-              NomePai: "Beltrano da Silva",
-              PNE: ["Hipertensão", "Diabetes"],
-              EnderecoTipo: "Residencial",
-              Cep: "12345-678",
-              Rua: "Rua dos Exemplos",
-              Numero: "123",
-              Complemento: "Apto 456",
-              Bairro: "Bairro das Amostras",
-              Cidade: "Cidadópolis",
+                informacoesImportantes: "",
+                CPF: "112.289.390-63",
+                Nome: "Fulano da Silva",
+                Rg: "1234567",
+                CNS: "123456789012345",
+                DataNascimento: "01/01/1990",
+                Email: "fulano@example.com",
+                Telefone: "(00) 12345-6789",
+                Telefone2: "(00) 98765-4321",
+                Telefone3: "(00) 11111-2222",
+                EstadoCivil: "SOLTEIRO",
+                Sexo: "Masculino",
+                corRaca: "Branca",
+                NomeMae: "Ciclana da Silva",
+                NomePai: "Beltrano da Silva",
+                PNE: ["Hipertensão", "Diabetes"],
+                EnderecoTipo: "Residencial",
+                Cep: "12345-678",
+                Rua: "Rua dos Exemplos",
+                Numero: "123",
+                Complemento: "Apto 456",
+                Bairro: "Bairro das Amostras",
+                Cidade: "Cidadópolis",
             },
             {
-              CPF: "790.588.720-09",
-              Nome: "Ciclana Pereira",
-              Rg: "7654321",
-              DataNascimento: "15/06/1985",
-              Email: "ciclana@example.com",
-              Telefone: "(00) 98765-4321",
-              EstadoCivil: "CASADO",
-              Sexo: "Feminino",
-              corRaca: "Parda",
-              NomeMae: "Maria Pereira",
-              NomePai: "José Pereira",
-              PNE: ["Nenhum"],
-              EnderecoTipo: "Residencial",
-              Cep: "54321-987",
-              Rua: "Avenida das Flores",
-              Numero: "456",
-              Complemento: "",
-              Bairro: "Bairro Central",
-              Cidade: "Cidadelândia",
+                informacoesImportantes: "Alérgica à penicilina.",
+                CPF: "790.588.720-09",
+                Nome: "Ciclana Pereira",
+                Rg: "7654321",
+                CNS: "543210987654321",
+                DataNascimento: "15/06/1985",
+                Email: "ciclana@example.com",
+                Telefone: "(00) 98765-4321",
+                Telefone2: "",
+                Telefone3: "",
+                EstadoCivil: "CASADO",
+                Sexo: "Feminino",
+                corRaca: "Parda",
+                NomeMae: "Maria Pereira",
+                NomePai: "José Pereira",
+                PNE: ["Nenhum"],
+                EnderecoTipo: "Residencial",
+                Cep: "54321-987",
+                Rua: "Avenida das Flores",
+                Numero: "456",
+                Complemento: "",
+                Bairro: "Bairro Central",
+                Cidade: "Cidadelândia",
             },
             {
-              CPF: "964.940.820-76",
-              Nome: "Beltrano Alves",
-              Rg: "11223344",
-              DataNascimento: "30/11/1982",
-              Email: "beltrano@example.com",
-              Telefone: "(00) 11111-2222",
-              EstadoCivil: "DIVORCIADO",
-              Sexo: "Masculino",
-              corRaca: "Indígena",
-              NomeMae: "Joana Alves",
-              NomePai: "Pedro Alves",
-              PNE: ["Nenhum"],
-              EnderecoTipo: "Comercial",
-              Cep: "98765-432",
-              Rua: "Rua do Comércio",
-              Numero: "789",
-              Complemento: "Sala 101",
-              Bairro: "Centro Empresarial",
-              Cidade: "Cidadeforte",
+                informacoesImportantes: "",
+                CPF: "964.940.820-76",
+                Nome: "Beltrano Alves",
+                Rg: "11223344",
+                CNS: "987654321098765",
+                DataNascimento: "30/11/1982",
+                Email: "beltrano@example.com",
+                Telefone: "(00) 11111-2222",
+                Telefone2: "",
+                Telefone3: "",
+                EstadoCivil: "DIVORCIADO",
+                Sexo: "Masculino",
+                corRaca: "Indígena",
+                NomeMae: "Joana Alves",
+                NomePai: "Pedro Alves",
+                PNE: ["Nenhum"],
+                EnderecoTipo: "Comercial",
+                Cep: "98765-432",
+                Rua: "Rua do Comércio",
+                Numero: "789",
+                Complemento: "Sala 101",
+                Bairro: "Centro Empresarial",
+                Cidade: "Cidadeforte",
             },
             {
+                informacoesImportantes: "",
                 CPF: "111.222.333-44",
                 Nome: "José da Silva",
                 Rg: "12345678",
+                CNS: "123456789012345",
                 DataNascimento: "10/03/2015",
                 Email: "jose@example.com",
                 Telefone: "(33) 44444-5555",
+                Telefone2: "(53) 55555-6666",
+                Telefone3: "",
                 EstadoCivil: "CASADO",
                 Sexo: "Masculino",
                 corRaca: "Branca",
@@ -227,12 +243,16 @@
                 Cidade: "Cidadefeliz",
             },
             {
+                informacoesImportantes: "Relato de abuso físico",
                 CPF: "555.666.777-88",
                 Nome: "Ana Souza",
                 Rg: "88776655",
+                CNS: "543210987654321",
                 DataNascimento: "05/12/2018",
                 Email: "ana@example.com",
                 Telefone: "(44) 55555-6666",
+                Telefone2: "",
+                Telefone3: "",
                 EstadoCivil: "CASADA",
                 Sexo: "Feminino",
                 corRaca: "Parda",
@@ -248,12 +268,16 @@
                 Cidade: "Cidade Marítima",
             },
             {
+                informacoesImportantes: "",
                 CPF: "999.888.777-66",
                 Nome: "Ricardo Santos",
                 Rg: "33221100",
+                CNS: "987654321098765",
                 DataNascimento: "20/07/2016",
                 Email: "ricardo@example.com",
                 Telefone: "(55) 66666-7777",
+                Telefone2: "(55) 77777-8888",
+                Telefone3: "",
                 EstadoCivil: "CASADO",
                 Sexo: "Masculino",
                 corRaca: "Negra",
@@ -269,12 +293,16 @@
                 Cidade: "Cidade Feliz",
             },
             {
+                informacoesImportantes: "",
                 CPF: "777.888.999-11",
                 Nome: "Lucia Lima",
                 Rg: "11223344",
+                CNS: "123456789012345",
                 DataNascimento: "12/04/2012",
                 Email: "lucia@example.com",
                 Telefone: "(33) 22222-1111",
+                Telefone2: "(33) 11111-2222",
+                Telefone3: "",
                 EstadoCivil: "SOLTEIRA",
                 Sexo: "Feminino",
                 corRaca: "Amarela",
@@ -290,12 +318,16 @@
                 Cidade: "Cidadeverde",
             },
             {
+                informacoesImportantes: "",
                 CPF: "111.222.333-55",
                 Nome: "Mariana Costa",
                 Rg: "98765432",
+                CNS: "123456789012345",
                 DataNascimento: "08/09/1989",
                 Email: "mariana@example.com",
                 Telefone: "(77) 88888-9999",
+                Telefone2: "",
+                Telefone3: "",
                 EstadoCivil: "CASADA",
                 Sexo: "Feminino",
                 corRaca: "Parda",
@@ -311,12 +343,16 @@
                 Cidade: "Cidadefeliz",
             },
             {
+                informacoesImportantes: "",
                 CPF: "666.555.444-33",
                 Nome: "Pedro Rodrigues",
                 Rg: "56789012",
+                CNS: "543210987654321",
                 DataNascimento: "25/11/1987",
                 Email: "pedro@example.com",
                 Telefone: "(99) 44444-5555",
+                Telefone2: "",
+                Telefone3: "",
                 EstadoCivil: "SOLTEIRO",
                 Sexo: "Masculino",
                 corRaca: "Negra",
@@ -332,12 +368,16 @@
                 Cidade: "Cidade Feliz",
             },
             {
+                informacoesImportantes: "",
                 CPF: "333.222.111-00",
                 Nome: "Isabela Lima",
                 Rg: "65432109",
+                CNS: "543210987654321",
                 DataNascimento: "14/07/1993",
                 Email: "isabela@example.com",
                 Telefone: "(66) 55555-4444",
+                Telefone2: "",
+                Telefone3: "",
                 EstadoCivil: "SOLTEIRA",
                 Sexo: "Feminino",
                 corRaca: "Branca",
@@ -353,12 +393,16 @@
                 Cidade: "Cidadeverde",
             },
             {
+                informacoesImportantes: "Paciente tem alergia à penicilina.",
                 CPF: "444.333.222-11",
                 Nome: "João Pereira",
                 Rg: "12345678",
+                CNS: "123456789012345",
                 DataNascimento: "02/02/1981",
                 Email: "joao@example.com",
                 Telefone: "(11) 33333-4444",
+                Telefone2: "",
+                Telefone3: "",
                 EstadoCivil: "CASADO",
                 Sexo: "Masculino",
                 corRaca: "Negra",
@@ -374,12 +418,16 @@
                 Cidade: "Cidadefeliz",
             },
             {
+                informacoesImportantes: "",
                 CPF: "222.111.333-55",
                 Nome: "Sandra Oliveira",
                 Rg: "54321098",
+                CNS: "543210987654321",
                 DataNascimento: "19/06/1997",
                 Email: "sandra@example.com",
                 Telefone: "(77) 99999-8888",
+                Telefone2: "",
+                Telefone3: "",
                 EstadoCivil: "SOLTEIRA",
                 Sexo: "Feminino",
                 corRaca: "Branca",
@@ -395,12 +443,16 @@
                 Cidade: "Cidade Feliz",
             },
             {
+                informacoesImportantes: "",
                 CPF: "888.777.666-44",
                 Nome: "Carlos Santos",
                 Rg: "43210987",
+                CNS: "123456789012345",
                 DataNascimento: "23/03/1984",
                 Email: "carlos@example.com",
                 Telefone: "(88) 77777-6666",
+                Telefone2: "(88) 66666-7777",
+                Telefone3: "",
                 EstadoCivil: "CASADO",
                 Sexo: "Masculino",
                 corRaca: "Negra",
@@ -416,12 +468,16 @@
                 Cidade: "Cidadeverde",
             },
             {
+                informacoesImportantes: "Paciente tem alergia à penicilina.",
                 CPF: "999.888.777-33",
                 Nome: "Larissa Pereira",
                 Rg: "76543210",
+                CNS: "543210987654321",
                 DataNascimento: "03/12/2016",
                 Email: "larissa@example.com",
                 Telefone: "(55) 66666-7777",
+                Telefone2: "",
+                Telefone3: "",
                 EstadoCivil: "SOLTEIRA",
                 Sexo: "Feminino",
                 corRaca: "Branca",
@@ -454,7 +510,7 @@
                 Especialidade: "Periodontia",
                 Demanda: "Raspagem subgengival em todos os sextantes",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "112.289.390-63",
@@ -463,7 +519,7 @@
                 Especialidade: "Cirurgia",
                 Demanda: "Exodontia do 38",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "112.289.390-63",
@@ -472,7 +528,7 @@
                 Especialidade: "Prótese Dentária",
                 Demanda: "Confeccção de PPR superior",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             }, 
             {
                 CPF: "790.588.720-09",
@@ -481,7 +537,7 @@
                 Especialidade: "Periodontia",
                 Demanda: "Aumento de coroa clínica no 24",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "790.588.720-09",
@@ -490,7 +546,7 @@
                 Especialidade: "Prótese dentária",
                 Demanda: "Coroa unitária no dente 24",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "790.588.720-09",
@@ -499,7 +555,7 @@
                 Especialidade: "Cirurgia",
                 Demanda: "Remoção de raiz residual do 31",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "964.940.820-76",
@@ -508,7 +564,7 @@
                 Especialidade: "Urgência",
                 Demanda: "Paciente relata dor no dente 21",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "111.222.333-44",
@@ -517,7 +573,7 @@
                 Especialidade: "Odontopediatria",
                 Demanda: "1º consulta",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "555.666.777-88",
@@ -526,7 +582,7 @@
                 Especialidade: "Odontopediatria",
                 Demanda: "Exodontia do 55",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "999.888.777-66",
@@ -535,7 +591,7 @@
                 Especialidade: "Odontopediatria",
                 Demanda: "Endodontia do 74",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "777.888.999-11",
@@ -544,7 +600,7 @@
                 Especialidade: "Odontopediatria",
                 Demanda: "Profilaxia e aplicação de flúor",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "111.222.333-55",
@@ -553,7 +609,7 @@
                 Especialidade: "Cirurgia",
                 Demanda: "Necessidade de múltiplas exodontias",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "111.222.333-55",
@@ -562,7 +618,7 @@
                 Especialidade: "Prótese Dentária",
                 Demanda: "PPR nos arcos superior e inferior",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "666.555.444-33",
@@ -571,7 +627,7 @@
                 Especialidade: "Periodontia",
                 Demanda: "Avaliação periodontal dos dentes anteriores superiores",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "666.555.444-33",
@@ -580,7 +636,7 @@
                 Especialidade: "Prótese Dentária",
                 Demanda: "Precisa de prótese fixa (ou sobre implante) no arco superior",
                 complexidade: "Alta", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "333.222.111-00",
@@ -589,7 +645,7 @@
                 Especialidade: "Urgência",
                 Demanda: "Paciente com abcesso no 22",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "333.222.111-00",
@@ -598,7 +654,7 @@
                 Especialidade: "Cirurgia",
                 Demanda: "Paciente precisa extrair os 4 sisos impactados",
                 complexidade: "Alta", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "444.333.222-11",
@@ -607,7 +663,7 @@
                 Especialidade: "Prótese Dentária",
                 Demanda: "Prótese total superior e inferior",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "222.111.333-55",
@@ -616,7 +672,7 @@
                 Especialidade: "Periodontia",
                 Demanda: "Raspagem supragengival",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "222.111.333-55",
@@ -625,7 +681,7 @@
                 Especialidade: "Urgência",
                 Demanda: "Provisório do 21 caiu",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "222.111.333-55",
@@ -634,7 +690,7 @@
                 Especialidade: "Prótese Dentária",
                 Demanda: "Pino e coroa unitária no 21",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "888.777.666-44",
@@ -643,7 +699,7 @@
                 Especialidade: "Periodontia",
                 Demanda: "Aumento de coroa clínica no 24",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "888.777.666-44",
@@ -652,7 +708,7 @@
                 Especialidade: "Cirurgia",
                 Demanda: "Dente supranumerário impactado",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "888.777.666-44",
@@ -661,7 +717,7 @@
                 Especialidade: "Prótese Dentária",
                 Demanda: "Reparo em PPR",
                 complexidade: "Baixa", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
             {
                 CPF: "999.888.777-33",
@@ -670,14 +726,8 @@
                 Especialidade: "Odontopediatria",
                 Demanda: "Paciente apresenta agenesias múltiplas. Avaliar e acompanhar",
                 complexidade: "Média", 
-                Status: "Em espera"
+                Status: "Em espera",
             },
-
-            
-            
-            
-            
-            
         ];
         // função para inserir os dados no banco
         for (let i = 0; i < encaminhamentos.length; i++) {

@@ -13,6 +13,8 @@
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
 <link href="stylecobalto.css" type="text/css" rel="stylesheet">
+<link href="../../../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
+
 
 <!--ALERT MESSAGES-->
 <link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
@@ -166,35 +168,35 @@
     <br></div>
   
     <label style="width: 120px; ;margin: 5px;">Nome</label>
-    <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+    <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
     <br>
     
     <label style="width: 120px; ;margin: 5px;">RG</label>
-    <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+    <input type="text" name="Rg" id="Rg" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Cartão SUS (CNS)</label>
-    <input type="text" name="CNS" id="CNS" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;" readonly="readonly">
+    <input type="text" name="CNS" id="CNS" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 100px;">
     <br>
     
     <label style="width: 120px; ;margin: 5px;"  >Dt. nascimento</label>
-    <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;" readonly="readonly">
+    <input type="text" name="DataNasc" id="DataNasc" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 80px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">E-mail</label>
-    <input type="text" name="Email" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;" readonly="readonly">
+    <input type="text" name="Email" id="Email" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 400px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Telefone</label>
-    <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+    <input type="text" name="Tel" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Telefone 2 (Opcional)</label>
-    <input type="text" name="Tel2" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+    <input type="text" name="Tel2" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
     <br>
   
     <label style="width: 120px; ;margin: 5px;">Telefone 3 (Opcional)</label>
-    <input type="text" name="Tel3" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
+    <input type="text" name="Tel3" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
     <br>
     
   <label style="width: 120px; ;margin: 5px;">Estado civil</label>
@@ -354,8 +356,8 @@
   <p></p>
 
   <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
-  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-    <option value="0">Escolher</option>
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="Curso">
+    <option value="Escolher">Escolher</option>
     <option value="Odontologia">Odontologia</option>
     <option value="Enfermagem">Enfermagem</option>
     <option value="Farmácia">Farmácia</option>
@@ -365,13 +367,13 @@
   <br>
   <p></p>
   <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="Especialidade">
     <option value="0">Selecione uma especialidade</option>
   </select>
   
   <script>
     let componentesCurriculares = [
-      {codCurso: '0', nomeEspec:'Selecione uma especialidade'},
+      {codCurso: 'Escolher', nomeEspec:'Selecione uma especialidade'},
       {codCurso: 'Odontologia', nomeEspec:'Prótese Dentária'},
       {codCurso: 'Odontologia', nomeEspec:'Odontopediatria'},
       {codCurso: 'Odontologia', nomeEspec:'Periodontia'},
@@ -387,14 +389,14 @@
       // Add more options as needed
     ];
     
-    const areaSelect = document.getElementById('areaSaúde');
-    const componentesCurricularesSelect = document.getElementById('especAreaSaúde');
+    const areaSelect = document.getElementById('Curso');
+    const componentesCurricularesSelect = document.getElementById('Especialidade');
     
     areaSelect.addEventListener('change', function() {
       const selectedCodCurso = areaSelect.value;
     
       // Clear existing options
-      componentesCurricularesSelect.innerHTML = '<option value="0">Selecione uma especialidade</option>';
+      componentesCurricularesSelect.innerHTML = '<option value="Escolher">Selecione uma especialidade</option>';
     
       // Filter and populate the second select
       const selectedcomponentesCurriculares = componentesCurriculares.filter(disciplina => disciplina.codCurso === selectedCodCurso);
@@ -510,11 +512,11 @@ function getDataFromTab(TabId){
   return jsonData;
 }
 const codtonome = {
-  "0": "Escolher",
-  "1200": "Enfermagem",
-  "7100": "Farmácia",
-  "400": "Odontologia",
-  "7200": "Terapia Ocupacional"
+  "Escolher": "Escolher",
+  "Enfermagem": "Enfermagem",
+  "Farmácia": "Farmácia",
+  "Odontologia": "Odontologia",
+  "Terapia Ocupacional": "Terapia Ocupacional"
 }
 
 

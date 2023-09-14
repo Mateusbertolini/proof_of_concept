@@ -93,7 +93,7 @@
     <!-- CONTEÚDO BOTÕES -->
 <div class="ui-widget-content ui-corner-all toolbar">
   <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-  <button id="salvar" class="salvar" title="Salvar paciente" onclick="submitFunction()" style="float: left;">Registrar procedimento</button>
+  <button id="salvar" class="salvar" title="Salvar paciente" onclick="submitFunction()" style="float: left;">Registrar atendimento</button>
   <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
   <span style="clear: both; display: block"></span>
 </div>
@@ -106,11 +106,11 @@
     
     <li class="labeltab ui-state-default ui-corner-top ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tab-0" aria-labelledby="ui-id-2" aria-selected="true"><a href="#tab-0" accesskey="tab-0" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Dados pessoais</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-1" aria-labelledby="ui-id-2" aria-selected="false"><a href="#tab-1" accesskey="tab-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Descrição do procedimento</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-1" aria-labelledby="ui-id-2" aria-selected="false"><a href="#tab-1" accesskey="tab-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Entrevista dialogada</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tab-2" accesskey="tab-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Odontograma</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tab-2" accesskey="tab-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Descrição do plano de tratamento/atendimento</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-3" aria-labelledby="ui-id-4" aria-selected="false"><a href="#tab-3" accesskey="tab-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Anexar exames complementares</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-3" aria-labelledby="ui-id-4" aria-selected="false"><a href="#tab-3" accesskey="tab-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Anexar documentos/exames complementares</a></li>
   </ul>
 <!--FIM DIVISÃO EM TABS-->
 
@@ -356,186 +356,304 @@ buscarperfil()
 
 
 
-<!--INÍCIO DA TAB DESCRIÇÃO DO ATENDIMENTO-->
+<!--INÍCIO DA TAB ENTREVISTA DIALOGADA-->
 <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
- 
-<p></p>
-
-<label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
-<select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
-  <option value="0">Escolher</option>
-  <option value="Odontologia">Odontologia</option>
-  <option value="Enfermagem">Enfermagem</option>
-  <option value="Farmácia">Farmácia</option>
-  <option value="Terapia Ocupacional">Terapia Ocupacional</option>
-</select>
-
-<br>
-<p></p>
-<label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
-<select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
-  <option value="0">Selecione uma especialidade</option>
-</select>
-
-<script>
-  const disciplinas = [
-    {codCurso: '0', nomeEspec:'Selecione uma especialidade'},
-    {codCurso: 'Odontologia', nomeEspec:'Prótese Dentária'},
-    {codCurso: 'Odontologia', nomeEspec:'Odontopediatria'},
-    {codCurso: 'Odontologia', nomeEspec:'Periodontia'},
-    {codCurso: 'Odontologia', nomeEspec:'Dentística'},
-    {codCurso: 'Odontologia', nomeEspec:'Cirurgia'},
-    {codCurso: 'Enfermagem', nomeEspec:'Pediatria e Neonatologia'},
-    {codCurso: 'Enfermagem', nomeEspec:'Terapia Intensiva e Alta Complexidade'},
-    {codCurso: 'Enfermagem', nomeEspec:'Cardiologia e Hemodinâmica'},
-    {codCurso: 'Farmácia', nomeEspec:'Análises clínicas' },
-    {codCurso: 'Farmácia', nomeEspec:'Antroposofia' },
-    {codCurso: 'Terapia Ocupacional', nomeEspec:'Contextos sociais' },
-    {codCurso: 'Terapia Ocupacional', nomeEspec:'Saúde da família' },
-    // Add more options as needed
-  ];
   
-  const areaSelect = document.getElementById('areaSaúde');
-  const disciplinasSelect = document.getElementById('especAreaSaúde');
-  
-  areaSelect.addEventListener('change', function() {
-    const selectedCodCurso = areaSelect.value;
-  
-    // Clear existing options
-    disciplinasSelect.innerHTML = '<option value="0">Selecione uma especialidade</option>';
-  
-    // Filter and populate the second select
-    const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === selectedCodCurso);
-    selectedDisciplinas.forEach(disciplina => {
-      const option = document.createElement('option');
-      option.value = disciplina.nomeEspec;
-      option.textContent = disciplina.nomeEspec;
-      disciplinasSelect.appendChild(option);
-    });
-  });
-</script>
-
-<hr class="ui-state-default">
-<p></p>
-<br>
-
-<label style="width: 240px; ;">Descrição do procedimento realizado:</label><br>
-  <textarea style="width: 460px;" id="atendimentoDescrição" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
-<br>
-
-<label style="width: 180px; ;">Código SUS:</label>
-  <button onClick="addSUS()" id="btnAddCodSus" value="Adicionar Cód. SUS" class="button">Adicionar Cód. SUS</button>
-<div style="height: 22px; width: 25px; margin: 0px -1px 5px 0px; display: block; float: left; position: relative; padding: 0; text-decoration: none !important; text-align: center; zoom: 1; overflow: visible; border-right: none;" class="ui-widget ui-state-default ui-corner-tl ui-corner-bl ui-button-icon-only"><span class=" ui-icon ui-icon-search"></span></div>
-<input type="text" value="" maxlength="" class="ui-state-default ui-corner-tr ui-corner-br mousetrap " id="atendimentoCodSUS" placeholder="Digite o código SUS" style="width: 240px;" />
-
-<br>
-<label style="width: 180px;">Data do atendimento</label>
-  <input type="text" id="atendimentoData" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 265px;" />
-<br>
-
-<br>
-<label style="width: 180px;">Responsável técnico</label>
-  <input type="text" id="responsavelProcedimento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="SELECT BOX OU BUSCAR O NOME?">
-<br>
-
-<label style="width: 180px;">Componente curricular</label>
-  <input type="text" id="componenteCurricular" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="BUSCAR AUTOMATICAMENTE DO VÍNCULO">
-<br>
-
-<label style="width: 180px;">Paciente faltou:</label>
-  <input type="checkbox" id="pacienteFaltou">
-<br>
-
-<script>
-  const pacienteFaltouCheckbox = document.getElementById('pacienteFaltou');
-  const atendimentoDescricaoInput = document.getElementById('atendimentoDescrição');
-
-  pacienteFaltouCheckbox.addEventListener('change', function() {
-      if (pacienteFaltouCheckbox.checked) {
-          // Add the text when checkbox is checked
-          atendimentoDescricaoInput.value += 'Paciente faltou sem justificativa';
-      } else {
-          // Remove the text when checkbox is unchecked
-          atendimentoDescricaoInput.value = atendimentoDescricaoInput.value.replace('Paciente faltou sem justificativa', '');
-      }
-  });
-</script>
-
-<p></p>
-  <button id="btnAdicionar" onclick="addTable()" value="Adicionar" class="button"  >Adicionar</button>
-  <button id="btnCancelar" onclick="limparCampos()" value="Cancelar" class="button"  >Cancelar</button>
+<div>
+  <label style="font-size: 16; font-weight: bold;">Entrevista dialogada para pacientes adultos</label>
+  <p></p>
   <br>
+  
+  <hr class="ui-state-default">
+  </div>
+  
+<!-- CONTEÚDO COLUNA DA ESQUERDA -->
+<div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+
+<div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA ESQUERDA</p>
+  
+  <P> INSERIR CAMPOS AQUI</P>
+
+  </div>
+</div>
+  
+  <!-- CONTEÚDO COLUNA DA DIREITA -->
+<div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+      
+<div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA DIREITA</p>
+  
+  <P> INSERIR CAMPOS AQUI</P>
+
+</div>
+
+</div>
+<br>
+<hr class="ui-state-default">
+<br>
+<!-- CONTEÚDO DECÍDUOS-->
+<div class="flex-container" id="deciduos">
+    <style>
+      .hidden {
+          display: none;
+      }
+  </style>
+    
+  <hr class="ui-state-default">
+
+  <div>
+    <label for="toggleCheckbox" style="font-size: 16; font-weight: bold;">Entrevista dialogada para odontopediatria:</label>
+    <input type="checkbox" id="toggleCheckbox"><br>
+    <p></p>
+  </div>
+  
+  
+  <div id="content" class="hidden"><br>
+  
+  
+  <!-- CONTEÚDO COLUNA DA ESQUERDA -->
+  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+  
+    <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA ESQUERDA</p>
+  
+      <P> INSERIR CAMPOS AQUI</P>
+            
+    </div>
+
+  </div>
+  
+  
+    <!-- CONTEÚDO COLUNA DA DIREITA -->
+  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+  
+    <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA DIREITA</p>
+  
+      <P> INSERIR CAMPOS AQUI</P>
+    
+  </div>
+</div>
+
+      <style>
+        .flex-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        padding-bottom: 8px;
+        box-sizing: border-box;
+      }
+      </style>
+
+   
+      <script>
+          const toggleCheckbox = document.getElementById('toggleCheckbox');
+          const contentDiv = document.getElementById('content');
+          
+          toggleCheckbox.addEventListener('change', function() {
+              if (this.checked) {
+                  contentDiv.style.display = 'block';
+              } else {
+                  contentDiv.style.display = 'none';
+              }
+          });
+      </script>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<!--INÍCIO DA TAB DESCRIÇÃO DO ATENDIMENTO/PLANO DE TRATAMENTO-->
+<div id="tab-2" class="ui-widget tab tab-2 tab-2 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 1100px;">
+
+
   <p></p>
 
-<hr class="ui-state-default">
-
-<p></p>
-
-<h2> Descrição do registro de atendimento</h2>
-<div style="margin: 10px;"></div>
-<table id="listaProcedimento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 90%; font-size: 14px; margin: 15px;">
-<thead>
-  <tr class="ui-jqgrid-labels" role="rowheader">
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
-      Data
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">
-      Área da Saúde
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 12.5%;">
-      Especialidade
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 40%;">
-      Descrição do procedimento
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
-      Responsável técnico
-    </th>
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">
-      Disciplina/Estágio
-    </th>
-  </tr>
-  </thead>
-  <!-- Table body rows go here -->
-</table>
-
-<script>
-  function addTable() {
-    var atendimentoData = document.getElementById("atendimentoData").value;
-    var areaSaúde = document.getElementById("areaSaúde").value;
-    var especAreaSaúde = document.getElementById("especAreaSaúde").value;
-    var atendimentoDescrição = document.getElementById("atendimentoDescrição").value;
-    var responsavelProcedimento = document.getElementById("responsavelProcedimento").value;
-    var componenteCurricular = document.getElementById("componenteCurricular").value;
-
-    if (atendimentoData && areaSaúde && especAreaSaúde && atendimentoDescrição && responsavelProcedimento && componenteCurricular) {
-      var table = document.getElementById("listaProcedimento");
-      var newRow = table.insertRow(-1);
-
-      var atendimentoDataCell = newRow.insertCell(0);
-      atendimentoDataCell.innerHTML = atendimentoData;
-      atendimentoDataCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var areaSaúdeCell = newRow.insertCell(1);
-      areaSaúdeCell.innerHTML = areaSaúde;
-      areaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var especAreaSaúdeCell = newRow.insertCell(2);
-      especAreaSaúdeCell.innerHTML = especAreaSaúde;
-      especAreaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var atendimentoDescriçãoCell = newRow.insertCell(3);
-      atendimentoDescriçãoCell.innerHTML = atendimentoDescrição;
-      atendimentoDescriçãoCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var responsavelProcedimentoCell = newRow.insertCell(4);
-      responsavelProcedimentoCell.innerHTML = responsavelProcedimento;
-      responsavelProcedimentoCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      var componenteCurricularCell = newRow.insertCell(4);
-      componenteCurricularCell.innerHTML = componenteCurricular;
-      componenteCurricularCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-      // Clear input fields after adding row
+  <label style="font-weight:bold;width: 180px;">Área/Curso da saúde</label>
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="areaSaúde" id="areaSaúde">
+    <option value="0">Escolher</option>
+    <option value="Odontologia">Odontologia</option>
+    <option value="Enfermagem">Enfermagem</option>
+    <option value="Farmácia">Farmácia</option>
+    <option value="Terapia Ocupacional">Terapia Ocupacional</option>
+  </select>
+  
+  <br>
+  <p></p>
+  <label style="font-weight:bold;width: 180px;">Lista de especialidades</label>
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="especAreaSaúde" id="especAreaSaúde">
+    <option value="0">Selecione uma especialidade</option>
+  </select>
+  
+  <script>
+    const disciplinas = [
+      {codCurso: '0', nomeEspec:'Selecione uma especialidade'},
+      {codCurso: 'Odontologia', nomeEspec:'Prótese Dentária'},
+      {codCurso: 'Odontologia', nomeEspec:'Odontopediatria'},
+      {codCurso: 'Odontologia', nomeEspec:'Periodontia'},
+      {codCurso: 'Odontologia', nomeEspec:'Dentística'},
+      {codCurso: 'Odontologia', nomeEspec:'Cirurgia'},
+      {codCurso: 'Enfermagem', nomeEspec:'Pediatria e Neonatologia'},
+      {codCurso: 'Enfermagem', nomeEspec:'Terapia Intensiva e Alta Complexidade'},
+      {codCurso: 'Enfermagem', nomeEspec:'Cardiologia e Hemodinâmica'},
+      {codCurso: 'Farmácia', nomeEspec:'Análises clínicas' },
+      {codCurso: 'Farmácia', nomeEspec:'Antroposofia' },
+      {codCurso: 'Terapia Ocupacional', nomeEspec:'Contextos sociais' },
+      {codCurso: 'Terapia Ocupacional', nomeEspec:'Saúde da família' },
+      // Add more options as needed
+    ];
+    
+    const areaSelect = document.getElementById('areaSaúde');
+    const disciplinasSelect = document.getElementById('especAreaSaúde');
+    
+    areaSelect.addEventListener('change', function() {
+      const selectedCodCurso = areaSelect.value;
+    
+      // Clear existing options
+      disciplinasSelect.innerHTML = '<option value="0">Selecione uma especialidade</option>';
+    
+      // Filter and populate the second select
+      const selectedDisciplinas = disciplinas.filter(disciplina => disciplina.codCurso === selectedCodCurso);
+      selectedDisciplinas.forEach(disciplina => {
+        const option = document.createElement('option');
+        option.value = disciplina.nomeEspec;
+        option.textContent = disciplina.nomeEspec;
+        disciplinasSelect.appendChild(option);
+      });
+    });
+  </script>
+  
+  <hr class="ui-state-default">
+  <p></p>
+  <br>
+  
+  <label style="width: 400px; ;">Descrição do plano de tratamento ou procedimento realizado:</label><br>
+    <textarea style="width: 460px;" id="atendimentoDescrição" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
+  <br>
+  
+  <label style="width: 180px; ;">Código SUS:</label>
+    <button id="btnAddCodSus" value="Adicionar Cód. SUS" class="button">Adicionar Cód. SUS</button>
+  <div style="height: 22px; width: 25px; margin: 0px -1px 5px 0px; display: block; float: left; position: relative; padding: 0; text-decoration: none !important; text-align: center; zoom: 1; overflow: visible; border-right: none;" class="ui-widget ui-state-default ui-corner-tl ui-corner-bl ui-button-icon-only"><span class=" ui-icon ui-icon-search"></span></div>
+  <input type="text" value="" maxlength="" class="ui-state-default ui-corner-tr ui-corner-br mousetrap " id="atendimentoCodSUS" placeholder="Digite o código SUS" style="width: 240px;" />
+  
+  <br>
+  <label style="width: 180px;">Data do atendimento</label>
+    <input type="text" id="atendimentoData" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 265px;" />
+  <br>
+  
+  <br>
+  <label style="width: 180px;">Responsável técnico</label>
+    <input type="text" id="responsavelProcedimento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="SELECT BOX OU BUSCAR O NOME?">
+  <br>
+  
+  <label style="width: 180px;">Componente curricular</label>
+    <input type="text" id="componenteCurricular" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 265px;" placeholder="BUSCAR AUTOMATICAMENTE DO VÍNCULO">
+  <br>
+  
+  <label style="width: 180px;">Paciente faltou:</label>
+    <input type="checkbox" id="pacienteFaltou">
+  <br>
+  
+  <script>
+    const pacienteFaltouCheckbox = document.getElementById('pacienteFaltou');
+    const atendimentoDescricaoInput = document.getElementById('atendimentoDescrição');
+  
+    pacienteFaltouCheckbox.addEventListener('change', function() {
+        if (pacienteFaltouCheckbox.checked) {
+            // Add the text when checkbox is checked
+            atendimentoDescricaoInput.value += 'Paciente faltou sem justificativa';
+        } else {
+            // Remove the text when checkbox is unchecked
+            atendimentoDescricaoInput.value = atendimentoDescricaoInput.value.replace('Paciente faltou sem justificativa', '');
+        }
+    });
+  </script>
+  
+  <p></p>
+    <button id="btnAdicionar" onclick="addTable()" value="Adicionar" class="button"  >Adicionar</button>
+    <button id="btnCancelar" onclick="limparCampos()" value="Cancelar" class="button"  >Cancelar</button>
+    <br>
+    <p></p>
+  
+  <hr class="ui-state-default">
+  
+  <p></p>
+  
+  <h2> Descrição do registro de atendimento</h2>
+  <div style="margin: 10px;"></div>
+  <table id="listaProcedimento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 90%; font-size: 14px; margin: 15px;">
+  <thead>
+    <tr class="ui-jqgrid-labels" role="rowheader">
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
+        Data
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">
+        Área da Saúde
+      </th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 12.5%;">
+        Especialidade
+      </th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 40%;">
+        Descrição do procedimento
+      </th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
+        Responsável técnico
+      </th>
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">
+        Disciplina/Estágio
+      </th>
+    </tr>
+    </thead>
+    <!-- Table body rows go here -->
+  </table>
+  
+  <script>
+    function addTable() {
+      var atendimentoData = document.getElementById("atendimentoData").value;
+      var areaSaúde = document.getElementById("areaSaúde").value;
+      var especAreaSaúde = document.getElementById("especAreaSaúde").value;
+      var atendimentoDescrição = document.getElementById("atendimentoDescrição").value;
+      var responsavelProcedimento = document.getElementById("responsavelProcedimento").value;
+      var componenteCurricular = document.getElementById("componenteCurricular").value;
+  
+      if (atendimentoData && areaSaúde && especAreaSaúde && atendimentoDescrição && responsavelProcedimento && componenteCurricular) {
+        var table = document.getElementById("listaProcedimento");
+        var newRow = table.insertRow(-1);
+  
+        var atendimentoDataCell = newRow.insertCell(0);
+        atendimentoDataCell.innerHTML = atendimentoData;
+        atendimentoDataCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var areaSaúdeCell = newRow.insertCell(1);
+        areaSaúdeCell.innerHTML = areaSaúde;
+        areaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var especAreaSaúdeCell = newRow.insertCell(2);
+        especAreaSaúdeCell.innerHTML = especAreaSaúde;
+        especAreaSaúdeCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var atendimentoDescriçãoCell = newRow.insertCell(3);
+        atendimentoDescriçãoCell.innerHTML = atendimentoDescrição;
+        atendimentoDescriçãoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var responsavelProcedimentoCell = newRow.insertCell(4);
+        responsavelProcedimentoCell.innerHTML = responsavelProcedimento;
+        responsavelProcedimentoCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        var componenteCurricularCell = newRow.insertCell(5);
+        componenteCurricularCell.innerHTML = componenteCurricular;
+        componenteCurricularCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+        // Clear input fields after adding row
+        document.getElementById("atendimentoData").value = "";
+        document.getElementById("areaSaúde").value = "";
+        document.getElementById("especAreaSaúde").value = "";
+        document.getElementById("atendimentoDescrição").value = "";
+        document.getElementById("responsavelProcedimento").value = "";
+        document.getElementById("componenteCurricular").value = "";
+      }
+    }
+  
+    function limparCampos() {
       document.getElementById("atendimentoData").value = "";
       document.getElementById("areaSaúde").value = "";
       document.getElementById("especAreaSaúde").value = "";
@@ -543,395 +661,90 @@ buscarperfil()
       document.getElementById("responsavelProcedimento").value = "";
       document.getElementById("componenteCurricular").value = "";
     }
+  </script>
+  
+  
+  
+  
+  <hr class="ui-state-default">
+  <div style="margin: 10px;"></div>
+  <h2> Listagem de procedimentos SUS realizados</h2>
+  <table id="listaCodSUS" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 60%; font-size: 14px; margin: 15px;">
+  <thead>
+    <tr class="ui-jqgrid-labels" role="rowheader">
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
+        Selec.
+      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 95%;">
+        Cód. e Procedimento SUS
+    </tr>
+    </thead>
+    <!-- Table body rows go here -->
+  </table>
+  
+  <button name="btnDeletar" id="btnDeletar" value="Deletar" class="button" style="margin: 15px;">Remover código SUS</button>
+    <!-- ADD DADOS NA TABELA DE ATENDIMENTO -->
+  <script>
+  document.getElementById("btnAddCodSus").addEventListener("click", function () {
+      var atendimentoCodSUS = document.getElementById("atendimentoCodSUS").value;
+      addCodSUSRow(atendimentoCodSUS);
+  });
+  
+  document.getElementById("btnDeletar").addEventListener("click", function () {
+      deleteSUSRows();
+  });
+  
+  function addCodSUSRow(codSUS) {
+      var listaCodSUSTable = document.getElementById("listaCodSUS");
+      var newRow = listaCodSUSTable.insertRow(-1); // Insert at the end
+  
+      const checkBoxCell = newRow.insertCell(0);
+      checkBoxCell.innerHTML = '<input type="checkbox" class="delete-checkbox">';
+      checkBoxCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+      var codesCell = newRow.insertCell(1);
+      codesCell.textContent = codSUS;
+      codesCell.className = "ui-state-default ui-th-column ui-th-ltr";
+  
+      // Clear input field after adding row
+      document.getElementById("atendimentoCodSUS").value = "";
   }
-
-  function limparCampos() {
-    document.getElementById("atendimentoData").value = "";
-    document.getElementById("areaSaúde").value = "";
-    document.getElementById("especAreaSaúde").value = "";
-    document.getElementById("atendimentoDescrição").value = "";
-    document.getElementById("responsavelProcedimento").value = "";
-    document.getElementById("componenteCurricular").value = "";
-  }
-</script>
-
-
-
-
-<hr class="ui-state-default">
-<div style="margin: 10px;"></div>
-<h2> Listagem de procedimentos SUS realizados</h2>
-<table id="listaCodSUS" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 60%; font-size: 14px; margin: 15px;">
-<thead>
-  <tr class="ui-jqgrid-labels" role="rowheader">
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
-      Selec.
-    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 95%;">
-      Cód. e Procedimento SUS
-  </tr>
-  </thead>
-  <!-- Table body rows go here -->
-</table>
-
-<button name="btnDeletar" onClick="adicionar()" id="btnDeletar" value="Deletar" class="button" style="margin: 15px;">Remover código SUS</button>
-  <!-- ADD DADOS NA TABELA DE ATENDIMENTO -->
-<script>
-document.getElementById("btnAddCodSus").addEventListener("click", function () {
-    var atendimentoCodSUS = document.getElementById("atendimentoCodSUS").value;
-    addCodSUSRow(atendimentoCodSUS);
-});
-
-document.getElementById("btnDeletar").addEventListener("click", function () {
-    deleteSelectedRows();
-});
-
-function addCodSUSRow(codSUS) {
-    var listaCodSUSTable = document.getElementById("listaCodSUS");
-    var newRow = listaCodSUSTable.insertRow(-1); // Insert at the end
-
-    const checkBoxCell = newRow.insertCell(0);
-    checkBoxCell.innerHTML = '<input type="checkbox" class="delete-checkbox">';
-    checkBoxCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-    var codesCell = newRow.insertCell(1);
-    codesCell.textContent = codSUS;
-    codesCell.className = "ui-state-default ui-th-column ui-th-ltr";
-
-    // Clear input field after adding row
-    document.getElementById("atendimentoCodSUS").value = "";
-}
-
-function deleteSelectedRows() {
+  
+  function deleteSUSRows() {
     var checkboxes = document.getElementsByClassName("delete-checkbox");
     var table = document.getElementById("listaCodSUS");
-    
+
     for (var i = checkboxes.length - 1; i >= 0; i--) {
         if (checkboxes[i].checked) {
             table.deleteRow(i + 1); // +1 because of the header row
         }
     }
 }
-</script>
-
-<hr class="ui-state-default">
-<h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+  </script>
   
-  2- PUXAR OS CÓDIGOS SUS DA LISTAGEM CRIADA PELA ADMINISTRAÇÃO<br>
-</h2>
-</div>   
+  <hr class="ui-state-default">
+  <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+    
+    1- REMOVER CAMPO DE RESPONSÁVEL TÉCNICO E PUXAR AUTOMATICAMENTE DO USUÁRIO LOGADO<br>
+    2- PENSAR COMO SERIA A MELHOR FORMA DE PUXAR O COMPONENTE CURRICULAR<br>
+    3- CORRIGIR SCRIPT PARA REMOVER NECESSIDADE DE PREENCHIMENTO DO CAMPO DE USUÁRIO<br>
+    4- PUXAR OS CÓDIGOS SUS DA LISTAGEM CRIADA PELA ADMINISTRAÇÃO<br>
 
-
-
-
-
-<!--INÍCIO DA TAB ODONTOGRAMA-->
-<div id="tab-2" class="ui-widget tab tab-2 tab-2 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 1100px;">
-
- 
-<div>
-    <hr class="ui-state-default"><label style="font-size: 16; font-weight: bold;">Odontograma simplificado</label></hr>
-    <br>
-    <p style="font-size: 12; margin: 5px;">    Descrever / Relatar informações que julgar necessário (EX: Ausente, Hígido, etc.)</p>
-    <br>
-  
-    <hr class="ui-state-default">
-    <p style="font-size: 12; font-weight: bold;">Dentição permanente</p>
-    </div>
-    
-  <!-- CONTEÚDO COLUNA DA ESQUERDA -->
-  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-  
-  <div><p style="margin-top: 20px; font-weight: bold;">Arco superior direito</p>
-    
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">11</label>
-    <input type="text" id="odontograma11" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">12</label>
-    <input type="text" id="odontograma12" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">13</label>
-    <input type="text" id="odontograma13" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">14</label>
-    <input type="text" id="odontograma14" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">15</label>
-    <input type="text" id="odontograma15" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">16</label>
-    <input type="text" id="odontograma16" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">17</label>
-    <input type="text" id="odontograma17" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-    
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">18</label>
-    <input type="text" id="odontograma18" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-  
-  </div>
-  
-  <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior direito</p>
-      
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">41</label>
-    <input type="text" id="odontograma41" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-    
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">42</label>
-    <input type="text" id="odontograma42" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-    
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">43</label>
-    <input type="text" id="odontograma43" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">44</label>
-    <input type="text" id="odontograma44" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">45</label>
-    <input type="text" id="odontograma45" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-    
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">46</label>
-    <input type="text" id="odontograma46" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">47</label>
-    <input type="text" id="odontograma47" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">48</label>
-    <input type="text" id="odontograma48" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-    
-  </div>
-</div>
-    
-    <!-- CONTEÚDO COLUNA DA DIREITA -->
-  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-        
-  <div><p style="margin-top: 20px; font-weight: bold;">Arco superior esquerdo</p>
-    
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">21</label>
-    <input type="text" id="odontograma21" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-  
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">22</label>
-    <input type="text" id="odontograma22" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">23</label>
-    <input type="text" id="odontograma23" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">24</label>
-    <input type="text" id="odontograma24" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">25</label>
-    <input type="text" id="odontograma25" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">26</label>
-    <input type="text" id="odontograma26" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">27</label>
-    <input type="text" id="odontograma27" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-
-    <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">28</label>
-    <input type="text" id="odontograma28" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-    <br>
-  </div>
-  
-  <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior esquerdo</p>
-      
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">31</label>
-      <input type="text" id="odontograma31" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-      
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">32</label>
-      <input type="text" id="odontograma32" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-      
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">33</label>
-      <input type="text" id="odontograma33" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">34</label>
-      <input type="text" id="odontograma34" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">35</label>
-      <input type="text" id="odontograma35" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-      
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">36</label>
-      <input type="text" id="odontograma36" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">37</label>
-      <input type="text" id="odontograma37" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">38</label>
-      <input type="text" id="odontograma38" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  </div>
-</div>
-<br>
-    
-<!-- CONTEÚDO DECÍDUOS-->
-  <div id="deciduos">
-      <style>
-        .hidden {
-            display: none;
-        }
-    </style>
-      
-      <hr class="ui-state-default">
-      <label for="toggleCheckbox" style="font-size: 12; font-weight: bold;">Dentição decídua:</label>
-      <input type="checkbox" id="toggleCheckbox"><br>
-      <p></p>
-    
-    
-    <div id="content" class="hidden"><br>
-    
-    
-    <!-- CONTEÚDO COLUNA DA ESQUERDA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-    
-      <div><p style="margin-top: 20px; font-weight: bold;">Arco superior direito</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">51</label>
-        <input type="text" id="odontograma51" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">52</label>
-        <input type="text" id="odontograma52" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">53</label>
-        <input type="text" id="odontograma53" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">54</label>
-        <input type="text" id="odontograma54" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">55</label>
-        <input type="text" id="odontograma55" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      </div>
-    
-      <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior direito</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">81</label>
-        <input type="text" id="odontograma81" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">82</label>
-        <input type="text" id="odontograma82" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">83</label>
-        <input type="text" id="odontograma83" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">84</label>
-        <input type="text" id="odontograma84" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">85</label>
-        <input type="text" id="odontograma85" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        </div>
-      </div>
-    
-    
-      <!-- CONTEÚDO COLUNA DA DIREITA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-    
-      <div><p style="margin-top: 20px; font-weight: bold;">Arco superior esquerdo</p>
-      
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">61</label>
-        <input type="text" id="odontograma61" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">62</label>
-        <input type="text" id="odontograma62" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">63</label>
-        <input type="text" id="odontograma63" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">64</label>
-        <input type="text" id="odontograma64" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">65</label>
-        <input type="text" id="odontograma65" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      </div>
-    
-      <div><p style="margin-top: 20px; font-weight: bold;">Arco inferior esquerdo</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">71</label>
-        <input type="text" id="odontograma71" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">72</label>
-        <input type="text" id="odontograma72" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">73</label>
-        <input type="text" id="odontograma73" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">74</label>
-        <input type="text" id="odontograma74" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">75</label>
-        <input type="text" id="odontograma75" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      </div>
-    </div>
-  </div>
-         
-        <script>
-            const toggleCheckbox = document.getElementById('toggleCheckbox');
-            const contentDiv = document.getElementById('content');
-            
-            toggleCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    contentDiv.style.display = 'block';
-                } else {
-                    contentDiv.style.display = 'none';
-                }
-            });
-        </script>
-      </div>
-    </div>
+  </h2>
+  </div> 
       
             
         
-    
 
 
-<!--INÍCIO DA TAB EXAMES COMPLEMENTARES-->
+
+
+
+
+
+<!--INÍCIO DA TAB ANEXAR DOCUMENTOS/EXAMES COMPLEMENTARES-->
 <div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 450px;">
 
-  <label style="width: 205px;">Selecione o tipo de exame complementar:</label>
+  <label style="width: 205px;">Selecione o tipo de documento ou exame complementar:</label>
   <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="exameTipo">
     <option value="">Escolher</option>
     <option value="Radiografia periapical">Radiografia periapical</option>
@@ -943,11 +756,11 @@ function deleteSelectedRows() {
   <p></p>
   
   <label style="width: 205px;">Descrição do exame</label>
-  <input type="text" id="exameDescrição" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style="width: 265px;" placeholder="Descrever o exame que será anexado">
+  <input type="text" id="exameDescrição" value="" maxlength="80" class="ui-state-default ui-corner-all mousetrap " style="width: 380;" placeholder="Descrever o exame que será anexado">
   <br>
   
   <label style="width: 205px;">Data do exame</label>
-  <input type="text" id="exameData" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap datepicker" style="width: 80px;"/>
+  <input type="text" id="exameData" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap datepicker" style="width: 120px;"/>
   
   <br>
   <label id="anexarExame" style="width: 205px;">Anexar o exame:</label>
@@ -968,15 +781,16 @@ function deleteSelectedRows() {
           <tr class="ui-jqgrid-labels" role="rowheader">
               <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Selec.</th>
               <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Data</th>
-              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">Descrição do exame</th>
-              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 18%;">Tipo de exame</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">Descrição do documento/exame</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 18%;">Tipo de documento/exame</th>
               <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 17%;">Nome do arquivo</th>
           </tr>
       </thead>
       <!-- Table body rows go here -->
   </table>
 </div>
-  
+
+
   <script>
       function addExame() {
           var exameData = document.getElementById("exameData").value;
@@ -1042,21 +856,15 @@ function deleteSelectedRows() {
 }
 </script>
 
-
-
+   
 <script>
   function submitFunction() {
     // CHAMAR ESSA MENSAGEM APENAS SE A FUNÇÃO FOR REALIZADA COM SUCESSO
-    showCustomAlert("Atendimento registrado com sucesso.")
+    showCustomAlert("Atendimento registrado com sucesso e encaminhado para avaliação.")
   }
   </script>
 
-<hr class="ui-state-default">
-<h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-  1- ESTA PÁGINA DE DOCENTE REGISTRA ATENDIMENTO SEM NECESSIDADE DE AVALIAÇÃO0 DO ATENDIMENTO<br>
-  2- COLOCAR UM LINK PARA UMA PÁGIA EXTERNA (SITE DA FO??) ONDE FICARÃO TODOS OS PRONTUÁRIOS, FORMULÁRIOS PADRONIZADOS<br>
-</h2>
-</div>   
+
 
 
 

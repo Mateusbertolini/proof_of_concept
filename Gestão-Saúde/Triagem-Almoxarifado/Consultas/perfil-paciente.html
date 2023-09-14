@@ -16,6 +16,7 @@
 <link href="stylecobalto.css" type="text/css" rel="stylesheet">  
 <link href="../../../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
 
+
 </head>
 
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
@@ -57,7 +58,7 @@
     <ul>
       <li><a href="index.html"></a></li><li>Gestão Saúde</li>
       <li>Consulta</li>
-      <li>Paciente</li>
+      <li>Pacientes</li>
       <li><span id="Nometab">PREENCHER COM NOME BUSCADO NO BANCO DE DADOS</span></li>
     </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
@@ -66,6 +67,7 @@
     
     <div class="ui-widget-content ui-corner-all toolbar">
       <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+      <button id="generate-pdf" class="imprimir" title="Ctrl + P" style="float: left;">Imprimir</button>
       <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
       <span style="clear: both; display: block"></span>
     </div>
@@ -80,17 +82,19 @@
 
     <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-1" aria-labelledby="ui-id-2" aria-selected="false"><a href="#tab-1" accesskey="tab-1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Encaminhamento/Demandas</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tab-2" accesskey="tab-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Histórico</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-2" aria-labelledby="ui-id-3" aria-selected="false"><a href="#tab-2" accesskey="tab-2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3">Entrevista dialogada</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-3" aria-labelledby="ui-id-4" aria-selected="false"><a href="#tab-3" accesskey="tab-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Odontograma</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-3" aria-labelledby="ui-id-4" aria-selected="false"><a href="#tab-3" accesskey="tab-3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4">Histórico</a></li>
 
-    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-4" aria-labelledby="ui-id-5" aria-selected="false"><a href="#tab-4" accesskey="tab-4" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-5">Exames complementares</a></li>
+    <li class="labeltab ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="tab-4" aria-labelledby="ui-id-5" aria-selected="false"><a href="#tab-4" accesskey="tab-4" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-5">Documentos/Exames complementares</a></li>
              
   </ul>
 <!--FIM DIVISÃO EM TABS-->
 
 
 <!--INÍCIO DA TAB DADOS PESSOAIS-->
+
+
 <div id="tab-0" class="ui-widget tab tab-0 tab-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
   <br>
    
@@ -126,7 +130,7 @@
   
     <p></p>
     <br>
-    <hr class="ui-state-default">
+  <hr class="ui-state-default">
   </div>
     
   
@@ -169,6 +173,8 @@
     <label style="width: 120px; ;margin: 5px;">Telefone 3 (Opcional)</label>
     <input type="text" name="Tel3" id="Tel" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;" readonly="readonly">
     <br>
+    
+
   <label style="width: 120px; ;margin: 5px;">Estado civil</label>
     <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="EstadoCivil" id="EstadoCivil" disabled>
       <option value="CASADO">CASADO</option>
@@ -253,67 +259,72 @@
     <label style="width: 120px;">Cidade</label>
     <input type="text" name="Cidade" id="Cidade" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;" readonly="readonly">
     <br>
+
+   
+
+    
+  
     <script src="https://pedroaf0.github.io/Prontuario-UFPel-Frontend/Prontuario-ufpel-Backend-API.js"></script>
 
-<script type="text/javascript">
- // Função para preencher o formulário com os dados do perfil
- function preencherFormulario(dados) {
-      console.log(dados)
-      document.getElementById("Cpf").value = dados.CPF;
-      document.getElementById("Nome").value = dados.Nome;
-      document.getElementById("Nometab").innerText = dados.Nome;
-      document.getElementById("Rg").value = dados.Rg;
-      document.getElementById("DataNasc").value = dados.DataNasc;
-      document.getElementById("Email").value = dados.Email;
-      document.getElementById("Tel").value = dados.Tel;
-      document.getElementById("EstadoCivil").value = dados.EstadoCivil;
-      document.getElementById("Sexo").value = dados.Sexo;
-      document.getElementById("CorRaca").value = dados.CorRaca;
-      document.getElementById("NomeMae").value = dados.NomeMae;
-      document.getElementById("NomePai").value = dados.NomePai;
-      document.getElementById("PNE").value = dados.PNE;
-      document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
-      document.getElementById("Cep").value = dados.Cep;
-      document.getElementById("Rua").value = dados.Rua;
-      document.getElementById("EndNumero").value = dados.EndNumero;
-      document.getElementById("EndComplemento").value = dados.EndComplemento;
-      document.getElementById("Bairro").value = dados.Bairro;
-      document.getElementById("Cidade").value = dados.Cidade;
-    }
-
-    // Função para buscar o perfil usando a API
-    function buscarPerfil() {
-      const cpf = getUrlVars()['cpf'];
-      if (cpf) {
-        api.pacientes.consultar({ CPF: cpf })
-          .then((pacientes) => {
-            if (pacientes.length === 0) {
-              console.log('Nenhum paciente encontrado');
-            } else {
-              preencherFormulario(pacientes[0]);
-            }
-          })
-          .catch((error) => {
-            console.error('Erro ao consultar perfil:', error);
-          });
-      } else {
-        console.log('CPF não encontrado na URL.');
-      }
-    }
-
-    // Função para obter parâmetros da URL
-    function getUrlVars() {
-      var vars = {};
-      var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-        vars[key] = value;
-      });
-      return vars;
- 
-    }
-
-    // Chamar a função para buscar o perfil
-    buscarPerfil();
-</script>
+    <script type="text/javascript">
+      // Função para preencher o formulário com os dados do perfil
+      function preencherFormulario(dados) {
+           console.log(dados)
+           document.getElementById("Cpf").value = dados.CPF;
+           document.getElementById("Nome").value = dados.Nome;
+           document.getElementById("Nometab").innerText = dados.Nome;
+           document.getElementById("Rg").value = dados.Rg;
+           document.getElementById("DataNasc").value = dados.DataNasc;
+           document.getElementById("Email").value = dados.Email;
+           document.getElementById("Tel").value = dados.Tel;
+           document.getElementById("EstadoCivil").value = dados.EstadoCivil;
+           document.getElementById("Sexo").value = dados.Sexo;
+           document.getElementById("CorRaca").value = dados.CorRaca;
+           document.getElementById("NomeMae").value = dados.NomeMae;
+           document.getElementById("NomePai").value = dados.NomePai;
+           document.getElementById("PNE").value = dados.PNE;
+           document.getElementById("EnderecoTipo").value = dados.EnderecoTipo;
+           document.getElementById("Cep").value = dados.Cep;
+           document.getElementById("Rua").value = dados.Rua;
+           document.getElementById("EndNumero").value = dados.EndNumero;
+           document.getElementById("EndComplemento").value = dados.EndComplemento;
+           document.getElementById("Bairro").value = dados.Bairro;
+           document.getElementById("Cidade").value = dados.Cidade;
+         }
+     
+         // Função para buscar o perfil usando a API
+         function buscarPerfil() {
+           const cpf = getUrlVars()['cpf'];
+           if (cpf) {
+             api.pacientes.consultar({ CPF: cpf })
+               .then((pacientes) => {
+                 if (pacientes.length === 0) {
+                   console.log('Nenhum paciente encontrado');
+                 } else {
+                   preencherFormulario(pacientes[0]);
+                 }
+               })
+               .catch((error) => {
+                 console.error('Erro ao consultar perfil:', error);
+               });
+           } else {
+             console.log('CPF não encontrado na URL.');
+           }
+         }
+     
+         // Função para obter parâmetros da URL
+         function getUrlVars() {
+           var vars = {};
+           var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+             vars[key] = value;
+           });
+           return vars;
+      
+         }
+     
+         // Chamar a função para buscar o perfil
+         buscarPerfil();
+     </script>
 </div>
 <!--FIM DA TAB DADOS PESSOAIS-->
 
@@ -321,269 +332,165 @@
 
 
 <!--INÍCIO DA TAB DEMANDAS-->
+
 <div id="tab-1" class="ui-widget tab tab-1 tab-1 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
 
 
 <hr class="ui-state-default">
 
   <p></p>
- <table class="ui-jqgrid-htable" style="width: 1200px;" role="grid" aria-labelledby="gridDemanda_Paciente" cellspacing="0" cellpadding="0" border="0">
-        <thead>
-      <tr class="ui-jqgrid-labels" role="rowheader">
-        <th id="gridDemanda_Paciente_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
-          <div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridDemanda_data" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_data" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridDemanda_areaSaude" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 175px;" aria-selected="true">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_areaSaude" class="ui-jqgrid-sortable">Área da Saúde<span class="s-ico" style=""></span></div>
-        </th>
-        <th id="gridDemanda_especialidade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Espe" style="width: 175px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridDemanda_especialidade" class="ui-jqgrid-sortable">Especialidade<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="demandaEspecífica" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Demanda<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="StatusPaciente" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Status<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-      </tr>
-    <thead><tr style="align-items: center;">
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">BUSCAR DEMANDAS SALVAS NO BANCO</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Odontologia</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese dentária</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Prótese fixa no dente 11</td>
-      <td role="gridcell" style="text-align:center;" title="05/06/2023">Alta</td>
-    </tr>
-    </thead>
+  <table class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 85%; height: auto;">
+  <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: auto;">
+    <th style="width: 5%;">Data</th>
+    <th style="width: 10%;">Curso</th>
+    <th style="width: 10%;">Especialidade</th>
+    <th style="width: 55%;">Demanda</th>
+    <th style="width: 20%;">Status</th>
+  </thead>
+  
+  <thead id="tabelaencaminhamentos" class="ui-state-default"><tr style="align-items: center;"></thead>
   </table>
+
+
+
+
+
+
+
 </div>
-  
+   
+
+<!--FIM DA TAB DEMANDAS-->
+<!--Script DEMANDAS-->
+<script>
+  function adicionarNovaLinha(data) {
+    console.log(data)
+  // Seleciona o corpo da tabela usando o XPath
+  const tbody = document.getElementById("tabelaencaminhamentos")
+  // Cria um novo elemento de linha (<tr>)
+  const novaLinha = document.createElement('tr');
+  novaLinha.style.alignItems = 'center';
+
+  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+  novaLinha.innerHTML = `
+    <td role="gridcell" style="text-align:center;">${data.Data}</td>
+    <td role="gridcell" style="text-align:center;">${data.Curso}</td>
+    <td role="gridcell" style="text-align:center;">${data.Especialidade}</td>
+    <td role="gridcell" style="text-align:center;">${data.Demanda}</td>
+    <td role="gridcell" style="text-align:center;">${data.Status}</td>
+  `;
+
+  // Adiciona a nova linha ao corpo da tabela
+  tbody.appendChild(novaLinha);
+}
 
 
-<!--INÍCIO DA TAB HISTÓRICO-->
+function getDataFromTab(TabId){
+  const parentDiv = document.getElementById(TabId); 
+  const elements = parentDiv.querySelectorAll("input, select, textarea"); // Include textarea elements
+  const jsonData = {};
+
+  for (const element of elements) {
+    if (element.tagName === "INPUT") {
+      if (element.type === "text") {
+        jsonData[element.id] = element.value;
+      } else if (element.type === "radio" && element.checked) {
+        jsonData[element.name] = element.value;
+      }
+    } else if (element.tagName === "SELECT") {
+      jsonData[element.id] = element.value;
+    } else if (element.tagName === "TEXTAREA") { // Handle textarea elements
+      jsonData[element.id] = element.value;
+    }
+  }
+
+  console.log(jsonData);
+  return jsonData;
+}
+const codtonome = {
+  "0": "Escolher",
+  "1200": "Enfermagem",
+  "7100": "Farmácia",
+  "400": "Odontologia",
+  "7200": "Terapia Ocupacional"
+}
+
+
+  function encaminhar(){
+    let Encaminhamentos = getDataFromTab("encaminhamento") 
+    Encaminhamentos.CPF = getUrlVars()["cpf"]
+    Encaminhamentos.Status = "Em espera"
+    Encaminhamentos.Curso = codtonome[Encaminhamentos.Curso]
+    console.log(Encaminhamentos)
+    api.encaminhamentos.criar(Encaminhamentos).then((result)=>{
+alert(result.message)
+console.log(result)
+adicionarNovaLinha(Encaminhamentos)
+    })
+  }
+  const CPF = getUrlVars()["cpf"]
+  api.encaminhamentos.consultar({CPF}).then((encaminhamentos)=>{
+    console.log(encaminhamentos)
+    encaminhamentos.forEach(encaminhamento => {
+      adicionarNovaLinha(encaminhamento)
+    })
+    
+  })
+</script>
+
+
+
+
+
+<!--INÍCIO DA TAB ENTREVISTA DIALOGADA-->
+
 <div id="tab-2" class="ui-widget tab tab-2 tab-2 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-expanded="true" aria-hidden="false">
-
- <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix"><a role="link" href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" style="right: 0px;"></a><span class="ui-jqgrid-title">Procedimentos realizados</span></div>
-
-  <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="gridAHistoricoPaciente" dir="ltr" style="width: 1200px;">
-    <div class="ui-widget-overlay jqgrid-overlay"></div>
-    <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="display: none;"><a role="link" href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" style="right: 0px;"></a><span class="ui-jqgrid-title"></span></div>
-    <div style="width: 1200px;" class="ui-state-default ui-jqgrid-hdiv">
-      <div class="ui-jqgrid-hbox"></div>
-    </div>
-
-
-  <table class="ui-jqgrid-htable" style="width: 1200px;" role="grid" aria-labelledby="gridAHistoricoPaciente" cellspacing="0" cellpadding="0" border="0">
-        <thead>
-      <tr class="ui-jqgrid-labels" role="rowheader">
-        <th id="gridAHistoricoPaciente_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span>
-          <div id="gridAHistoricoPaciente_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridAHistoricoPaciente_data" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridAHistoricoPaciente_data" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-         <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="areaSaude" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Área da Saúde<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-        <th id="gridAHistoricoPaciente_descrição" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 604px;" aria-selected="true">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridAHistoricoPaciente~gridAHistoricoPaciente_descrição" class="ui-jqgrid-sortable">Descrição do exame<span class="s-ico" style=""><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div>
-        </th>
-        <th id="gridAHistoricoPaciente_aluno" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Aluno" style="width: 175px;">
-          <span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="gridAHistoricoPaciente_aluno" class="ui-jqgrid-sortable">Aluno<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Responsável" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Responsável<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-        <th role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="disciplina" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div class="ui-jqgrid-sortable">Disciplina<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span>
-        </th>
-      </tr>
-    </thead>
-        <thead>
-      <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt">
-        <td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td>
-        <td role="gridcell" style="text-align:center;" title="05/06/2023">05/06/2023</td>
-        <td role="gridcell" style="text-align:left;" title="areaSaude">Odontologia</td>
-        <td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">BUSCAR DOS ATENDIMENTOS REGISTRADOS NO BANCO DE DADOS</td>
-        <td role="gridcell" style="text-align:center;" title="Aluno">Aluno X</td>
-        <td role="gridcell" style="text-align:left;" title="Responsável">Prof. Y</td>
-        <td role="gridcell" style="text-align:left;" title="disciplina">Disciplina X</td>
-      </thead>
-  </table></div>
-</div>
-
-
-
-
-<!--INÍCIO DA TAB ODONTOGRAMA-->
-<div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 1000px;">
-
-
   <div>
-    <hr class="ui-state-default"><label style="font-size: 16; font-weight: bold;">Odontograma</label></hr><br>
-    <p style="font-size: 12; font-weight: bold;">Dentição permanente</p>
+    <label style="font-size: 16; font-weight: bold;">Entrevista dialogada para pacientes adultos</label>
+    <p></p>
+    <br>
+    
+    <hr class="ui-state-default">
     </div>
     
-    <!-- CONTEÚDO COLUNA DA ESQUERDA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-    
-      <div><p>Arco superior direito</p>
-      
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">11</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-    
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">12</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
+  <!-- CONTEÚDO COLUNA DA ESQUERDA -->
+  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
   
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">13</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">14</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">15</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">16</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">17</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">18</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-      </div>
+  <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA ESQUERDA</p>
     
-      <div><p>Arco inferior direito</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">41</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">42</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">43</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">44</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">45</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">46</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">47</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">48</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-      </div>
+    <P> INSERIR CAMPOS AQUI</P>
+  
     </div>
+  </div>
     
     <!-- CONTEÚDO COLUNA DA DIREITA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-          
-      <div><p>Arco superior esquerdo</p>
-      
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">21</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-    
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">22</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">23</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">24</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">25</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">26</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">27</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-  
-      <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">28</label>
-      <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-      <br>
-    </div>
-    
-      <div><p>Arco inferior esquerdo</p>
+  <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
         
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">31</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">32</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">33</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
+  <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA DIREITA</p>
     
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">34</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">35</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">36</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">37</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">38</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        </div>
-    </div>
-    
+    <P> INSERIR CAMPOS AQUI</P>
+  
+  </div>
+  
+  </div>
+  <br>
+  <hr class="ui-state-default">
+  <br>
   <!-- CONTEÚDO DECÍDUOS-->
-  <div id="deciduos">
+  <div class="flex-container" id="deciduos">
       <style>
         .hidden {
             display: none;
         }
     </style>
       
-      <hr class="ui-state-default">
-      <label for="toggleCheckbox" style="font-size: 12; font-weight: bold;">Dentição decídua:</label>
+    <hr class="ui-state-default">
+  
+    <div>
+      <label for="toggleCheckbox" style="font-size: 16; font-weight: bold;">Entrevista dialogada para odontopediatria:</label>
       <input type="checkbox" id="toggleCheckbox"><br>
       <p></p>
+    </div>
     
     
     <div id="content" class="hidden"><br>
@@ -592,149 +499,135 @@
     <!-- CONTEÚDO COLUNA DA ESQUERDA -->
     <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
     
-      <div><p>Arco superior direito</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">51</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">52</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
+      <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA ESQUERDA</p>
     
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">53</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">54</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">55</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
+        <P> INSERIR CAMPOS AQUI</P>
+              
       </div>
-    
-      <div><p>Arco inferior direito</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">81</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">82</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">83</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">84</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">85</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        </div>
-      </div>
+  
+    </div>
     
     
       <!-- CONTEÚDO COLUNA DA DIREITA -->
     <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
     
-      <div><p>Arco superior esquerdo</p>
+      <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA DIREITA</p>
+    
+        <P> INSERIR CAMPOS AQUI</P>
       
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">61</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">62</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">63</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">64</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">65</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-      </div>
-    
-      <div><p>Arco inferior esquerdo</p>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">71</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">72</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-        
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">73</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">74</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
-    
-        <label style="width: 60px; ;margin: 5px; font-weight: bold; text-align: center;">75</label>
-        <input type="text" name="Nome" id="Nome" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 50%; font-weight: bold;" >
-        <br>
+    </div>
+  </div>
+  
+        <style>
+          .flex-container {
+          display: flex;
+          flex-direction: column;
+          width: 50%;
+          padding-bottom: 8px;
+          box-sizing: border-box;
+        }
+        </style>
+  
+     
+        <script>
+            const toggleCheckbox = document.getElementById('toggleCheckbox');
+            const contentDiv = document.getElementById('content');
+            
+            toggleCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    contentDiv.style.display = 'block';
+                } else {
+                    contentDiv.style.display = 'none';
+                }
+            });
+        </script>
       </div>
     </div>
   </div>
-     
-    <script>
-        const toggleCheckbox = document.getElementById('toggleCheckbox');
-        const contentDiv = document.getElementById('content');
-        
-        toggleCheckbox.addEventListener('change', function() {
-            if (this.checked) {
-                contentDiv.style.display = 'block';
-            } else {
-                contentDiv.style.display = 'none';
-            }
-        });
-    </script>
-  </div>
-</div>
   
-        
-    
 
 
 
+<!--INÍCIO DA TAB HISTÓRICO-->
+<div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: auto;">
+ 
+  <label style="font-size: 16; font-weight: bold;">Histórico</label><br>
+  <table id="historicoPaciente" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 85%; height: auto;">
+    <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: 10px;">
+      <th style="width: 5%;">Data</th>
+      <th style="width: 7.5%;">Curso</th>
+      <th style="width: 7.5%;">Especialidade</th>
+      <th style="width: 50%;">Descrição</th>
+      <th style="width: 10%;">Aluno</th>
+      <th style="width: 10%;">Responsável</th>
+      <th style="width: 10%;">Componente curricular</th>
+    </thead>
+    <tr class="ui-state-default">
+      <th>05/06/2023</th>
+      <th>Odontologia</th>
+      <th>BUSCAR ESPECIALIDADE</th>
+      <th>BUSCAR DOS ATENDIMENTOS REGISTRADOS NO BANCO DE DADOS</th>
+      <th>Aluno X</th>
+      <th>Prof. Y</th>
+      <th>Disciplina X</th>
+    </tr>
+   </table>
+</div>
 
 <!--INÍCIO DA TAB EXAMES COMPLEMENTARES-->
 <div id="tab-4" class="ui-widget tab tab-4 tab-4 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-5" role="tabpanel" aria-expanded="true" aria-hidden="false">
-
-
-  <hr class="ui-state-default"><label name="anexarexames" id="anexarexames" style="width:350px; font-size: 16; font-weight: bold;">Exames complementares</label>
+  <hr class="ui-state-default"><label name="anexarexames" id="anexarexames" style="width:350px; font-size: 16; font-weight: bold;">Documentos/Exames complementares</label>
     <br></hr>
   
     <p></p>
-          
-    <div class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" id="examesADDs" dir="ltr" style="width: 1707px;"><div class="ui-widget-overlay jqgrid-overlay" id="dataAnexo"></div><div class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="display: none;"><a role="link" href="javascript:void(0)" class="ui-jqgrid-titlebar-close HeaderButton" style="right: 0px;"><span class="ui-icon ui-icon-circle-triangle-n"></span></a><span class="ui-jqgrid-title"></span></div><div style="width: 1707px;" class="ui-state-default ui-jqgrid-hdiv"><div class="ui-jqgrid-hbox"><table class="ui-jqgrid-htable" style="width: 1707px;" role="grid" aria-labelledby="gbox_gridHistoricoAluno" cellspacing="0" cellpadding="0" border="0"><thead><tr class="ui-jqgrid-labels" role="rowheader"><th id="gridHistoricoAluno_id" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="ID" style="width: 150px; display: none;" aria-selected="false"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_id" class="ui-jqgrid-sortable">ID<span class="s-ico" style="display: none;"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr ui-state-disabled"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_cod_atividade" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Data" style="width: 151px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_cod_atividade" class="ui-jqgrid-sortable">Data<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_disciplina" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Descrição do exame" style="width: 604px;" aria-selected="true"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_disciplina" class="ui-jqgrid-sortable">Descrição do exame<span class="s-ico" style=""><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_nota_conceito" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Tipo" style="width: 175px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_nota_conceito" class="ui-jqgrid-sortable">Tipo<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></div></th><th id="gridHistoricoAluno_situacao" role="columnheader" class="ui-state-default ui-th-column ui-th-ltr" title="Baixar" style="width: 151px;"><span class="ui-jqgrid-resize ui-jqgrid-resize-ltr" style="cursor: col-resize;">&nbsp;</span><div id="jqgh_gridHistoricoAluno_situacao" class="ui-jqgrid-sortable">Baixar<span class="s-ico" style="display:none"><span sort="asc" class="ui-grid-ico-sort ui-icon-asc ui-state-disabled ui-icon ui-icon-triangle-1-n ui-sort-ltr"></span><span sort="desc" class="ui-grid-ico-sort ui-icon-desc ui-state-disabled ui-icon ui-icon-triangle-1-s ui-sort-ltr"></span></span></th></tr></thead>
-  
-    <tr class="jqgfirstrow" role="row" style="height:auto"><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height:0px;width:150px;display:none;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 255px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 32px;"></td><td role="gridcell" style="height: 0px; width: 32px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 64px;"></td><td role="gridcell" style="height: 0px; width: 61px;"></td></tr>
-  
-   
-      <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">19/04/2018</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Avaliação endodôntica do dente 15</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia periapical</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
-  
-      <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">01/03/2022</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Radiografia para exodontia do 22</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia periapical</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
-  
-      <tr role="row" id="4333240" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr ui-state-default jqgrow-alt"><td role="gridcell" style="text-align:center;display:none;" title="">&nbsp;</td><td role="gridcell" style="text-align:center;">05/06/2023</td><td role="gridcell" style="text-align:left;" title="Avaliação endodôntica do dente 15">Planejamento do caso</td><td role="gridcell" style="text-align:center;" title="Radiografia periapical">Radiografia panorâmica</td><td role="gridcell" style="text-align:center;" title=""><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></td></tr><tr role="row" id="4280175" tabindex="-1" class="ui-widget-content jqgrow ui-row-ltr">
-  
+
+
+    <table id="historicoPaciente" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 85%; height: auto;">
+      <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: 10px;">
+        <th style="width: 5%;">Data</th>
+        <th style="width: 80%;">Descrição</th>
+        <th style="width: 15%;">Tipo</th>
+        <th style="width: 10%;">Baixar</th>
       </thead>
-    </table>
+      <tr class="ui-state-default">
+        <th>19/01/2023</th>
+        <th>Avaliação endodôntica do dente 15</th>
+        <th>Radiografia periapical</th>
+        <th><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></th>
+      </tr>
+      <tr class="ui-state-default">
+        <th>01/03/2023</th>
+        <th>Radiografia para exodontia do 22</th>
+        <th>Radiografia periapical</th>
+        <th><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></th>
+      </tr>
+      <tr class="ui-state-default">
+        <th>05/06/2023</th>
+        <th>Planejamento do caso</th>
+        <th>Exame complementar digitalizado</th>
+        <th><input class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" type="button" value="Baixar exame" style="margin: 2px 2px 2px 0px;" onclick="baixarExame()"></th>
+      </tr>
+     </table>
+    
+  </div>
   </div>
  
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>

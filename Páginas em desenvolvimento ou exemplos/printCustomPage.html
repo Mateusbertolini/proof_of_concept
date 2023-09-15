@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        header {
+            text-align: center;
+            display: none;
+        }
+        header img {
+            max-width: 100%;
+            height: auto;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            display: none;
+        }
+        .display-only {
+            /* Display in the browser but not printed */
+            display: block;
+        }
+        .full-content, .print-only {
+            /* Display in the printed page and in the browser */
+            display: block;
+        }
+        .print-content {
+            /* Do not display in the browser */
+            display: none;
+        }
+        @media print {
+            header, footer {
+                display: block;
+            }
+            .display-only, .print-content {
+                /* Do not print */
+                display: none;
+            }
+            .full-content, .print-only {
+                /* Display in the printed page */
+                display: block;
+            }
+        }
+    </style>
+    
+</head>
+
+<body>
+<header>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <img src="../src/logo.png" style="height: 150px; width: 150px;">
+            <div>
+                <p style="font-weight: bold;">MINISTÉRIO DA EDUCAÇÃO</p>
+                <p style="font-weight: bold;">UNIVERSIDADE FEDERAL DE PELOTAS</p>
+                <p style="font-weight: bold;">FACULDADE DE ODONTOLOGIA</p>
+            </div>
+        <img src="../src/logo-odonto.jpg" style="height: 150px; width: 150px;">
+    </div>
+</header>
+  
+<!-- This div will be displayed in the browser but not printed -->
+<div class="display-only">
+    <button onclick="printCustomPage()" style="padding: 5px;" class="no-print">BUTTON</button>
+
+
+<p>OTHER THINGS THAT WOULD NO BE PRINTED</p>
+
+
+</div>
+
+
+
+ <!-- This div contains content to be printed and displayed in the browser -->
+ <div id="pageContent" class="full-content">
+    <p>CONTEÚDO DA PÁGINA QUE SERÁ VISUALIZADO E IMPRESSO<!-- Your content --></p>
+
+    <p>CONTEÚDO DA PÁGINA KKKKKKKKKKKKKKKKKKKKKK<!-- Your content --></p>
+
+
+<TABLE>
+ <thead>
+     <th>B</th>
+     <th>C</th>
+     <th>D</th>
+ </thead>
+ <tr>
+     <td>1</td>
+     <td>2</td>
+     <td>3</td>
+ </tr>
+ <tr>
+     <td>4</td>
+     <td>5</td>
+     <td>6</td>
+ </tr>
+     
+</TABLE>
+
+</div>
+
+
+
+
+<div id="printContentDiv" class="print-only" style="border: 2px solid black; padding: 10px; width: 80%; margin-left: 10%; height: 80%;">
+    
+  
+   
+   
+
+</div>
+    
+<footer>
+    Página <span class="page-number"></span>
+</footer>
+
+
+<script>
+    // JavaScript to update the page number in the footer
+    window.addEventListener('afterprint', function() {
+        var pageCounter = 1;
+        var pageNumbers = document.querySelectorAll('.page-number');
+        pageNumbers.forEach(function(element) {
+            element.textContent = pageCounter++;
+        });
+    });
+
+    function printCustomPage() {
+        var pageContent = document.getElementById('pageContent');
+        var printContentDiv = document.getElementById('printContentDiv');
+        
+        // Move the content from pageContent to printContentDiv
+        while (pageContent.firstChild) {
+            printContentDiv.appendChild(pageContent.firstChild);
+        }
+
+        // Open a new window with your custom layout
+        var printWindow = window.open('', '', 'width=800,height=600');
+        printWindow.document.open();
+        printWindow.document.write('<html>' + document.head.innerHTML + document.body.innerHTML + '</html>');
+        printWindow.document.close();
+
+        // Print the newly opened window
+        printWindow.print();
+        printWindow.close();
+    }
+</script>
+</body>
+</html>

@@ -445,6 +445,7 @@ adicionarNovaLinha(Encaminhamentos)
 <!--INÍCIO DA TAB ENTREVISTA DIALOGADA-->
 
 <div id="tab-2" class="ui-widget tab tab-2 tab-2 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-3" role="tabpanel" aria-expanded="true" aria-hidden="false">
+  
   <div>
     <label style="font-size: 16; font-weight: bold;">Entrevista dialogada para pacientes adultos</label>
     <p></p>
@@ -455,29 +456,29 @@ adicionarNovaLinha(Encaminhamentos)
     
   <!-- CONTEÚDO COLUNA DA ESQUERDA -->
   <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-  
+
   <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA ESQUERDA</p>
     
     <P> INSERIR CAMPOS AQUI</P>
-  
+
     </div>
   </div>
-    
-    <!-- CONTEÚDO COLUNA DA DIREITA -->
+  
+  <!-- CONTEÚDO COLUNA DA DIREITA -->
   <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-        
+      
   <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA DIREITA</p>
-    
-    <P> INSERIR CAMPOS AQUI</P>
   
+  <P> INSERIR CAMPOS AQUI</P>
+
   </div>
-  
+
   </div>
   <br>
   <hr class="ui-state-default">
   <br>
-  <!-- CONTEÚDO DECÍDUOS-->
-  <div class="flex-container" id="deciduos">
+  <!-- CONTEÚDO PEDIATRIA-->
+  <div class="flex-container" id="pediatria">
       <style>
         .hidden {
             display: none;
@@ -485,65 +486,222 @@ adicionarNovaLinha(Encaminhamentos)
     </style>
       
     <hr class="ui-state-default">
-  
+
     <div>
       <label for="toggleCheckbox" style="font-size: 16; font-weight: bold;">Entrevista dialogada para odontopediatria:</label>
       <input type="checkbox" id="toggleCheckbox"><br>
       <p></p>
     </div>
-    
-    
-    <div id="content" class="hidden"><br>
-    
-    
-    <!-- CONTEÚDO COLUNA DA ESQUERDA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-    
-      <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA ESQUERDA</p>
-    
-        <P> INSERIR CAMPOS AQUI</P>
-              
-      </div>
-  
-    </div>
-    
-    
-      <!-- CONTEÚDO COLUNA DA DIREITA -->
-    <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
-    
-      <div><p style="margin-top: 20px; font-weight: bold;">COLUNA DA DIREITA</p>
-    
-        <P> INSERIR CAMPOS AQUI</P>
       
-    </div>
-  </div>
-  
-        <style>
-          .flex-container {
-          display: flex;
-          flex-direction: column;
-          width: 50%;
-          padding-bottom: 8px;
-          box-sizing: border-box;
-        }
-        </style>
-  
-     
-        <script>
-            const toggleCheckbox = document.getElementById('toggleCheckbox');
-            const contentDiv = document.getElementById('content');
-            
-            toggleCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    contentDiv.style.display = 'block';
-                } else {
-                    contentDiv.style.display = 'none';
-                }
-            });
-        </script>
+    <div id="content" class="hidden"><br>
+      
+      <!-- CONTEÚDO COLUNA DA ESQUERDA -->
+      <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+      
+          <p style="margin-top: 20px; font-weight: bold; font-size: larger;">HISTÓRIA PREGRESSA</p>
+
+          <label style="margin-top: 10px; width: 180px;">Problemas na gestação?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed1" value="Não" checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed1" value="Sim">Sim</label>
+          
+          <div id="displayNotdisplay1">
+            <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+            <input type="text" id="entrevistaDialogPed2" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;margin-top: 10px;">
+          
+          </div>
+          <br>
+                   
+          <label style="margin-top: 10px; width: 180px;">Tipo de parto?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed3" value="Normal" checked>Normal</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed3" value="Cesariana">Cesariana</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed3" value="Outro">Outro</label>
+          <p></p><br>
+
+          <label style="margin-top: 10px; width: 180px;">Doenças da infância?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed4" value="Não" checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed4" value="Sim">Sim</label>
+
+          <div id="displayNotdisplay2">
+            <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+            <input type="text" id="entrevistaDialogPed5" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;margin-top: 10px;">
+          </div>
+          <br>
+          
+          <label style="margin-top: 10px; width: 180px;">Internação hospitalar??</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed6" value="Não" checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed6" value="Sim">Sim</label>
+          
+          <div id="displayNotdisplay3">
+            <label style="width: 50px; margin: 5px;margin-top: 10px; width: 150px;">Motivo(s) e idade na ocasião? </label>
+            <input type="text" id="entrevistaDialogPed7" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 250px;margin-top: 10px;">
+          </div>
+          <br>
+
+          <label style="margin-top: 10px; width: 180px;">Histórico de uso de medicamentos?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed8" value="Não"  checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed8" value="Sim">Sim</label>
+          <br>
+          
+          <div id="displayNotdisplay4">
+            <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+            <textarea style="width: 55%; margin: 5px;" id="entrevistaDialogPed9" rows="5" maxlength="1000" class="ui-state-default ui-corner-all" style="margin-top: 5px;" ></textarea>
+          </div>
+          <br>
+
+        </div>
+      
+      
+      <!-- CONTEÚDO COLUNA DA DIREITA -->
+      <div style="width: 50%; float: left; padding-bottom: 8px; box-sizing: border-box;">
+        
+        <p style="margin-top: 20px; font-weight: bold; font-size: larger;">PROBLEMAS ATUAIS</p>
+    
+        <label style="margin-top: 10px; width: 150px;">Alérgico?</label>
+        <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed10" value="Não"  checked>Não</label>
+        <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed10" value="Sim">Sim</label>
+        
+        <div id="displayNotdisplay5">
+          <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+          <input type="text" id="entrevistaDialogPed11" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 250px;margin-top: 10px;">
+        </div>
+        <br>
+
+        <label style="margin-top: 10px; width: 150px;">Problemas respiratórios?</label>
+        <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed12" value="Não"  checked>Não</label>
+        <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed12" value="Sim">Sim</label>
+        
+        <div id="displayNotdisplay6">
+          <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+          <input type="text" id="entrevistaDialogPed13" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 250px;margin-top: 10px;">
+        </div>
+        <br>
+
+        <label style="margin-top: 10px; width: 150px;">Problemas cardíacos?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed14" value="Não"  checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed14" value="Sim">Sim</label>
+          
+          <div id="displayNotdisplay7">
+            <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+            <input type="text" id="entrevistaDialogPed15" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 250px;margin-top: 10px;">
+          </div>
+          <br>
+
+        <label style="margin-top: 10px; width: 150px;">Problemas sanguíneos?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed16" value="Não"  checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed16" value="Sim">Sim</label>
+          
+          <div id="displayNotdisplay8">
+            <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+            <input type="text" id="entrevistaDialogPed17" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 250px;margin-top: 10px;">
+          </div>
+          <br>
+
+        <label style="margin-top: 10px; width: 150px;">Diabetes?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed18" value="Não"  checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed18" value="Sim">Sim</label>
+          
+          <div id="displayNotdisplay9">
+            <label style="margin-top: 10px; margin-left: 25px;">Está compensada?</label>
+            <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed19" value="Não"  checked>Não</label>
+            <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed19" value="Sim">Sim</label>
+          </div>
+          <br>
+
+          <label style="margin-top: 10px; width: 150px;">Faz de uso de medicamentos atualmente?</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed20" value="Não"  checked>Não</label>
+          <label style="margin-top: 10px;"><input type="radio" name="entrevistaDialogPed20" value="Sim">Sim</label>
+          <br>
+          
+          <div id="displayNotdisplay10">
+            <label style="width: 50px; margin: 5px;margin-top: 10px;">Qual(is)? </label>
+            <textarea style="width: 55%; margin: 5px;" id="entrevistaDialogPed21" rows="5" maxlength="1000" class="ui-state-default ui-corner-all" style="margin-top: 5px;" ></textarea>
+          </div>
+          <br>
+
+          <p></p>
+          <br>
+
+        <hr class="ui-state-default">
+        <label style="width: 120px; margin-top: 25px;">Nome do(a) pediatra:</label>
+        <input type="text" id="nomePediatra" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 300px;margin-top: 25px;">
+        <br>
+
+        <label style="width: 120px;">Telefone: </label>
+        <input type="text" id="telPediatra" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap telefone" style="width: 100px;">
+        <br>
+
+        <p></p><br>
+        <hr class="ui-state-default">
+        <label style="width: 550px; margin: 5px; margin-top: 25px;">Observações:</label><br>
+        <textarea style="width: 55%; margin: 5px;" id="entrevistaDialogPed20" rows="5" maxlength="1000" class="ui-state-default ui-corner-all" style="margin-top: 5px;" ></textarea>
+        <br>
       </div>
+
+      <script>
+        // Function to show/hide content based on radio button selection
+        function toggleDisplay(divId, radioName, targetValue) {
+            const radioButtons = document.querySelectorAll(`input[name="${radioName}"]`);
+            const targetDiv = document.getElementById(divId);
+    
+            // Function to handle radio button change
+            function handleRadioButtonChange() {
+                if (radioButtons[radioButtons.length - 1].checked && radioButtons[radioButtons.length - 1].value === targetValue) {
+                    targetDiv.style.display = "block"; // Show the target div
+                } else {
+                    targetDiv.style.display = "none"; // Hide the target div
+                }
+            }
+    
+            // Add event listener to each radio button
+            radioButtons.forEach(function (radioBtn) {
+                radioBtn.addEventListener("change", handleRadioButtonChange);
+            });
+    
+            // Initialize the state based on the initial selection
+            handleRadioButtonChange();
+        }
+    
+        // Call the function for each set of radio buttons and target divs
+        toggleDisplay("displayNotdisplay1", "entrevistaDialogPed1", "Sim");
+        toggleDisplay("displayNotdisplay2", "entrevistaDialogPed4", "Sim");
+        toggleDisplay("displayNotdisplay3", "entrevistaDialogPed6", "Sim");
+        toggleDisplay("displayNotdisplay4", "entrevistaDialogPed8", "Sim");
+        toggleDisplay("displayNotdisplay5", "entrevistaDialogPed10", "Sim");
+        toggleDisplay("displayNotdisplay6", "entrevistaDialogPed12", "Sim");
+        toggleDisplay("displayNotdisplay7", "entrevistaDialogPed14", "Sim");
+        toggleDisplay("displayNotdisplay8", "entrevistaDialogPed16", "Sim");
+        toggleDisplay("displayNotdisplay9", "entrevistaDialogPed18", "Sim");
+        toggleDisplay("displayNotdisplay10", "entrevistaDialogPed20", "Sim");
+    </script>
+
+
     </div>
   </div>
+</div>
+
+  <style>
+    .flex-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+  }
+  </style>
+
+
+  <script>
+      const toggleCheckbox = document.getElementById('toggleCheckbox');
+      const contentDiv = document.getElementById('content');
+      
+      toggleCheckbox.addEventListener('change', function() {
+          if (this.checked) {
+              contentDiv.style.display = 'block';
+          } else {
+              contentDiv.style.display = 'none';
+          }
+      });
+  </script>
   
 
 

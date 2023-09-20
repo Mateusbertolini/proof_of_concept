@@ -1,0 +1,135 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="pt-br">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+    var PATH_COOKIE = '/';
+    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+</script>
+<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+<link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<!--ALERT MESSAGES-->
+<link href="../../scripts/alert-message.css" type="text/css" rel="stylesheet">
+<script src="../../scripts/alertMessage.js"></script>
+
+
+<!-- HIDDEN DIV FOR ALERT MESSAGE -->
+<div id="customAlert" class="modal">
+    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
+        <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
+        </button>
+    </div>
+    <p></p>
+    <br>
+    <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+        <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
+        <p id="alertMessage"></p>
+    </div>
+    <p> </p><br>
+    <p> </p><br>
+    <p> </p><br>
+    <div><button id="okButton" class="centered-button">OK</button></div>
+    </div>
+</div>
+<!-- HIDDEN DIV FOR ALERT MESSAGE -->
+
+
+<body>
+    <h1>Material Registration</h1>
+    
+    
+    <form method="post" action="https://sistema-odonto.000webhostapp.com/insert-material.php" id="materialForm">
+    
+        <div style="margin: 10px;">
+            <button type="submit" id="btnAdicionar" class="button">Adicionar</button>
+            <!-- <button name="btnExcluir" id="btnExcluir" value="Excluir" class="button">Excluir</button>
+            <button name="btnCancelar" id="btnCancelar" value="Cancelar" class="button">Cancelar</button> -->
+        </div>
+
+        <div>
+            <p></p>
+            <br>
+
+            <label style="width: 120px; margin: 5px;">Material</label>
+            <input type="text" name="nomeMaterial" id="nomeMaterial" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;" placeholder="Inserir nome do material" required>
+
+            <br>
+            <label style="width: 120px; margin: 5px;">Tipo</label>
+            <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="tipoMaterial" id="tipoMaterial" required>
+                <option value="Escolher">Escolher</option>
+                <option value="Cimento">Cimento</option>
+                <option value="Resina composta">Resina composta</option>
+                <option value="Hospitalar">Hospitalar</option>
+                <option value="Moldagem">Moldagem</option>
+            </select>
+            <br>
+
+            <label for="apresentacao" style="width: 120px; ;margin: 5px;">Apresentação do produto</label>
+            <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="apresentacao" id="apresentacao">
+              <option value="Escolher">Escolher</option>
+              <option value="Bisnaga">Bisnaga</option>
+              <option value="Frasco">Frasco</option>
+              <option value="Kit">Kit</option>
+              <option value="Pacote">Pacote</option>
+            </select>
+          <br>
+          <p></p>
+
+            <label style="width: 120px; margin: 5px;">Quantidade disponível</label>
+            <input type="number" name="qtdMaterial" id="qtdMaterial" class="ui-state-default ui-corner-all mousetrap" style="width: 100px;" placeholder="Inserir a quantidade" required>
+            <br>
+            <p></p>
+        </div>
+    </form>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $('#materialForm').submit(function (event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+    
+            // Serialize the form data
+            var formData = $(this).serialize();
+    
+            // Perform an AJAX POST request
+            $.ajax({
+                type: 'POST',
+                url: 'https://sistema-odonto.000webhostapp.com/insert-material.php',
+                data: formData,
+                success: function (response) {
+                    // Show the result using the showCustomAlert() function
+                    showCustomAlert(response);
+    
+                    // Optionally, clear the form fields or perform any other actions
+                    $('#nomeMaterial').val('');
+                    $('#tipoMaterial').val('Escolher');
+                    $('#apresentacao').val('Escolher');
+                    $('#qtdMaterial').val('');
+                },
+                error: function (xhr, status, error) {
+                    // Handle errors if needed
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+    
+        function showCustomAlert(message) {
+            // Implement your custom alert function here, e.g., using Bootstrap Modal or other methods
+            // Example: alert(message);
+        }
+    });
+    </script>
+    
+
+</html>

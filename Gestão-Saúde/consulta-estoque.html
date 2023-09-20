@@ -2,17 +2,23 @@
 
 <head lang="pt-br">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
-    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-    var PATH_COOKIE = '/';
-    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+  var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+  var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+  var PATH_COOKIE = '/';
+  var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+  var JS = 'https://cobalto.ufpel.edu.br/static/_js';
 </script>
 <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
 <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+
+
 
 <!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
 <div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
@@ -76,87 +82,132 @@
   <p></p>
   <br>
   
-  <label name="lblCpf" id="lblCpf" style="width: 80px;">Código</label>
-  <input type="text" name="txtCpf" id="txtCpf" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap cpf" style="width: 100px;"  />
+  <label style="width: 80px;">Código</label>
+  <input type="text" id="codMaterial" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 100px;"  />
   <br>
-  <label name="lblNome" id="lblNome" style="width: 80px;">Material</label>
-  <input type="text" name="txtNome" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;"  />
-    <br>
+  <label style="width: 80px;">Material</label>
+  <input type="text" id="nomeMaterial" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;"  />
+  <br>
+  <label style="width: 80px;">Tipo</label>
+        <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" name="tipoMaterial" id="tipoMaterial">
+            <option value="Escolher">Escolher</option>
+            <option value="Cimento">Cimento</option>
+            <option value="Resina composta">Resina composta</option>
+            <option value="Hospitalar">Hospitalar</option>
+            <option value="Moldagem">Moldagem</option>
+        </select>
                 
-
+        <hr class="ui-state-default">
     
-<table id="listaEstoque"></table>
-<div id="listaEstoquePager" style="margin-bottom: 5px"></div>
-<script>
-var listaEstoque = 'listaEstoque';
-$(document).ready(function () {
-    $('#listaEstoque').jqGrid({
-        "sortname": "estoque_nome",
-        "autoload": false,
-        "autowidth": true,
-        "pager": "#listaEstoquePager",
-        "rowNum": 25,
-        "toppager": true,
-        "caption": "Lista de estoque",
-        "height": "auto",
-        "jsonReader": { "repeatitems": false, "id": 0 },
-        "colNames": ["Código", "Material", "Tipo", "Qtd."],
-        "colModel": [
-            { "sortable": true, "name": "estoque_nome", "index": "estoque_nome", "colName": "Código", "width": "15%", "align": "left" },
-            { "sortable": true, "name": "telefone", "index": "telefone", "colName": "Material", "width": "50%", "align": "center" },
-            { "sortable": true, "name": "tipo", "index": "tipo", "colName": "Tipo", "width": "20%", "align": "center" },
-            { "sortable": true, "name": "qtd", "index": "qtd", "colName": "Qtd.", "width": "15%", "align": "center" }
-        ],
-        "onSelectRow": function (rowid) {
-            try { listaEstoque_onSelectRow(rowid); } catch (err) { }
-        },
-        "onCellSelect": function (rowid, iRow, iCol, e) {
-            if (iRow != 0) {
-                $("#listaEstoque").resetSelection();
-                try { listaEstoque_click(rowid); } catch (err) { }
-            }
-        },
-        "ondblClickRow": function (rowid, iRow, iCol, e) {
-            if (iRow != 0) {
-                $("#listaEstoque").resetSelection();
-                try { listaEstoque_dblClick(rowid); } catch (err) { }
-            }
-        },
-        "loadBeforeSend": function (xhr) {
-            try { listaEstoque_loadBeforeSend(); } catch (err) { }
-        },
-        "loadComplete": function (data) {
-            if ($("#listaEstoque").jqGrid('getGridParam', 'datatype') != 'local') {
-                try { listaEstoque_loadComplete(); } catch (err) { }
-            }
-        },
-        "gridComplete": function (data) {
-            generateTabs();
-            try { listaEstoque_init(); } catch (err) { }
-        },
-        "loadError": function (xhr, st, err) {
-            var url = $("#listaEstoque").jqGrid('getGridParam', 'url');
-            if (!$.cookie('logout')) if (xhr.status == 200 && st == "parsererror") {
-                try { console.log("Grid: listaEstoque; URL: " + url + "; Type: " + st + "; Response: O resultado não está no formato esperado"); } catch (err) { }
-            } else {
-                try { console.log("Grid: listaEstoque; URL: " + url + "; Type: " + st + "; Response: " + xhr.status + " " + xhr.statusText); } catch (err) { }
-            }
-        },
-        "url": "https://cobalto.ufpel.edu.br/academico/consultas/estoque/listaEstoqueProcedimentos/",
-        "altRows": true,
-        "altclass": "ui-state-default jqgrow-alt",
-        "rownumbers": false,
-        "viewrecords": true,
-        "datatype": "local",
-        "sortorder": "asc",
-        "forceFit": true,
-        "headertitles": true,
+        <table id="listaMaterial" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
+          <thead>
+              <tr class="ui-jqgrid-labels" role="rowheader">
+                  <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 2.5%;">Selec.</th>  
+                  <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 5%;">Cód.</th>
+                  <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 47.5%;">Material</th>
+                  <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 20%;">Tipo de material</th>
+                  <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%;">Apresentação</th>
+                  <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd.</th>
+              </tr>
+          </thead>
+          <tbody id="table-body">
+              <!-- Table body rows will be populated here -->
+          </tbody>
+            <tr>
+            <td colspan="6" style="text-align: center;">
+              <div id="pagination" class="ui-state-default">
+                  <button id="prev-page">Previous</button>
+                  <span id="page-info">Page 1</span>
+                  <button id="next-page">Next</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+    
+    <script>
+    $(document).ready(function () {
+      var currentPage = 1;
+      var rowsPerPage = 25;
+      var tableRows = [];
+      var totalRows = 0;
+    
+      function loadTableData() {
+          // Make an AJAX request to fetch data from your PHP script
+          $.ajax({
+              url: 'https://sistema-odonto.000webhostapp.com/busca-materiais.php',
+              method: 'GET',
+              dataType: 'json',
+              success: function (data) {
+                  totalRows = data.length;
+                  tableRows = data;
+                  showPage(currentPage);
+                  updateButtons();
+              },
+              error: function () {
+                  console.log('Error fetching data');
+              }
+          });
+      }
+    
+      function showPage(page) {
+          var startIndex = (page - 1) * rowsPerPage;
+          var endIndex = Math.min(startIndex + rowsPerPage, totalRows);
+          var tableBody = $('#table-body');
+    
+          tableBody.empty(); // Clear the table body
+    
+          for (var i = startIndex; i < endIndex; i++) {
+              var item = tableRows[i];
+              var row = '<tr>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox" data-id="' + item.id + '"></td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.id + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.nome + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.tipo_material + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.apresentacao + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.quantidade + '</td>';
+              row += '</tr>';
+              tableBody.append(row);
+          }
+    
+          $('#page-info').text('Page ' + page);
+      }
+    
+      function updateButtons() {
+          if (currentPage === 1) {
+              $('#prev-page').prop('disabled', true);
+          } else {
+              $('#prev-page').prop('disabled', false);
+          }
+    
+          if (currentPage * rowsPerPage >= totalRows) {
+              $('#next-page').prop('disabled', true);
+          } else {
+              $('#next-page').prop('disabled', false);
+          }
+      }
+    
+      // Initial load of table data
+      loadTableData();
+    
+      $('#prev-page').click(function () {
+          if (currentPage > 1) {
+              currentPage--;
+              showPage(currentPage);
+              updateButtons();
+          }
+      });
+    
+      $('#next-page').click(function () {
+          if (currentPage * rowsPerPage < totalRows) {
+              currentPage++;
+              showPage(currentPage);
+              updateButtons();
+          }
+      });
     });
-    $('#listaEstoque').setGridParam({ datatype: 'json' });
-    $('#listaEstoque').setGridParam({ autoload: true });
-});
-</script>
-    
+    </script>
+
+
     
 </body>
   

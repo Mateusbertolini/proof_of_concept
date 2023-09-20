@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Main Website</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Main Website</h1>
+    <table id="listaMaterial" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
+        <thead>
+            <tr class="ui-jqgrid-labels" role="rowheader">
+                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
+                    Selec.
+                </th>
+                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">
+                    Cód.
+                </th>
+                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">
+                    Material
+                </th>
+                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">
+                    Tipo de material
+                </th>
+                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
+                    Qtd.
+                </th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Table body rows will be populated here -->
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            // Make an AJAX request to fetch data from your PHP script
+            $.ajax({
+                url: 'https://sistema-odonto.000webhostapp.com/API.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // Populate the table with data
+                    var tableBody = $('#table-body');
+                    data.forEach(function (item) {
+                        var row = '<tr>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr"><input type="checkbox"></td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.id + '</td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.nome + '</td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.tipo_material + '</td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.quantidade + '</td>';
+                        row += '</tr>';
+                        tableBody.append(row);
+                    });
+                },
+                error: function () {
+                    console.log('Error fetching data');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

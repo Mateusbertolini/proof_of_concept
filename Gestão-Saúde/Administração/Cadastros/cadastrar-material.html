@@ -137,40 +137,68 @@
       </div>
 
       <div>
-          <p></p>
-          <br>
+        <p></p>
+        <br>
 
-          <label style="width: 180px; margin: 5px;">Material</label>
-          <input type="text" name="nomeMaterial" id="nomeMaterial" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;" placeholder="Inserir nome do material" required>
+        <label style="width: 180px; margin: 5px;">Material</label>
+        <input type="text" name="nomeMaterial" id="nomeMaterial" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;" placeholder="Inserir nome do material" required>
+        <br>
 
-          <br>
-          <label style="width: 180px; margin: 5px;">Tipo</label>
-          <select class="ui-state-default ui-corner-all" style="width: 140px; height: 20px;" name="tipoMaterial" id="tipoMaterial" required>
-              <option value="Escolher">Escolher</option>
-              <option value="Anestésico">Anestésico</option>
-              <option value="Cimento">Cimento</option>
-              <option value="Laboratório">Laboratório</option>
-              <option value="Resina composta">Resina composta</option>
-              <option value="Hospitalar">Hospitalar</option>
-              <option value="Moldagem">Moldagem</option>
-          </select>
-          <br>
+        <label style="width: 180px; margin: 5px;">Tipo</label>
+        <select class="ui-state-default ui-corner-all" style="width: 140px; height: 20px;" name="tipoMaterial" id="tipoMaterial" required>
+            <!-- Placeholder option -->
+            <option id="Escolher" value="">Escolher</option>
+        </select>
+        <br>
+        
+        <script>
+            //DADOS DO BANCO PARA O SELECT DE TIPO DE MATERIAL
+        $(document).ready(function() {
+            // Make an AJAX request to fetch options from the remote URL
+            $.ajax({
+                url: 'https://sistema-odonto.000webhostapp.com/tipo-material-options.php',
+                dataType: 'html',
+                success: function(optionsHTML) {
+                    // Populate the select element with the fetched options
+                    $('#tipoMaterial').html('<option value="">Escolher</option>' + optionsHTML);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching options:', error);
+                }
+            });
+        });
+        </script>
 
-          <label for="apresentacao" style="width: 180px; margin: 5px;">Apresentação do produto</label>
+        <label for="apresentacao" style="width: 180px; margin: 5px;">Apresentação do produto</label>
           <select class="ui-state-default ui-corner-all" style="width: 140px; height: 20px;" name="apresentacao" id="apresentacao">
             <option value="Escolher">Escolher</option>
-            <option value="Bisnaga">Bisnaga</option>
-            <option value="Frasco">Frasco</option>
-            <option value="Kit">Kit</option>
-            <option value="Pacote">Pacote</option>
-          </select>
+                <!-- Placeholder option -->
+            <option id="Escolher" value="">Escolher</option>
+            </select>
+        <br>
+    
+        <script>
+            //DADOS DO BANCO PARA O SELECT DE TIPO DE APRESENTAÇÃO
+        $(document).ready(function() {
+            // Make an AJAX request to fetch options from the remote URL
+            $.ajax({
+                url: 'https://sistema-odonto.000webhostapp.com/apresentacao-material-options.php',
+                dataType: 'html',
+                success: function(optionsHTML) {
+                    // Populate the select element with the fetched options
+                    $('#apresentacao').html('<option value="">Escolher</option>' + optionsHTML);
+                },
+                error: function(xhr, status, error) {
+                    console.error('Error fetching options:', error);
+                }
+            });
+        });
+        </script>
+        
+        <label style="width: 180px; margin: 5px;">Quantidade disponível</label>
+        <input type="number" name="qtdMaterial" id="qtdMaterial" class="ui-state-default ui-corner-all mousetrap" style="width: 140px; height: 20px;" placeholder="Inserir a quantidade" required>
         <br>
         <p></p>
-
-          <label style="width: 180px; margin: 5px;">Quantidade disponível</label>
-          <input type="number" name="qtdMaterial" id="qtdMaterial" class="ui-state-default ui-corner-all mousetrap" style="width: 140px; height: 20px;" placeholder="Inserir a quantidade" required>
-          <br>
-          <p></p>
       </div>
   </form>
 </body>

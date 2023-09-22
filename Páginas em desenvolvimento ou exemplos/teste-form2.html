@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Material Request Form</title>
+</head>
+<body>
+    <h2>Material Request Form</h2>
+    <form action="https://sistema-odonto.000webhostapp.com/request-material.php" method="post">
+        <label for="setor">Setor:</label>
+        <input type="text" id="setor" name="setor" required><br><br>
+
+        <label for="nome_solicitante">Nome do Solicitante:</label>
+        <input type="text" id="nome_solicitante" name="nome_solicitante" required><br><br>
+
+        <label for="data_pedido">Data do Pedido:</label>
+        <input type="date" id="data_pedido" name="data_pedido" required><br><br>
+
+        <label for="id_material">ID do Material:</label>
+        <input type="number" id="id_material" name="id_material" required><br><br>
+
+        <label for="qtd_solicitada">Quantidade Solicitada:</label>
+        <input type="number" id="qtd_solicitada" name="qtd_solicitada" required><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

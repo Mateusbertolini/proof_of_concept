@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Material Request Form</title>
+</head>
+<body>
+    <h2>Material Request Form</h2>
+    <form action="https://sistema-odonto.000webhostapp.com/request-material.php" method="post">
+        <label style="width: 120px; margin: 5px;">Setor</label>
+        <select class="ui-state-default ui-corner-all" style="width: 160px; height: 20px; margin-top: 5px;" id="setor" name="setor" required>
+            <option value=''>Escolher</option>
+            <option value="Clínica 1º Andar - Sul">1º Andar - Sul</option>
+            <option value="Clínica Oeste">Clínica Oeste</option>
+            <option value="Clínica Sul 2º Andar">Clínica Sul 2º Andar</option>
+            <option value="Enfermagem 3º Andar">Enfermagem 3º Andar</option>
+            <option value="Clínica 4º Andar">Clínica 4º Andar</option>
+            <option value="Laboratórios pré-clínica">Laboratórios pré-clínica</option>
+            <option value="Laboratórios patologia">Laboratórios patologia</option>
+        </select><br><br>
+
+        <label for="nome_solicitante">Nome do Solicitante:</label>
+        <input type="text" id="nome_solicitante" name="nome_solicitante" required><br><br>
+
+        <table id="materiaisAtendidos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false">
+            <thead>
+                <tr class="ui-jqgrid-labels" role="rowheader">
+                    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Selec.</th>
+                    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Cód.</th>
+                    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Material</th>
+                    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Tipo</th>
+                    <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix">Qtd.</th>
+                </tr>
+            </thead>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><input type="hidden" name="id_material[]" value="2">2</td>
+                <td>U200</td>
+                <td>Cimento</td>
+                <td><input type="hidden" name="qtd_solicitada[]" value="20">20</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><input type="hidden" name="id_material[]" value="3">3</td>
+                <td>Resina acrílica</td>
+                <td>Resina</td>
+                <td><input type="hidden" name="qtd_solicitada[]" value="50">50</td>
+            </tr>
+            <br>
+
+        <input type="submit" value="Submit"><br>
+    </form>
+
+    <script>
+        // JavaScript to dynamically generate hidden input fields for each row of materials
+        const materialsTable = document.getElementById("materiaisAtendidos");
+        const materialRows = materialsTable.querySelectorAll("tr:not(:first-child)");
+
+        materialRows.forEach(row => {
+            const idMaterial = row.querySelector("input[name='id_material[]']").value;
+            const qtdSolicitada = row.querySelector("input[name='qtd_solicitada[]']").value;
+
+            // Create hidden input fields for id_material and qtd_solicitada
+            const idInput = document.createElement("input");
+            idInput.type = "hidden";
+            idInput.name = "id_material[]"; // Use an array for multiple values
+            idInput.value = idMaterial;
+
+            const qtdInput = document.createElement("input");
+            qtdInput.type = "hidden";
+            qtdInput.name = "qtd_solicitada[]"; // Use an array for multiple values
+            qtdInput.value = qtdSolicitada;
+
+            // Append the hidden inputs to the form
+            document.querySelector("form").appendChild(idInput);
+            document.querySelector("form").appendChild(qtdInput);
+        });
+    </script>
+</body>
+</html>

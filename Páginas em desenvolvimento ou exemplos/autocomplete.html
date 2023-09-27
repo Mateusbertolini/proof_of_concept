@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete Input</title>
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Reference to the input field
+            const $atendimentoCodSUS = $("#atendimentoCodSUS");
+
+            // Function to perform autocomplete
+            $atendimentoCodSUS.autocomplete({
+                source: function(request, response) {
+                    // Make an AJAX request to fetch data from the database
+                    $.ajax({
+                        url: 'https://sistema-odonto.000webhostapp.com/busca-procedimentos.php',
+                        method: 'GET',
+                        dataType: 'json',
+                        data: {
+                            searchTerm: request.term // Pass the user's input as a search term
+                        },
+                        success: function(data) {
+                            // Parse the response and build the autocomplete list
+                            const suggestions = data.map(function(item) {
+                                // Combine 'cod_sus' and 'nome' to create the suggestion string
+                                return {
+                                    label: item.cod_sus + ' ' + item.nome,
+                                    value: item.cod_sus // The value to set when an item is selected
+                                };
+                            });
+
+                            response(suggestions);
+                        }
+                    });
+                },
+                minLength: 2, // Minimum characters to trigger autocomplete
+                select: function(event, ui) {
+                    // Set the selected value in the input field
+                    $atendimentoCodSUS.val(ui.item.value);
+                    return false; // Prevent the input from being populated with the selected value label
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <input type="text" value="" maxlength="" class="ui-state-default ui-corner-tr ui-corner-br mousetrap" id="atendimentoCodSUS" placeholder="Digite o código SUS" style="width: 240px;" />
+</body>
+</html>

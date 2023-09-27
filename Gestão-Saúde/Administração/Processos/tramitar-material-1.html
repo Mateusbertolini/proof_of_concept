@@ -58,7 +58,6 @@
 
   <div class="ui-widget-content ui-corner-all toolbar">
     <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-    <button id="pesquisar" class="pesquisar" title="Enter" style="float: left;" onclick="buscar()">Pesquisar</button>
     <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
     <span style="clear: both; display: block"></span>
   
@@ -76,14 +75,16 @@
             </li>
         </ul>
 	<label name="lblStatus" id="lblStatus" style="width: 150px;" >Status da solicitação</label>
-	<select class="mousetrap" style="width: 400px;" name="solicitacaoMaterial" id="solicitacaoMaterial" ><option value=''>&nbsp;</option>
-        <option value="1">SOLICITADO</option>
-        <option value="2">EM ANÁLISE</option>
-        <option value="3">ATENDIDA</option>
-        <option value="4">PARCIALMENTE ATENDIDA</option>
-        <option value="4">NÃO ATENDIDA</option>
-        
-    </select><script type='text/javascript'>
+	<select class="mousetrap" style="width: 400px;" name="solicitacaoMaterial" id="solicitacaoMaterial" >
+        <option value=''>Escolher filtro</option>
+        <option value="Solicitado">Solicitada</option>
+        <option value="Atendida">Atendida</option>
+        <option value="Atendida parcialmente">Atendida parcialmente</option>
+    </select>
+    
+    <h2 style="color: red; ">ADD FILTRO AQUI???</h2>
+
+    <script type='text/javascript'>
             var solicitacaoMaterial = 'solicitacaoMaterial';
             $(document).ready(function(){
                 $('#solicitacaoMaterial').selectmenu({style:'dropdown'});
@@ -94,75 +95,122 @@
 </div>
 
 
-
-
-
-<div id="tabRequisições-0" class="ui-widget tabRequisições tabRequisições-0 tabRequisições-0 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-2" role="tabpanel" aria-expanded="true" aria-hidden="false">
-   
-<label style="width: 250px; ;margin: 5px; font-size: larger; font-weight: bold;">Materiais disponíveis</label><br>
-<table id="materiaisDisponiveis" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 20px;">
-  <thead>
-    <tr class="ui-jqgrid-labels" role="rowheader">
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 15%;">
-        Setor
-      </th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 35%;">
-        Solicitante
-      </th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
-        Data da solicitação
-      </th>
-      <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">
-        Status
-      </th>
+  <table id="listaRequisicoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
+    <thead>
+        <tr class="ui-jqgrid-labels" role="rowheader">
+            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Data</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 30%;">Setor</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 25%;">Solicitado por:</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Status</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Obs.</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+        <!-- Table body rows will be populated here -->
+    </tbody>
+    <tr>
+        <td colspan="6" style="text-align: center;">
+            <div id="pagination" class="ui-state-default">
+                <button id="prev-page">Previous</button>
+                <span id="page-info">Pág. 1</span>
+                <button id="next-page">Next</button>
+            </div>
+        </td>
     </tr>
-  </thead>
-  <tr>
-    <td class="ui-state-default ui-th-column ui-th-ltr">'idSetor'</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">'idSolicitante'</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">'dataSolicitcao'</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">'statusSolicitacao'</td>
-  </tr>
-  <tr>
-    <td class="ui-state-default ui-th-column ui-th-ltr">Clínica Oeste</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">Ciclano de Souza</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">17/08/2023</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">SOLICITADO</td>
-  </tr>
-  <tr>
-    <td class="ui-state-default ui-th-column ui-th-ltr">Bloco - 3º Andar</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">Cimento resinoso cor:A2</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">01/06/2023</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">SOLICITADO</td>
-  </tr>
-  <tr>
-    <td class="ui-state-default ui-th-column ui-th-ltr">Clínica Sul - 1º Andar</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">Resina composta - Bisnaga Cor:A1</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">01/06/2023</td>
-    <td class="ui-state-default ui-th-column ui-th-ltr">SOLICITADO</td>
-  </tr>
-  <!-- Table body rows go here -->
 </table>
-</div>
 
 
 
+<script type="text/javascript">
+$(document).ready(function () {
+  var currentPage = 1;
+  var rowsPerPage = 25;
+  var tableRows = [];
+  var totalRows = 0;
+
+  function loadTableData() {
+      // Make an AJAX request to fetch data from your PHP script
+      $.ajax({
+          url: 'https://sistema-odonto.000webhostapp.com/busca-requisicoes.php',
+          method: 'GET',
+          dataType: 'json',
+          success: function (data) {
+              totalRows = data.length;
+              tableRows = data;
+              showPage(currentPage, tableRows); // Display data without applying filters
+              updateButtons();
+          },
+          error: function () {
+              console.log('Error fetching data');
+          }
+      });
+  }
+
+  function showPage(page, data) {
+      var startIndex = (page - 1) * rowsPerPage;
+      var endIndex = Math.min(startIndex + rowsPerPage, data.length);
+      var tableBody = $('#table-body');
+
+      tableBody.empty(); // Clear the table body
+
+      for (var i = startIndex; i < endIndex; i++) {
+          var item = data[i];
+          var row = '<tr>';
+          
+          row += '<td style="display: none;">ID</td>';
+          row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + formatDate(item.data_pedido) + '</td>';
+          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.setor + '</td>';
+          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.nome_solicitante + '</td>';
+          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.statusSolicitacao + '</td>';
+          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + (item.obs_tramite ? item.obs_tramite : '') + '</td>';
+          row += '</tr>';
+          tableBody.append(row);
+      }
+
+      $('#page-info').text('Pág. ' + page);
+  }
+
+  function formatDate(dateString) {
+      var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+      return new Date(dateString).toLocaleDateString('pt-BR', options);
+  }
+
+  function updateButtons() {
+      if (currentPage === 1) {
+          $('#prev-page').prop('disabled', true);
+      } else {
+          $('#prev-page').prop('disabled', false);
+      }
+
+      if (currentPage * rowsPerPage >= totalRows) {
+          $('#next-page').prop('disabled', true);
+      } else {
+          $('#next-page').prop('disabled', false);
+      }
+  }
+
+  // Initial load of table data
+  loadTableData();
+
+  $('#prev-page').click(function () {
+      if (currentPage > 1) {
+          currentPage--;
+          showPage(currentPage, tableRows); // Display data without applying filters
+          updateButtons();
+      }
+  });
+
+  $('#next-page').click(function () {
+      if (currentPage * rowsPerPage < totalRows) {
+          currentPage++;
+          showPage(currentPage, tableRows); // Display data without applying filters
+          updateButtons();
+      }
+  });
+});
+</script>
 
 
-
-
-
-
-
-
-
-
-
-
-<div>
-    <h1><a href="tramitar-material-2.html" style="padding: 20px;">FILTRA DE ACORDO COM O STATUS DA SOLICITAÇÃO, CLICA EM UMA LINHA E ABRE A PÁGINA PARA O ALMOXARIFADO TRAMITAR A SOLICITAÇÃO</a></h1>
-</div>
-  
 
 </body>
 </html>

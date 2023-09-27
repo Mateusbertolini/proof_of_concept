@@ -691,7 +691,7 @@ buscarperfil()
   <label style="width: 400px; ;">Descrição do plano de tratamento ou procedimento realizado:</label><br>
     <textarea style="width: 460px;" id="atendimentoDescrição" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" ></textarea>
   <br>
-  
+
   <label style="width: 180px; ;">Código SUS:</label>
     <button id="btnAddCodSus" value="Adicionar Cód. SUS" class="button">Adicionar Cód. SUS</button>
   <div style="height: 22px; width: 25px; margin: 0px -1px 5px 0px; display: block; float: left; position: relative; padding: 0; text-decoration: none !important; text-align: center; zoom: 1; overflow: visible; border-right: none;" class="ui-widget ui-state-default ui-corner-tl ui-corner-bl ui-button-icon-only"><span class=" ui-icon ui-icon-search"></span></div>
@@ -901,8 +901,19 @@ buscarperfil()
 <!--INÍCIO DA TAB ANEXAR DOCUMENTOS/EXAMES COMPLEMENTARES-->
 <div id="tab-3" class="ui-widget tab tab-3 tab-3 ui-tabs-panel ui-widget-content ui-corner-bottom" aria-labelledby="ui-id-4" role="tabpanel" aria-expanded="true" aria-hidden="false" style="height: 450px;">
 
-  <label style="width: 205px;">Selecione o tipo de documento ou exame complementar:</label>
-  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px;" id="exameTipo">
+  <div style="margin: 10px; margin-bottom: 50px;">
+    <h2>Banco de formulários/prontuários para exames específicos<spam style="font-size: 12px; margin-left: 10px;">(Preencher, salvar em PDF e anexar abaixo)</spam><br></h2>
+  
+    <p style="font-size: 12px;"><a href="../../../src/termo_consentimento.docx">- Termo de consentimento</a></p>
+    <p style="font-size: 12px;"><a href="../../../src/plano_tratamento.docx">- Plano de tratamento</a></p>
+
+
+  </div>
+
+  <hr class="ui-state-default">
+  
+  <label style="width: 205px; margin-top: 20px;">Selecione o tipo de documento ou exame complementar:</label>
+  <select class="ui-state-default ui-corner-all" style="width: 180px; height: 20px; margin-top: 20px" id="exameTipo">
     <option value="">Escolher</option>
     <option value="Radiografia periapical">Radiografia periapical</option>
     <option value="Radiografia panorâmica">Radiografia panorâmica</option>
@@ -1012,6 +1023,22 @@ function deleteSelectedRows() {
     }
 }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
    
 <script>

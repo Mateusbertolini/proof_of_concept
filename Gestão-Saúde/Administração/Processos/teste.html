@@ -1,0 +1,160 @@
+
+<h2>Materiais disponíveis em estoque</h2>
+
+<div id="table-container2">
+    <table id="listaMaterial" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin-left: 35px; margin-top: 15px;">
+        <thead>
+            <tr class="ui-jqgrid-labels" role="rowheader">
+                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 5%;">Cód.</th>
+                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 47.5%;">Material</th>
+                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 20%;">Tipo de material</th>
+                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%;">Apresentação</th>
+                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd.</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- Table body rows will be populated here -->
+        </tbody>
+    </table>
+
+    <div id="pagination2" class="ui-state-default">
+        <button id="prev-page">Previous</button>
+        <span id="page-info">Pág. 1</span>
+        <button id="next-page">Next</button>
+    </div>
+</div>
+
+  
+<script>
+  // DADOS DO BANCO PREENCHEM DA TABELA
+  $(document).ready(function () {
+      var currentPage = 1;
+      var rowsPerPage = 10;
+      var tableRows = [];
+      var totalRows = 0;
+      var selectedTipoMaterial = ''; // Store the selected tipoMaterial filter
+      var nomeMaterialFilter = ''; // Store the nomeMaterial filter
+  
+      function loadTableData() {
+          // Make an AJAX request to fetch data from your PHP script
+          $.ajax({
+              url: 'https://sistema-odonto.000webhostapp.com/busca-materiais.php',
+              method: 'GET',
+              dataType: 'json',
+              success: function (data) {
+                  totalRows = data.length;
+                  tableRows = data;
+                  applyFilters();
+                  updateButtons();
+              },
+              error: function () {
+                  console.log('Error fetching data');
+              }
+          });
+      }
+  
+      function applyFilters() {
+          var filteredRows = tableRows;
+  
+          // Apply the tipoMaterial filter
+          if (selectedTipoMaterial !== '') {
+              filteredRows = filteredRows.filter(function (item) {
+                  return item.tipo_material === selectedTipoMaterial;
+              });
+          }
+  
+          // Apply the nomeMaterial filter
+          if (nomeMaterialFilter !== '') {
+              var nomeMaterialFilterLC = nomeMaterialFilter.toLowerCase();
+              filteredRows = filteredRows.filter(function (item) {
+                  return item.nome.toLowerCase().includes(nomeMaterialFilterLC);
+              });
+          }
+  
+          showPage(currentPage, filteredRows);
+      }
+  
+      function showPage(page, data) {
+          var startIndex = (page - 1) * rowsPerPage;
+          var endIndex = Math.min(startIndex + rowsPerPage, data.length);
+          var tableBody = $('#listaMaterial tbody');
+  
+          tableBody.empty(); // Clear the table body
+  
+          for (var i = startIndex; i < endIndex; i++) {
+              var item = data[i];
+              var row = '<tr>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.id + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.nome + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.tipo_material + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.apresentacao + '</td>';
+              row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.quantidade + '</td>';
+              row += '</tr>';
+              tableBody.append(row);
+          }
+  
+          $('#page-info').text('Pág. ' + page);
+      }
+  
+      function updateButtons() {
+          if (currentPage === 1) {
+              $('#prev-page').prop('disabled', true);
+          } else {
+              $('#prev-page').prop('disabled', false);
+          }
+  
+          if (currentPage * rowsPerPage >= totalRows) {
+              $('#next-page').prop('disabled', true);
+          } else {
+              $('#next-page').prop('disabled', false);
+          }
+      }
+  
+      // Initial load of table data
+      loadTableData();
+  
+      // Listen for changes to the tipoMaterial filter
+      $('#tipoMaterial').change(function () {
+          selectedTipoMaterial = $(this).val();
+          currentPage = 1; // Reset to the first page when the filter changes
+          applyFilters();
+          updateButtons();
+      });
+  
+      // Listen for input in the nomeMaterial filter
+      $('#nomeMaterial').on('input', function () {
+          nomeMaterialFilter = $(this).val();
+          currentPage = 1; // Reset to the first page when the filter changes
+          applyFilters();
+          updateButtons();
+      });
+  
+      // Clear button click event
+      $('#clear').click(function () {
+          $('#nomeMaterial').val(''); // Clear the nomeMaterial input
+          $('#tipoMaterial').val(''); // Reset the tipoMaterial select to the default
+          selectedTipoMaterial = ''; // Clear the selectedTipoMaterial filter
+          nomeMaterialFilter = ''; // Clear the nomeMaterial filter
+          currentPage = 1; // Reset to the first page when clearing filters
+          applyFilters();
+          updateButtons();
+      });
+  
+      $('#prev-page').click(function () {
+          if (currentPage > 1) {
+              currentPage--;
+              applyFilters();
+              updateButtons();
+          }
+      });
+  
+      $('#next-page').click(function () {
+          if (currentPage * rowsPerPage < totalRows) {
+              currentPage++;
+              applyFilters();
+              updateButtons();
+          }
+      });
+  });
+  </script>
+   

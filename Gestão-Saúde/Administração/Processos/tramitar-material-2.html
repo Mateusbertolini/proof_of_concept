@@ -156,7 +156,7 @@
       function loadTableData() {
           // Make an AJAX request to fetch data from your PHP script
           $.ajax({
-              url: 'https://sistema-odonto.000webhostapp.com/busca-requisicoes.php?id=' + getUrlVars()["id"] + '',
+              url: 'https://sistema-odonto.000webhostapp.com/busca-requisicoes-id.php?id=' + getUrlVars()["id"] + '',
               method: 'GET',
               dataType: 'json',
               success: function (data) {

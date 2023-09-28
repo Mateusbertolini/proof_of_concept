@@ -74,15 +74,14 @@
             <li class="labeltabFiltroSolicitacaoSegundaChamada"><a href="#tabFiltroSolicitacaoSegundaChamada-0" accessKey="tabFiltroSolicitacaoSegundaChamada-0">Filtro</a>
             </li>
         </ul>
-	<label name="lblStatus" id="lblStatus" style="width: 150px;" >Status da solicitação</label>
-	<select class="mousetrap" style="width: 400px;" name="solicitacaoMaterial" id="solicitacaoMaterial" >
-        <option value=''>Escolher filtro</option>
-        <option value="Solicitado">Solicitada</option>
-        <option value="Atendida">Atendida</option>
-        <option value="Atendida parcialmente">Atendida parcialmente</option>
+
+    <label name="lblStatus" id="lblStatus" style="width: 150px;">Status da solicitação</label>
+    <select class="mousetrap" style="width: 400px;" name="solicitacaoMaterial" id="solicitacaoMaterial">
+        <option value="Escolher">Todas</option>
+        <option value="Solicitado">Solicitadas</option>
+        <option value="Atendida">Atendidas</option>
+        <option value="Parcialmente">Atendidas parcialmente</option>
     </select>
-    
-    <h2 style="color: red; ">ADD FILTRO AQUI???</h2>
 
     <script type='text/javascript'>
             var solicitacaoMaterial = 'solicitacaoMaterial';
@@ -122,11 +121,26 @@
 
 
 <script type="text/javascript">
-$(document).ready(function () {
-  var currentPage = 1;
-  var rowsPerPage = 25;
-  var tableRows = [];
-  var totalRows = 0;
+    $(document).ready(function () {
+        var currentPage = 1;
+        var rowsPerPage = 25;
+        var tableRows = [];
+        var totalRows = 0;
+        var selectedFilter = ''; // Initialize the filter to an empty string
+
+        // Function to apply the filter based on the selected option
+        function applyFilter() {
+            var filteredData = tableRows; // Start with the unfiltered data
+            if (selectedFilter !== '') {
+                // Apply the filter only if it's not empty
+                filteredData = tableRows.filter(function (item) {
+                    return item.statusSolicitacao === selectedFilter;
+                });
+            }
+            showPage(currentPage, filteredData);
+            totalRows = filteredData.length;
+            updateButtons();
+        }
 
   function loadTableData() {
       // Make an AJAX request to fetch data from your PHP script
@@ -191,6 +205,15 @@ $(document).ready(function () {
 
   // Initial load of table data
   loadTableData();
+
+  // Event listener for changes in the dropdown
+  $('#solicitacaoMaterial').change(function () {
+            // Get the selected filter option
+            selectedFilter = $('#solicitacaoMaterial').val();
+
+            // Apply the filter
+            applyFilter();
+        });
 
   $('#prev-page').click(function () {
       if (currentPage > 1) {

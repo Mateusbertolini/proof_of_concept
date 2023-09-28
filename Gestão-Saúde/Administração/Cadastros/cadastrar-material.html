@@ -127,17 +127,19 @@
         </ul>
     </div>
     
-    <form method="post" action="https://sistema-odonto.000webhostapp.com/insert-material.php" id="materialForm">
-    
-      <div style="margin: 10px;">
+    <form method="post" action="https://sistema-odonto.000webhostapp.com/insert-remove-material.php" id="materialForm">
+        <div style="margin: 10px;">
           <button type="submit" id="btnAdicionar" class="button">Adicionar</button>
-          <button name="deleteButton" id="deleteButton" value="deleteButton" class="button"  >Excluir</button>
-          <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button"  >Cancelar</button>
-          
-      </div>
+          <button name="deleteButton" id="deleteButton" value="deleteButton" class="button">Excluir</button>
+          <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button">Cancelar</button>
+        </div>
 
       <div>
         <p></p>
+        <br>
+
+        <label style="width: 180px; margin: 5px;">Código</label>
+        <input type="text" name="idMaterial" id="idMaterial" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 100px;" placeholder="Não preencher" readonly>
         <br>
 
         <label style="width: 180px; margin: 5px;">Material</label>
@@ -202,38 +204,6 @@
       </div>
   </form>
 </body>
-
-<script>
-  $(document).ready(function () {
-      $('#materialForm').submit(function (event) {
-          event.preventDefault(); // Prevent the default form submission behavior
-  
-          // Serialize the form data
-          var formData = $(this).serialize();
-  
-          // Perform an AJAX POST request
-          $.ajax({
-              type: 'POST',
-              url: 'https://sistema-odonto.000webhostapp.com/insert-material.php',
-              data: formData,
-              success: function (response) {
-                  // Show the result using the showCustomAlert() function
-                  showCustomAlert(response);
-  
-                  // Optionally, clear the form fields or perform any other actions
-                  $('#nomeMaterial').val('');
-                  $('#tipoMaterial').val('Escolher');
-                  $('#apresentacao').val('Escolher');
-                  $('#qtdMaterial').val('');
-              },
-              error: function (xhr, status, error) {
-                  // Handle errors if needed
-                  showCustomAlert(xhr.responseText);
-              }
-          });
-      });
-    });
-  </script>
   
     <hr class="ui-state-default">
     
@@ -261,6 +231,7 @@
         </td>
       </tr>
     </table>
+</form>
 
 <script>
   $(document).ready(function () {
@@ -342,66 +313,105 @@
             updateButtons();
         }
     });
-  });
+  
+    // Add a click event handler for table rows
+    $('#listaMaterial tbody').on('click', 'tr', function () {
+                    // Get the data from the clicked row
+                    var rowData = $(this).children('td').map(function () {
+                        return $(this).text();
+                    }).get();
+
+                    // Populate the input fields with the row data
+                    $('#idMaterial').val(rowData[1]); // Assuming the material name is in the third column (index 1)
+                    $('#nomeMaterial').val(rowData[2]); // Assuming the material name is in the third column (index 2)
+                    $('#tipoMaterial').val(rowData[3]); // Assuming the type is in the fourth column (index 3)
+                    $('#apresentacao').val(rowData[4]); // Assuming the presentation is in the fifth column (index 4)
+                    $('#qtdMaterial').val(rowData[5]); // Assuming the quantity is in the sixth column (index 5)
+                });
+            });
 </script>
+
 
 
 <script>
     $(document).ready(function () {
-        $('#deleteButton').click(function (event) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            const selectedIds = $("input[name='selectedId[]']:checked").map(function () {
-                return $(this).closest('tr').find('td:eq(1)').text(); // Get the ID from the second column
-            }).get();
-
-            if (selectedIds.length > 0) {
-                // Create the request data as an object
-                const requestData = { selectedIds };
-
-                // Log the requestData for debugging
-                console.log("Request Data:", requestData);
-
-                // Send the POST request using AJAX
-                $.ajax({
-                    type: 'POST',
-                    url: 'https://sistema-odonto.000webhostapp.com/delete-material.php',
-                    dataType: 'json',
-                    data: JSON.stringify(requestData),
-                    contentType: 'application/json;charset=UTF-8',
-                    success: function (data) {
-                        // Log the success response for debugging
-                        console.log("Success Response:", data);
-
-                        alert(data); // Display the server response
-                    },
-                    error: function (xhr, status, error) {
-                        // Log the error for debugging
-                        console.error("Error:", error);
-                    }
-                });
-            } else {
-                showCustomAlert("Por favor, selecione ao menos um item para excluir.");
-            }
+      // Submit form when "Adicionar" button is clicked
+      $('#btnAdicionar').click(function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+  
+        // Serialize the form data
+        var formData = $('#materialForm').serialize();
+  
+        // Perform an AJAX POST request
+        $.ajax({
+          type: 'POST',
+          url: 'https://sistema-odonto.000webhostapp.com/insert-remove-material.php',
+          data: formData,
+          success: function (response) {
+            // Show the result using the showCustomAlert() function
+            showCustomAlert(response);
+  
+            // Optionally, clear the form fields or perform any other actions
+            $('#nomeMaterial').val('');
+            $('#tipoMaterial').val('Escolher');
+            $('#apresentacao').val('Escolher');
+            $('#qtdMaterial').val('');
+          },
+          error: function (xhr, status, error) {
+            // Handle errors if needed
+            showCustomAlert(xhr.responseText);
+          }
         });
+      });
+  
+      // Delete selected items when "Excluir" button is clicked
+      $('#deleteButton').click(function (event) {
+        event.preventDefault(); // Prevent the default form submission behavior
+  
+        const selectedIds = $("input[name='selectedId[]']:checked").map(function () {
+          // Get the value (ID) from the second column of the table in the same row
+          return $(this).closest('tr').find('td:eq(1)').text();
+        }).get();
+  
+        if (selectedIds.length === 0) {
+          showCustomAlert("Por favor, selecione ao menos um item para excluir.");
+          return;
+        }
+  
+        // Create the request data as an object
+        const requestData = { selectedId: selectedIds };
+  
+        // Log the requestData for debugging
+        console.log("Request Data:", requestData);
+  
+        // Send the POST request using AJAX for deletion
+        $.ajax({
+          type: 'POST',
+          url: 'https://sistema-odonto.000webhostapp.com/insert-remove-material.php',
+          data: requestData, // Send the selectedIds directly
+          success: function (data) {
+            // Log the success response for debugging
+            showCustomAlert("Success Response:", data);
+  
+            showCustomAlert(data); // Display the server response
+            
+          },
+          error: function (xhr, status, error) {
+            // Log the error for debugging
+            console.error("Error:", error);
+          }
+        });
+      });
     });
-</script>
-
-
-
-
-
-
-    
-
-<script>
-  // FUNÇÃO PARA APAGAR CAMPOS DA PÁGINA
-  function limparCampos() {
-    document.getElementById("nomeMaterial").value = "";
-    document.getElementById("tipoMaterial").value = "Escolher";
-    document.getElementById("apresentacao").value = "Escolher";
-    document.getElementById("qtdMaterial").value = "";
-  }
-</script>
+  
+    // FUNÇÃO PARA APAGAR CAMPOS DA PÁGINA
+    function limparCampos() {
+      document.getElementById("nomeMaterial").value = "";
+      document.getElementById("tipoMaterial").value = "Escolher";
+      document.getElementById("apresentacao").value = "Escolher";
+      document.getElementById("qtdMaterial").value = "";
+    }
+  </script>
+  
 </body>
 </html>

@@ -148,6 +148,7 @@
         <h2>Tramitação do pedido de materiais</h2>
         
     <form id="materialRequestForm" action="https://sistema-odonto.000webhostapp.com/subtract-materiais.php" method="POST">
+        
         <label name="lblStatus" id="lblStatus" style="width: 220px; ;margin: 5px" >Atualizar status da solicitação para:</label>
             <select class="mousetrap" style="width: 200px;" name="solicitacaoMaterial" id="solicitacaoMaterial" >
             <option value='Escolher' selected>Escolher</option>
@@ -180,8 +181,6 @@
 
 </form>
     
- 
-
    
 <script type="text/javascript">
     $(document).ready(function () {
@@ -196,15 +195,6 @@
         // Variables to store idSolicitante and setor
         var idSolicitante = "";
         var setor = "";
-
-        // Função para obter parâmetros da URL
-        function getUrlVars() {
-            var vars = {};
-            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-                vars[key] = value;
-            });
-            return vars;
-        }
 
         function loadTableData() {
             // Make an AJAX request to fetch data from your PHP script
@@ -328,7 +318,6 @@
         event.preventDefault(); // Prevent the default form submission
 
         // Get values from the form
-        var id = getUrlVars()["id"]; // Get id from URL
         var qtd_atendida = $('#qtd_atendida').val(); // Get qtd_atendida from input field
         var justificativaSolicitacao = $('#justificativaSolicitacao').val(); // Get justificativaSolicitacao from input field
         var solicitacaoMaterial = $('#solicitacaoMaterial').val(); // Get solicitacaoMaterial from select field
@@ -361,6 +350,23 @@
 
 </script>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        // Populate hidden form fields with data
+        $('#data_tramite').val(getCurrentDate()); // Assuming you have a function getCurrentDate() to get the current date
+        $('#lista_ids').val(JSON.stringify(lista_ids_array)); // Assuming lista_ids_array is your array of lista_ids values
+        $('#qtd_atendida').val(JSON.stringify(qtd_atendida_array)); // Assuming qtd_atendida_array is your array of qtd_atendida values
+    });
+
+    // Function to get the current date in the format YYYY-MM-DD
+    function getCurrentDate() {
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = String(today.getMonth() + 1).padStart(2, '0');
+        var day = String(today.getDate()).padStart(2, '0');
+        return year + '-' + month + '-' + day;
+    }
+</script>
 
 </body>
 </html>

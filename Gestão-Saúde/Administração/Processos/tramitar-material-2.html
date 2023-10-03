@@ -18,29 +18,28 @@
 <link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
 <script src="../../../scripts/alertMessage.js"></script>
 
-    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
-    <div id="customAlert" class="modal">
-        <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
-        <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-            <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
-            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
-            <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
-            </button>
-        </div>
-        <p></p>
-        <br>
-        <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
-            <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
-            <p id="alertMessage"></p>
-        </div>
-        <p> </p><br>
-        <p> </p><br>
-        <p> </p><br>
-        <div><button id="okButton" class="centered-button">OK</button></div>
-        </div>
+<!-- HIDDEN DIV FOR ALERT MESSAGE -->
+<div id="customAlert" class="modal">
+    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
+    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+        <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
+        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
+        <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
+        </button>
     </div>
-    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
-<!--ALERT MESSAGES-->
+    <p></p>
+    <br>
+    <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+        <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
+        <p id="alertMessage"></p>
+    </div>
+    <p> </p><br>
+    <p> </p><br>
+    <p> </p><br>
+    <div><button id="okButton" class="centered-button">OK</button></div>
+    </div>
+</div>
+<!-- HIDDEN DIV FOR ALERT MESSAGE -->
 </head>
 
 
@@ -75,20 +74,24 @@
 
 
 <!-- CONTEÚDO SUPERIOR -->
-<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-    <li>Triagem/Almoxarifado</li>    
-    <li>Processos</li>
-    <li>Tramitar requisição de material</li>
+<div class="breadCrumb module">
+    <ul>
+        <li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+        <li>Administração</li>
+        <li>Processos</li>
+        <li>Tramitar requisição de material</li>
     </ul>
-      
-  <div style="clear: both;"></div></div><div style="clear: both;"></div>
+    <div style="clear: both;"></div>
+</div>
 
-  <button id="voltar-pagina" class="voltar-pagina ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" style="float: left;" role="button" aria-disabled="false" title="Voltar página"><span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-w"></span><span class="ui-button-text">Voltar página</span></button>
-    
-  <span style="clear: both; display: block"></span></div>
+<div style="clear: both;"></div>
 
-
-
+<div class="ui-widget-content ui-corner-all toolbar">
+    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+    <span style="clear: both; display: block"></span>
+    <span style="clear: both; display: block"></span>
+</div>
 
 <!-- CONTEÚDO DA PÁGINA -->
 <div class="ui-corner-all" style="width: 100%; height: 100%; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
@@ -103,6 +106,10 @@
     <div style="margin-left: 30px; margin-top: 20px;">
         
         <h2>Descrição do pedido:</h2>
+        <label style="width: 120px; ;margin: 5px;">ID do pedido:</label>
+        <input type="text" id="id_solicitacao" class="ui-state-default ui-corner-all mousetrap" style="width: 180px;" readonly>
+        <br>
+        
         <label style="width: 120px; ;margin: 5px;">Solicitado por:</label>
         <input type="text" id="idSolicitante" class="ui-state-default ui-corner-all mousetrap" style="width: 300px;" readonly>
         <br>
@@ -111,7 +118,7 @@
         <input type="text" id="setor" class="ui-state-default ui-corner-all mousetrap" style="width: 300px;" readonly>
     </div>
 
-    <table id="listaRequisicoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 60%; font-size: 14px; margin: 50px; margin-left: 75px;">
+    <table id="listaRequisicoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 60%; font-size: 14px; margin-top: 50px; margin-left: 75px;">
         <thead>
             <tr class="ui-jqgrid-labels" role="rowheader">
                 <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Cód</th>
@@ -135,50 +142,45 @@
         </tr>
     </table>
     
-        
-
     <p></p>
     <br>
 
-    <div style="margin: 35px;">
+    <div style="margin: 25px;">
 
-        <hr class="ui-state-default" style="margin-top: 20px;">
+        <hr class="ui-state-default">
         <p></p><br>
 
         <h2>Tramitação do pedido de materiais</h2>
         
-    <form id="materialRequestForm" action="https://sistema-odonto.000webhostapp.com/subtract-materiais.php" method="POST">
-        <label name="lblStatus" id="lblStatus" style="width: 220px; ;margin: 5px" >Atualizar status da solicitação para:</label>
-            <select class="mousetrap" style="width: 200px;" name="solicitacaoMaterial" id="solicitacaoMaterial" >
-            <option value='Escolher' selected>Escolher</option>
-            <option value="Atendido">Atendido</option>
-            <option value="Parcialmente">Parcialmente atendido</option>
-            <option value="Nao_atendido">Não atendido</option>
-        </select>
-            
-        <script type='text/javascript'>
-                var solicitacaoMaterial = 'solicitacaoMaterial';
-                $(document).ready(function(){
-                    $('#solicitacaoMaterial').selectmenu({style:'dropdown'});
-                });
-            </script>
-        <br>
-
-        <p></p>
-        <label style="width: 300px;">Justificativa de não atendimento/atendimento parcial</label>
-        <p></p>
+        <form id="materialRequestForm" action="https://sistema-odonto.000webhostapp.com/subtract-materiais.php" method="POST">
+            <label name="lblStatus" id="lblStatus" style="width: 220px; ;margin: 5px" >Atualizar status da solicitação para:</label>
+                <select class="mousetrap" style="width: 200px;" name="statusSolicitacao" id="statusSolicitacao" >
+                <option value='Escolher' selected>Escolher</option>
+                <option value="Atendido">Atendido</option>
+                <option value="Parcialmente atendido">Parcialmente atendido</option>
+                <option value="Não atendido">Não atendido</option>
+            </select>
+                
+            <script type='text/javascript'>
+                    var statusSolicitacao = 'statusSolicitacao';
+                    $(document).ready(function(){
+                        $('#statusSolicitacao').selectmenu({style:'dropdown'});
+                    });
+                </script>
             <br>
-        <textarea id="justificativaSolicitacao" style="width: 430px;" rows="4" maxlength="400" class="ui-state-default ui-corner-all" placeholder="Digitar a justificativa aqui, quando for o caso."></textarea>
-        <br>
-    </div>
-    
-    <button type="submit" class="salvar ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" title="Ctrl + S" style="float: left;" role="button" aria-disabled="false">
-        <span class="ui-button-icon-primary ui-icon ui-icon-disk"></span><span class="ui-button-text">Salvar</span></button>
-       
-    
-</div>
 
-</form>
+            <p></p>
+            <label style="width: 300px;">Justificativa de não atendimento/atendimento parcial</label>
+            <p></p>
+                <br>
+            <textarea id="obs_tramite" style="width: 430px;" rows="4" maxlength="400" class="ui-state-default ui-corner-all" placeholder="Digitar a justificativa aqui, quando for o caso."></textarea>
+            <br>
+        
+            <button type="submit" id="salvar" class="salvar" title="Ctrl + S" style="padding: 5px; margin-top: 15px;">Processar tramitação</button>
+        </form>
+    </div>
+</div>
+    
     
 
 <script type="text/javascript">
@@ -216,6 +218,7 @@
 
                     // Populate idSolicitante and setor
                     if (data.length > 0) {
+                        id_solicitacao = data[0].id_solicitacao;
                         idSolicitante = data[0].nome_solicitante;
                         setor = data[0].setor;
                     }
@@ -275,7 +278,7 @@
                     row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_materiais_array[j] + '</td>';
                     row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_qtd_array[j] + '</td>';
                     row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + quantidade_id + '</td>';
-                    row += '<td class="ui-state-default ui-th-column ui-th-ltr"><input id="qtd_atendida" value="" maxlength="3" class="ui-state-default"/></td>';
+                    row += '<td class="ui-state-default ui-th-column ui-th-ltr"><input type="number" id="qtd_atendida" value="0"  min="0" maxlength="3" class="ui-state-default"/></td>';
                     row += '</tr>';
                     tableBody.append(row);
                 }
@@ -283,7 +286,8 @@
 
             $('#page-info').text('Pág. ' + page);
 
-            // Populate idSolicitante and setor inputs
+            // Populate id_solicitacao, idSolicitante and setor inputs
+            $('#id_solicitacao').val(id_solicitacao);
             $('#idSolicitante').val(idSolicitante);
             $('#setor').val(setor);
         }
@@ -321,44 +325,53 @@
         });
     });
 
-    // Add an event listener to the form
-    $('#materialRequestForm').submit(function (event) {
-        event.preventDefault(); // Prevent the default form submission
-
-        // Get values from the form
-        var id = getUrlVars()["id"]; // Get id from URL
-        var qtd_atendida = $('#qtd_atendida').val(); // Get qtd_atendida from input field
-        var justificativaSolicitacao = $('#justificativaSolicitacao').val(); // Get justificativaSolicitacao from input field
-        var solicitacaoMaterial = $('#solicitacaoMaterial').val(); // Get solicitacaoMaterial from select field
-
-        // Prepare data to send
-        var formData = {
-            id: id,
-            qtd_atendida: qtd_atendida,
-            justificativaSolicitacao: justificativaSolicitacao,
-            solicitacaoMaterial: solicitacaoMaterial
-        };
-
-        // Send the form data via AJAX
-        $.ajax({
-            url: $(this).attr('action'), // Get the form's action attribute
-            type: 'POST',
-            data: formData, // Send the prepared data
-            success: function (response) {
-                // Handle the server's response here
-                console.log('Server response:', response);
-                // Optionally, show a success message to the user
-            },
-            error: function (error) {
-                // Handle any errors here
-                console.error('Error:', error);
-                // Optionally, show an error message to the user
-            }
-        });
-    });
-
 </script>
 
+<script>
+    const materialRequestForm = document.getElementById('materialRequestForm');
+    
+    materialRequestForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+    
+        // Get form data
+        const formData = new FormData(materialRequestForm);
+    
+        // Inputs
+        const id_solicitacao = document.getElementById('id_solicitacao').value;
+        const obsTramite = document.getElementById('obs_tramite').value;
+        const qtd_atendida = Array.from(document.querySelectorAll('#listaRequisicoes tbody tr td:nth-child(6) input')).map(input => input.value.trim());
+        const listaIds = Array.from(document.querySelectorAll('#listaRequisicoes tbody tr td:nth-child(2)')).map(td => td.textContent.trim());
+        const currentDay = new Date().toISOString().split('T')[0];
+    
+        // Append additional data to form data
+        formData.append('id_solicitacao', id_solicitacao);
+        formData.append('obs_tramite', obsTramite);
+        formData.append('qtd_atendida', qtd_atendida);
+        formData.append('lista_ids', listaIds);
+        formData.append('data_tramite', currentDay);
+    
+        // Make AJAX request
+        try {
+            const response = await fetch('https://sistema-odonto.000webhostapp.com/tramitar-materiais.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+            const responseData = await response.json();
+            if (responseData.success) {
+                showCustomAlert(responseData.message, 'success'); // Display success message
+            } else {
+                showCustomAlert(responseData.message, 'error'); // Display error message
+            }
+        } else {
+            showCustomAlert('Error occurred during the request.', 'error');
+        }
+    } catch (error) {
+        showCustomAlert('Error occurred: ' + error, 'error');
+    }
+});
+</script>
 
 </body>
 </html>

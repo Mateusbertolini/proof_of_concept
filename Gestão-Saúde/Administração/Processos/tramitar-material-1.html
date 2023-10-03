@@ -48,9 +48,9 @@
 
 <!-- CONTEÚDO SUPERIOR -->
 <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-    <li>Triagem/Almoxarifado</li>    
+    <li>Administração</li>    
     <li>Processos</li>
-    <li>Requisição de material</li>
+    <li>Tramitar requisição de material</li>
     </ul>
       
   <div style="clear: both;"></div></div><div style="clear: both;"></div>
@@ -79,9 +79,9 @@
     <select class="mousetrap" style="width: 400px;" name="solicitacaoMaterial" id="solicitacaoMaterial">
         <option value="Escolher">Todas</option>
         <option value="Solicitado">Solicitadas</option>
-        <option value="Atendido">Atendidos</option>
-        <option value="Parcialmente">Parcialmente atendidos</option>
-        <option value="Nao_atendido">Não atendido</option>
+        <option value="Atendido">Atendido</option>
+        <option value="Parcialmente atendido">Parcialmente atendido</option>
+        <option value="Não atendido">Não atendido</option>
     </select>
 
     <script type='text/javascript'>
@@ -129,19 +129,20 @@
         var totalRows = 0;
         var selectedFilter = ''; // Initialize the filter to an empty string
 
-        // Function to apply the filter based on the selected option
-        function applyFilter() {
-            var filteredData = tableRows; // Start with the unfiltered data
-            if (selectedFilter !== '') {
-                // Apply the filter only if it's not empty
-                filteredData = tableRows.filter(function (item) {
-                    return item.statusSolicitacao === selectedFilter;
-                });
-            }
-            showPage(currentPage, filteredData);
-            totalRows = filteredData.length;
-            updateButtons();
+    // Function to apply the filter based on the selected option
+    function applyFilter() {
+        var filteredData = tableRows; // Start with the unfiltered data
+        if (selectedFilter !== '' && selectedFilter !== 'Escolher') {
+            // Apply the filter only if it's not empty and not 'Escolher'
+            filteredData = tableRows.filter(function (item) {
+                return item.statusSolicitacao === selectedFilter;
+            });
         }
+        showPage(currentPage, filteredData);
+        totalRows = filteredData.length;
+        updateButtons();
+    }
+
 
   function loadTableData() {
       // Make an AJAX request to fetch data from your PHP script

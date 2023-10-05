@@ -1,241 +1,207 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head lang="pt-br">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
-    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-    var PATH_COOKIE = '/';
-    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-</script>
-<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
-<link href="stylecobalto.css" type="text/css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tramitar requisição de material</title>
+    <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+        var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+        var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+        var PATH_COOKIE = '/';
+        var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+        var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+    </script>
+    <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+    <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+    <link href="stylecobalto.css" type="text/css" rel="stylesheet">
 </head>
 
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
-<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
-    <style type="text/css">
-    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
-    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
-    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
-    .column {width: 33.3%; float: left; padding-bottom: 100px;}
-    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
-            @media (max-width: 900px){
-            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
-            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
-            .column {width: 100%; float: none; padding-bottom: 0px;}
-            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
-        }
-        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
-    .portlet {margin: 0 0 1.5em 0;}
-    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
-    .portlet-header button {float: right; height: 18px; width: 18px;}
-    .portlet-header .ui-icon {float: right;}
-    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
-    .portlet-content a:hover{text-decoration: underline!important;}
-    .portlet-content a:visited{color: #bbb!important;}
-    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
-    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
-    .portlet-content ul li:last-child {border-bottom: none!important;}
-    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
-    .ui-sortable-placeholder * {visibility: hidden;}
-  </style>
+    <body>
+        <!-- CONTEÚDO SUPERIOR -->
+        <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+            <li>Administração</li>    
+            <li>Processos</li>
+            <li>Tramitar requisição de material</li>
+            </ul>
+            <div style="clear: both;"></div>
+        </div>
+        <div style="clear: both;"></div>
 
 
-<!-- CONTEÚDO SUPERIOR -->
-<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-    <li>Administração</li>    
-    <li>Processos</li>
-    <li>Tramitar requisição de material</li>
-    </ul>
-      
-  <div style="clear: both;"></div></div><div style="clear: both;"></div>
+        <div class="ui-widget-content ui-corner-all toolbar">
+            <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+            <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+            <span style="clear: both; display: block"></span>
+        
+        <span style="clear: both; display: block"></span></div>
 
+        <!-- CONTEÚDO DA PÁGINA -->
+        <div id="tabFiltroSolicitacaoSegundaChamada" class="tabs">
+            <ul></ul>
+            <div id="tabFiltroSolicitacaoSegundaChamada-0" class="ui-widget tabFiltroSolicitacaoSegundaChamada tabFiltroSolicitacaoSegundaChamada-0 tabFiltroSolicitacaoSegundaChamada-0">
+                <ul>
+                    <li class="labeltabFiltroSolicitacaoSegundaChamada"><a href="#tabFiltroSolicitacaoSegundaChamada-0" accessKey="tabFiltroSolicitacaoSegundaChamada-0">Filtro</a>
+                    </li>
+                </ul>
 
-  <div class="ui-widget-content ui-corner-all toolbar">
-    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
-    <span style="clear: both; display: block"></span>
-  
-  <span style="clear: both; display: block"></span></div>
-
-  
-  
-
-  <!-- CONTEÚDO DA PÁGINA -->
-<div id="tabFiltroSolicitacaoSegundaChamada" class="tabs">
-    <ul></ul>
-	<div id="tabFiltroSolicitacaoSegundaChamada-0" class="ui-widget tabFiltroSolicitacaoSegundaChamada tabFiltroSolicitacaoSegundaChamada-0 tabFiltroSolicitacaoSegundaChamada-0">
-        <ul>
-            <li class="labeltabFiltroSolicitacaoSegundaChamada"><a href="#tabFiltroSolicitacaoSegundaChamada-0" accessKey="tabFiltroSolicitacaoSegundaChamada-0">Filtro</a>
-            </li>
-        </ul>
-
-    <label name="lblStatus" id="lblStatus" style="width: 150px;">Status da solicitação</label>
-    <select class="mousetrap" style="width: 400px;" name="solicitacaoMaterial" id="solicitacaoMaterial">
-        <option value="Escolher">Todas</option>
-        <option value="Solicitado">Solicitadas</option>
-        <option value="Atendido">Atendido</option>
-        <option value="Parcialmente atendido">Parcialmente atendido</option>
-        <option value="Não atendido">Não atendido</option>
-    </select>
-
-    <script type='text/javascript'>
-            var solicitacaoMaterial = 'solicitacaoMaterial';
-            $(document).ready(function(){
-                $('#solicitacaoMaterial').selectmenu({style:'dropdown'});
-            });
-        </script>
-    <br>
-	</div>
-</div>
-
-
-  <table id="listaRequisicoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 50px;">
-    <thead>
-        <tr class="ui-jqgrid-labels" role="rowheader">
-            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Data</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 30%;">Setor</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 25%;">Solicitado por:</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Status</th>
-            <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Obs.</th>
-        </tr>
-    </thead>
-    <tbody id="table-body">
-        <!-- Table body rows will be populated here -->
-    </tbody>
-    <tr>
-        <td colspan="6" style="text-align: center;">
-            <div id="pagination" class="ui-state-default">
-                <button id="prev-page">Previous</button>
-                <span id="page-info">Pág. 1</span>
-                <button id="next-page">Next</button>
+                <div style="margin-top: 30px; margin-left: 30px;">
+                    <label name="lblStatus" id="lblStatus" style="width: 120px;">Status da solicitação</label>
+                    <select class="mousetrap" style="width: 400px;" name="solicitacaoMaterial" id="solicitacaoMaterial">
+                        <option value="Escolher">Todas</option>
+                        <option value="Solicitado">Solicitadas</option>
+                        <option value="Atendido">Atendido</option>
+                        <option value="Parcialmente atendido">Parcialmente atendido</option>
+                        <option value="Não atendido">Não atendido</option>
+                    </select>
+        
+                    <script type='text/javascript'>
+                            var solicitacaoMaterial = 'solicitacaoMaterial';
+                            $(document).ready(function(){
+                                $('#solicitacaoMaterial').selectmenu({style:'dropdown'});
+                            });
+                        </script>
+                    <br>
+                </div>
             </div>
-        </td>
-    </tr>
-</table>
+        
+            <table id="listaRequisicoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 70%; font-size: 14px; margin: 30px;">
+                <thead>
+                    <tr class="ui-jqgrid-labels" role="rowheader">
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Data</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 30%;">Setor</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 25%;">Solicitado por:</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Status</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Obs.</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Table body rows will be populated here -->
+                </tbody>
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        <div id="pagination" class="ui-state-default">
+                            <button id="prev-page">Previous</button>
+                            <span id="page-info">Pág. 1</span>
+                            <button id="next-page">Next</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var currentPage = 1;
+                var rowsPerPage = 25;
+                var tableRows = [];
+                var totalRows = 0;
+                var selectedFilter = ''; // Initialize the filter to an empty string
+
+            // Function to apply the filter based on the selected option
+            function applyFilter() {
+                var filteredData = tableRows; // Start with the unfiltered data
+                if (selectedFilter !== '' && selectedFilter !== 'Escolher') {
+                    // Apply the filter only if it's not empty and not 'Escolher'
+                    filteredData = tableRows.filter(function (item) {
+                        return item.statusSolicitacao === selectedFilter;
+                    });
+                }
+                showPage(currentPage, filteredData);
+                totalRows = filteredData.length;
+                updateButtons();
+            }
 
 
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        var currentPage = 1;
-        var rowsPerPage = 25;
-        var tableRows = [];
-        var totalRows = 0;
-        var selectedFilter = ''; // Initialize the filter to an empty string
-
-    // Function to apply the filter based on the selected option
-    function applyFilter() {
-        var filteredData = tableRows; // Start with the unfiltered data
-        if (selectedFilter !== '' && selectedFilter !== 'Escolher') {
-            // Apply the filter only if it's not empty and not 'Escolher'
-            filteredData = tableRows.filter(function (item) {
-                return item.statusSolicitacao === selectedFilter;
+        function loadTableData() {
+            // Make an AJAX request to fetch data from your PHP script
+            $.ajax({
+                url: 'https://sistema-odonto.000webhostapp.com/busca-requisicoes.php',
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    totalRows = data.length;
+                    tableRows = data;
+                    showPage(currentPage, tableRows); // Display data without applying filters
+                    updateButtons();
+                },
+                error: function () {
+                    console.log('Error fetching data');
+                }
             });
         }
-        showPage(currentPage, filteredData);
-        totalRows = filteredData.length;
-        updateButtons();
-    }
 
+        function showPage(page, data) {
+            var startIndex = (page - 1) * rowsPerPage;
+            var endIndex = Math.min(startIndex + rowsPerPage, data.length);
+            var tableBody = $('#table-body');
 
-  function loadTableData() {
-      // Make an AJAX request to fetch data from your PHP script
-      $.ajax({
-          url: 'https://sistema-odonto.000webhostapp.com/busca-requisicoes.php',
-          method: 'GET',
-          dataType: 'json',
-          success: function (data) {
-              totalRows = data.length;
-              tableRows = data;
-              showPage(currentPage, tableRows); // Display data without applying filters
-              updateButtons();
-          },
-          error: function () {
-              console.log('Error fetching data');
-          }
-      });
-  }
+            tableBody.empty(); // Clear the table body
 
-  function showPage(page, data) {
-      var startIndex = (page - 1) * rowsPerPage;
-      var endIndex = Math.min(startIndex + rowsPerPage, data.length);
-      var tableBody = $('#table-body');
+            for (var i = startIndex; i < endIndex; i++) {
+                var item = data[i];
+                var row = '<tr>';
+                
+                row += '<td style="display: none;">ID</td>';
+                row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + formatDate(item.data_pedido) + '</td>';
+                row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.setor + '</td>';
+                row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.nome_solicitante + '</td>';
+                row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.statusSolicitacao + '</td>';
+                row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + (item.obs_tramite ? item.obs_tramite : '') + '</td>';
+                row += '</tr>';
+                tableBody.append(row);
+            }
 
-      tableBody.empty(); // Clear the table body
+            $('#page-info').text('Pág. ' + page);
+        }
 
-      for (var i = startIndex; i < endIndex; i++) {
-          var item = data[i];
-          var row = '<tr>';
-          
-          row += '<td style="display: none;">ID</td>';
-          row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + formatDate(item.data_pedido) + '</td>';
-          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.setor + '</td>';
-          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.nome_solicitante + '</td>';
-          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + item.statusSolicitacao + '</td>';
-          row += '<td class="ui-state-default ui-th-column ui-th-ltr"><a href="tramitar-material-2.html?id=' + item.id_solicitacao + '">' + (item.obs_tramite ? item.obs_tramite : '') + '</td>';
-          row += '</tr>';
-          tableBody.append(row);
-      }
+        function formatDate(dateString) {
+            var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+            return new Date(dateString).toLocaleDateString('pt-BR', options);
+        }
 
-      $('#page-info').text('Pág. ' + page);
-  }
+        function updateButtons() {
+            if (currentPage === 1) {
+                $('#prev-page').prop('disabled', true);
+            } else {
+                $('#prev-page').prop('disabled', false);
+            }
 
-  function formatDate(dateString) {
-      var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-      return new Date(dateString).toLocaleDateString('pt-BR', options);
-  }
+            if (currentPage * rowsPerPage >= totalRows) {
+                $('#next-page').prop('disabled', true);
+            } else {
+                $('#next-page').prop('disabled', false);
+            }
+        }
 
-  function updateButtons() {
-      if (currentPage === 1) {
-          $('#prev-page').prop('disabled', true);
-      } else {
-          $('#prev-page').prop('disabled', false);
-      }
+        // Initial load of table data
+        loadTableData();
 
-      if (currentPage * rowsPerPage >= totalRows) {
-          $('#next-page').prop('disabled', true);
-      } else {
-          $('#next-page').prop('disabled', false);
-      }
-  }
+        // Event listener for changes in the dropdown
+        $('#solicitacaoMaterial').change(function () {
+                    // Get the selected filter option
+                    selectedFilter = $('#solicitacaoMaterial').val();
 
-  // Initial load of table data
-  loadTableData();
+                    // Apply the filter
+                    applyFilter();
+                });
 
-  // Event listener for changes in the dropdown
-  $('#solicitacaoMaterial').change(function () {
-            // Get the selected filter option
-            selectedFilter = $('#solicitacaoMaterial').val();
-
-            // Apply the filter
-            applyFilter();
+        $('#prev-page').click(function () {
+            if (currentPage > 1) {
+                currentPage--;
+                showPage(currentPage, tableRows); // Display data without applying filters
+                updateButtons();
+            }
         });
 
-  $('#prev-page').click(function () {
-      if (currentPage > 1) {
-          currentPage--;
-          showPage(currentPage, tableRows); // Display data without applying filters
-          updateButtons();
-      }
-  });
-
-  $('#next-page').click(function () {
-      if (currentPage * rowsPerPage < totalRows) {
-          currentPage++;
-          showPage(currentPage, tableRows); // Display data without applying filters
-          updateButtons();
-      }
-  });
-});
-</script>
-
-
-
-</body>
+        $('#next-page').click(function () {
+            if (currentPage * rowsPerPage < totalRows) {
+                currentPage++;
+                showPage(currentPage, tableRows); // Display data without applying filters
+                updateButtons();
+            }
+        });
+        });
+        </script>
+    </body>
 </html>

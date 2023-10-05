@@ -1,590 +1,565 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head lang="pt-br">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Requisitar material de estoque</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script>
-<script type="text/javascript">
-    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-    var PATH_COOKIE = '/';
-    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-</script>
-<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
-<link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
-
-<!--ALERT MESSAGES-->
-<link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
-<script src="../../../scripts/alertMessage.js"></script>
-
-<!-- HIDDEN DIV FOR ALERT MESSAGE -->
-<div id="customAlert" class="modal">
-    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
-    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-        <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
-        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
-        <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
-        </button>
-    </div>
-    <p></p>
-    <br>
-    <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
-        <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
-        <p id="alertMessage"></p>
-    </div>
-    <p> </p><br>
-    <p> </p><br>
-    <p> </p><br>
-    <div><button id="okButton" class="centered-button">OK</button></div>
-    </div>
-</div>
-<!-- HIDDEN DIV FOR ALERT MESSAGE -->
-<!--ALERT MESSAGES-->
-</head>
-
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
-<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
-    <style type="text/css">
-    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
-    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
-    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
-    .column {width: 33.3%; float: left; padding-bottom: 100px;}
-    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
-            @media (max-width: 900px){
-            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
-            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
-            .column {width: 100%; float: none; padding-bottom: 0px;}
-            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
-        }
-        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
-    .portlet {margin: 0 0 1.5em 0;}
-    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
-    .portlet-header button {float: right; height: 18px; width: 18px;}
-    .portlet-header .ui-icon {float: right;}
-    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
-    .portlet-content a:hover{text-decoration: underline!important;}
-    .portlet-content a:visited{color: #bbb!important;}
-    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
-    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
-    .portlet-content ul li:last-child {border-bottom: none!important;}
-    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
-    .ui-sortable-placeholder * {visibility: hidden;}
-  </style>
-
-
-<!-- CONTEÚDO SUPERIOR -->
-<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-    <li>Enfermagem</li>    
-    <li>Cadastros</li>
-    <li>Requisitar material</li>
-    </ul>
-      
-  <div style="clear: both;"></div></div>
-  
-  <div style="clear: both;"></div>
-
-  <!-- CONTEÚDO BOTÕES -->
-<div class="ui-widget-content ui-corner-all toolbar">
-    <button id="voltar-pagina" class="voltar-pagina ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" style="float: left;" role="button" aria-disabled="false" title="Voltar página"><span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-w"></span><span class="ui-button-text">Voltar página</span></button>
-    
-    <span style="clear: both; display: block"></span>
-</div>
-
-  
-<!-- SCRIPT ADD NA TABELA -->
-<script>
-    var table = document.getElementById("materiaisAtendidos");
- 
-    let rowCounter = 0; // Counter to track rows
-
-    function addTable() {
-    // Get values from input fields
-    const selectedCod = document.getElementById("selectedCod").value;
-    const selectedMaterial = document.getElementById("selectedMaterial").value;
-    const selectedTipo = document.getElementById("selectedTipo").value;
-    const qtdSolicitada = document.getElementById("qtdSolicitada").value;
-
-    // Check if any of the input fields are empty
-    if (selectedCod === "" || selectedMaterial === "" || selectedTipo === "" || qtdSolicitada === "") {
-        showCustomAlert("Por favor, preencha todos os campos.");
-        return;
-    }
-
-    // Check if qtdSolicitada exceeds item.quantidade
-    const materiaisDisponiveisTable = document.getElementById("materiaisDisponiveis");
-    const rowsDisponiveis = materiaisDisponiveisTable.querySelectorAll("tr:not(:first-child)");
-    let qtdSolicitadaExceedsQuantity = false;
-    rowsDisponiveis.forEach(row => {
-        const itemId = row.cells[0].textContent; // Assuming the first column contains item.id
-        const itemQuantity = parseInt(row.cells[4].textContent); // Assuming the fifth column contains item.quantidade
-        if (itemId === selectedCod && parseInt(qtdSolicitada) > itemQuantity) {
-            qtdSolicitadaExceedsQuantity = true;
-        }
-    });
-
-    if (qtdSolicitadaExceedsQuantity) {
-        showCustomAlert("A quantidade solicitada é maior do que a quantidade disponível.");
-        return; // Stop execution if qtdSolicitada exceeds item.quantidade
-    }
-
-    // Get the table
-    const table = document.getElementById("materiaisAtendidos");
-
-    // Check if the selectedCod already exists in the table
-    let codExists = false;
-    const rows = table.querySelectorAll("tr:not(:first-child)");
-    rows.forEach(row => {
-        const codCell = row.cells[1].querySelector("input").value;
-        if (codCell === selectedCod) {
-            // Update qtdSolicitada for existing cod by adding the new value as an integer
-            const existingQtdSolicitada = parseInt(row.cells[4].querySelector("input").value);
-            const newQtdSolicitadaInt = parseInt(qtdSolicitada);
-            if (!isNaN(existingQtdSolicitada) && !isNaN(newQtdSolicitadaInt)) {
-                row.cells[4].querySelector("input").value = existingQtdSolicitada + newQtdSolicitadaInt;
-            }
-            codExists = true;
-        }
-    });
-
-    if (!codExists) {
-        // Create a new row
-        const newRow = table.insertRow(-1); // -1 to append at the end
-
-        // Create cells for the row
-        const cell1 = newRow.insertCell(0);
-        const cell2 = newRow.insertCell(1);
-        const cell3 = newRow.insertCell(2);
-        const cell4 = newRow.insertCell(3);
-        const cell5 = newRow.insertCell(4);
-
-        // Populate the cells with values
-        cell1.innerHTML = '<input type="checkbox">';
-        cell1.className = "ui-state-default ui-th-column ui-th-ltr";
-        cell2.innerHTML = '<input type="text" name="id_material[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + selectedCod + '">';
-        cell3.innerHTML = '<input type="text" name="material[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + selectedMaterial + '">';
-        cell4.innerHTML = '<input type="text" name="tipo[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + selectedTipo + '">';
-        cell5.innerHTML = '<input type="text" name="qtd_solicitada[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + qtdSolicitada + '">';
-
-        // Increment row counter
-        rowCounter++;
-    }
-
-    // Clear input fields
-    document.getElementById("selectedCod").value = "";
-    document.getElementById("selectedMaterial").value = "";
-    document.getElementById("selectedTipo").value = "";
-    document.getElementById("qtdSolicitada").value = "";
-}
-
-    
-    function deleteSelectedRows() {
-        // Get the table
-        const table = document.getElementById("materiaisAtendidos");
-
-        // Get all rows in the table except the header row
-        const rows = table.querySelectorAll("tr:not(:first-child)");
-
-        // Iterate through the rows and remove selected rows
-        rows.forEach(row => {
-            const checkbox = row.querySelector("input[type='checkbox']");
-            if (checkbox.checked) {
-                table.deleteRow(row.rowIndex);
-            }
-        });
-    }
-    
-    function limparCampos() {
-        document.getElementById("selectedCod").value = "";
-        document.getElementById("selectedMaterial").value = "";
-        document.getElementById("selectedTipo").value = "";
-        document.getElementById("qtdSolicitada").value = "";
-    }
-
-    // Function to check and display message when qtd_solicitada exceeds item.quantidade
-function checkQuantity() {
-    const table = document.getElementById("materiaisAtendidos");
-    const rows = table.querySelectorAll("tr:not(:first-child)");
-
-    rows.forEach(row => {
-        const selectedCod = row.cells[1].querySelector("input").value;
-        const qtdSolicitada = parseInt(row.cells[4].querySelector("input").value);
-
-        const materiaisDisponiveisTable = document.getElementById("materiaisDisponiveis");
-        const rowsDisponiveis = materiaisDisponiveisTable.querySelectorAll("tr:not(:first-child)");
-
-        rowsDisponiveis.forEach(rowDisponiveis => {
-            const itemId = rowDisponiveis.cells[0].textContent;
-            const itemQuantity = parseInt(rowDisponiveis.cells[4].textContent);
-
-            if (selectedCod === itemId && qtdSolicitada > itemQuantity) {
-                showCustomAlert("A quantidade solicitada é maior do que a quantidade disponível.");
-            }
-        });
-    });
-}
-
-// Call the checkQuantity function on various interactions (e.g., button clicks, input changes)
-document.getElementById("addButton").addEventListener("click", addTable); // Replace "addButton" with the actual ID of your button
-document.getElementById("selectedCod").addEventListener("change", checkQuantity);
-document.getElementById("qtdSolicitada").addEventListener("change", checkQuantity);
-
-    </script>
-
-
-
-
-
-<!-- CONTEÚDO COLUNA DA ESQUERDA / ADD MATERIAL AO PEDIDO -->
-<div class="ui-corner-all" style="width: 60%; height: 50%; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
-
-    <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
-        <div class="ui-corner-all" style="background-color: white; width: 190px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: e17009;margin-left: 10px;">Adicionar material ao pedido</p></div>
-    </div>
-
-    <div>
-        <label style="width: 120px; font-weight: bold; margin: 5px; font-size: larger;">Adicionar ao pedido:</label><br>
-        <label style="width: 120px; ;margin: 5px;">Cód.</label>
-        <input type="text" id="selectedCod" placeholder="Cód." class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
-        <br>
-        <label style="width: 120px; ;margin: 5px;">Material</label>
-        <input type="text" id="selectedMaterial" placeholder="Material" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
-        <br>
-        <label style="width: 120px; ;margin: 5px;">Tipo</label>
-        <input type="text" id="selectedTipo" placeholder="Tipo de material" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
-        <br>
-        </div>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Requisitar material de estoque</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script>
+        <script type="text/javascript">
+            var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+            var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+            var PATH_COOKIE = '/';
+            var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+            var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+        </script>
+        <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+        <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+        <link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
         
-        <label style="width: 120px; ;margin: 5px;">Qtd. solicitada</label>
-        <input type="text" id="qtdSolicitada" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;"  placeholder="Qtd. atendida">
-        <br>
+        <!--ALERT MESSAGES-->
+        <link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
+        <script src="../../../scripts/alertMessage.js"></script>
+        
+        <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+        <div id="customAlert" class="modal">
+            <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
+                <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
+                </button>
+            </div>
+            <p></p>
+            <br>
+            <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+                <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
+                <p id="alertMessage"></p>
+            </div>
+            <p> </p><br>
+            <p> </p><br>
+            <p> </p><br>
+            <div><button id="okButton" class="centered-button">OK</button></div>
+            </div>
+        </div>
+        <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+        <!--ALERT MESSAGES-->
+    </head>
+    
+    <body>
+        <!-- CONTEÚDO SUPERIOR -->
+        <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+            <li>Enfermagem</li>    
+            <li>Cadastros</li>
+            <li>Requisitar material</li>
+            </ul>
+            
+        <div style="clear: both;"></div></div>
+        
+        <div style="clear: both;"></div>
 
-        <div style="margin: 20px; margin-left: 175px;">
-            <button name="btnAdicionar" onClick="addTable()" id="btnAdicionar" value="Adicionar" class="ui-button ui-widget ui-state-default ui-corner-all" style="padding: 5px;">Adicionar</button>
-            <button name="btnExcluir" onClick="deleteSelectedRows()" id="btnExcluir" value="Excluir" class="ui-button ui-widget ui-state-default ui-corner-all" style="padding: 5px;">Excluir</button>
-            <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="ui-button ui-widget ui-state-default ui-corner-all" style="padding: 5px;">Cancelar</button>
+        <!-- CONTEÚDO BOTÕES -->
+        <div class="ui-widget-content ui-corner-all toolbar">
+            <button id="voltar-pagina" class="voltar-pagina ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only" style="float: left;" role="button" aria-disabled="false" title="Voltar página"><span class="ui-button-icon-primary ui-icon ui-icon-circle-arrow-w"></span><span class="ui-button-text">Voltar página</span></button>
+            
+            <span style="clear: both; display: block"></span>
         </div>
 
-</div>
-
-
-<!-- COLUNA DA DIREITA / RESUMO DO PEDIDO -->
-<div class="ui-corner-all" style="width: 40%; height: 50%; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
-
-    <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
-        <div class="ui-corner-all" style="background-color: white; width: 160px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: e17009; margin-left: 10px;">Resumo/Envio do pedido</p></div>
-    </div>
-        
-    <p></p>
-    <br>
-        
-    <br>
-          
-    <form action="https://sistema-odonto.000webhostapp.com/request-material.php" method="post" id="myForm">
-        <div style="margin-left: 20px;">
-        
-        <label style="width: 120px; font-weight: bold; margin: 5px; font-size: larger;">Dados do pedido:</label><br>
-        <label style="width: 120px; margin: 5px;">Setor:</label>
-        <select class="ui-state-default ui-corner-all" style="width: 160px; height: 20px; margin-top: 5px;" id="setor" name="setor" required>
-            <option value=''>Escolher</option>
-            <option value="Clínica 1º Andar - Sul">1º Andar - Sul</option>
-            <option value="Clínica Oeste">Clínica Oeste</option>
-            <option value="Clínica Sul 2º Andar">Clínica Sul 2º Andar</option>
-            <option value="Enfermagem 3º Andar">Enfermagem 3º Andar</option>
-            <option value="Clínica 4º Andar">Clínica 4º Andar</option>
-            <option value="Laboratórios pré-clínica">Laboratórios pré-clínica</option>
-            <option value="Laboratórios patologia">Laboratórios patologia</option>
-        </select><br>
-        <p></p><br>
-
-        <label style="width: 120px; margin: 5px;" for="nome_solicitante">Solicitado por:</label>
-        <input type="text" id="nome_solicitante" name="nome_solicitante" placeholder="Solicitado por" class="ui-state-default ui-corner-all mousetrap" style="width: 280px;">
-        <br>
-        
-        <table id="materiaisAtendidos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="margin: 30px; width: 575px;">
-            <thead>
-                <tr class="ui-jqgrid-labels" role="rowheader">
-                    <th class="ui-jqgrid-titlebar ui-widget-header">Selec.</th>
-                    <th class="ui-jqgrid-titlebar ui-widget-header">Cód.</th>
-                    <th class="ui-jqgrid-titlebar ui-widget-header">Material</th>
-                    <th class="ui-jqgrid-titlebar ui-widget-header">Tipo</th>
-                    <th class="ui-jqgrid-titlebar ui-widget-header">Qtd.</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Rows added dynamically by addTable function -->
-            </tbody>
-        </table>
     
-        <button type="submit" id="submitAndReload" class="salvar ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" title="Ctrl + S" style="float: left; margin: 30px;" role="button" aria-disabled="false">
-            <span class="ui-button-icon-primary ui-icon ui-icon-disk"></span>
-            <span class="ui-button-text">Solicitar material</span>
-        </button>
-    </div>
-    </form>
-</div>
-
-
-
-<!-- DIV DE BAIXO / MATERIAIS DISPONÍVEIS -->
-<div class="ui-corner-all" style="width: 60%; height: 75%; float: left; box-sizing: border-box; border: 1.5px solid lightblue;">
-
-    <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
-        <div class="ui-corner-all" style="background-color: white; width: 150px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: e17009;margin-left: 10px;">Materiais Disponíveis</p></div>
-    </div>
+        <!-- SCRIPT ADD NA TABELA -->
+        <script>
+            var table = document.getElementById("materiaisAtendidos");
         
-    <p></p>
-    <br>
-        
+            let rowCounter = 0; // Counter to track rows
 
-    <table id="materiaisDisponiveis" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin-left: 3%; margin-top: 20px;">
-        <thead>
-            <tr class="ui-jqgrid-labels" role="rowheader">
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 5%;">Cód.</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 47.5%;">Material</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 20%;">Tipo de material</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%;">Apresentação</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd.</th>
-            </tr>
-        </thead>
-        <tbody id="table-body">
-            <!-- Table body rows will be populated here -->
-        </tbody><tr>
-            <td colspan="6" style="text-align: center;">
-                <div id="pagination" class="ui-state-default">
-                    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" style="padding: 5px;" id="prev-page"><</button>
-                    <span id="page-info">Pág. 1</span>
-                    <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" style="padding: 5px;" id="next-page">></button>
+            function addTable() {
+            // Get values from input fields
+            const selectedCod = document.getElementById("selectedCod").value;
+            const selectedMaterial = document.getElementById("selectedMaterial").value;
+            const selectedTipo = document.getElementById("selectedTipo").value;
+            const qtdSolicitada = document.getElementById("qtdSolicitada").value;
+
+            // Check if any of the input fields are empty
+            if (selectedCod === "" || selectedMaterial === "" || selectedTipo === "" || qtdSolicitada === "") {
+                showCustomAlert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            // Check if qtdSolicitada exceeds item.quantidade
+            const materiaisDisponiveisTable = document.getElementById("materiaisDisponiveis");
+            const rowsDisponiveis = materiaisDisponiveisTable.querySelectorAll("tr:not(:first-child)");
+            let qtdSolicitadaExceedsQuantity = false;
+            rowsDisponiveis.forEach(row => {
+                const itemId = row.cells[0].textContent; // Assuming the first column contains item.id
+                const itemQuantity = parseInt(row.cells[4].textContent); // Assuming the fifth column contains item.quantidade
+                if (itemId === selectedCod && parseInt(qtdSolicitada) > itemQuantity) {
+                    qtdSolicitadaExceedsQuantity = true;
+                }
+            });
+
+            if (qtdSolicitadaExceedsQuantity) {
+                showCustomInform("A quantidade solicitada é maior do que a quantidade disponível.");
+                return; // Stop execution if qtdSolicitada exceeds item.quantidade
+            }
+
+            // Get the table
+            const table = document.getElementById("materiaisAtendidos");
+
+            // Check if the selectedCod already exists in the table
+            let codExists = false;
+            const rows = table.querySelectorAll("tr:not(:first-child)");
+            rows.forEach(row => {
+                const codCell = row.cells[1].querySelector("input").value;
+                if (codCell === selectedCod) {
+                    // Update qtdSolicitada for existing cod by adding the new value as an integer
+                    const existingQtdSolicitada = parseInt(row.cells[4].querySelector("input").value);
+                    const newQtdSolicitadaInt = parseInt(qtdSolicitada);
+                    if (!isNaN(existingQtdSolicitada) && !isNaN(newQtdSolicitadaInt)) {
+                        row.cells[4].querySelector("input").value = existingQtdSolicitada + newQtdSolicitadaInt;
+                    }
+                    codExists = true;
+                }
+            });
+
+            if (!codExists) {
+                // Create a new row
+                const newRow = table.insertRow(-1); // -1 to append at the end
+
+                // Create cells for the row
+                const cell1 = newRow.insertCell(0);
+                const cell2 = newRow.insertCell(1);
+                const cell3 = newRow.insertCell(2);
+                const cell4 = newRow.insertCell(3);
+                const cell5 = newRow.insertCell(4);
+
+                // Populate the cells with values
+                cell1.innerHTML = '<input type="checkbox">';
+                cell1.className = "ui-state-default ui-th-column ui-th-ltr";
+                cell2.innerHTML = '<input type="text" name="id_material[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + selectedCod + '">';
+                cell3.innerHTML = '<input type="text" name="material[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + selectedMaterial + '">';
+                cell4.innerHTML = '<input type="text" name="tipo[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + selectedTipo + '">';
+                cell5.innerHTML = '<input type="text" name="qtd_solicitada[' + rowCounter + ']" class="ui-state-default ui-th-column ui-th-ltr" value="' + qtdSolicitada + '">';
+
+                // Increment row counter
+                rowCounter++;
+            }
+
+            // Clear input fields
+            document.getElementById("selectedCod").value = "";
+            document.getElementById("selectedMaterial").value = "";
+            document.getElementById("selectedTipo").value = "";
+            document.getElementById("qtdSolicitada").value = "";
+        }
+
+            
+            function deleteSelectedRows() {
+                // Get the table
+                const table = document.getElementById("materiaisAtendidos");
+
+                // Get all rows in the table except the header row
+                const rows = table.querySelectorAll("tr:not(:first-child)");
+
+                // Iterate through the rows and remove selected rows
+                rows.forEach(row => {
+                    const checkbox = row.querySelector("input[type='checkbox']");
+                    if (checkbox.checked) {
+                        table.deleteRow(row.rowIndex);
+                    }
+                });
+            }
+            
+            function limparCampos() {
+                document.getElementById("selectedCod").value = "";
+                document.getElementById("selectedMaterial").value = "";
+                document.getElementById("selectedTipo").value = "";
+                document.getElementById("qtdSolicitada").value = "";
+            }
+
+            // Function to check and display message when qtd_solicitada exceeds item.quantidade
+        function checkQuantity() {
+            const table = document.getElementById("materiaisAtendidos");
+            const rows = table.querySelectorAll("tr:not(:first-child)");
+
+            rows.forEach(row => {
+                const selectedCod = row.cells[1].querySelector("input").value;
+                const qtdSolicitada = parseInt(row.cells[4].querySelector("input").value);
+
+                const materiaisDisponiveisTable = document.getElementById("materiaisDisponiveis");
+                const rowsDisponiveis = materiaisDisponiveisTable.querySelectorAll("tr:not(:first-child)");
+
+                rowsDisponiveis.forEach(rowDisponiveis => {
+                    const itemId = rowDisponiveis.cells[0].textContent;
+                    const itemQuantity = parseInt(rowDisponiveis.cells[4].textContent);
+
+                    if (selectedCod === itemId && qtdSolicitada > itemQuantity) {
+                        showCustomAlert("A quantidade solicitada é maior do que a quantidade disponível.");
+                    }
+                });
+            });
+        }
+
+        // Call the checkQuantity function on various interactions (e.g., button clicks, input changes)
+        document.getElementById("addButton").addEventListener("click", addTable); // Replace "addButton" with the actual ID of your button
+        document.getElementById("selectedCod").addEventListener("change", checkQuantity);
+        document.getElementById("qtdSolicitada").addEventListener("change", checkQuantity);
+
+        </script>
+
+
+
+
+
+        <!-- CONTEÚDO COLUNA DA ESQUERDA / ADD MATERIAL AO PEDIDO -->
+        <div class="ui-corner-all" style="width: 60%; height: 500; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
+
+            <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
+                <div class="ui-corner-all" style="background-color: white; width: 190px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: #e17009;margin-left: 10px;">Adicionar material ao pedido</p></div>
+            </div>
+
+            <div>
+                <label style="width: 120px; font-weight: bold; margin: 5px; font-size: larger;">Adicionar ao pedido:</label><br>
+                <label style="width: 120px; ;margin: 5px;">Cód.</label>
+                <input type="text" id="selectedCod" placeholder="Cód." class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
+                <br>
+                <label style="width: 120px; ;margin: 5px;">Material</label>
+                <input type="text" id="selectedMaterial" placeholder="Material" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
+                <br>
+                <label style="width: 120px; ;margin: 5px;">Tipo</label>
+                <input type="text" id="selectedTipo" placeholder="Tipo de material" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;">
+                <br>
                 </div>
-            </td>
-        </tr>
-    </table>
+                
+                <label style="width: 120px; ;margin: 5px;">Qtd. solicitada</label>
+                <input type="text" id="qtdSolicitada" class="ui-state-default ui-corner-all mousetrap" style="width: 400px;"  placeholder="Qtd. atendida">
+                <br>
 
-<!-- SCRIPT BUSCA MATERIAIS DO BANCO DE DADOS -->
-<script type="text/javascript">
-    $(document).ready(function () {
-        var currentPage = 1;
-        var rowsPerPage = 20;
-        var tableRows = [];
-        var totalRows = 0;
-        var selectedTipoMaterial = ''; // Store the selected tipoMaterial filter
-        var nomeMaterialFilter = ''; // Store the nomeMaterial filter
+                <div style="margin: 20px; margin-left: 175px;">
+                    <button name="btnAdicionar" onClick="addTable()" id="btnAdicionar" value="Adicionar" class="ui-button ui-widget ui-state-default ui-corner-all" style="padding: 5px;">Adicionar</button>
+                    <button name="btnExcluir" onClick="deleteSelectedRows()" id="btnExcluir" value="Excluir" class="ui-button ui-widget ui-state-default ui-corner-all" style="padding: 5px;">Excluir</button>
+                    <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="ui-button ui-widget ui-state-default ui-corner-all" style="padding: 5px;">Cancelar</button>
+                </div>
 
-        function loadTableData() {
-            // Make an AJAX request to fetch data from your PHP script
-            $.ajax({
-                url: 'https://sistema-odonto.000webhostapp.com/busca-materiais.php',
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    totalRows = data.length;
-                    tableRows = data;
+        </div>
+
+
+        <!-- COLUNA DA DIREITA / RESUMO DO PEDIDO -->
+        <div class="ui-corner-all" style="width: 40%; height: 50%; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
+
+            <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
+                <div class="ui-corner-all" style="background-color: white; width: 160px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: #e17009; margin-left: 10px;">Resumo/Envio do pedido</p></div>
+            </div>
+                
+            <p></p>
+            <br>
+                
+            <br>
+                
+            <form action="https://sistema-odonto.000webhostapp.com/request-material.php" method="post" id="myForm">
+                <div style="margin-left: 20px;">
+                
+                <label style="width: 120px; font-weight: bold; margin: 5px; font-size: larger;">Dados do pedido:</label><br>
+                <label style="width: 120px; margin: 5px;">Setor:</label>
+                <select class="ui-state-default ui-corner-all" style="width: 160px; height: 20px; margin-top: 5px;" id="setor" name="setor" required>
+                    <option value=''>Escolher</option>
+                    <option value="Clínica 1º Andar - Sul">1º Andar - Sul</option>
+                    <option value="Clínica Oeste">Clínica Oeste</option>
+                    <option value="Clínica Sul 2º Andar">Clínica Sul 2º Andar</option>
+                    <option value="Enfermagem 3º Andar">Enfermagem 3º Andar</option>
+                    <option value="Clínica 4º Andar">Clínica 4º Andar</option>
+                    <option value="Laboratórios pré-clínica">Laboratórios pré-clínica</option>
+                    <option value="Laboratórios patologia">Laboratórios patologia</option>
+                </select><br>
+                <p></p><br>
+
+                <label style="width: 120px; margin: 5px;" for="nome_solicitante">Solicitado por:</label>
+                <input type="text" id="nome_solicitante" name="nome_solicitante" placeholder="Solicitado por" class="ui-state-default ui-corner-all mousetrap" style="width: 280px;">
+                <br>
+
+                <label style="width: 120px; margin: 5px;" for="id_solicitante">CPF (ou SIAPE?)</label>
+                <input type="text" id="id_solicitante" name="id_solicitante" placeholder="PREENCHER AUTOMÁTICO" class="ui-state-default ui-corner-all mousetrap" style="width: 280px;">
+                <br>
+                
+                <table id="materiaisAtendidos" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="margin: 30px; width: 575px;">
+                    <thead>
+                        <tr class="ui-jqgrid-labels" role="rowheader">
+                            <th class="ui-jqgrid-titlebar ui-widget-header">Selec.</th>
+                            <th class="ui-jqgrid-titlebar ui-widget-header">Cód.</th>
+                            <th class="ui-jqgrid-titlebar ui-widget-header">Material</th>
+                            <th class="ui-jqgrid-titlebar ui-widget-header">Tipo</th>
+                            <th class="ui-jqgrid-titlebar ui-widget-header">Qtd.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Rows added dynamically by addTable function -->
+                    </tbody>
+                </table>
+            
+                <button type="submit" id="submitAndReload" class="salvar ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" title="Ctrl + S" style="float: left; margin: 30px;" role="button" aria-disabled="false">
+                    <span class="ui-button-icon-primary ui-icon ui-icon-disk"></span>
+                    <span class="ui-button-text">Solicitar material</span>
+                </button>
+            </div>
+            </form>
+        </div>
+
+
+
+        <!-- DIV DE BAIXO / MATERIAIS DISPONÍVEIS -->
+        <div class="ui-corner-all" style="width: 60%; height: 75%; float: left; box-sizing: border-box; border: 1.5px solid lightblue;">
+
+            <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
+                <div class="ui-corner-all" style="background-color: white; width: 150px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: #e17009;margin-left: 10px;">Materiais Disponíveis</p></div>
+            </div>
+                
+            <p></p>
+            <br>
+                
+
+            <table id="materiaisDisponiveis" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin-left: 3%; margin-top: 20px;">
+                <thead>
+                    <tr class="ui-jqgrid-labels" role="rowheader">
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 5%;">Cód.</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 47.5%;">Material</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 20%;">Tipo de material</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%;">Apresentação</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd.</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Table body rows will be populated here -->
+                </tbody><tr>
+                    <td colspan="6" style="text-align: center;">
+                        <div id="pagination" class="ui-state-default">
+                            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" style="padding: 5px;" id="prev-page"><</button>
+                            <span id="page-info">Pág. 1</span>
+                            <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" style="padding: 5px;" id="next-page">></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- SCRIPT BUSCA MATERIAIS DO BANCO DE DADOS -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var currentPage = 1;
+                var rowsPerPage = 20;
+                var tableRows = [];
+                var totalRows = 0;
+                var selectedTipoMaterial = ''; // Store the selected tipoMaterial filter
+                var nomeMaterialFilter = ''; // Store the nomeMaterial filter
+
+                function loadTableData() {
+                    // Make an AJAX request to fetch data from your PHP script
+                    $.ajax({
+                        url: 'https://sistema-odonto.000webhostapp.com/busca-materiais.php',
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            totalRows = data.length;
+                            tableRows = data;
+                            applyFilters();
+                            updateButtons();
+                        },
+                        error: function () {
+                            console.log('Error fetching data');
+                        }
+                    });
+                }
+
+                function applyFilters() {
+                    var filteredRows = tableRows;
+
+                    // Apply the tipoMaterial filter
+                    if (selectedTipoMaterial !== '') {
+                        filteredRows = filteredRows.filter(function (item) {
+                            return item.tipo_material === selectedTipoMaterial;
+                        });
+                    }
+
+                    // Apply the nomeMaterial filter
+                    if (nomeMaterialFilter !== '') {
+                        var nomeMaterialFilterLC = nomeMaterialFilter.toLowerCase();
+                        filteredRows = filteredRows.filter(function (item) {
+                            return item.nome.toLowerCase().includes(nomeMaterialFilterLC);
+                        });
+                    }
+
+                    // Update the totalRows to match the filtered data
+                    totalRows = filteredRows.length;
+
+                    showPage(currentPage, filteredRows);
+                }
+
+                function showPage(page, data) {
+                    var startIndex = (page - 1) * rowsPerPage;
+                    var endIndex = Math.min(startIndex + rowsPerPage, data.length);
+                    var tableBody = $('#table-body');
+
+                    tableBody.empty(); // Clear the table body
+
+                    for (var i = startIndex; i < endIndex; i++) {
+                        var item = data[i];
+                        var row = '<tr>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.id + '</td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.nome + '</td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.tipo_material + '</td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.apresentacao + '</td>';
+                        row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.quantidade + '</td>';
+                        row += '</tr>';
+                        tableBody.append(row);
+                    }
+
+                    $('#page-info').text('Pág. ' + page);
+                }
+
+                function updateButtons() {
+                    if (currentPage === 1) {
+                        $('#prev-page').prop('disabled', true);
+                    } else {
+                        $('#prev-page').prop('disabled', false);
+                    }
+
+                    if (currentPage * rowsPerPage >= totalRows) {
+                        $('#next-page').prop('disabled', true);
+                    } else {
+                        $('#next-page').prop('disabled', false);
+                    }
+                }
+
+                // Initial load of table data
+                loadTableData();
+
+                // Listen for input in the nomeMaterial filter
+                $('#nomeMaterial').on('input', function () {
+                    nomeMaterialFilter = $(this).val();
+                    currentPage = 1; // Reset to the first page when the filter changes
                     applyFilters();
                     updateButtons();
-                },
-                error: function () {
-                    console.log('Error fetching data');
-                }
-            });
-        }
-
-        function applyFilters() {
-            var filteredRows = tableRows;
-
-            // Apply the tipoMaterial filter
-            if (selectedTipoMaterial !== '') {
-                filteredRows = filteredRows.filter(function (item) {
-                    return item.tipo_material === selectedTipoMaterial;
                 });
-            }
 
-            // Apply the nomeMaterial filter
-            if (nomeMaterialFilter !== '') {
-                var nomeMaterialFilterLC = nomeMaterialFilter.toLowerCase();
-                filteredRows = filteredRows.filter(function (item) {
-                    return item.nome.toLowerCase().includes(nomeMaterialFilterLC);
+                // Listen for changes to the tipoMaterial filter
+                $('#tipoMaterial').change(function () {
+                    selectedTipoMaterial = $(this).val();
+                    currentPage = 1; // Reset to the first page when the filter changes
+                    applyFilters();
+                    updateButtons();
                 });
-            }
 
-            // Update the totalRows to match the filtered data
-            totalRows = filteredRows.length;
+                // Clear button click event
+                $('#clear').click(function () {
+                    $('#nomeMaterial').val(''); // Clear the nomeMaterial input
+                    $('#tipoMaterial').val(''); // Reset the tipoMaterial select to the default
+                    selectedTipoMaterial = ''; // Clear the selectedTipoMaterial filter
+                    nomeMaterialFilter = ''; // Clear the nomeMaterial filter
+                    currentPage = 1; // Reset to the first page when clearing filters
+                    applyFilters();
+                    updateButtons();
+                });
 
-            showPage(currentPage, filteredRows);
-        }
+                $('#prev-page').click(function () {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        applyFilters();
+                        updateButtons();
+                    }
+                });
 
-        function showPage(page, data) {
-            var startIndex = (page - 1) * rowsPerPage;
-            var endIndex = Math.min(startIndex + rowsPerPage, data.length);
-            var tableBody = $('#table-body');
+                $('#next-page').click(function () {
+                    if (currentPage * rowsPerPage < totalRows) {
+                        currentPage++;
+                        applyFilters();
+                        updateButtons();
+                    }
+                });
 
-            tableBody.empty(); // Clear the table body
+                // Add a click event handler to table rows
+                $('#materiaisDisponiveis tbody').on('click', 'tr', function () {
+                    // Get the data of the clicked row from the currently displayed page
+                    var rowIndex = $(this).index();
+                    var startIndex = (currentPage - 1) * rowsPerPage;
+                    var dataIndex = startIndex + rowIndex;
 
-            for (var i = startIndex; i < endIndex; i++) {
-                var item = data[i];
-                var row = '<tr>';
-                row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.id + '</td>';
-                row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.nome + '</td>';
-                row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.tipo_material + '</td>';
-                row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.apresentacao + '</td>';
-                row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + item.quantidade + '</td>';
-                row += '</tr>';
-                tableBody.append(row);
-            }
-
-            $('#page-info').text('Pág. ' + page);
-        }
-
-        function updateButtons() {
-            if (currentPage === 1) {
-                $('#prev-page').prop('disabled', true);
-            } else {
-                $('#prev-page').prop('disabled', false);
-            }
-
-            if (currentPage * rowsPerPage >= totalRows) {
-                $('#next-page').prop('disabled', true);
-            } else {
-                $('#next-page').prop('disabled', false);
-            }
-        }
-
-        // Initial load of table data
-        loadTableData();
-
-        // Listen for input in the nomeMaterial filter
-        $('#nomeMaterial').on('input', function () {
-            nomeMaterialFilter = $(this).val();
-            currentPage = 1; // Reset to the first page when the filter changes
-            applyFilters();
-            updateButtons();
-        });
-
-        // Listen for changes to the tipoMaterial filter
-        $('#tipoMaterial').change(function () {
-            selectedTipoMaterial = $(this).val();
-            currentPage = 1; // Reset to the first page when the filter changes
-            applyFilters();
-            updateButtons();
-        });
-
-        // Clear button click event
-        $('#clear').click(function () {
-            $('#nomeMaterial').val(''); // Clear the nomeMaterial input
-            $('#tipoMaterial').val(''); // Reset the tipoMaterial select to the default
-            selectedTipoMaterial = ''; // Clear the selectedTipoMaterial filter
-            nomeMaterialFilter = ''; // Clear the nomeMaterial filter
-            currentPage = 1; // Reset to the first page when clearing filters
-            applyFilters();
-            updateButtons();
-        });
-
-        $('#prev-page').click(function () {
-            if (currentPage > 1) {
-                currentPage--;
-                applyFilters();
-                updateButtons();
-            }
-        });
-
-        $('#next-page').click(function () {
-            if (currentPage * rowsPerPage < totalRows) {
-                currentPage++;
-                applyFilters();
-                updateButtons();
-            }
-        });
-
-        // Add a click event handler to table rows
-        $('#materiaisDisponiveis tbody').on('click', 'tr', function () {
-            // Get the data of the clicked row from the currently displayed page
-            var rowIndex = $(this).index();
-            var startIndex = (currentPage - 1) * rowsPerPage;
-            var dataIndex = startIndex + rowIndex;
-
-            if (dataIndex >= 0 && dataIndex < tableRows.length) {
-                var rowData = tableRows[dataIndex];
-                // Populate the input fields
-                $('#selectedCod').val(rowData.id);
-                $('#selectedMaterial').val(rowData.nome);
-                $('#selectedTipo').val(rowData.tipo_material);
-            }
-        });
-    });
-</script>
-
-</div>
-    
-    
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const form = document.getElementById("myForm");
-
-        form.addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent the default form submission behavior
-
-            // Serialize form data
-            const formData = new FormData(form);
-
-            // Send a POST request to the server
-            fetch(form.action, {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json()) // Assuming the server responds with JSON
-            .then(responseData => {
-                // Check if the response message is "Records inserted successfully."
-                if (responseData.message === "Records inserted successfully.") {
-                    showCustomAlert("Solicitação de material registrada com sucesso.");
-                } else {
-                    showCustomAlert("Erro: " + responseData.message);
-                }
-
-                // Optionally reload the page
-                // location.reload();
-            })
-            .catch(error => {
-                showCustomAlert("Erro ao enviar solicitação: " + error);
-                // Handle errors here if needed
+                    if (dataIndex >= 0 && dataIndex < tableRows.length) {
+                        var rowData = tableRows[dataIndex];
+                        // Populate the input fields
+                        $('#selectedCod').val(rowData.id);
+                        $('#selectedMaterial').val(rowData.nome);
+                        $('#selectedTipo').val(rowData.tipo_material);
+                    }
+                });
             });
-        });
-    });
-</script>
-    
+        </script>
 
-<script>
-    // JavaScript to dynamically generate hidden input fields for each row of materials
-    const materialsTable = document.getElementById("materiaisAtendidos");
-    const materialRows = materialsTable.querySelectorAll("tr:not(:first-child)");
-    
-    materialRows.forEach(row => {
-        const idMaterial = row.querySelector(".id_material").textContent;
-        const nomeInput = row.querySelector(".material").textContent;
-        const qtdSolicitada = row.querySelector(".qtd_solicitada").textContent;
+                    
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const form = document.getElementById("myForm");
+
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault(); // Prevent the default form submission behavior
+
+                    // Serialize form data
+                    const formData = new FormData(form);
+
+                    // Send a POST request to the server
+                    fetch(form.action, {
+                        method: "POST",
+                        body: formData
+                    })
+                    .then(response => response.json()) // Assuming the server responds with JSON
+                    .then(responseData => {
+                        // Check if the response message is "Records inserted successfully."
+                        if (responseData.message === "Records inserted successfully.") {
+                            showCustomAlert("Solicitação de material registrada com sucesso.");
+                        } else {
+                            showCustomAlert("Erro: " + responseData.message);
+                        }
+
+                        // Optionally reload the page
+                        // location.reload();
+                    })
+                    .catch(error => {
+                        showCustomAlert("Erro ao enviar solicitação: " + error);
+                        // Handle errors here if needed
+                    });
+                });
+            });
+        </script>
         
-        const idInput = document.createElement("input");
-        idInput.type = "hidden";
-        idInput.name = "id_material[]"; // Use an array for multiple values
-        idInput.value = idMaterial;
-    
-        const nomeInputField = document.createElement("input");
-        nomeInputField.type = "hidden";
-        nomeInputField.name = "nome[]"; // Use an array for multiple values
-        nomeInputField.value = nomeInput;
+        <script>
+        // JavaScript to dynamically generate hidden input fields for each row of materials
+        const materialsTable = document.getElementById("materiaisAtendidos");
+        const materialRows = materialsTable.querySelectorAll("tr:not(:first-child)");
+        
+        materialRows.forEach(row => {
+            const idMaterial = row.querySelector(".id_material").textContent;
+            const nomeInput = row.querySelector(".material").textContent;
+            const qtdSolicitada = row.querySelector(".qtd_solicitada").textContent;
+            
+            const idInput = document.createElement("input");
+            idInput.type = "hidden";
+            idInput.name = "id_material[]"; // Use an array for multiple values
+            idInput.value = idMaterial;
+        
+            const nomeInputField = document.createElement("input");
+            nomeInputField.type = "hidden";
+            nomeInputField.name = "nome[]"; // Use an array for multiple values
+            nomeInputField.value = nomeInput;
 
-        const qtdInput = document.createElement("input");
-        qtdInput.type = "hidden";
-        qtdInput.name = "qtd_solicitada[]"; // Use an array for multiple values
-        qtdInput.value = qtdSolicitada;
-    
-        // Append the hidden inputs to the form
-        const form = document.querySelector("form");
-        form.appendChild(idInput);
-        form.appendChild(nomeInputField);
-        form.appendChild(qtdInput);
-    });
-    </script>
-    
+            const qtdInput = document.createElement("input");
+            qtdInput.type = "hidden";
+            qtdInput.name = "qtd_solicitada[]"; // Use an array for multiple values
+            qtdInput.value = qtdSolicitada;
+        
+            // Append the hidden inputs to the form
+            const form = document.querySelector("form");
+            form.appendChild(idInput);
+            form.appendChild(nomeInputField);
+            form.appendChild(qtdInput);
+        });
+        </script>
     </body>
-    </html>
+</html>

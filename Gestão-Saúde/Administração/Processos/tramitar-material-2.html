@@ -1,377 +1,354 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head lang="pt-br">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
-    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-    var PATH_COOKIE = '/';
-    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-</script>
-<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
-<link href="stylecobalto.css" type="text/css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tramitar requisição de material</title>
+        <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+            var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+            var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+            var PATH_COOKIE = '/';
+            var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+            var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+        </script>
+        <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+        <link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
+        <script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
+        <link href="stylecobalto.css" type="text/css" rel="stylesheet">
 
-<!--ALERT MESSAGES-->
-<link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
-<script src="../../../scripts/alertMessage.js"></script>
+        <!--ALERT MESSAGES-->
+        <link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
+        <script src="../../../scripts/alertMessage.js"></script>
 
-<!-- HIDDEN DIV FOR ALERT MESSAGE -->
-<div id="customAlert" class="modal">
-    <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
-    <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-        <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
-        <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
-        <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
-        </button>
-    </div>
-    <p></p>
-    <br>
-    <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
-        <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
-        <p id="alertMessage"></p>
-    </div>
-    <p> </p><br>
-    <p> </p><br>
-    <p> </p><br>
-    <div><button id="okButton" class="centered-button">OK</button></div>
-    </div>
-</div>
-<!-- HIDDEN DIV FOR ALERT MESSAGE -->
-</head>
+        <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+        <div id="customAlert" class="modal">
+            <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
+                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
+                <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
+                </button>
+            </div>
+            <p></p>
+            <br>
+            <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
+                <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
+                <p id="alertMessage"></p>
+            </div>
+            <p> </p><br>
+            <p> </p><br>
+            <p> </p><br>
+            <div><button id="okButton" class="centered-button">OK</button></div>
+            </div>
+        </div>
+        <!-- HIDDEN DIV FOR ALERT MESSAGE -->
+    </head>
 
+    <body>
+        <!-- CONTEÚDO SUPERIOR -->
+        <div class="breadCrumb module">
+            <ul>
+                <li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+                <li>Administração</li>
+                <li>Processos</li>
+                <li>Tramitar requisição de material</li>
+            </ul>
+            <div style="clear: both;"></div>
+        </div>
 
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
-<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
-    <style type="text/css">
-    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
-    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
-    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
-    .column {width: 33.3%; float: left; padding-bottom: 100px;}
-    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
-            @media (max-width: 900px){
-            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
-            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
-            .column {width: 100%; float: none; padding-bottom: 0px;}
-            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
-        }
-        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
-    .portlet {margin: 0 0 1.5em 0;}
-    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
-    .portlet-header button {float: right; height: 18px; width: 18px;}
-    .portlet-header .ui-icon {float: right;}
-    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
-    .portlet-content a:hover{text-decoration: underline!important;}
-    .portlet-content a:visited{color: #bbb!important;}
-    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
-    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
-    .portlet-content ul li:last-child {border-bottom: none!important;}
-    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
-    .ui-sortable-placeholder * {visibility: hidden;}
-  </style>
+        <div style="clear: both;"></div>
 
+        <div class="ui-widget-content ui-corner-all toolbar">
+            <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+            <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+            <span style="clear: both; display: block"></span>
+            <span style="clear: both; display: block"></span>
+        </div>
 
-<!-- CONTEÚDO SUPERIOR -->
-<div class="breadCrumb module">
-    <ul>
-        <li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-        <li>Administração</li>
-        <li>Processos</li>
-        <li>Tramitar requisição de material</li>
-    </ul>
-    <div style="clear: both;"></div>
-</div>
+        <!-- CONTEÚDO DA PÁGINA -->
+        <div class="ui-corner-all" style="width: 100%; height: 100%; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
 
-<div style="clear: both;"></div>
-
-<div class="ui-widget-content ui-corner-all toolbar">
-    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
-    <span style="clear: both; display: block"></span>
-    <span style="clear: both; display: block"></span>
-</div>
-
-<!-- CONTEÚDO DA PÁGINA -->
-<div class="ui-corner-all" style="width: 100%; height: 100%; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
-
-    <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
-        <div class="ui-corner-all" style="background-color: white; width: 150px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: e17009;margin-left: 10px;">Tramitação do pedido</p></div>
-    </div>
-    
-    <p></p>
-    <br>
-    
-    <div style="margin-left: 30px; margin-top: 20px;">
-        
-        <h2>Descrição do pedido:</h2>
-        <label style="width: 120px; ;margin: 5px;">ID do pedido:</label>
-        <input type="text" id="id_solicitacao" class="ui-state-default ui-corner-all mousetrap" style="width: 180px;" readonly>
-        <br>
-        
-        <label style="width: 120px; ;margin: 5px;">Solicitado por:</label>
-        <input type="text" id="idSolicitante" class="ui-state-default ui-corner-all mousetrap" style="width: 300px;" readonly>
-        <br>
-    
-        <label style="width: 120px; margin: 5px;">Setor</label>
-        <input type="text" id="setor" class="ui-state-default ui-corner-all mousetrap" style="width: 300px;" readonly>
-    </div>
-
-    <table id="listaRequisicoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 60%; font-size: 14px; margin-top: 50px; margin-left: 75px;">
-        <thead>
-            <tr class="ui-jqgrid-labels" role="rowheader">
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Cód</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 40%;">Material</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd. Solicitada</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd. Disponível</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd. Atendida</th>
-            </tr>
-        </thead>
-        <tbody id="table-body">
-            <!-- Table body rows will be populated here -->
-        </tbody>
-        <tr>
-            <td colspan="6" style="text-align: center;">
-                <div id="pagination" class="ui-state-default">
-                    <button id="prev-page"><</button>
-                    <span></span>
-                    <button id="next-page">></button>
-                </div>
-            </td>
-        </tr>
-    </table>
-    
-    <p></p>
-    <br>
-
-    <div style="margin: 25px;">
-
-        <hr class="ui-state-default">
-        <p></p><br>
-
-        <h2>Tramitação do pedido de materiais</h2>
-        
-        <form id="materialRequestForm" action="https://sistema-odonto.000webhostapp.com/subtract-materiais.php" method="POST">
-            <label name="lblStatus" id="lblStatus" style="width: 220px; ;margin: 5px" >Atualizar status da solicitação para:</label>
-                <select class="mousetrap" style="width: 200px;" name="statusSolicitacao" id="statusSolicitacao" >
-                <option value='Escolher' selected>Escolher</option>
-                <option value="Atendido">Atendido</option>
-                <option value="Parcialmente atendido">Parcialmente atendido</option>
-                <option value="Não atendido">Não atendido</option>
-            </select>
+            <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
+                <div class="ui-corner-all" style="background-color: white; width: 150px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: e17009;margin-left: 10px;">Tramitação do pedido</p></div>
+            </div>
+            
+            <p></p>
+            <br>
+            
+            <div style="margin-left: 30px; margin-top: 20px;">
                 
-            <script type='text/javascript'>
-                    var statusSolicitacao = 'statusSolicitacao';
-                    $(document).ready(function(){
-                        $('#statusSolicitacao').selectmenu({style:'dropdown'});
-                    });
-                </script>
-            <br>
-
-            <p></p>
-            <label style="width: 300px;">Justificativa de não atendimento/atendimento parcial</label>
-            <p></p>
+                <h2>Descrição do pedido:</h2>
+                <label style="width: 120px; ;margin: 5px;">ID do pedido:</label>
+                <input type="text" id="id_solicitacao" class="ui-state-default ui-corner-all mousetrap" style="width: 180px;" readonly>
                 <br>
-            <textarea id="obs_tramite" style="width: 430px;" rows="4" maxlength="400" class="ui-state-default ui-corner-all" placeholder="Digitar a justificativa aqui, quando for o caso."></textarea>
+                
+                <label style="width: 120px; ;margin: 5px;">Solicitado por:</label>
+                <input type="text" id="nomeSolicitante" class="ui-state-default ui-corner-all mousetrap" style="width: 300px;" readonly>
+                <br>
+
+                <label style="width: 120px; ;margin: 5px;">CPF (ou SIAPE?):</label>
+                <input type="text" id="idSolicitante" class="ui-state-default ui-corner-all mousetrap" style="width: 300px;" readonly>
+                <br>
+                
+            
+                <label style="width: 120px; margin: 5px;">Setor</label>
+                <input type="text" id="setor" class="ui-state-default ui-corner-all mousetrap" style="width: 300px;" readonly>
+            </div>
+
+            <table id="listaRequisicoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 60%; font-size: 14px; margin-top: 50px; margin-left: 75px;">
+                <thead>
+                    <tr class="ui-jqgrid-labels" role="rowheader">
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Cód</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 40%;">Material</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd. Solicitada</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd. Disponível</th>
+                        <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 15%;">Qtd. Atendida</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <!-- Table body rows will be populated here -->
+                </tbody>
+                <tr>
+                    <td colspan="6" style="text-align: center;">
+                        <div id="pagination" class="ui-state-default">
+                            <button id="prev-page"><</button>
+                            <span></span>
+                            <button id="next-page">></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            
+            <p></p>
             <br>
-        
-            <button type="submit" id="salvar" class="salvar" title="Ctrl + S" style="padding: 5px; margin-top: 15px;">Processar tramitação</button>
-        </form>
-    </div>
-</div>
-    
-    
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        var currentPage = 1;
-        var rowsPerPage = 25;
-        var tableRows = [];
-        var totalRows = 0;
-        var lista_ids = []; // Add your lista_ids array here
-        var lista_materiais = []; // Add your lista_materiais array here
-        var lista_qtd = []; // Add your lista_qtd array here
+            <div style="margin: 25px;">
 
-        // Variables to store idSolicitante and setor
-        var idSolicitante = "";
-        var setor = "";
+                <hr class="ui-state-default">
+                <p></p><br>
 
-        // Função para obter parâmetros da URL
-        function getUrlVars() {
-            var vars = {};
-            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-                vars[key] = value;
-            });
-            return vars;
-        }
+                <h2>Tramitação do pedido de materiais</h2>
+                
+                <form id="materialRequestForm" action="https://sistema-odonto.000webhostapp.com/subtract-materiais.php" method="POST">
+                    <label name="lblStatus" id="lblStatus" style="width: 220px; ;margin: 5px" >Atualizar status da solicitação para:</label>
+                        <select class="mousetrap" style="width: 200px;" name="statusSolicitacao" id="statusSolicitacao" >
+                        <option value='Escolher' selected>Escolher</option>
+                        <option value="Atendido">Atendido</option>
+                        <option value="Parcialmente atendido">Parcialmente atendido</option>
+                        <option value="Não atendido">Não atendido</option>
+                    </select>
+                        
+                    <script type='text/javascript'>
+                            var statusSolicitacao = 'statusSolicitacao';
+                            $(document).ready(function(){
+                                $('#statusSolicitacao').selectmenu({style:'dropdown'});
+                            });
+                        </script>
+                    <br>
 
-        function loadTableData() {
-            // Make an AJAX request to fetch data from your PHP script
-            $.ajax({
-                url: 'https://sistema-odonto.000webhostapp.com/busca-requisicoes-id.php?id=' + getUrlVars()["id"] + '',
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    totalRows = data.length;
-                    tableRows = data;
+                    <p></p>
+                    <label style="width: 300px;">Justificativa de não atendimento/atendimento parcial</label>
+                    <p></p>
+                        <br>
+                    <textarea id="obs_tramite" style="width: 430px;" rows="4" maxlength="400" class="ui-state-default ui-corner-all" placeholder="Digitar a justificativa aqui, quando for o caso."></textarea>
+                    <br>
+                
+                    <button type="submit" id="salvar" class="salvar" title="Ctrl + S" style="padding: 5px; margin-top: 15px;">Processar tramitação</button>
+                </form>
+            </div>
+        </div>
+            
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var currentPage = 1;
+                var rowsPerPage = 25;
+                var tableRows = [];
+                var totalRows = 0;
+                var lista_ids = []; // Add your lista_ids array here
+                var lista_materiais = []; // Add your lista_materiais array here
+                var lista_qtd = []; // Add your lista_qtd array here
 
-                    // Populate idSolicitante and setor
-                    if (data.length > 0) {
-                        id_solicitacao = data[0].id_solicitacao;
-                        idSolicitante = data[0].nome_solicitante;
-                        setor = data[0].setor;
+                // Variables to store nomeSolicitante, idSolicitante, and setor
+                var nomeSolicitante = "";
+                var idSolicitante = "";
+                var setor = "";
+
+                // Função para obter parâmetros da URL
+                function getUrlVars() {
+                    var vars = {};
+                    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                        vars[key] = value;
+                    });
+                    return vars;
+                }
+
+                function loadTableData() {
+                    // Make an AJAX request to fetch data from your PHP script
+                    $.ajax({
+                        url: 'https://sistema-odonto.000webhostapp.com/busca-requisicoes-id.php?id=' + getUrlVars()["id"] + '',
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            totalRows = data.length;
+                            tableRows = data;
+
+                            // Populate nomeSolicitante, idSolicitante, and setor
+                            if (data.length > 0) {
+                                id_solicitacao = data[0].id_solicitacao;
+                                idSolicitante = data[0].id_solicitante;
+                                nomeSolicitante = data[0].nome_solicitante;
+                                setor = data[0].setor;
+                            }
+
+                            loadQuantidadeIdData(); // Load 'quantidade_id' data after fetching this data
+                            updateButtons();
+                        },
+                        error: function () {
+                            console.log('Error fetching data');
+                        }
+                    });
+                }
+
+                function loadQuantidadeIdData() {
+                    // Make an AJAX request to fetch 'quantidade_id' values
+                    $.ajax({
+                        url: 'https://sistema-odonto.000webhostapp.com/busca-materiais.php',
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            // Assuming data is an array of objects with 'id' and 'quantidade' properties
+                            // Create a map for easy lookup
+                            var quantidadeIdMap = {};
+                            data.forEach(function (item) {
+                                quantidadeIdMap[item.id] = item.quantidade;
+                            });
+
+                            // Store the 'quantidade_id' map for later use
+                            showPage(currentPage, tableRows, quantidadeIdMap);
+                        },
+                        error: function () {
+                            console.log('Error fetching quantidade_id data');
+                        }
+                    });
+                }
+
+                function showPage(page, data, quantidadeIdMap) {
+                    var startIndex = (page - 1) * rowsPerPage;
+                    var endIndex = Math.min(startIndex + rowsPerPage, data.length);
+                    var tableBody = $('#table-body');
+
+                    tableBody.empty();
+
+                    for (var i = startIndex; i < endIndex; i++) {
+                        var item = data[i];
+
+                        // Splitting comma-separated values and iterating
+                        var lista_ids_array = item.lista_ids.split(",");
+                        var lista_materiais_array = item.lista_materiais.split(",");
+                        var lista_qtd_array = item.lista_qtd.split(",");
+
+                        for (var j = 0; j < lista_ids_array.length; j++) {
+                            var quantidade_id = quantidadeIdMap[lista_ids_array[j]]; // Get the 'quantidade_id'
+                            var row = '<tr>';
+                            row += '<td style="display: none;">ID</td>';
+                            row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_ids_array[j] + '</td>';
+                            row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_materiais_array[j] + '</td>';
+                            row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_qtd_array[j] + '</td>';
+                            row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + quantidade_id + '</td>';
+                            row += '<td class="ui-state-default ui-th-column ui-th-ltr"><input type="number" id="qtd_atendida" value="0"  min="0" maxlength="3" class="ui-state-default"/></td>';
+                            row += '</tr>';
+                            tableBody.append(row);
+                        }
                     }
 
-                    loadQuantidadeIdData(); // Load 'quantidade_id' data after fetching this data
-                    updateButtons();
-                },
-                error: function () {
-                    console.log('Error fetching data');
-                }
-            });
-        }
+                    $('#page-info').text('Pág. ' + page);
 
-        function loadQuantidadeIdData() {
-            // Make an AJAX request to fetch 'quantidade_id' values
-            $.ajax({
-                url: 'https://sistema-odonto.000webhostapp.com/busca-materiais.php',
-                method: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    // Assuming data is an array of objects with 'id' and 'quantidade' properties
-                    // Create a map for easy lookup
-                    var quantidadeIdMap = {};
-                    data.forEach(function (item) {
-                        quantidadeIdMap[item.id] = item.quantidade;
+                    // Populate id_solicitacao, nomeSolicitante, idSolicitante, and setor inputs
+                    $('#id_solicitacao').val(id_solicitacao);
+                    $('#nomeSolicitante').val(nomeSolicitante);
+                    $('#idSolicitante').val(idSolicitante);
+                    $('#setor').val(setor);
+                }
+
+                function updateButtons() {
+                    if (currentPage === 1) {
+                        $('#prev-page').prop('disabled', true);
+                    } else {
+                        $('#prev-page').prop('disabled', false);
+                    }
+
+                    if (currentPage * rowsPerPage >= totalRows) {
+                        $('#next-page').prop('disabled', true);
+                    } else {
+                        $('#next-page').prop('disabled', false);
+                    }
+                }
+
+                loadTableData();
+
+                $('#prev-page').click(function () {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        showPage(currentPage, tableRows);
+                        updateButtons();
+                    }
+                });
+
+                $('#next-page').click(function () {
+                    if (currentPage * rowsPerPage < totalRows) {
+                        currentPage++;
+                        showPage(currentPage, tableRows);
+                        updateButtons();
+                    }
+                });
+            });
+
+        </script>
+
+        <script>
+            const materialRequestForm = document.getElementById('materialRequestForm');
+            
+            materialRequestForm.addEventListener('submit', async (event) => {
+                event.preventDefault();
+            
+                // Get form data
+                const formData = new FormData(materialRequestForm);
+            
+                // Inputs
+                const id_solicitacao = document.getElementById('id_solicitacao').value;
+                const obsTramite = document.getElementById('obs_tramite').value;
+                const qtd_atendida = Array.from(document.querySelectorAll('#listaRequisicoes tbody tr td:nth-child(6) input')).map(input => input.value.trim());
+                const listaIds = Array.from(document.querySelectorAll('#listaRequisicoes tbody tr td:nth-child(2)')).map(td => td.textContent.trim());
+                const currentDay = new Date().toISOString().split('T')[0];
+            
+                // Append additional data to form data
+                formData.append('id_solicitacao', id_solicitacao);
+                formData.append('obs_tramite', obsTramite);
+                formData.append('qtd_atendida', qtd_atendida);
+                formData.append('lista_ids', listaIds);
+                formData.append('data_tramite', currentDay);
+            
+                // Make AJAX request
+                try {
+                    const response = await fetch('https://sistema-odonto.000webhostapp.com/tramitar-materiais.php', {
+                        method: 'POST',
+                        body: formData
                     });
 
-                    // Store the 'quantidade_id' map for later use
-                    showPage(currentPage, tableRows, quantidadeIdMap);
-                },
-                error: function () {
-                    console.log('Error fetching quantidade_id data');
+                    if (response.ok) {
+                    const responseData = await response.json();
+                    if (responseData.success) {
+                        showCustomAlert(responseData.message, 'success'); // Display success message
+                    } else {
+                        showCustomAlert(responseData.message, 'error'); // Display error message
+                    }
+                } else {
+                    showCustomAlert('Error occurred during the request.', 'error');
                 }
-            });
-        }
-
-        function showPage(page, data, quantidadeIdMap) {
-            var startIndex = (page - 1) * rowsPerPage;
-            var endIndex = Math.min(startIndex + rowsPerPage, data.length);
-            var tableBody = $('#table-body');
-
-            tableBody.empty();
-
-            for (var i = startIndex; i < endIndex; i++) {
-                var item = data[i];
-
-                // Splitting comma-separated values and iterating
-                var lista_ids_array = item.lista_ids.split(",");
-                var lista_materiais_array = item.lista_materiais.split(",");
-                var lista_qtd_array = item.lista_qtd.split(",");
-
-                for (var j = 0; j < lista_ids_array.length; j++) {
-                    var quantidade_id = quantidadeIdMap[lista_ids_array[j]]; // Get the 'quantidade_id'
-                    var row = '<tr>';
-                    row += '<td style="display: none;">ID</td>';
-                    row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_ids_array[j] + '</td>';
-                    row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_materiais_array[j] + '</td>';
-                    row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + lista_qtd_array[j] + '</td>';
-                    row += '<td class="ui-state-default ui-th-column ui-th-ltr">' + quantidade_id + '</td>';
-                    row += '<td class="ui-state-default ui-th-column ui-th-ltr"><input type="number" id="qtd_atendida" value="0"  min="0" maxlength="3" class="ui-state-default"/></td>';
-                    row += '</tr>';
-                    tableBody.append(row);
-                }
-            }
-
-            $('#page-info').text('Pág. ' + page);
-
-            // Populate id_solicitacao, idSolicitante and setor inputs
-            $('#id_solicitacao').val(id_solicitacao);
-            $('#idSolicitante').val(idSolicitante);
-            $('#setor').val(setor);
-        }
-
-        function updateButtons() {
-            if (currentPage === 1) {
-                $('#prev-page').prop('disabled', true);
-            } else {
-                $('#prev-page').prop('disabled', false);
-            }
-
-            if (currentPage * rowsPerPage >= totalRows) {
-                $('#next-page').prop('disabled', true);
-            } else {
-                $('#next-page').prop('disabled', false);
-            }
-        }
-
-        loadTableData();
-
-        $('#prev-page').click(function () {
-            if (currentPage > 1) {
-                currentPage--;
-                showPage(currentPage, tableRows);
-                updateButtons();
+            } catch (error) {
+                showCustomAlert('Error occurred: ' + error, 'error');
             }
         });
-
-        $('#next-page').click(function () {
-            if (currentPage * rowsPerPage < totalRows) {
-                currentPage++;
-                showPage(currentPage, tableRows);
-                updateButtons();
-            }
-        });
-    });
-
-</script>
-
-<script>
-    const materialRequestForm = document.getElementById('materialRequestForm');
-    
-    materialRequestForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
-    
-        // Get form data
-        const formData = new FormData(materialRequestForm);
-    
-        // Inputs
-        const id_solicitacao = document.getElementById('id_solicitacao').value;
-        const obsTramite = document.getElementById('obs_tramite').value;
-        const qtd_atendida = Array.from(document.querySelectorAll('#listaRequisicoes tbody tr td:nth-child(6) input')).map(input => input.value.trim());
-        const listaIds = Array.from(document.querySelectorAll('#listaRequisicoes tbody tr td:nth-child(2)')).map(td => td.textContent.trim());
-        const currentDay = new Date().toISOString().split('T')[0];
-    
-        // Append additional data to form data
-        formData.append('id_solicitacao', id_solicitacao);
-        formData.append('obs_tramite', obsTramite);
-        formData.append('qtd_atendida', qtd_atendida);
-        formData.append('lista_ids', listaIds);
-        formData.append('data_tramite', currentDay);
-    
-        // Make AJAX request
-        try {
-            const response = await fetch('https://sistema-odonto.000webhostapp.com/tramitar-materiais.php', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (response.ok) {
-            const responseData = await response.json();
-            if (responseData.success) {
-                showCustomAlert(responseData.message, 'success'); // Display success message
-            } else {
-                showCustomAlert(responseData.message, 'error'); // Display error message
-            }
-        } else {
-            showCustomAlert('Error occurred during the request.', 'error');
-        }
-    } catch (error) {
-        showCustomAlert('Error occurred: ' + error, 'error');
-    }
-});
-</script>
-
-</body>
+        </script>
+    </body>
 </html>

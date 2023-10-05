@@ -4,7 +4,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação geral de alunos</title>
+    <title>Avaliação dos alunos</title>
     <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
       var BASE_URL = 'https://cobalto.ufpel.edu.br/';
       var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
@@ -29,7 +29,7 @@
         <li><a href="index.html"></a></li><li>Gestão Saúde</li>
         <li>Administração</li>
         <li>Consultas</li>
-        <li>Avaliação geral de alunos</li>
+        <li>Avaliação de alunos</li>
         <li>'get aluno'</li>
       </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
@@ -90,18 +90,9 @@
       </table>
 
       <script>
-        // Função para obter parâmetros da URL
-        function getUrlVars() {
-                    var vars = {};
-                    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-                        vars[key] = value;
-                    });
-                    return vars;
-                }
-                       
         // First, make an AJAX request to fetch data from consulta-avaliacoes.php
         $.ajax({
-          url: 'https://sistema-odonto.000webhostapp.com/consulta-avaliacoes-id.php?matricula=' + getUrlVars()["id"] + '',
+            url: 'https://sistema-odonto.000webhostapp.com/consulta-avaliacoes.php',
             method: 'GET',
             dataType: 'json',
             success: function(data) {
@@ -140,7 +131,7 @@
                     '</tr>';
 
                 $('#table-body').append(row);
-              });
+            });
 
             // After populating the table, create the chart
             createChart();

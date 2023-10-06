@@ -1,305 +1,334 @@
-<!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda de clínicas</title>
-    <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
-      var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-      var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-      var PATH_COOKIE = '/';
-      var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-      var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-    </script>
-    <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-    <link href='../all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
-    <script type='text/javascript' src='../all.javascript.06102023101234850017.js'></script>
-    <link href="../stylecobalto.css" type="text/css" rel="stylesheet">
-    <link href="../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
-  </head>
+<html xmlns="http://www.w3.org/1999/xhtml">
 
-  <body>
-    <!-- CONTEÚDO SUPERIOR -->
-    <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-        <li>Consulta</li>    
-        <li>Agenda de clínicas</li>
-        </ul>
-          
-      <div style="clear: both;"></div></div><div style="clear: both;"></div>
+<head lang="pt-br">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+    var PATH_COOKIE = '/';
+    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+</script>
+<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+<link href='https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
+<script type='text/javascript' src='https://cobalto.ufpel.edu.br/static/_js/all.javascript.06102023101234850017.js'></script>
+<link href="../stylecobalto.css" type="text/css" rel="stylesheet">
+<link href="../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
+</head>
+
+<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
+<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
+    <style type="text/css">
+    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
+    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
+    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
+    .column {width: 33.3%; float: left; padding-bottom: 100px;}
+    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
+            @media (max-width: 900px){
+            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
+            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
+            .column {width: 100%; float: none; padding-bottom: 0px;}
+            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
+        }
+        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
+    .portlet {margin: 0 0 1.5em 0;}
+    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
+    .portlet-header button {float: right; height: 18px; width: 18px;}
+    .portlet-header .ui-icon {float: right;}
+    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
+    .portlet-content a:hover{text-decoration: underline!important;}
+    .portlet-content a:visited{color: #bbb!important;}
+    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
+    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
+    .portlet-content ul li:last-child {border-bottom: none!important;}
+    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
+    .ui-sortable-placeholder * {visibility: hidden;}
+  </style>
+
+
+<!-- CONTEÚDO SUPERIOR -->
+<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+    <li>Consulta</li>    
+    <li>Agenda de clínicas</li>
+    </ul>
       
-    <!-- CONTEÚDO BOTÕES -->
-    <div class="ui-widget-content ui-corner-all toolbar">
-        <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-        <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
-        <span style="clear: both; display: block"></span>
+  <div style="clear: both;"></div></div><div style="clear: both;"></div>
+  
+<!-- CONTEÚDO BOTÕES -->
+<div class="ui-widget-content ui-corner-all toolbar">
+    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+    <span style="clear: both; display: block"></span>
+</div>
+
+
+<!-- CONTEÚDO TAB E BOTÕES DA FUNCIONALIDADE -->
+<div id="agendaClinicas" class="tabs" style="height: 750px;">
+    <div id="agendaClinicas-0" class="ui-widget agendaClinicas-0">
+        <ul>
+            <li class="agendaClinicas"><a href="#agendaClinicas-0" accessKey="agendaClinicas-0">Agenda de clínicas</a></li>
+        </ul>
     </div>
 
+    <div style="margin: 20px;">
+      <p></p>
 
-    <!-- CONTEÚDO TAB E BOTÕES DA FUNCIONALIDADE -->
-    <div id="agendaClinicas" class="tabs" style="height: 750px;">
-        <div id="agendaClinicas-0" class="ui-widget agendaClinicas-0">
-            <ul>
-                <li class="agendaClinicas"><a href="#agendaClinicas-0" accessKey="agendaClinicas-0">Agenda de clínicas</a></li>
-            </ul>
-        </div>
+      <br>
+      <label style="width: 200px; margin: 5px;">Filtrar por data</label>
+        <input type="date" id="filtroDataAgendamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 200px; height: 15px;">
+        <button id="dateButton" style="margin: 5px;">Filtrar por data</button>
+      <br>
 
-        <div style="margin: 20px;">
-          <p></p>
+      <label style="width: 200px; margin: 5px;">Filtrar por turno</label>
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px;" id="filtroTurnoAgendamento">
+          <option value="Todos">Todos</option>
+          <option value="Manhã">Manhã</option>
+          <option value="Tarde">Tarde</option>
+          <option value="Noite">Noite</option>
+      </select>
+      <br>
 
-          <br>
-          <label style="width: 200px; margin: 5px;">Filtrar por data</label>
-            <input type="date" id="filtroDataAgendamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 200px; height: 15px;">
-            <button id="dateButton" style="margin: 5px;">Filtrar por data</button>
-          <br>
+      <label style="width: 195px; margin: 5px;">Filtrar tabela pelo Local o atendimento</label>
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroLocalAgendamento">
+          <option value="Todos">Todos</option>
+          <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
+          <option value="Clínica Oeste">Clínica Oeste</option>
+          <option value="Clínica Sul - 2º Andar">Clínica Sul - 2º Andar</option>
+          <option value="Clínica Norte - 2º Andar">Clínica Norte - 2º Andar</option>
+          <option value="Bloco - 3º Andar">Bloco - 3º Andar</option>
+          <option value="Ambulatório - 3º Andar">Ambulatório - 3º Andar</option>
+          <option value="Consultório individualizado - 3º Andar">Consultório individualizado - 3º Andar</option>
+          <option value="Clínica 4º Andar">Clínica 4º Andar</option>
+          <option value="Radiologia">Clínica de Radiologia</option>
+      </select>
+      <br>
 
-          <label style="width: 200px; margin: 5px;">Filtrar por turno</label>
-          <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px;" id="filtroTurnoAgendamento">
-              <option value="Todos">Todos</option>
-              <option value="Manhã">Manhã</option>
-              <option value="Tarde">Tarde</option>
-              <option value="Noite">Noite</option>
-          </select>
-          <br>
-
-          <label style="width: 195px; margin: 5px;">Filtrar tabela pelo Local o atendimento</label>
-          <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroLocalAgendamento">
-              <option value="Todos">Todos</option>
-              <option value="Clínica Sul - 1º Andar">Clínica Sul -1º Andar</option>
-              <option value="Clínica Oeste">Clínica Oeste</option>
-              <option value="Clínica Sul - 2º Andar">Clínica Sul - 2º Andar</option>
-              <option value="Clínica Norte - 2º Andar">Clínica Norte - 2º Andar</option>
-              <option value="Bloco - 3º Andar">Bloco - 3º Andar</option>
-              <option value="Ambulatório - 3º Andar">Ambulatório - 3º Andar</option>
-              <option value="Consultório individualizado - 3º Andar">Consultório individualizado - 3º Andar</option>
-              <option value="Clínica 4º Andar">Clínica 4º Andar</option>
-              <option value="Radiologia">Clínica de Radiologia</option>
-          </select>
-          <br>
-
-          <label style="width: 195px; margin: 5px;">Filtrar tabela pelo componente curricular (disciplina/estágio)</label>
-          <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroDisciplina">
-              <option value="Todos">Todos</option>
-              <option value="ESTÁGIO EM PRONTO ATENDIMENTO (EPA)">ESTÁGIO EM PRONTO ATENDIMENTO (EPA)</option>
-              <option value="ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
-              <option value="PERIODONTIA CLÍNICA">PERIODONTIA CLÍNICA</option>
-              <option value="PRÓTESE DENTÁRIA PARCIAL III">PRÓTESE DENTÁRIA PARCIAL III</option>
-              <option value="CIRURGIA BUCO-MAXILAR III">CIRURGIA BUCO-MAXILAR III</option>
-              <option value="RADIOLOGIA E IMAGINOLOGIA">RADIOLOGIA E IMAGINOLOGIA</option>
-          </select>
-          <p></p>
-          
-          <label style="width: 195px; margin: 5px;">Filtrar por status do agendamento</label>
-          <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroStatus">
-              <option value="Todos">Todos</option>
-              <option value="noLocal">No local</option>
-              <option value="Agendado">Agendado</option>
-              <option value="Atendido">Atendido</option>
-          </select>
-          <p></p>
-
-          
-          <hr class="ui-state-default">
-          <div style="margin: 5px;"></div>
-          <button id="limparFiltrosButton" style="margin: 10px;">Limpar filtros</button>
-                
-          
-          <table id="listaAgendamento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin: 20px;">
-            <thead>
-              <tr class="ui-jqgrid-labels" role="rowheader">
-                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">Data</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 22.5%;">Paciente</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Aluno</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Local</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">Turno</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 22.5%;">Disciplina/Estágio</th>
-                <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Status agendamento</th>
-              </tr>
-            </thead>
-            <tr>
-              <th>21/08/2023</th>
-              <th>João da Silva</th>
-              <th>Aluno A</th>
-              <th>Radiologia</th>
-              <th>Manhã</th>
-              <th>RADIOLOGIA E IMAGINOLOGIA</th>
-              <th id="statusAgendamento">noLocal</th>
-            </tr>
-            <tr>
-                <th>29/08/2023</th>
-                <th>José Souza</th>
-                <th>Aluno B</th>
-                <th>Clínica Oeste</th>
-                <th>Manhã</th>
-                <th>PRÓTESE DENTÁRIA PARCIAL III</th>
-                <th id="statusAgendamento">Agendado</th>
-            </tr>
-            <tr>
-                <th>01/08/2023</th>
-                <th>Maria Silva</th>
-                <th>Aluno C</th>
-                <th>Clínica Oeste</th>
-                <th>Tarde</th>
-                <th>ODONTOPEDIATRIA</th>
-                <th id="statusAgendamento">noLocal</th>
-            </tr>
-            <tr>
-                <th>21/08/2023</th>
-                <th>Sandra de Sá</th>
-                <th>Aluno D</th>
-                <th>Radiologia</th>
-                <th>Tarde</th>
-                <th>RADIOLOGIA E IMAGINOLOGIA</th>
-                <th id="statusAgendamento">Atendido</th>
-            </tr>
-          </table>
-          
-
-          <hr class="ui-state-default">
-          
-          <script>
-            // FILTRO POR TURNO, LOCAL, DISCIPLINA, STATUS E DATA
-            document.addEventListener("DOMContentLoaded", function() {
-                const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
-                const filtroTurnoAgendamentoSelect = document.getElementById("filtroTurnoAgendamento");
-                const filtroDisciplinaSelect = document.getElementById("filtroDisciplina");
-                const filtroStatusSelect = document.getElementById("filtroStatus");
-                const filtroDataAgendamentoInput = document.getElementById("filtroDataAgendamento");
-                const listaAgendamento = document.getElementById("listaAgendamento");
-                const limparFiltrosButton = document.getElementById("limparFiltrosButton");
-          
-                const formatDateForComparison = (date) => {
-                    const parts = date.split('-');
-                    return parts[2] + '/' + parts[1] + '/' + parts[0]; // Convert to "DD/MM/YYYY" format
-                };
-          
-                const applyFilters = () => {
-                    const selectedLocalOption = filtroLocalAgendamentoSelect.value;
-                    const selectedTurnoOption = filtroTurnoAgendamentoSelect.value;
-                    const selectedDisciplinaOption = filtroDisciplinaSelect.value;
-                    const selectedStatusOption = filtroStatusSelect.value;
-                    const selectedDate = filtroDataAgendamentoInput.value;
-          
-                    const rows = listaAgendamento.querySelectorAll("tbody tr");
-          
-                    rows.forEach(row => {
-                        const localCell = row.cells[3].textContent;
-                        const turnoCell = row.cells[4].textContent;
-                        const disciplinaCell = row.cells[5].textContent;
-                        const statusCell = row.cells[6].textContent;
-                        const dataCell = row.cells[0].textContent; // Assuming the "Data" cell is at index 0
-          
-                        const localMatch = selectedLocalOption === "Todos" || localCell === selectedLocalOption;
-                        const turnoMatch = selectedTurnoOption === "Todos" || selectedTurnoOption === "Escolher" || turnoCell === selectedTurnoOption;
-                        const disciplinaMatch = selectedDisciplinaOption === "Todos" || selectedDisciplinaOption === "Escolher" || disciplinaCell === selectedDisciplinaOption;
-                        const statusMatch = selectedStatusOption === "Todos" || selectedStatusOption === "Escolher" || statusCell === selectedStatusOption;
-                        const dateMatch = selectedDate === "" || dataCell === formatDateForComparison(selectedDate);
-          
-                        row.style.display = localMatch && turnoMatch && disciplinaMatch && statusMatch && dateMatch ? "" : "none";
-                    });
-                };
-          
-                filtroLocalAgendamentoSelect.addEventListener("change", applyFilters);
-                filtroTurnoAgendamentoSelect.addEventListener("change", applyFilters);
-                filtroDisciplinaSelect.addEventListener("change", applyFilters);
-                filtroStatusSelect.addEventListener("change", applyFilters);
-                filtroDataAgendamentoInput.addEventListener("change", applyFilters);
-          
-                // Automatically sort by date on page load
-                const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
-                rows.sort((a, b) => {
-                    const dateA = formatDateForComparison(a.cells[0].textContent);
-                    const dateB = formatDateForComparison(b.cells[0].textContent);
-                    return dateA.localeCompare(dateB);
-                });
-          
-                const tbody = listaAgendamento.querySelector("tbody");
-                rows.forEach(row => tbody.appendChild(row));
-          
-                // Function to clear all select fields
-                limparFiltrosButton.addEventListener("click", () => {
-                    filtroLocalAgendamentoSelect.value = "Todos";
-                    filtroTurnoAgendamentoSelect.value = "Todos";
-                    filtroDisciplinaSelect.value = "Todos";
-                    filtroStatusSelect.value = "Todos";
-                    filtroDataAgendamentoInput.value = "";
-                    applyFilters(); // Apply filters after clearing
-                });
-            });
-          </script>
-          
-          
-          
-          
-          
-            
-
-
-    <script>
-    // FILTRO POR DATA
-    document.addEventListener("DOMContentLoaded", function() {
-        const filtroDataAgendamentoInput = document.getElementById("filtroDataAgendamento");
-        const listaAgendamento = document.getElementById("listaAgendamento");
-        const dateButton = document.getElementById("dateButton");
-
-        const formatDateForComparison = (date) => {
-        const parts = date.split('-');
-        return parts[2] + '/' + parts[1] + '/' + parts[0]; // Convert to "DD/MM/YYYY" format
-        };
-
-        const applyDateFilter = () => {
-        const selectedDate = filtroDataAgendamentoInput.value;
-        const rows = listaAgendamento.getElementsByTagName("tr");
-
-        for (let i = 1; i < rows.length; i++) {
-            const row = rows[i];
-            const dataCell = row.cells[0]; // Assuming the "Data" cell is at index 0
-            const rowDate = dataCell.textContent; // Assuming the date format is "DD/MM/YYYY"
-
-            if (selectedDate === "" || rowDate === formatDateForComparison(selectedDate)) {
-            row.style.display = "";
-            } else {
-            row.style.display = "none";
-            }
-        }
-        };
-
-        dateButton.addEventListener("click", applyDateFilter);
-
-        const sortButton = document.getElementById("sortButton");
-
-        sortButton.addEventListener("click", function() {
-        const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
-        rows.sort((a, b) => {
-            const dateA = formatDateForComparison(a.cells[0].textContent);
-            const dateB = formatDateForComparison(b.cells[0].textContent);
-            return dateA.localeCompare(dateB);
-        });
-
-        const tbody = listaAgendamento.querySelector("tbody");
-        rows.forEach(row => tbody.appendChild(row));
-        });
-    });
-    </script>
+      <label style="width: 195px; margin: 5px;">Filtrar tabela pelo componente curricular (disciplina/estágio)</label>
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroDisciplina">
+          <option value="Todos">Todos</option>
+          <option value="ESTÁGIO EM PRONTO ATENDIMENTO (EPA)">ESTÁGIO EM PRONTO ATENDIMENTO (EPA)</option>
+          <option value="ODONTOPEDIATRIA">ODONTOPEDIATRIA</option>
+          <option value="PERIODONTIA CLÍNICA">PERIODONTIA CLÍNICA</option>
+          <option value="PRÓTESE DENTÁRIA PARCIAL III">PRÓTESE DENTÁRIA PARCIAL III</option>
+          <option value="CIRURGIA BUCO-MAXILAR III">CIRURGIA BUCO-MAXILAR III</option>
+          <option value="RADIOLOGIA E IMAGINOLOGIA">RADIOLOGIA E IMAGINOLOGIA</option>
+      </select>
+      <p></p>
       
-    <script>
-      // ALTERA CCS DE ACORDO COM O INPUT DE 'statusAgendamento'
-      const rows = document.querySelectorAll('#listaAgendamento tbody tr');
+      <label style="width: 195px; margin: 5px;">Filtrar por status do agendamento</label>
+      <select class="ui-state-default ui-corner-all" style="width: 200px; height: 20px; margin: 5px;" id="filtroStatus">
+          <option value="Todos">Todos</option>
+          <option value="noLocal">No local</option>
+          <option value="Agendado">Agendado</option>
+          <option value="Atendido">Atendido</option>
+      </select>
+      <p></p>
 
-      rows.forEach(row => {
-        const seventhColumn = row.querySelector('th#statusAgendamento');
-        const textContent = seventhColumn.textContent.trim();
+      
+      <hr class="ui-state-default">
+      <div style="margin: 5px;"></div>
+      <button id="limparFiltrosButton" style="margin: 10px;">Limpar filtros</button>
+            
+      
+      <table id="listaAgendamento" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" cellspacing="0" cellpadding="0" border="0" role="grid" aria-multiselectable="false" style="width: 80%; font-size: 14px; margin: 20px;">
+        <thead>
+          <tr class="ui-jqgrid-labels" role="rowheader">
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">Data</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 22.5%;">Paciente</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Aluno</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 20%;">Local</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 7.5%;">Turno</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 22.5%;">Disciplina/Estágio</th>
+            <th class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="width: 5%;">Status agendamento</th>
+          </tr>
+        </thead>
+        <tr>
+          <th>21/08/2023</th>
+          <th>João da Silva</th>
+          <th>Aluno A</th>
+          <th>Radiologia</th>
+          <th>Manhã</th>
+          <th>RADIOLOGIA E IMAGINOLOGIA</th>
+          <th id="statusAgendamento">noLocal</th>
+        </tr>
+        <tr>
+            <th>29/08/2023</th>
+            <th>José Souza</th>
+            <th>Aluno B</th>
+            <th>Clínica Oeste</th>
+            <th>Manhã</th>
+            <th>PRÓTESE DENTÁRIA PARCIAL III</th>
+            <th id="statusAgendamento">Agendado</th>
+        </tr>
+        <tr>
+            <th>01/08/2023</th>
+            <th>Maria Silva</th>
+            <th>Aluno C</th>
+            <th>Clínica Oeste</th>
+            <th>Tarde</th>
+            <th>ODONTOPEDIATRIA</th>
+            <th id="statusAgendamento">noLocal</th>
+        </tr>
+        <tr>
+            <th>21/08/2023</th>
+            <th>Sandra de Sá</th>
+            <th>Aluno D</th>
+            <th>Radiologia</th>
+            <th>Tarde</th>
+            <th>RADIOLOGIA E IMAGINOLOGIA</th>
+            <th id="statusAgendamento">Atendido</th>
+        </tr>
+      </table>
+      
 
-        if (textContent === 'Agendado') {
-          row.classList.add('ui-state-default');
-          row.classList.remove('agendamento-ui', 'atendido-ui');
-        } else if (textContent === 'noLocal') {
-          row.classList.add('agendamento-ui');
-          row.classList.remove('ui-state-default', 'atendido-ui');
-        } else if (textContent === 'Atendido') {
-          row.classList.add('atendido-ui');
-          row.classList.remove('ui-state-default', 'agendamento-ui');
+      <hr class="ui-state-default">
+      
+      <script>
+        // FILTRO POR TURNO, LOCAL, DISCIPLINA, STATUS E DATA
+        document.addEventListener("DOMContentLoaded", function() {
+            const filtroLocalAgendamentoSelect = document.getElementById("filtroLocalAgendamento");
+            const filtroTurnoAgendamentoSelect = document.getElementById("filtroTurnoAgendamento");
+            const filtroDisciplinaSelect = document.getElementById("filtroDisciplina");
+            const filtroStatusSelect = document.getElementById("filtroStatus");
+            const filtroDataAgendamentoInput = document.getElementById("filtroDataAgendamento");
+            const listaAgendamento = document.getElementById("listaAgendamento");
+            const limparFiltrosButton = document.getElementById("limparFiltrosButton");
+      
+            const formatDateForComparison = (date) => {
+                const parts = date.split('-');
+                return parts[2] + '/' + parts[1] + '/' + parts[0]; // Convert to "DD/MM/YYYY" format
+            };
+      
+            const applyFilters = () => {
+                const selectedLocalOption = filtroLocalAgendamentoSelect.value;
+                const selectedTurnoOption = filtroTurnoAgendamentoSelect.value;
+                const selectedDisciplinaOption = filtroDisciplinaSelect.value;
+                const selectedStatusOption = filtroStatusSelect.value;
+                const selectedDate = filtroDataAgendamentoInput.value;
+      
+                const rows = listaAgendamento.querySelectorAll("tbody tr");
+      
+                rows.forEach(row => {
+                    const localCell = row.cells[3].textContent;
+                    const turnoCell = row.cells[4].textContent;
+                    const disciplinaCell = row.cells[5].textContent;
+                    const statusCell = row.cells[6].textContent;
+                    const dataCell = row.cells[0].textContent; // Assuming the "Data" cell is at index 0
+      
+                    const localMatch = selectedLocalOption === "Todos" || localCell === selectedLocalOption;
+                    const turnoMatch = selectedTurnoOption === "Todos" || selectedTurnoOption === "Escolher" || turnoCell === selectedTurnoOption;
+                    const disciplinaMatch = selectedDisciplinaOption === "Todos" || selectedDisciplinaOption === "Escolher" || disciplinaCell === selectedDisciplinaOption;
+                    const statusMatch = selectedStatusOption === "Todos" || selectedStatusOption === "Escolher" || statusCell === selectedStatusOption;
+                    const dateMatch = selectedDate === "" || dataCell === formatDateForComparison(selectedDate);
+      
+                    row.style.display = localMatch && turnoMatch && disciplinaMatch && statusMatch && dateMatch ? "" : "none";
+                });
+            };
+      
+            filtroLocalAgendamentoSelect.addEventListener("change", applyFilters);
+            filtroTurnoAgendamentoSelect.addEventListener("change", applyFilters);
+            filtroDisciplinaSelect.addEventListener("change", applyFilters);
+            filtroStatusSelect.addEventListener("change", applyFilters);
+            filtroDataAgendamentoInput.addEventListener("change", applyFilters);
+      
+            // Automatically sort by date on page load
+            const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
+            rows.sort((a, b) => {
+                const dateA = formatDateForComparison(a.cells[0].textContent);
+                const dateB = formatDateForComparison(b.cells[0].textContent);
+                return dateA.localeCompare(dateB);
+            });
+      
+            const tbody = listaAgendamento.querySelector("tbody");
+            rows.forEach(row => tbody.appendChild(row));
+      
+            // Function to clear all select fields
+            limparFiltrosButton.addEventListener("click", () => {
+                filtroLocalAgendamentoSelect.value = "Todos";
+                filtroTurnoAgendamentoSelect.value = "Todos";
+                filtroDisciplinaSelect.value = "Todos";
+                filtroStatusSelect.value = "Todos";
+                filtroDataAgendamentoInput.value = "";
+                applyFilters(); // Apply filters after clearing
+            });
+        });
+      </script>
+      
+      
+      
+      
+      
+        
+
+
+<script>
+// FILTRO POR DATA
+document.addEventListener("DOMContentLoaded", function() {
+    const filtroDataAgendamentoInput = document.getElementById("filtroDataAgendamento");
+    const listaAgendamento = document.getElementById("listaAgendamento");
+    const dateButton = document.getElementById("dateButton");
+
+    const formatDateForComparison = (date) => {
+    const parts = date.split('-');
+    return parts[2] + '/' + parts[1] + '/' + parts[0]; // Convert to "DD/MM/YYYY" format
+    };
+
+    const applyDateFilter = () => {
+    const selectedDate = filtroDataAgendamentoInput.value;
+    const rows = listaAgendamento.getElementsByTagName("tr");
+
+    for (let i = 1; i < rows.length; i++) {
+        const row = rows[i];
+        const dataCell = row.cells[0]; // Assuming the "Data" cell is at index 0
+        const rowDate = dataCell.textContent; // Assuming the date format is "DD/MM/YYYY"
+
+        if (selectedDate === "" || rowDate === formatDateForComparison(selectedDate)) {
+        row.style.display = "";
+        } else {
+        row.style.display = "none";
         }
-      });
-    </script>
-  </body>
+    }
+    };
+
+    dateButton.addEventListener("click", applyDateFilter);
+
+    const sortButton = document.getElementById("sortButton");
+
+    sortButton.addEventListener("click", function() {
+    const rows = Array.from(listaAgendamento.querySelectorAll("tbody tr"));
+    rows.sort((a, b) => {
+        const dateA = formatDateForComparison(a.cells[0].textContent);
+        const dateB = formatDateForComparison(b.cells[0].textContent);
+        return dateA.localeCompare(dateB);
+    });
+
+    const tbody = listaAgendamento.querySelector("tbody");
+    rows.forEach(row => tbody.appendChild(row));
+    });
+});
+</script>
+  
+<script>
+  // ALTERA CCS DE ACORDO COM O INPUT DE 'statusAgendamento'
+  const rows = document.querySelectorAll('#listaAgendamento tbody tr');
+
+  rows.forEach(row => {
+    const seventhColumn = row.querySelector('th#statusAgendamento');
+    const textContent = seventhColumn.textContent.trim();
+
+    if (textContent === 'Agendado') {
+      row.classList.add('ui-state-default');
+      row.classList.remove('agendamento-ui', 'atendido-ui');
+    } else if (textContent === 'noLocal') {
+      row.classList.add('agendamento-ui');
+      row.classList.remove('ui-state-default', 'atendido-ui');
+    } else if (textContent === 'Atendido') {
+      row.classList.add('atendido-ui');
+      row.classList.remove('ui-state-default', 'agendamento-ui');
+    }
+  });
+</script>
+
+</body>
 </html>

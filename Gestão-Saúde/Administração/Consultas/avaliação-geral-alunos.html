@@ -1,35 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação geral de alunos</title>
-    <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
-      var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-      var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-      var PATH_COOKIE = '/';
-      var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-      var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-    </script>
-    <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-    <link href='../../../all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
-    <script type='text/javascript' src='../../../all.javascript.06102023101234850017.js'></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
-  </head>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head lang="pt-br">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+    var PATH_COOKIE = '/';
+    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+</script>
+<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+<link href='https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
+<script type='text/javascript' src='https://cobalto.ufpel.edu.br/static/_js/all.javascript.06102023101234850017.js'></script>
+<link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
 
-<<<<<<< HEAD
-  <body>
-        <!-- CONTEÚDO SUPERIOR -->
-        <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-            <li>Administração</li>    
-            <li>Consultas</li>
-            <li>Avaliação de geral alunos</li>
-            </ul>
-            
-        <div style="clear: both;"></div></div><div style="clear: both;"></div>
-=======
 <!--ALERT MESSAGES-->
 <link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
 <script src="../../../scripts/alertMessage.js"></script>
@@ -90,181 +74,150 @@
   </style>
 
 
-<body>
-	<!-- CONTEÚDO SUPERIOR -->
-        <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-                <li>Administração</li>    
-                <li>Consultas</li>
-                <li>Avaliação geral de alunos</li>
-            </ul>
+<!-- CONTEÚDO SUPERIOR -->
+<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+    <li>Administração</li>    
+    <li>Consultas</li>
+    <li>Avaliação de alunos</li>
+    </ul>
+      
+  <div style="clear: both;"></div></div><div style="clear: both;"></div>
+  
+<!-- CONTEÚDO BOTÕES -->
+<div class="ui-widget-content ui-corner-all toolbar">
+    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+    <button id="salvar" onclick="submitFunction()" class="salvar" style="float: left;">Salvar</button>
+    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+    <span style="clear: both; display: block"></span>
+</div>
+
+
+
+<div id="tabFiltroCurso" class="tabs"><ul></ul>
+    <div id="tabFiltroCurso-0" class="ui-widget tabFiltroCurso tabFiltroCurso-0 tabFiltroCurso-0">
+        <ul>
+            <li class="labeltabFiltroCurso"><a href="#tabFiltroCurso-0" accessKey="tabFiltroCurso-0">Filtro</a></li></ul>
             
-            <div style="clear: both;"></div>
-        </div>
-        <div style="clear: both;"></div>
->>>>>>> af2a2cae5caf4839e746f156abd231dee421ae0c
+            <label id="lblCodMatricula" style="width: 80px;" >Matricula</label>
+            <input type="text" id="txtCodMatricula" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 80px;">
+
+            <br>
+            <label id="lblCpf" style="width: 80px;">CPF</label>
+            <input type="text" id="lblCpf" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 80px;">
+            <br>
+
+            <label id="lblNome" style="width: 80px;">Nome</label>
+            <input type="text" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;">
+            <br>
+            <label id="componenteCurricular" style="width: 80px;">Componente Curricular</label>
+            <input type="text" id="componenteCurricular" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;">
+            <br>
+            <p></p>
+            <br>
+    	
+
+        <table id="gridPaciente"></table>
+        <div id="gridPacientePager" style="margin-bottom: 5px"></div>
+
+<script>
+    var gridPaciente = 'gridPaciente';
+    $(document).ready(function () {
+        $('#gridPaciente').jqGrid({
+            "sortname": "paciente_nome",
+            "autoload": false,
+            "autowidth": true,
+            "pager": "#gridPacientePager",
+            "rowNum": 25,
+            "toppager": true,
+            "caption": "Lista de alunos",
+            "height": "auto",
+            "jsonReader": { "repeatitems": false, "id": 0 },
+            "onSelectRow": function (rowid) {
+                try { gridPaciente_onSelectRow(rowid); } catch (err) { }
+            },
+            "onCellSelect": function (rowid, iRow, iCol, e) {
+                if (iRow != 0) {
+                    $("#gridPaciente").resetSelection();
+                    try { gridPaciente_click(rowid); } catch (err) { }
+                }
+            },
+            "ondblClickRow": function (rowid, iRow, iCol, e) {
+                if (iRow != 0) {
+                    $("#gridPaciente").resetSelection();
+                    try { gridPaciente_dblClick(rowid); } catch (err) { }
+                }
+            },
+            "loadBeforeSend": function (xhr) {
+                try { gridPaciente_loadBeforeSend(); } catch (err) { }
+            },
+            "loadComplete": function (data) {
+                if ($("#gridPaciente").jqGrid('getGridParam', 'datatype') != 'local') {
+                    try { gridPaciente_loadComplete(); } catch (err) { }
+                }
+            },
+            "gridComplete": function (data) {
+                generateTabs();
+                try { gridPaciente_init(); } catch (err) { }
+            },
+            "loadError": function (xhr, st, err) {
+                var url = $("#gridPaciente").jqGrid('getGridParam', 'url');
+                if (!$.cookie('logout')) if (xhr.status == 200 && st == "parsererror") {
+                    try { console.log("Grid: gridPaciente; URL: " + url + "; Type: " + st + "; Response: O resultado não está no formato esperado"); } catch (err) { }
+                } else {
+                    try { console.log("Grid: gridPaciente; URL: " + url + "; Type: " + st + "; Response: " + xhr.status + " " + xhr.statusText); } catch (err) { }
+                }
+            },
+            "url": "https://cobalto.ufpel.edu.br/academico/consultas/paciente/listaPacientesPessoasCursos/",
+            "altRows": true,
+            "altclass": "ui-state-default jqgrow-alt",
+            "rownumbers": false,
+            "viewrecords": true,
+            "datatype": "local",
+            "sortorder": "asc",
+            "forceFit": true,
+            "headertitles": true,
+            "colNames": ["ID", "Nome", "Telefone", "CPF", "Disciplina", "Demanda"],
+            "colModel": [
+                { "sortable": true, "hidden": true, "name": "id", "index": "id", "colName": "ID", "width": 0, "align": "right" },
+                { "sortable": true, "name": "paciente_nome", "index": "paciente_nome", "colName": "Nome", "width": 16.67, "align": "left" }, // 100 / 6 = 16.67
+                { "sortable": true, "name": "telefone", "index": "telefone", "colName": "Telefone", "width": 16.67, "align": "center" },
+                { "sortable": true, "name": "cpf", "index": "cpf", "colName": "CPF", "width": 16.67, "align": "center" },
+                { "sortable": true, "name": "disciplina", "index": "disciplina", "colName": "Disciplina", "width": 16.67, "align": "center" },
+                { "sortable": true, "name": "demanda", "index": "demanda", "colName": "Demanda", "width": 16.67, "align": "center" }
+            ]
+        });
+        $('#gridPaciente').setGridParam({ datatype: 'json' });
+        $('#gridPaciente').setGridParam({ autoload: true });
+    });
+
+    function gridPaciente_resize() {
+        $('#gbox_gridPaciente').width('auto');
+        $('#gridPaciente').setGridWidth($('#gbox_gridPaciente').width());
+    }
+
+    $(window).bind('resize', gridPaciente_resize);
+    $('#tabFiltroCurso').bind('tabsshow', gridPaciente_resize);
+</script>
+
+<div>
+    <H2><a href="avaliação-geral-alunos-2.html?id=2010123'">TESTE 2010123</a></H2>
+    <H2><a href="avaliação-geral-alunos-2.html?id=2014321'">TESTE 2014321</a></H2>
+    <H2><a href="avaliação-geral-alunos-2.html?id=2011456'">TESTE 2011456</a></H2>
+    <H2><a href="avaliação-geral-alunos-2.html?id=2012789'">TESTE 2012789</a></H2>
+    <H2><a href="avaliação-geral-alunos-2.html?id=2013654'">TESTE 2013654</a></H2>
         
-        <!-- CONTEÚDO BOTÕES -->
-        <div class="ui-widget-content ui-corner-all toolbar">
-            <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-<<<<<<< HEAD
-            <button id="salvar" onclick="submitFunction()" class="salvar" style="float: left;">Salvar</button>
-            <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
-            <span style="clear: both; display: block"></span>
-        </div>
+</div>
 
-        <div id="tabFiltroCurso" class="tabs"><ul></ul>
-            <div id="tabFiltroCurso-0" class="ui-widget tabFiltroCurso tabFiltroCurso-0 tabFiltroCurso-0">
-                <ul>
-                    <li class="labeltabFiltroCurso"><a href="#tabFiltroCurso-0" accessKey="tabFiltroCurso-0">Filtro</a></li></ul>
-                    
-                    <label id="lblCodMatricula" style="width: 80px;" >Matricula</label>
-                    <input type="text" id="txtCodMatricula" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 80px;">
 
-                    <br>
-                    <label id="lblCpf" style="width: 80px;">CPF</label>
-                    <input type="text" id="lblCpf" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 80px;">
-                    <br>
+            <hr class="ui-state-default">     
+  <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
+    FUNCIONALIDADE PREVISTA: <br>
+    1- REVER A TABELA E ALTERAR INFORMAÇÕES CONTIDAS NELA<br>
+    2- USUÁRIO BUSCA PELO NOME DO ALUNO, SELECIONA UMA DAS DISCIPLINAS QUE APARECEREM E AVANÇA PARA <a href="avaliação-alunos-2.html"> ESSA PÁGINA</a><br>
+  </h2>
 
-                    <label id="lblNome" style="width: 80px;">Nome</label>
-                    <input type="text" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;">
-                    <br>
-                    <label id="componenteCurricular" style="width: 80px;">Componente Curricular</label>
-                    <input type="text" id="componenteCurricular" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;">
-                    <br>
-                    <p></p>
-                    <br>
-                
 
-                <table id="gridPaciente"></table>
-                <div id="gridPacientePager" style="margin-bottom: 5px"></div>
-            </div>
-        </div>
 
-        <script>
-            var gridPaciente = 'gridPaciente';
-            $(document).ready(function () {
-                $('#gridPaciente').jqGrid({
-                    "sortname": "paciente_nome",
-                    "autoload": false,
-                    "autowidth": true,
-                    "pager": "#gridPacientePager",
-                    "rowNum": 25,
-                    "toppager": true,
-                    "caption": "Lista de alunos",
-                    "height": "auto",
-                    "jsonReader": { "repeatitems": false, "id": 0 },
-                    "onSelectRow": function (rowid) {
-                        try { gridPaciente_onSelectRow(rowid); } catch (err) { }
-                    },
-                    "onCellSelect": function (rowid, iRow, iCol, e) {
-                        if (iRow != 0) {
-                            $("#gridPaciente").resetSelection();
-                            try { gridPaciente_click(rowid); } catch (err) { }
-                        }
-                    },
-                    "ondblClickRow": function (rowid, iRow, iCol, e) {
-                        if (iRow != 0) {
-                            $("#gridPaciente").resetSelection();
-                            try { gridPaciente_dblClick(rowid); } catch (err) { }
-                        }
-                    },
-                    "loadBeforeSend": function (xhr) {
-                        try { gridPaciente_loadBeforeSend(); } catch (err) { }
-                    },
-                    "loadComplete": function (data) {
-                        if ($("#gridPaciente").jqGrid('getGridParam', 'datatype') != 'local') {
-                            try { gridPaciente_loadComplete(); } catch (err) { }
-                        }
-                    },
-                    "gridComplete": function (data) {
-                        generateTabs();
-                        try { gridPaciente_init(); } catch (err) { }
-                    },
-                    "loadError": function (xhr, st, err) {
-                        var url = $("#gridPaciente").jqGrid('getGridParam', 'url');
-                        if (!$.cookie('logout')) if (xhr.status == 200 && st == "parsererror") {
-                            try { console.log("Grid: gridPaciente; URL: " + url + "; Type: " + st + "; Response: O resultado não está no formato esperado"); } catch (err) { }
-                        } else {
-                            try { console.log("Grid: gridPaciente; URL: " + url + "; Type: " + st + "; Response: " + xhr.status + " " + xhr.statusText); } catch (err) { }
-                        }
-                    },
-                    "url": "https://cobalto.ufpel.edu.br/academico/consultas/paciente/listaPacientesPessoasCursos/",
-                    "altRows": true,
-                    "altclass": "ui-state-default jqgrow-alt",
-                    "rownumbers": false,
-                    "viewrecords": true,
-                    "datatype": "local",
-                    "sortorder": "asc",
-                    "forceFit": true,
-                    "headertitles": true,
-                    "colNames": ["ID", "Nome", "Telefone", "CPF", "Disciplina", "Demanda"],
-                    "colModel": [
-                        { "sortable": true, "hidden": true, "name": "id", "index": "id", "colName": "ID", "width": 0, "align": "right" },
-                        { "sortable": true, "name": "paciente_nome", "index": "paciente_nome", "colName": "Nome", "width": 16.67, "align": "left" }, // 100 / 6 = 16.67
-                        { "sortable": true, "name": "telefone", "index": "telefone", "colName": "Telefone", "width": 16.67, "align": "center" },
-                        { "sortable": true, "name": "cpf", "index": "cpf", "colName": "CPF", "width": 16.67, "align": "center" },
-                        { "sortable": true, "name": "disciplina", "index": "disciplina", "colName": "Disciplina", "width": 16.67, "align": "center" },
-                        { "sortable": true, "name": "demanda", "index": "demanda", "colName": "Demanda", "width": 16.67, "align": "center" }
-                    ]
-                });
-                $('#gridPaciente').setGridParam({ datatype: 'json' });
-                $('#gridPaciente').setGridParam({ autoload: true });
-            });
 
-            function gridPaciente_resize() {
-                $('#gbox_gridPaciente').width('auto');
-                $('#gridPaciente').setGridWidth($('#gbox_gridPaciente').width());
-            }
-
-            $(window).bind('resize', gridPaciente_resize);
-            $('#tabFiltroCurso').bind('tabsshow', gridPaciente_resize);
-        </script>
-
-        <div>
-            <H2><a href="avaliação-geral-alunos-2.html?id=2010123'">TESTE 2010123</a></H2>
-            <H2><a href="avaliação-geral-alunos-2.html?id=2014321'">TESTE 2014321</a></H2>
-            <H2><a href="avaliação-geral-alunos-2.html?id=2011456'">TESTE 2011456</a></H2>
-            <H2><a href="avaliação-geral-alunos-2.html?id=2012789'">TESTE 2012789</a></H2>
-            <H2><a href="avaliação-geral-alunos-2.html?id=2013654'">TESTE 2013654</a></H2>
-        </div>
-
-        <hr class="ui-state-default">     
-        <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-            FUNCIONALIDADE PREVISTA: <br>
-            1- REVER A TABELA E ALTERAR INFORMAÇÕES CONTIDAS NELA<br>
-            2- USUÁRIO BUSCA PELO NOME DO ALUNO, SELECIONA UMA DAS DISCIPLINAS QUE APARECEREM E AVANÇA PARA <a href="avaliação-alunos-2.html"> ESSA PÁGINA</a><br>
-        </h2>
-=======
-            <button id="pesquisa" class="pesquisa" style="float: left;">Pesquisar</button>
-            <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
-            <span style="clear: both; display: block"></span>
-        </div>
-
-        <div class="ui-corner-all" style="width: 100%; height: 100%; float: left; box-sizing: border-box; margin-top: 20px; border: 1.5px solid lightblue;">
-
-            <div class="ui-jqgrid-titlebar ui-widget-header ui-corner-all" style="height: 30px;">
-                <div class="ui-corner-all" style="background-color: white; width: 50px; height: 30px; margin: 5 0 5 10; display: flex; align-items: center; font-size: larger;"><p style="color: #e17009;margin-left: 10px;">Filtro</p></div>
-            </div>
-            
-            <div style="margin: 20px;">
-                <label id="lblCodMatricula" style="width: 80px;" >Matricula</label>
-                <input type="text" id="txtCodMatricula" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 80px;">
-                <br>
-
-                <label id="lblNome" style="width: 80px;">Nome</label>
-                <input type="text" id="txtNome" value="" maxlength="255" class="ui-state-default ui-corner-all mousetrap " style="width: 350px;">
-                <br>
-            </div>
-            
-            <div style="margin: 20px;">
-                <h1 style="color: red;">QUANDO UNIFICAR COM BANCO DE ALUNOS - CRIAR TABELA E SCRIPT DE BUSCA</h1>
-                <H2><a href="avaliação-geral-alunos-2.html?id=2010123'">TESTE 2010123</a></H2>
-                <H2><a href="avaliação-geral-alunos-2.html?id=2014321'">TESTE 2014321</a></H2>
-                <H2><a href="avaliação-geral-alunos-2.html?id=2011456'">TESTE 2011456</a></H2>
-                <H2><a href="avaliação-geral-alunos-2.html?id=2012789'">TESTE 2012789</a></H2>
-                <H2><a href="avaliação-geral-alunos-2.html?id=2013654'">TESTE 2013654</a></H2>
-            </div>
-        </div>
->>>>>>> af2a2cae5caf4839e746f156abd231dee421ae0c
 	</body>
 </html>

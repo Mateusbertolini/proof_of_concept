@@ -1,255 +1,206 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head lang="pt-br">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+  <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
     var BASE_URL = 'https://cobalto.ufpel.edu.br/';
     var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
     var PATH_COOKIE = '/';
     var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
     var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-</script>
-<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
-<link href="stylecobalto.css" type="text/css" rel="stylesheet">
-  
-
-<!--[f lt IE 7 ]> <body class="ui-widget-content ie ie6" style="border: none !important;"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-
+  </script>
+  <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+  <link href='all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
+  <script type='text/javascript' src='all.javascript.06102023101234850017.js'></script>
+  <link href="stylecobalto.css" type="text/css" rel="stylesheet">
 </head>
 
 
-<!-- CABEÇALHO COBALTO - WIDGET SUPERIOR -->
-<body class="ui-widget-content" style="border: none !important;">
-  <!--<![endif]-->
-  <div class="ui-layout-north ui-widget-content">
-    <div id="carregando" class="ui-state-active ui-widget ui-state-default ui-corner-all">
-      Carregando <img src="https://cobalto.ufpel.edu.br/static/_img/ajax-loader.gif" style="margin-right: 5px; margin-left: 2px;" width="16px" height="11px">
-    </div>
-    <div class="logo" title="ir para tela inicial">
-      <!-- -->
-    </div>
-
-        <div class="" style="float:right; padding: 10px 0px; margin: 18px 0px;">
-      <div id="avatar-menu" style="float: left;cursor: pointer;padding-right: 5px;">
-                        <img src="src/Unknown_Member.jpg" style="border-radius: 50%;" width="48px">
-                      </div>
-      <div style="display: block; float:left; margin: 0px;">
-        <h2 style="margin: 0px 6px 11px; font-size: 15px;">USUÁRIO TESTE</h2>
-
-        <button id="btnMensagensRecebidas" onclick="mensagensRecebidas()" style="margin: 0px 0px 0px 5px; display: block; float: left;" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-mail-closed"></span><span class="ui-button-text">
-          Mensagens
-                  </span></button>
-        <button id="btnConfiguracoes" onclick="configuracoesUsuario()" style="margin: 0px 0px 0px 5px; display: block; float: left;" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-person"></span><span class="ui-button-text">Perfil</span></button>
-        <button id="btnSair" onclick="logout(true)" title="Ctrl + Q" style="margin: 0px 5px 0px; display: block; float: left;" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-power"></span><span class="ui-button-text">Sair</span></button>
+  <!-- CABEÇALHO COBALTO - WIDGET SUPERIOR -->
+  <body class="ui-widget-content" style="border: none !important;">
+    <!--<![endif]-->
+    <div class="ui-layout-north ui-widget-content">
+      <div id="carregando" class="ui-state-active ui-widget ui-state-default ui-corner-all">
+        Carregando <img src="https://cobalto.ufpel.edu.br/static/_img/ajax-loader.gif" style="margin-right: 5px; margin-left: 2px;" width="16px" height="11px">
       </div>
-    </div>
+      <div class="logo" title="ir para tela inicial">
+        <!-- -->
       </div>
-  <span style="clear:both;">
-    <!-- -->
-  </span>
-  <div id="warning-sei-extension" class="ui-widget ui-widget-content" style="background: none !important; border-left: medium none; border-right: medium none; border-top: medium none; display: none;">
-    <div id="sei_info_warning" class="ui-widget" style="margin-bottom: 5px;"> <div class="ui-state-error ui-corner-all" style="padding: 1px;">    <span class="ui-icon ui-icon-alert" style="display: block; float: left; margin: 5px;"></span>   <p style="margin: 6px 5px 5px 30px;"><b>Atenção:</b>Detectamos que você está utilizando a extensão <b>SEI++</b>. Ela pode causar problemas nos componentes visuais durante o uso do Cobalto.</p>  </div></div><script type="text/javascript">var sei_info_warning = $('#sei_info_warning');$.extend(sei_info_warning, String.prototype);$.extend(sei_info_warning, {toString:function(){return 'sei_info_warning';}});$(document).ready(function(){sei_info_warning.showMessageWarning();});</script>    <script>
-      if (localStorage.getItem('sei-extension-warning') != 'true') $("#warning-sei-extension").hide()
-    </script>
-  </div>
 
-  <div class="ui-widget ui-widget-content" style="background: none !important; border-left: none; border-right: none; border-top: none;">
-    <div style="margin-left: 5px; float: left;">
-            <button id="btnCloseOpenMenu" style="margin: 3px 5px 3px 0px; height: 24px;" title="F9" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-pin-s"></span><span class="ui-button-text">Esconder menu</span></button>
-    </div>
-          
-    
-    
-    <div style="clear: both;">
+          <div class="" style="float:right; padding: 10px 0px; margin: 18px 0px;">
+        <div id="avatar-menu" style="float: left;cursor: pointer;padding-right: 5px;">
+                          <img src="src/Unknown_Member.jpg" style="border-radius: 50%;" width="48px">
+                        </div>
+        <div style="display: block; float:left; margin: 0px;">
+          <h2 style="margin: 0px 6px 11px; font-size: 15px;">USUÁRIO TESTE</h2>
+
+          <button id="btnMensagensRecebidas" onclick="mensagensRecebidas()" style="margin: 0px 0px 0px 5px; display: block; float: left;" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-mail-closed"></span><span class="ui-button-text">
+            Mensagens
+                    </span></button>
+          <button id="btnConfiguracoes" onclick="configuracoesUsuario()" style="margin: 0px 0px 0px 5px; display: block; float: left;" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-person"></span><span class="ui-button-text">Perfil</span></button>
+          <button id="btnSair" onclick="logout(true)" title="Ctrl + Q" style="margin: 0px 5px 0px; display: block; float: left;" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-power"></span><span class="ui-button-text">Sair</span></button>
+        </div>
+      </div>
+        </div>
+    <span style="clear:both;">
       <!-- -->
+    </span>
+    <div id="warning-sei-extension" class="ui-widget ui-widget-content" style="background: none !important; border-left: medium none; border-right: medium none; border-top: medium none; display: none;">
+      <div id="sei_info_warning" class="ui-widget" style="margin-bottom: 5px;"> <div class="ui-state-error ui-corner-all" style="padding: 1px;">    <span class="ui-icon ui-icon-alert" style="display: block; float: left; margin: 5px;"></span>   <p style="margin: 6px 5px 5px 30px;"><b>Atenção:</b>Detectamos que você está utilizando a extensão <b>SEI++</b>. Ela pode causar problemas nos componentes visuais durante o uso do Cobalto.</p>  </div></div><script type="text/javascript">var sei_info_warning = $('#sei_info_warning');$.extend(sei_info_warning, String.prototype);$.extend(sei_info_warning, {toString:function(){return 'sei_info_warning';}});$(document).ready(function(){sei_info_warning.showMessageWarning();});</script>    <script>
+        if (localStorage.getItem('sei-extension-warning') != 'true') $("#warning-sei-extension").hide()
+      </script>
     </div>
-  </div>
-  <span style="clear:both;">
-    <!-- -->
-  </span>
-<!-- CABEÇALHO COBALTO - WIDGET SUPERIOR -->
 
-<!-- ÁRVORE LATERAL - MENU GESTÃO SAÚDE -->
-<div class="ui-layout-west ui-widget ui-widget-content " style="padding-left: 0px; padding-right: 0px; background: none !important; float: left; width: 200px; overflow:hidden !important; display: block;">
-  <ul id="menu" class="ui-widget treeview treeview-gray" style="background: none !important; background-color:none !important; overflow: auto !important; margin-top: 2px;">
-    <li class="collapsable"><div class="hitarea collapsable-hitarea"></div><span>UFPEL</span>
-      <ul style="background: none !important;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div><div class="hitarea closed-hitarea collapsable-hitarea"></div><span>Gestão Saúde</span><ul style="background: none !important; display: block;"></span><ul style="background: none !important; display: block;"><li class="closed expandable">
+    <div class="ui-widget ui-widget-content" style="background: none !important; border-left: none; border-right: none; border-top: none;">
+      <div style="margin-left: 5px; float: left;">
+        <button id="btnCloseOpenMenu" style="margin: 3px 5px 3px 0px; height: 24px;" title="F9" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" role="button" aria-disabled="false"><span class="ui-button-icon-primary ui-icon ui-icon-pin-s"></span><span class="ui-button-text">Esconder menu</span></button>
+      </div>
+      
+      <div style="clear: both;"></div>
+    </div>
+    <span style="clear:both;"></span>
+  
+
+  <!-- ÁRVORE LATERAL - MENU GESTÃO SAÚDE -->
+    <div class="ui-layout-west ui-widget ui-widget-content " style="padding-left: 0px; padding-right: 0px; background: none !important; float: left; width: 200px; overflow:hidden !important; display: block;">
+      <ul id="menu" class="ui-widget treeview treeview-gray" style="background: none !important; background-color:none !important; overflow: auto !important; margin-top: 2px;">
+        <li class="collapsable"><div class="hitarea collapsable-hitarea"></div><span>UFPEL</span>
+          <ul style="background: none !important;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div><div class="hitarea closed-hitarea collapsable-hitarea"></div><span>Gestão Saúde</span><ul style="background: none !important; display: block;"></span><ul style="background: none !important; display: block;"><li class="closed expandable">
+            <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+              
+              <span>Triagem</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+                <span>Consultas</span><ul style="background: none !important; display: none;">
+                  <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Consultas/Pacientes.html">Pacientes</a>
+                  <li><a href="Gestão-Saúde/consulta-publico-alvo.html">Público-alvo de disciplinas/estágios</a></li>
+                  <li><a href="Gestão-Saúde/agenda-clinicas.html">Agenda de clínica</a></li>
+                </ul>
+              <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+                <span>Cadastro</span><ul style="background: none !important; display: none;">
+                  <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Cadastros/paciente-novo.html">Paciente novo</a></li>
+                </ul>
+              <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+                <span>Processos</span><ul style="background: none !important; display: none;">
+                  <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/busca-atualizar-cadastro-registrar-demanda.html">Atualizar cadastro e/ou registrar demanda</a></li>
+                  <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/vincular-1.html">Vincular paciente à aluno e disciplina/estágio</a></li>
+                  <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/regulação-interna-1.html">Regulação interna</a></li>
+                  <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/tramitar-encaminhamento-1.html">Tramitar encaminhamento ou alta de pacientes</a></li>
+                  </ul>
+                <li><a href="Relatórios/relatórios.html">Relatórios</a></li>
+              </li></ul>
         <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-          
-          <span>Triagem</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+          <span>Administração</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+              <span>Consultas</span><ul style="background: none !important; display: none;">
+                <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Consultas/Pacientes.html">Pacientes</a>
+                <li><a href="Gestão-Saúde/agenda-clinicas.html">Agenda de clínicas</a>
+                <li><a href="Gestão-Saúde/consulta-estoque.html">Consulta de estoque e acompanhamento de pedidos</a></li>
+                <li><a href="Gestão-Saúde/Administração/Consultas/avaliação-alunos.html">Avaliação do aluno por disciplina</a></li>
+                <li><a href="Gestão-Saúde/Administração/Consultas/avaliação-geral-alunos.html">Avaliação geral do aluno</a></li>
+                <li><a href="Gestão-Saúde/Administração/Consultas/avaliação-disciplina.html">Avaliação geral da disciplina</a></li>
+                <li><a href="Gestão-Saúde/consulta-publico-alvo.html">Público-alvo de disciplinas\estágios</a></li>
+                <li><a href="Gestão-Saúde/consulta-codSUS.html">Lista de procedimentos SUS</a></li>
+            </ul>
+            <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+              <span>Cadastro</span><ul style="background: none !important; display: none;">
+                <li><a href="Gestão-Saúde/Administração/Cadastros/cadastrar-procedimentos.html">Cadastro/Alteração de código SUS</a></li>
+                <li><a href="Gestão-Saúde/Administração/Cadastros/cadastrar-publico-alvo.html">Cadastrar público-alvo de disciplinas/estágios</a></li>
+                <li><a href="Gestão-Saúde/Administração/Cadastros/cadastrar-material.html">Cadastrar material de estoque</a></li>
+              </ul>
+            <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+              <span>Processos</span><ul style="background: none !important; display: none;">
+                <li><a href="">Lotar responsável técnico</a></li>
+                <li><a href="Gestão-Saúde/Administração/Processos/tramitar-material-1.html">Tramitar requisição de materiais</li>
+              </ul>
+              <li><a href="Relatórios/relatórios.html">Relatórios</a></li>
+              <li><a href="conceder-acesso.html">Conceder acesso</a></li>
+          </ul>
+        
+        <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+          <span>Aluno</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+              <span>Consultas</span><ul style="background: none !important; display: none;">
+                <li><a href="Gestão-Saúde/Aluno/Consultas/meus-pacientes.html">Meus pacientes</a></li>
+                <li><a href="Gestão-Saúde/Aluno/Consultas/minhas-avaliações.html">Minhas avaliações de atendimento</a></li>
+                <li><a href="Gestão-Saúde/consulta-codSUS.html">Lista de procedimentos SUS</a></li>
+                <li><a href="Gestão-Saúde/consulta-publico-alvo.html">Público-alvo de disciplinas e estágios</a></li>
+              </ul>
+            <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+              <span>Cadastro</span><ul style="background: none !important; display: none;">
+                <li><a href="Gestão-Saúde/Aluno/Cadastros/solicitar-regulação-interna-1.html">Solicitar regulação interna</a> </li>
+                <li><a href="Gestão-Saúde/Aluno/Cadastros/minha-agenda.html">Minha agenda de atendimentos</a> </li>
+                <li><a href="Gestão-Saúde/Aluno/Cadastros/registrar-atendimento-1.html">Registrar atendimento realizado</a> </li>
+                <li><a href="Gestão-Saúde/Aluno/Cadastros/encaminhamento-alta-1.html">Encaminhamento ou alta de paciente</a></li>
+              </ul>
+            </ul>
+        
+      <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+          <span>Responsável técnico</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
             <span>Consultas</span><ul style="background: none !important; display: none;">
               <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Consultas/Pacientes.html">Pacientes</a>
+              <li><a href="Gestão-Saúde/Responsável-técnico/Consultas/avaliação-meus-alunos.html">Avaliações de atendimento dos meus alunos</a>
               <li><a href="Gestão-Saúde/consulta-publico-alvo.html">Público-alvo de disciplinas/estágios</a></li>
-              <li><a href="Gestão-Saúde/agenda-clinicas.html">Agenda de clínica</a></li>
+              <li><a href="Gestão-Saúde/consulta-codSUS.html">Lista de procedimentos SUS</a></li>
             </ul>
           <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-            <span>Cadastro</span><ul style="background: none !important; display: none;">
-              <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Cadastros/paciente-novo.html">Paciente novo</a></li>
-            </ul>
-          <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-            <span>Processos</span><ul style="background: none !important; display: none;">
-              <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/busca-atualizar-cadastro-registrar-demanda.html">Atualizar cadastro e/ou registrar demanda</a></li>
-              <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/vincular-1.html">Vincular paciente à aluno e disciplina/estágio</a></li>
-              <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/regulação-interna-1.html">Regulação interna</a></li>
-              <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Processos/tramitar-encaminhamento-1.html">Tramitar encaminhamento ou alta de pacientes</a></li>
-              </ul>
-            <li><a href="Relatórios/relatórios.html">Relatórios</a></li>
-          </li></ul>
-    <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-      <span>Administração</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-          <span>Consultas</span><ul style="background: none !important; display: none;">
-            <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Consultas/Pacientes.html">Pacientes</a>
-            <li><a href="Gestão-Saúde/agenda-clinicas.html">Agenda de clínicas</a>
-            <li><a href="Gestão-Saúde/consulta-estoque.html">Consulta de estoque e acompanhamento de pedidos</a></li>
-            <li><a href="Gestão-Saúde/Administração/Consultas/avaliação-alunos.html">Avaliações de atendimento de aluno</a>
-            <li><a href="Gestão-Saúde/consulta-publico-alvo.html">Público-alvo de disciplinas\estágios</a></li>
-            <li><a href="Gestão-Saúde/consulta-codSUS.html">Lista de procedimentos SUS</a></li>
-        </ul>
-        <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
           <span>Cadastro</span><ul style="background: none !important; display: none;">
-            <li><a href="Gestão-Saúde/Administração/Cadastros/cadastrar-procedimentos.html">Cadastro/Alteração de código SUS</a></li>
-            <li><a href="Gestão-Saúde/Administração/Cadastros/cadastrar-publico-alvo.html">Cadastrar público-alvo de disciplinas/estágios</a></li>
-            <li><a href="Gestão-Saúde/Administração/Cadastros/cadastrar-material.html">Cadastrar material de estoque</a></li>
-          </ul>
-        <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+              <li><a href="Gestão-Saúde/Responsável-técnico/Cadastros/minha-agenda.html">Minha agenda de atendimentos</a> </li>
+              <li><a href="Gestão-Saúde/Responsável-técnico/Cadastros/registrar-atendimento-1.html">Registrar atendimento realizado</a> </li>
+            </ul>
+          <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
           <span>Processos</span><ul style="background: none !important; display: none;">
-            <li><a href="">Lotar responsável técnico</a></li>
-            <li><a href="Gestão-Saúde/Administração/Processos/tramitar-material-1.html">Tramitar requisição de materiais</li>
-          </ul>
-          <li><a href="Relatórios/relatórios.html">Relatórios</a></li>
-          <li><a href="conceder-acesso.html">Conceder acesso</a></li>
+          <li><a href="Gestão-Saúde/Responsável-técnico/Processos/avaliar-atendimento-1.html">Avaliar atendimento</a></li>
+          <li><a href="Gestão-Saúde/Responsável-técnico/Processos/aprovar-encaminhamento-1.html">Aprovar encaminhamento ou alta de paciente</a></li>
+        </ul>
       </ul>
-    
-    <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-      <span>Aluno</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+
+      <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+        <span>Enfermagem</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
           <span>Consultas</span><ul style="background: none !important; display: none;">
-            <li><a href="Gestão-Saúde/Aluno/Consultas/meus-pacientes.html">Meus pacientes</a></li>
-            <li><a href="Gestão-Saúde/Aluno/Consultas/minhas-avaliações.html">Minhas avaliações de atendimento</a></li>
-            <li><a href="Gestão-Saúde/consulta-codSUS.html">Lista de procedimentos SUS</a></li>
-            <li><a href="Gestão-Saúde/consulta-publico-alvo.html">Público-alvo de disciplinas e estágios</a></li>
+            <li><a href="Gestão-Saúde/consulta-estoque.html">Consulta de estoque e acompanhamento de pedidos</a></li>
+            <li><a href="Gestão-Saúde/agenda-clinicas.html">Agenda de clínicas</a></li>
           </ul>
         <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
           <span>Cadastro</span><ul style="background: none !important; display: none;">
-            <li><a href="Gestão-Saúde/Aluno/Cadastros/solicitar-regulação-interna-1.html">Solicitar regulação interna</a> </li>
-            <li><a href="Gestão-Saúde/Aluno/Cadastros/minha-agenda.html">Minha agenda de atendimentos</a> </li>
-            <li><a href="Gestão-Saúde/Aluno/Cadastros/registrar-atendimento-1.html">Registrar atendimento realizado</a> </li>
-            <li><a href="Gestão-Saúde/Aluno/Cadastros/encaminhamento-alta-1.html">Encaminhamento ou alta de paciente</a></li>
+            <li><a href="Gestão-Saúde/Enfermagem/Cadastros/requisitar-material.html">Requisitar material</a></li>
           </ul>
-        </ul>
-    
-   <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-      <span>Responsável técnico</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-        <span>Consultas</span><ul style="background: none !important; display: none;">
-          <li><a href="Gestão-Saúde/Triagem-Almoxarifado/Consultas/Pacientes.html">Pacientes</a>
-          <li><a href="Gestão-Saúde/Responsável-técnico/Consultas/avaliação-meus-alunos.html">Avaliações de atendimento dos meus alunos</a>
-          <li><a href="Gestão-Saúde/consulta-publico-alvo.html">Público-alvo de disciplinas/estágios</a></li>
-          <li><a href="Gestão-Saúde/consulta-codSUS.html">Lista de procedimentos SUS</a></li>
-        </ul>
-      <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-      <span>Cadastro</span><ul style="background: none !important; display: none;">
-          <li><a href="Gestão-Saúde/Responsável-técnico/Cadastros/minha-agenda.html">Minha agenda de atendimentos</a> </li>
-          <li><a href="Gestão-Saúde/Responsável-técnico/Cadastros/registrar-atendimento-1.html">Registrar atendimento realizado</a> </li>
-        </ul>
-      <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-      <span>Processos</span><ul style="background: none !important; display: none;">
-      <li><a href="Gestão-Saúde/Responsável-técnico/Processos/avaliar-atendimento-1.html">Avaliar atendimento</a></li>
-      <li><a href="Gestão-Saúde/Responsável-técnico/Processos/aprovar-encaminhamento-1.html">Aprovar encaminhamento ou alta de paciente</a></li>
-    </ul>
-  </ul>
-    
+            <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
+          <span>Processos</span><ul style="background: none !important; display: none;">
+            <li><a href="Gestão-Saúde/Enfermagem/Processos/admitir-paciente.html">Admitir paciente</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
 
-    <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-      <span>Enfermagem</span><ul style="background: none !important; display: block;"><li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-        <span>Consultas</span><ul style="background: none !important; display: none;">
-          <li><a href="Gestão-Saúde/consulta-estoque.html">Consulta de estoque e acompanhamento de pedidos</a></li>
-          <li><a href="Gestão-Saúde/agenda-clinicas.html">Agenda de clínicas</a></li>
-        </ul>
-      <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-        <span>Cadastro</span><ul style="background: none !important; display: none;">
-          <li><a href="Gestão-Saúde/Enfermagem/Cadastros/requisitar-material.html">Requisitar material</a></li>
-        </ul>
-          <li class="closed expandable"><div class="hitarea closed-hitarea expandable-hitarea"></div>
-        <span>Processos</span><ul style="background: none !important; display: none;">
-          <li><a href="Gestão-Saúde/Enfermagem/Processos/admitir-paciente.html">Admitir paciente</a></li>
-        </ul>
-      </li>
-    </ul>
-</div>
+    <div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
+      <style>
+        #iframe{overflow: hidden;}
+      </style>
+      <iframe id="iframe" src="Apresentação.html"style="width: 100%; height: 100%; overflow: hidden;" frameborder="0"></iframe>
+    </div>
 
+    <script>
+      // Função para executar quando uma tag âncora for clicada
+      function handleClick(event) {
+        // Evitando o comportamento padrão de seguir o link
+        event.preventDefault();
 
-<!-- ÁRVORE LATERAL - MENU GESTÃO SAÚDE -->
+        // Obtendo o valor do atributo href da âncora clicada
+        const linkHref = event.target.getAttribute('href');
 
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
-    <style type="text/css">
-    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
-    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
-    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
-    .column {width: 33.3%; float: left; padding-bottom: 100px;}
-    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
-            @media (max-width: 900px){
-            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
-            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
-            .column {width: 100%; float: none; padding-bottom: 0px;}
-            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
-        }
-        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
-    .portlet {margin: 0 0 1.5em 0;}
-    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
-    .portlet-header button {float: right; height: 18px; width: 18px;}
-    .portlet-header .ui-icon {float: right;}
-    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
-    .portlet-content a:hover{text-decoration: underline!important;}
-    .portlet-content a:visited{color: #bbb!important;}
-    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
-    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
-    .portlet-content ul li:last-child {border-bottom: none!important;}
-    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
-    .ui-sortable-placeholder * {visibility: hidden;}
-  </style>
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
+        // Obtendo o elemento iframe
+        const iframe = document.getElementById('iframe');
 
-<!-- CONTEÚDO DA PÁGINA/TELA PRINCIPAL COBALTO -->
+        // Carregando o link no iframe
+        iframe.src = linkHref;
+      }
 
-<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
-<style>
-  #iframe{overflow: hidden;}
-</style>
- <iframe id="iframe" src="Apresentação.html"style="width: 100%; height: 100%; overflow: hidden;" frameborder="0"></iframe>
-  </div>
+      // Selecionando todos os elementos âncora da página
+      const anchorLinks = document.querySelectorAll('a');
 
-
-  <script>
-    // Função para executar quando uma tag âncora for clicada
-    function handleClick(event) {
-      // Evitando o comportamento padrão de seguir o link
-      event.preventDefault();
-
-      // Obtendo o valor do atributo href da âncora clicada
-      const linkHref = event.target.getAttribute('href');
-
-      // Obtendo o elemento iframe
-      const iframe = document.getElementById('iframe');
-
-      // Carregando o link no iframe
-      iframe.src = linkHref;
-    }
-
-    // Selecionando todos os elementos âncora da página
-    const anchorLinks = document.querySelectorAll('a');
-
-    // Adicionando o evento de clique a cada âncora
-    anchorLinks.forEach(anchorLink => {
-      anchorLink.addEventListener('click', handleClick);
-    });
-  </script>
- 
-
-
-
-
-</body>
+      // Adicionando o evento de clique a cada âncora
+      anchorLinks.forEach(anchorLink => {
+        anchorLink.addEventListener('click', handleClick);
+      });
+    </script>
+  </body>
 </html>

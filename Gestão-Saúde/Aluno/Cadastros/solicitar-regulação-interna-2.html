@@ -1,22 +1,24 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head lang="pt-br">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
-    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-    var PATH_COOKIE = '/';
-    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-</script>
-<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-<link href="https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.05032023162651344283.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="https://cobalto.ufpel.edu.br/static/_js/all.javascript.05032023162651344283.js"></script>
-<link href="stylecobalto.css" type="text/css" rel="stylesheet">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitar regulação interna</title>
+    <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+        var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+        var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+        var PATH_COOKIE = '/';
+        var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+        var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+    </script>
+    <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+    <link href='../../../all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
+    <script type='text/javascript' src='../../../all.javascript.06102023101234850017.js'></script>
+    <link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
 
-<!--ALERT MESSAGES-->
-<link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
-<script src="../../../scripts/alertMessage.js"></script>
+    <!--ALERT MESSAGES-->
+    <link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
+    <script src="../../../scripts/alertMessage.js"></script>
 
     <!-- HIDDEN DIV FOR ALERT MESSAGE -->
     <div id="customAlert" class="modal">
@@ -39,308 +41,275 @@
         <div><button id="okButton" class="centered-button">OK</button></div>
         </div>
     </div>
-    <!-- HIDDEN DIV FOR ALERT MESSAGE -->
-<!--ALERT MESSAGES-->
-</head>
+  </head>
+
+  <body>
+    <!-- CONTEÚDO SUPERIOR -->
+    <div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
+      <li>Aluno</li>    
+      <li>Cadastro</li>
+      <li>Solicitar regulação interna</li>
+      </ul>
+        
+    <div style="clear: both;"></div></div><div style="clear: both;"></div>
+
+    <!-- CONTEÚDO BOTÕES -->
+    <div class="ui-widget-content ui-corner-all toolbar">
+        <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
+        <button id="salvar" class="salvar" title="Salvar paciente" onclick="submitFunction()" style="float: left;">Salvar alterações</button>
+        <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
+        <span style="clear: both; display: block"></span>
+      </div>
 
 
 
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
-<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
-    <style type="text/css">
-    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
-    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
-    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
-    .column {width: 33.3%; float: left; padding-bottom: 100px;}
-    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
-            @media (max-width: 900px){
-            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
-            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
-            .column {width: 100%; float: none; padding-bottom: 0px;}
-            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
-        }
-        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
-    .portlet {margin: 0 0 1.5em 0;}
-    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
-    .portlet-header button {float: right; height: 18px; width: 18px;}
-    .portlet-header .ui-icon {float: right;}
-    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
-    .portlet-content a:hover{text-decoration: underline!important;}
-    .portlet-content a:visited{color: #bbb!important;}
-    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
-    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
-    .portlet-content ul li:last-child {border-bottom: none!important;}
-    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
-    .ui-sortable-placeholder * {visibility: hidden;}
-  </style>
+    <!-- INÍCIO DIVISÃO EM TABS-->
+    <div id="tab" class="tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
+      <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+        <li class="labeltab ui-state-default ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tab-0" aria-labelledby="ui-id-2" aria-selected="true"><a href="#tab-0" accesskey="tab-0" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Solicitar regulação interna</a></li>
+      </ul>
 
+      <div style="margin-left: 20px;margin-top: 20px;">
+        <p></p><br>
+        <p></p><br>
+        <label style="width: 100px;" >Matrícula</label>
+        <input type="text" id="matriculaAluno" value="GET MATRÍCULA DO ALUNO" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 150px;" readonly="readonly"/>
+        <label style="width: 100px;margin-left: 35px;">Aluno</label>
+        <input type="text" id="nomeAluno" value="GET NOME DO ALUNO" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 350px;" readonly="readonly"/>
+        <p></p><br>
 
-<!-- CONTEÚDO SUPERIOR -->
-<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-  <li>Aluno</li>    
-  <li>Cadastro</li>
-  <li>Solicitar regulação interna</li>
-  </ul>
-    
-<div style="clear: both;"></div></div><div style="clear: both;"></div>
+        <hr class="ui-state-default">
+        <p></p>
+        <br>
 
-<!-- CONTEÚDO BOTÕES -->
-<div class="ui-widget-content ui-corner-all toolbar">
-    <button id="voltar-pagina" class="voltar-pagina" style="float: left;">Voltar página</button>
-    <button id="salvar" class="salvar" title="Salvar paciente" onclick="submitFunction()" style="float: left;">Salvar alterações</button>
-    <button id="ajuda" class="ajuda" title="F1" style="float: right;">Ajuda</button>
-    <span style="clear: both; display: block"></span>
-  </div>
-
-
-
-<!-- INÍCIO DIVISÃO EM TABS-->
-<div id="tab" class="tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
-  <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
-    <li class="labeltab ui-state-default ui-tabs-active ui-state-active" role="tab" tabindex="0" aria-controls="tab-0" aria-labelledby="ui-id-2" aria-selected="true"><a href="#tab-0" accesskey="tab-0" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2">Solicitar regulação interna</a></li>
-  </ul>
-
-  <div style="margin-left: 20px;margin-top: 20px;">
-    <p></p><br>
-    <p></p><br>
-    <label style="width: 100px;" >Matrícula</label>
-    <input type="text" id="matriculaAluno" value="GET MATRÍCULA DO ALUNO" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 150px;" readonly="readonly"/>
-    <label style="width: 100px;margin-left: 35px;">Aluno</label>
-    <input type="text" id="nomeAluno" value="GET NOME DO ALUNO" maxlength="255" class="ui-state-default ui-corner-all mousetrap" style="width: 350px;" readonly="readonly"/>
-    <p></p><br>
-
-    <hr class="ui-state-default">
-    <p></p>
-    <br>
-
-    <label style="width: 100px;margin-left: 20px;margin-top: 5px;">Data da solicitação</label>
-    <input type="text" id="solicitaçãoData" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 150px;;margin-top: 5px;">
-    <br>
-    
-    <label style="width: 450px;margin-left: 20px;margin-top: 5px;">Descrição da solicitação:</label><br>
-    <textarea style="width: 40%; height: 100px;margin-left: 20px;margin-top: 5px;" id="solicitaçãoDescrição" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" placeholder="USUÁRIO DEVERÁ DESCREVER O QUE PRECISA, PODENDO FAZER UMA LISTA DE NECESSIDADES"></textarea>
-    <br>
+        <label style="width: 100px;margin-left: 20px;margin-top: 5px;">Data da solicitação</label>
+        <input type="text" id="solicitaçãoData" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap  datepicker" style=" width: 150px;;margin-top: 5px;">
+        <br>
+        
+        <label style="width: 450px;margin-left: 20px;margin-top: 5px;">Descrição da solicitação:</label><br>
+        <textarea style="width: 40%; height: 100px;margin-left: 20px;margin-top: 5px;" id="solicitaçãoDescrição" rows="10" maxlength="1000" class="ui-state-default ui-corner-all" placeholder="USUÁRIO DEVERÁ DESCREVER O QUE PRECISA, PODENDO FAZER UMA LISTA DE NECESSIDADES"></textarea>
+        <br>
+        </div>
     </div>
-</div>
 
-  
+      
 
 
-<div>
-<h2 style="color: red; margin-left: 25px;">DESVINCULA O ALUNO SELECIONADO DO PACIENTE/DISCIPLINA NO BANCO DE DADOS</h2><br>
-<h2 style="color: red; margin-left: 25PX;">EM CASO DE 'continuaTratamento' O PACIENTE VOLTA PRA LISTA DE ESPERA DA MESMA ESPECIALIDADE COM MAIOR PRIORIDADE</h2><BR>
-<h2 style="color: red; margin-left: 25px;">DÁ PRA ESSA TELA SER ÚNICA E NÃO APENAS DE UMA DISCIPLINAS, O ALUNO JÁ CAIRIA DIRETO NA PÁGINA 2 E DESCREVERIA O QUE PRECISA</h2><br>
-</div>
-
+    <div>
+    <h2 style="color: red; margin-left: 25px;">DESVINCULA O ALUNO SELECIONADO DO PACIENTE/DISCIPLINA NO BANCO DE DADOS</h2><br>
+    <h2 style="color: red; margin-left: 25PX;">EM CASO DE 'continuaTratamento' O PACIENTE VOLTA PRA LISTA DE ESPERA DA MESMA ESPECIALIDADE COM MAIOR PRIORIDADE</h2><BR>
+    <h2 style="color: red; margin-left: 25px;">DÁ PRA ESSA TELA SER ÚNICA E NÃO APENAS DE UMA DISCIPLINAS, O ALUNO JÁ CAIRIA DIRETO NA PÁGINA 2 E DESCREVERIA O QUE PRECISA</h2><br>
+    </div>
 
 
 
-<div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">&copy;2010 - 2023 Cobalto </div>
+
+    <div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">&copy;2010 - 2023 Cobalto </div>
 
 
 
-<script>
-// FUNÇÃO PARA ALTERAR O STATUS DO PACIENTE NO FRONT-END
-function alterarStatus() {
-  const selectedRows = document.querySelectorAll("#vinculadosTable input[type='checkbox']:checked");
-  const novoStatusSelect = document.getElementById("novoStatus");
-  const selectedOption = novoStatusSelect.options[novoStatusSelect.selectedIndex];
-  const novoStatusText = selectedOption.textContent;
+    <script>
+    // FUNÇÃO PARA ALTERAR O STATUS DO PACIENTE NO FRONT-END
+    function alterarStatus() {
+      const selectedRows = document.querySelectorAll("#vinculadosTable input[type='checkbox']:checked");
+      const novoStatusSelect = document.getElementById("novoStatus");
+      const selectedOption = novoStatusSelect.options[novoStatusSelect.selectedIndex];
+      const novoStatusText = selectedOption.textContent;
 
-  let success = true; // Flag to track success
+      let success = true; // Flag to track success
 
-  if (selectedRows.length > 0 && selectedOption.value !== "Escolher") {
-    for (const checkbox of selectedRows) {
-      const selectedRow = checkbox.closest("tr");
-      const lastCell = selectedRow.cells[selectedRow.cells.length - 1];
-      lastCell.textContent = novoStatusText;
-    }
+      if (selectedRows.length > 0 && selectedOption.value !== "Escolher") {
+        for (const checkbox of selectedRows) {
+          const selectedRow = checkbox.closest("tr");
+          const lastCell = selectedRow.cells[selectedRow.cells.length - 1];
+          lastCell.textContent = novoStatusText;
+        }
 
-    // Clear selected checkboxes
-    for (const checkbox of selectedRows) {
-      checkbox.checked = false;
-    }
-  } else {
-    if (selectedRows.length === 0) {
-      showCustomAlert("Por favor, selecione uma ou mais linhas na tabela.");
-      success = false;
-    } else if (selectedOption.value === "Escolher") {
-      showCustomAlert("Por favor, escolha uma opção válida para o novo status do paciente.");
-      success = false;
-    }
-  }
-
-  return success; // Return the success status
-}
-
-// FUNÇÃO PARA ADICIONAR UMA NOVA LINHA NA TABELA DE NOVO VÍNCULO
-function adicionarNovaLinha() {
-  const componenteCurricularInput = document.getElementById("componenteCurricular");
-  const componenteCurricularTurmaInput = document.getElementById("componenteCurricularTurma");
-  const areaSaudeInput = document.getElementById("areaSaude");
-  const especAreaSaúdeInput = document.getElementById("especAreaSaude");
-  const tableNovoVinculo = document.getElementById("tableNovoVinculo");
-
-  // Get the selected row from tablePacientes
-  const tablePacientes = document.getElementById("tablePacientes");
-  const selectedRows = Array.from(tablePacientes.querySelectorAll('input[type="radio"]:checked'));
-
-  if (selectedRows.length === 0) {
-    showCustomAlert("Selecione um aluno antes de adicionar uma nova linha.");
-    return;
-  }
-
-  // Set the same 'name' attribute for all selected radio buttons
-  const nameAttribute = "pacienteRadio";
-  selectedRows.forEach((row) => {
-    row.name = nameAttribute;
-  });
-
-  const pacienteCPFInput = selectedRows[0].parentNode.parentNode.cells[1].textContent; // Get the pacienteCPF from the third column
-  const pacienteNomeInput = selectedRows[0].parentNode.parentNode.cells[2].textContent; // Get the pacienteNome from the second column
-  const demandaDescriçãoInput = selectedRows[0].parentNode.parentNode.cells[3].textContent; // Get the demandaDescrição from the fourth column
-
-  // Check if 'areaSaude' or 'componenteCurricular' is equal to 'Escolher'
-  if (
-    (componenteCurricularInput.value.trim() === "Escolher" || areaSaudeInput.value.trim() === "Escolher") || componenteCurricularTurmaInput.value.trim() === "Escolher" ||
-    areaSaudeInput.value.trim() === "" || especAreaSaúdeInput.value.trim() === "") {
-    showCustomAlert("Por favor, complete todas as informações para adicionar uma nova linha.");
-    return;
-  }
-
-  const newRow = tableNovoVinculo.insertRow(tableNovoVinculo.rows.length);
-
-  // Add the "ui-state-default" class to the row
-  newRow.classList.add("ui-state-default");
-
-  // Insert cells and add content
-  for (let i = 0; i < 8; i++) {
-    const cell = newRow.insertCell(i);
-
-    // Check if it's the first cell
-    if (i === 0) {
-      const checkbox = document.createElement("input");
-      checkbox.type = "checkbox";
-      cell.appendChild(checkbox);
-    } else {
-      switch (i) {
-        case 1:
-          cell.textContent = pacienteNomeInput;
-          break;
-        case 2:
-          cell.textContent = pacienteCPFInput;
-          break;
-        case 3:
-          cell.textContent = componenteCurricularInput.value;
-          break;
-        case 4:
-          cell.textContent = componenteCurricularTurmaInput.value;
-          break;
-        case 5:
-          cell.textContent = demandaDescriçãoInput; // Use textContent instead of demandaDescriçãoInput.value
-          break;
-        case 6:
-          cell.textContent = especAreaSaúdeInput.value;
-          break;
-        case 7:
-          cell.textContent = areaSaudeInput.value;
-          break;
-        default:
-          break;
+        // Clear selected checkboxes
+        for (const checkbox of selectedRows) {
+          checkbox.checked = false;
+        }
+      } else {
+        if (selectedRows.length === 0) {
+          showCustomAlert("Por favor, selecione uma ou mais linhas na tabela.");
+          success = false;
+        } else if (selectedOption.value === "Escolher") {
+          showCustomAlert("Por favor, escolha uma opção válida para o novo status do paciente.");
+          success = false;
+        }
       }
+
+      return success; // Return the success status
     }
 
-    // Add the "ui-state-default" class to each cell
-    cell.classList.add("ui-state-default");
-  }
+    // FUNÇÃO PARA ADICIONAR UMA NOVA LINHA NA TABELA DE NOVO VÍNCULO
+    function adicionarNovaLinha() {
+      const componenteCurricularInput = document.getElementById("componenteCurricular");
+      const componenteCurricularTurmaInput = document.getElementById("componenteCurricularTurma");
+      const areaSaudeInput = document.getElementById("areaSaude");
+      const especAreaSaúdeInput = document.getElementById("especAreaSaude");
+      const tableNovoVinculo = document.getElementById("tableNovoVinculo");
 
-  // Clear input fields after adding a new row
-  componenteCurricularInput.value = "";
-  componenteCurricularTurmaInput.value = "";
-  areaSaudeInput.value = "";
-  especAreaSaúdeInput.value = "";
-}
+      // Get the selected row from tablePacientes
+      const tablePacientes = document.getElementById("tablePacientes");
+      const selectedRows = Array.from(tablePacientes.querySelectorAll('input[type="radio"]:checked'));
 
+      if (selectedRows.length === 0) {
+        showCustomAlert("Selecione um aluno antes de adicionar uma nova linha.");
+        return;
+      }
 
-function excluirLinhasSelecionadas() {
-  const tableNovoVinculo = document.getElementById("tableNovoVinculo");
-  const rowsToDelete = [];
+      // Set the same 'name' attribute for all selected radio buttons
+      const nameAttribute = "pacienteRadio";
+      selectedRows.forEach((row) => {
+        row.name = nameAttribute;
+      });
 
-  // Iterate through the rows in reverse order to avoid issues with changing indices
-  for (let i = tableNovoVinculo.rows.length - 1; i >= 0; i--) {
-    const row = tableNovoVinculo.rows[i];
-    const checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+      const pacienteCPFInput = selectedRows[0].parentNode.parentNode.cells[1].textContent; // Get the pacienteCPF from the third column
+      const pacienteNomeInput = selectedRows[0].parentNode.parentNode.cells[2].textContent; // Get the pacienteNome from the second column
+      const demandaDescriçãoInput = selectedRows[0].parentNode.parentNode.cells[3].textContent; // Get the demandaDescrição from the fourth column
 
-    if (checkbox && checkbox.checked) { // Check if checkbox exists and is checked
-      // Mark rows for deletion
-      rowsToDelete.push(i);
-    }
-  }
+      // Check if 'areaSaude' or 'componenteCurricular' is equal to 'Escolher'
+      if (
+        (componenteCurricularInput.value.trim() === "Escolher" || areaSaudeInput.value.trim() === "Escolher") || componenteCurricularTurmaInput.value.trim() === "Escolher" ||
+        areaSaudeInput.value.trim() === "" || especAreaSaúdeInput.value.trim() === "") {
+        showCustomAlert("Por favor, complete todas as informações para adicionar uma nova linha.");
+        return;
+      }
 
-  // Delete the marked rows
-  rowsToDelete.forEach((index) => {
-    tableNovoVinculo.deleteRow(index);
-  });
-}
+      const newRow = tableNovoVinculo.insertRow(tableNovoVinculo.rows.length);
 
+      // Add the "ui-state-default" class to the row
+      newRow.classList.add("ui-state-default");
 
-function submitFunction() {
-  showCustomAlert("Encaminhamento/Alta registrados com sucesso.");
-    }
+      // Insert cells and add content
+      for (let i = 0; i < 8; i++) {
+        const cell = newRow.insertCell(i);
 
-</script>
-
-<!-- <script>
-function submitFunction() {
-  const tipoTramiteValue = document.querySelector('.tipoTramite:checked').value;
-
-  if (tipoTramiteValue === 'novoVinculo') {
-    adicionarNovaLinha();
-  } else if (tipoTramiteValue === 'desvincular') {
-    if (alterarStatus()) {
-      showCustomAlert("Encaminhamento/Alta registrados com sucesso.");
-    }
-  }
-}
-</script> -->
-
-
-
-
-
-
-<!-- CODE FOR HIDING/SHOWING DIFFERENT DIVS ON THE SAME PAGE LOCATION -->
-<script>
-  // Define the function and immediately invoke it
-  (function initializePage() {
-    const desvincularTab = document.querySelector('#desvincularTab');
-    const vinculoNovoTab = document.querySelector('#vinculoNovoTab');
-    const tipoTramiteOptions = document.querySelectorAll('.tipoTramite');
-
-    // Initial call to hide one of the tabs based on the selected option
-    function updateTabs() {
-      tipoTramiteOptions.forEach(option => {
-        if (option.checked) {
-          if (option.value === 'desvincular') {
-            desvincularTab.style.display = 'block';
-            vinculoNovoTab.style.display = 'none';
-          } else if (option.value === 'novoVinculo') {
-            desvincularTab.style.display = 'none';
-            vinculoNovoTab.style.display = 'block';
+        // Check if it's the first cell
+        if (i === 0) {
+          const checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+          cell.appendChild(checkbox);
+        } else {
+          switch (i) {
+            case 1:
+              cell.textContent = pacienteNomeInput;
+              break;
+            case 2:
+              cell.textContent = pacienteCPFInput;
+              break;
+            case 3:
+              cell.textContent = componenteCurricularInput.value;
+              break;
+            case 4:
+              cell.textContent = componenteCurricularTurmaInput.value;
+              break;
+            case 5:
+              cell.textContent = demandaDescriçãoInput; // Use textContent instead of demandaDescriçãoInput.value
+              break;
+            case 6:
+              cell.textContent = especAreaSaúdeInput.value;
+              break;
+            case 7:
+              cell.textContent = areaSaudeInput.value;
+              break;
+            default:
+              break;
           }
         }
+
+        // Add the "ui-state-default" class to each cell
+        cell.classList.add("ui-state-default");
+      }
+
+      // Clear input fields after adding a new row
+      componenteCurricularInput.value = "";
+      componenteCurricularTurmaInput.value = "";
+      areaSaudeInput.value = "";
+      especAreaSaúdeInput.value = "";
+    }
+
+
+    function excluirLinhasSelecionadas() {
+      const tableNovoVinculo = document.getElementById("tableNovoVinculo");
+      const rowsToDelete = [];
+
+      // Iterate through the rows in reverse order to avoid issues with changing indices
+      for (let i = tableNovoVinculo.rows.length - 1; i >= 0; i--) {
+        const row = tableNovoVinculo.rows[i];
+        const checkbox = row.cells[0].querySelector('input[type="checkbox"]');
+
+        if (checkbox && checkbox.checked) { // Check if checkbox exists and is checked
+          // Mark rows for deletion
+          rowsToDelete.push(i);
+        }
+      }
+
+      // Delete the marked rows
+      rowsToDelete.forEach((index) => {
+        tableNovoVinculo.deleteRow(index);
       });
     }
 
-    // Call the updateTabs function on page load
-    updateTabs();
 
-    // Listen for changes in the tipoTramite options
-    tipoTramiteOptions.forEach(option => {
-      option.addEventListener('change', updateTabs);
-    });
-  })();
-</script>
+    function submitFunction() {
+      showCustomAlert("Encaminhamento/Alta registrados com sucesso.");
+        }
+
+    </script>
+
+    <!-- <script>
+    function submitFunction() {
+      const tipoTramiteValue = document.querySelector('.tipoTramite:checked').value;
+
+      if (tipoTramiteValue === 'novoVinculo') {
+        adicionarNovaLinha();
+      } else if (tipoTramiteValue === 'desvincular') {
+        if (alterarStatus()) {
+          showCustomAlert("Encaminhamento/Alta registrados com sucesso.");
+        }
+      }
+    }
+    </script> -->
+
+
+
+
+
+
+    <!-- CODE FOR HIDING/SHOWING DIFFERENT DIVS ON THE SAME PAGE LOCATION -->
+    <script>
+      // Define the function and immediately invoke it
+      (function initializePage() {
+        const desvincularTab = document.querySelector('#desvincularTab');
+        const vinculoNovoTab = document.querySelector('#vinculoNovoTab');
+        const tipoTramiteOptions = document.querySelectorAll('.tipoTramite');
+
+        // Initial call to hide one of the tabs based on the selected option
+        function updateTabs() {
+          tipoTramiteOptions.forEach(option => {
+            if (option.checked) {
+              if (option.value === 'desvincular') {
+                desvincularTab.style.display = 'block';
+                vinculoNovoTab.style.display = 'none';
+              } else if (option.value === 'novoVinculo') {
+                desvincularTab.style.display = 'none';
+                vinculoNovoTab.style.display = 'block';
+              }
+            }
+          });
+        }
+
+        // Call the updateTabs function on page load
+        updateTabs();
+
+        // Listen for changes in the tipoTramite options
+        tipoTramiteOptions.forEach(option => {
+          option.addEventListener('change', updateTabs);
+        });
+      })();
+    </script>
   </body>
 </html>
 

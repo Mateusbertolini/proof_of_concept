@@ -1,64 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>Tramitar encaminhamento</title>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>  
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script>
-        <script type="text/javascript">
-            var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-            var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-            var PATH_COOKIE = '/';
-            var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-            var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-        </script>
-        <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-        <link href='../../../all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
-        <script type='text/javascript' src='../../../all.javascript.06102023101234850017.js'></script>
-        <link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
-        <link href="../../../stylecobaltomodificado.css" type="text/css" rel="stylesheet">
-        
-        
-        <!--ALERT MESSAGES-->
-        <link href="../../../scripts/alert-message.css" type="text/css" rel="stylesheet">
-        <script src="../../../scripts/alertMessage.js"></script>
-        
-        <!-- HIDDEN DIV FOR ALERT MESSAGE -->
-        <div id="customAlert" class="modal">
-            <div class="ui-dialog ui-widget ui-widget-content ui-corner-all ui-front ui-dialog-buttons ui-draggable ui-resizable centered-modal">
-            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
-                <span id="ui-id-12" class="ui-dialog-title">Atenção</span>
-                <button class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button">
-                <span class="close ui-button-icon-primary ui-icon ui-icon-closethick" style="display: flex;  float:right; margin-right: -8px; margin-top: -8px;"></span>
-                </button>
-            </div>
-            <p></p>
-            <br>
-            <div id="dialog-message-info" style="width: auto; min-height: 0px; max-height: none; height: auto;" class="ui-dialog-content ui-widget-content">
-                <span class="ui-icon ui-icon-info" style="float:left; margin:12px 0 0 0;"></span>
-                <p id="alertMessage"></p>
-            </div>
-            <p> </p><br>
-            <p> </p><br>
-            <p> </p><br>
-            <div><button id="okButton" class="centered-button">OK</button></div>
-            </div>
-        </div>
-    </head>
-
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Avaliação dos meus alunos</title>
+      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+          var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+          var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+          var PATH_COOKIE = '/';
+          var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+          var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+      </script>
+      <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+      <link href='../../../all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
+      <script type='text/javascript' src='../../../all.javascript.06102023101234850017.js'></script>
+      <link href="../../../stylecobalto.css" type="text/css" rel="stylesheet">
+  </head>
 
 
 <!-- CONTEÚDO DA PÁGINA/TELA DO COBALTO COMEÇA AQUI -->
-<div class="breadCrumb module"><ul><li><a href="https://cobalto.ufpel.edu.br/dashboard"></a>
-  <li>Triagem/Almoxarifado</li>    
-  <li>Processos</li>
-  <li>Tramitar encaminhamento/alta de paciente</li>
-  </ul>
-
+<div id="content-center" class="ui-layout-center ui-widget-content"
+    style="background: none !important; overflow: hidden !important">
     
+  <div class="breadCrumb module">
+    <ul>
+      <li><a href="index.html"></a></li><li>Gestão Saúde</li>
+      <li>Aluno</li>
+      <li>Consultas</li>
+      <li>Meus pacientes</li>
+    </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     
     <div class="ui-widget-content ui-corner-all toolbar">
@@ -206,7 +176,7 @@ function buscar() {
   } else if (cpf.trim() !== '') {
     consultarPacientesPorCPF(cpf);
   } else {
-    showCustomAlert("Preencha o campo nome ou CPF para realizar a busca.");
+    alert("Preencha o campo nome ou CPF para realizar a busca.");
   }
 }
 
@@ -218,7 +188,7 @@ function consultarPacientesPorNome(nome) {
       limparTabela(tbody);
       
       if (pacientes.length === 0) {
-        showCustomAlert("Nenhum paciente encontrado");
+        alert("Nenhum paciente encontrado");
       } else {
         pacientes.forEach(paciente => {
           adicionarNovaLinha(
@@ -244,7 +214,7 @@ function consultarPacientesPorCPF(cpf) {
       limparTabela(tbody);
 
       if (pacientes.length === 0) {
-        showCustomAlert("Nenhum paciente encontrado");
+        alert("Nenhum paciente encontrado");
       } else {
         pacientes.forEach(paciente => {
           adicionarNovaLinha(
@@ -284,63 +254,54 @@ document.getElementById('txtNome').onkeydown = function (e) {
 </script>
 
   </body>
-<script>
-  // buscar pacientes do aluno logado
-  const aluno = JSON.parse(localStorage.getItem('usuario'));
-  api.alunos.pacientes({ Matricula: aluno.Matricula })
-    .then((pacientes) => {
-      const tbody = document.querySelector('.ui-jqgrid-htable');
-    //  limparTabela(tbody);
-      
-      if (pacientes.length === 0) {
-        show("Nenhum paciente encontrado");
-      } else {
-        pacientes.forEach(paciente => {
-          adicionarNovaLinha(
-            paciente.Nome,
-            paciente.Tel,
-            paciente.CPF,
-            paciente.Rg,
-            paciente.Demanda
-          );
-        });
-      }
-    })
-    .catch((error) => {
-      console.error('Erro ao consultar pacientes:', error);
-    });
-    function limparTabela(tbody) {
-  while (tbody.children.length > 1) {
-    tbody.removeChild(tbody.lastChild);
+  <script>
+    // buscar pacientes do aluno logado
+    const aluno = JSON.parse(localStorage.getItem('usuario'));
+    api.alunos.pacientes({ Matricula: aluno.Matricula })
+      .then((pacientes) => {
+        const tbody = document.querySelector('.ui-jqgrid-htable');
+      //  limparTabela(tbody);
+        
+        if (pacientes.length === 0) {
+          show("Nenhum paciente encontrado");
+        } else {
+          pacientes.forEach(paciente => {
+            adicionarNovaLinha(
+              paciente.Nome,
+              paciente.Tel,
+              paciente.CPF,
+              paciente.Rg,
+              paciente.Demanda
+            );
+          });
+        }
+      })
+      .catch((error) => {
+        console.error('Erro ao consultar pacientes:', error);
+      });
+      function limparTabela(tbody) {
+    while (tbody.children.length > 1) {
+      tbody.removeChild(tbody.lastChild);
+    }
   }
-}
-    function adicionarNovaLinha(nome, Tel, cpf, diciplina, demanda) {
-  // Seleciona o corpo da tabela usando o XPath
-  const tbody = document.querySelector('.ui-jqgrid-htable');
-
+      function adicionarNovaLinha(nome, Tel, cpf, diciplina, demanda) {
+    // Seleciona o corpo da tabela usando o XPath
+    const tbody = document.querySelector('.ui-jqgrid-htable');
   
-  // Cria um novo elemento de linha (<tr>)
-  const novaLinha = document.createElement('tr');
-
-  // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
-  novaLinha.innerHTML = `
-    <td><a href="tramitar-encaminhamento-2.html?cpf=${cpf}">${nome}</a></td>
-    <td>${Tel}</td>
-    <td>${cpf}</td>
-    <td>${diciplina}</td>
-    <td>${demanda}</td>
-  `;
-  // Adiciona a nova linha ao corpo da tabela
-  tbody.appendChild(novaLinha);
-}
-</script>
-
-
-<h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-  FUNCIONALIDADE PREVISTA: <br>
-  1) ABRIR AUTOMATICAMENTE A LISTA DE ENCAMINHAMENTOS/ALTAS RECEBIDOS<br>
-  2) <a href="tramitar-encaminhamento-2.html"> SELECIONA UM ENCAMINHAMENTO E AVANÇA PARA A PRÓXIMA PÁGINA</a> 
- 
-</h2>
-
+    
+    // Cria um novo elemento de linha (<tr>)
+    const novaLinha = document.createElement('tr');
+  
+    // Adiciona o conteúdo da nova linha criando células de dados (<td>) e inserindo os valores
+    novaLinha.innerHTML = `
+      <td><a href="perfil-visualização.html?cpf=${cpf}">${nome}</a></td>
+      <td>${Tel}</td>
+      <td>${cpf}</td>
+      <td>${diciplina}</td>
+      <td>${demanda}</td>
+    `;
+    // Adiciona a nova linha ao corpo da tabela
+    tbody.appendChild(novaLinha);
+  }
+  </script>
 </html>

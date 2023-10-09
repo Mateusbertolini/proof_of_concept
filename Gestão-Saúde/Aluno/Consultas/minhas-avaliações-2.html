@@ -1,66 +1,37 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avaliação de aluno em disciplina</title>
+    <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
+      var BASE_URL = 'https://cobalto.ufpel.edu.br/';
+      var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
+      var PATH_COOKIE = '/';
+      var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
+      var JS = 'https://cobalto.ufpel.edu.br/static/_js';
+    </script>
+    <link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
+    <link href='https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
+    <script type='text/javascript' src='https://cobalto.ufpel.edu.br/static/_js/all.javascript.06102023101234850017.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<head lang="pt-br">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    
-      <script type="text/javascript" async="" defer="" src="https://stats.ufpel.edu.br/piwik.js"></script><script type="text/javascript">
-    var BASE_URL = 'https://cobalto.ufpel.edu.br/';
-    var WIKI = 'http://wikicobalto.ufpel.edu.br/doku.php?';
-    var PATH_COOKIE = '/';
-    var IMG = 'https://cobalto.ufpel.edu.br/static/_img';
-    var JS = 'https://cobalto.ufpel.edu.br/static/_js';
-</script>
-<link rel="shortcut icon" href="https://cobalto.ufpel.edu.br/static/_img/favicon.ico" type="image/ico">
-<link href='https://cobalto.ufpel.edu.br/static/_css/redmond/all.css.jquery-ui.06102023101234850017.css' type='text/css' rel='stylesheet'/>
-<script type='text/javascript' src='https://cobalto.ufpel.edu.br/static/_js/all.javascript.06102023101234850017.js'></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
 
-
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
-<div id="content-center" class="ui-layout-center ui-widget-content" style="background: none !important; overflow: hidden !important">
-    <style type="text/css">
-    .columnGeral {width: 100.0%; float: left; padding-bottom: 8px;}
-    .columnGrafico {width: 33.3%; float: left; padding-bottom: 8px;}
-    .columnGrafico1 .portlet, .columnGrafico2 .portlet, .columnGrafico3 .portlet {margin-right: 1.5em;}
-    .column {width: 33.3%; float: left; padding-bottom: 100px;}
-    .column1 .portlet, .column2 .portlet {margin-right: 1.5em;}
-            @media (max-width: 900px){
-            .columnGrafico {width: 100%; float: none; padding-bottom: 0px;}
-            .columnGrafico1 .portlet, .columnGrafico2 .portlet {margin-right: 0px;}
-            .column {width: 100%; float: none; padding-bottom: 0px;}
-            .column1 .portlet, .column2 .portlet {margin-right: 0px;}
-        }
-        .column-fixed {width: 33.3%; float: left; padding-bottom: 100px;}
-    .portlet {margin: 0 0 1.5em 0;}
-    .portlet-header {margin: 0.3em; padding: 2px 3px 5px 5px; cursor:pointer;}
-    .portlet-header button {float: right; height: 18px; width: 18px;}
-    .portlet-header .ui-icon {float: right;}
-    .portlet-content {padding: 6px; background: none !important; border: none; font-size: 1.1em;}
-    .portlet-content a:hover{text-decoration: underline!important;}
-    .portlet-content a:visited{color: #bbb!important;}
-    .portlet-content ul {list-style-type: none !important; padding:0px!important; border: none!important;}
-    .portlet-content ul li {padding: 3px !important; border-right: none!important; border-left: none!important; border-top: none!important; color: inherit!important; font-weight:inherit!important;}
-    .portlet-content ul li:last-child {border-bottom: none!important;}
-    .ui-sortable-placeholder {border: 1px dotted black; visibility: visible !important; height: 50px !important;}
-    .ui-sortable-placeholder * {visibility: hidden;}
-  </style>
-<!-- STYLE PÁGINA/TELA PRINCIPAL COBALTO -->
-
-
-
-<!-- CONTEÚDO DA PÁGINA/TELA DO COBALTO COMEÇA AQUI -->
-<div id="content-center" class="ui-layout-center ui-widget-content"
+  <body>
+    <!-- CONTEÚDO DA PÁGINA/TELA DO COBALTO COMEÇA AQUI -->
+    <div id="content-center" class="ui-layout-center ui-widget-content"
     style="background: none !important; overflow: hidden !important">
     
-  <div class="breadCrumb module">
-    <ul>
-      <li><a href="index.html"></a></li><li>Gestão Saúde</li>
-      <li>Aluno</li>
-      <li>Consultas</li>
-      <li>Minhas avaliações de atendimento</li>
-      <li>'get disciplina selecionada'</li>
-      <li>'get turma'</li>
-    </ul>
+    <div class="breadCrumb module">
+      <ul>
+        <li><a href="index.html"></a></li><li>Gestão Saúde</li>
+        <li>Alunos</li>
+        <li>Consultas</li>
+        <li>Minhas avaliações de atendimento</li>
+        <li>'GET disciplina'</li>
+      </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     
     <div class="ui-widget-content ui-corner-all toolbar">
@@ -69,259 +40,270 @@
       <span style="clear: both; display: block"></span>
     </div>
 
+    <div id="tabAvaliações" class="tabs">
+      <div id="tabAvaliações-0" class="ui-widget tabAvaliações tabAvaliações-0 tabAvaliações-0">
+        <ul>
+          <li class="labeltabAvaliações"><a href="#tabAvaliações-0" accessKey="tabAvaliações-0">Avaliações do aluno</a></li>
+        </ul>
+        <br>
+        <p></p>
+        <br>
 
+        <label style="width: 90px;" >Atividade</label>
+        <input type="text" id="disciplina" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " readonly="1" style="width: 200px;" placeholder="GET CÓDIGO E NOME DA DISCIPLINA">
+        <br>
 
-   
-  <div id="tabMinhasAvaliações" class="tabs">
-    <div id="tabMinhasAvaliações-0" class="ui-widget tabMinhasAvaliações tabMinhasAvaliações-0 tabMinhasAvaliações-0">
-      <ul>
-        <li class="labeltabMinhasAvaliações"><a href="#tabMinhasAvaliações-0" accessKey="tabMinhasAvaliações-0">Minhas avaliações</a></li>
-      </ul>
-  <br>
-  <p></p>
-  <br>
-  
+        <label style="width: 90px;">Cód. atividade</label>
+        <input type="text" id="cod_disciplina" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " readonly="1" style="width: 120px;" placeholder="GET CÓDIGO E NOME DA DISCIPLINA">
+        <br>
 
+        <label style="width: 90px;">Período</label>
+        <input type="text" id="periodo" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap ano" readonly="1" style="text-align: left;width: 120px;" placeholder="GET ANO">
+        <br>
 
-
-
-    <label id="lblAtividadeCurricular" style="width: 60px;" >Atividade</label>
-    <input type="text" id="txtAtividadeCurricular" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " readonly="1" style="width: 500px;" placeholder="GET CÓDIGO E NOME DA DISCIPLINA">
-
-    <br>
-    <label id="lblAno" style="width: 60px;" >Ano</label>
-    <input type="text" id="txtAno" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap ano" readonly="1" style="text-align: left ;width: 96px;" placeholder="GET ANO">
-
-    <br>
-    <label name="lblBasePeriodo" id="lblBasePeriodo" style="width: 60px;"  >Período</label>
-	<input type="text" id="txtSem" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap ano" readonly="1" style="text-align: left;width: 96px;" placeholder="GET SEMESTRE">
-
-
-    <br>
+      </div>
     </div>
-</div>
 
-
-
-<!-- TAB AVALIAÇÃO QUANTITATIVA -->
-<div id="tabResultadoAvaliacaoDocente" class="tabs"><ul></ul>
-  <div id="tabResultadoAvaliacaoDocente-1" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-1 tabResultadoAvaliacaoDocente-1">
-    <ul><li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-1" accessKey="tabResultadoAvaliacaoDocente-1">Avaliação quantitativa</a></li></ul>			
-        
-    <label id="lblTotalAvaliações" style="width: 120px;">Total de avaliações</label>
-    <input type="text" id="txtTotalAvaliações" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: left;width: 175px;" readonly="1" placeholder="GET NÚMERO DE AVALIAÇÕES">
-    <br>
-    
-    <table id="minhasAvaliações" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 70%; height: auto;">
-      <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: 10px;">
-        <th style="width: 50%;">Critério</th>
-        <th style="width: 10%;">Insatisfatório</th>
-        <th style="width: 10%;">Parcialmente satisfatório</th>
-        <th style="width: 10%;">Satisfatório</th>
-        <th style="width: 10%;">Bom</th>
-        <th style="width: 10%;">Muito bom</th>
-      </thead>
-      <tr class="ui-state-default">
-        <th>1- Quanto ao cumprimento do horário e ao comparecimento às aulas:</th>
-        <th>2</th>
-        <th>0</th>
-        <th>0</th>
-        <th>3</th>
-        <th>0</th>
-      </tr>
-      <tr class="ui-state-default">
-        <th>2- Quanto ao comportamento do aluno no ambiente de atendimento:</th>
-        <th>0</th>
-        <th>1</th>
-        <th>1</th>
-        <th>1</th>
-        <th>0</th>
-      </tr>
-      <tr class="ui-state-default">
-        <th>3- Quanto a apresentação dos materiais/instrumentais necessários para a realização do atendimento:</th>
-        <th>0</th>
-        <th>3</th>
-        <th>0</th>
-        <th>3</th>
-        <th>0</th>
-      </tr>
-      <tr class="ui-state-default">
-        <th>4- Quanto ao conhecimento do aluno sobre o conteúdo da disciplina e a forma como o relaciona os atendimentos:</th>
-        <th>0</th>
-        <th>0</th>
-        <th>1</th>
-        <th>0</th>
-        <th>0</th>
-      </tr>
-      <tr class="ui-state-default">
-        <th>5- Quanto ao cuidado e respeito para com o paciente:</th>
-        <th>0</th>
-        <th>0</th>
-        <th>0</th>
-        <th>1</th>
-        <th>0</th>
-      </tr>
-      <tr class="ui-state-default">
-        <th>6- Quanto ao comportamento do aluno frente a eventuais limitações ou insucessos nos atendimentos:</th>
-        <th>0</th>
-        <th>0</th>
-        <th>2</th>
-        <th>1</th>
-        <th>0</th>
-      </tr>
-      <tr class="ui-state-default">
-        <th>7- Quanto ao comportamento da dupla/auxiliar do aluno durante o atendimento:</th>
-        <th>0</th>
-        <th>5</th>
-        <th>0</th>
-        <th>0</th>
-        <th>0</th>
-      </tr>
-      <tr class="ui-state-default">
-        <th>8- Quanto à autoavaliação do aluno sobre o atendimento:</th>
-        <th>1</th>
-        <th>5</th>
-        <th>0</th>
-        <th>0</th>
-        <th>0</th>
-      </tr>
-    </table>
-    <br>
-
-
-    <hr class="ui-state-default">     
-    <h2 style="padding: 40px; line-height: 150%; color: rgb(211, 39, 39);">
-      FUNCIONALIDADE PREVISTA: <br>
-      1- PUXAR DADOS DAS VARIÁVEIS 'dataAvaliação', 'avaliarPontualidade', 'avaliarComportamento', 'avaliarMateriais', 'avaliarConhecimento', 'avaliarCuidado', 'avaliarAdversidades', 'avaliarDupla', 'avaliarAuto'
-
+  <!-- TAB AVALIAÇÃO QUANTITATIVA -->
+  <div id="tabResultadoAvaliacaoDocente" class="tabs"><ul></ul>
+    <div id="tabResultadoAvaliacaoDocente-1" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-1 tabResultadoAvaliacaoDocente-1">
+      <ul><li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-1" accessKey="tabResultadoAvaliacaoDocente-1">Avaliação quantitativa</a></li></ul>			
+          
+      <label style="width: 120px;">Total de avaliações</label>
+      <input type="text" id="totalAvaliacoes" value="" maxlength="" class="ui-state-default ui-corner-all mousetrap " style="text-align: left;width: 175px;" readonly>
+      <br>
       
-    </h2>
-
-
-
-  </div>
+      <table id="gridAvaliacoes" class="ui-jqgrid ui-widget ui-widget-content" cellspacing="0" cellpadding="0" role="grid" aria-multiselectable="false" style="width: 50%; font-size: 14px; margin: 50px;">
+        <thead>
+            <tr class="ui-jqgrid-labels" role="rowheader">
+              <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 50%; border: 1px solid white;">Critério</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%; border: 1px solid white;">Insatisfatório</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%; border: 1px solid white;">Parcialmente satisfatório</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%; border: 1px solid white;">Satisfatório</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%; border: 1px solid white;">Bom</th>
+              <th class="ui-jqgrid-titlebar ui-widget-header" style="width: 10%; border: 1px solid white;">Muito bom</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+    
+        </tbody>
+      </table>
+    </div>
   	
+    <!-- TAB GRÁFICO -->
+    <div id="tabResultadoAvaliacaoDocente-2" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-2 tabResultadoAvaliacaoDocente-2">
+      <ul>
+      <li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-2" accessKey="tabResultadoAvaliacaoDocente-2">Gráfico</a></li></ul>
+      
+      <div style="height: 50%; width: 50%;">
+        <canvas id="chartgridAvaliacoes" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 5px; margin-top: 15px; width: 60%; height: 450px;"></canvas>
+      </div>
+    </div>
 
+    <!-- TAB OBSERVAÇÕES -->
+    <div id="tabResultadoAvaliacaoDocente-3" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-3 tabResultadoAvaliacaoDocente-3">
+      <ul>
+        <li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-3" accessKey="tabResultadoAvaliacaoDocente-3">Observações</a>
+        </li>
+      </ul>
 
-<!-- TAB GRÁFICO -->
-<div id="tabResultadoAvaliacaoDocente-2" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-2 tabResultadoAvaliacaoDocente-2">
-  <ul>
-  <li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-2" accessKey="tabResultadoAvaliacaoDocente-2">Gráfico</a></li></ul>
+      <table id="listaObervações" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 50%; height: auto;">
+        <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: 10px;">
+          <th style="width: 15%;">Data</th>
+          <th style="width: 85%;">Observação</th>
+        </thead>
+        <tbody id="obs-body">
+          <tr class="ui-state-default">
+            <!-- OBS VALUES SHOULD POPULATE HERE -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="clear: both; margin-top: 10px;"></div>
+    <div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">
+          &copy;2010 - 2023 Cobalto
+    </div>
+  </body>
+
+  <script>
+    $(document).ready(function() {
+        // Get matricula, cod_disciplina, and periodo from the URL
+        var urlParams = new URLSearchParams(window.location.search);
+        var matricula = urlParams.get('id');
+        var codDisciplina = urlParams.get('cod_disciplina');
+        var periodo = urlParams.get('periodo'); // Get the value of 'periodo' parameter
   
-
-  <div>
-    <canvas id="chartMinhasAvaliações" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 5px; margin-top: 15px; width: 60%; height: 450px;"></canvas>
-  </div>
+        // Make AJAX request on page load
+        $.ajax({
+          url: "https://sistema-odonto.000webhostapp.com/consulta-avaliacoes-id-periodo-disciplina.php",
+          method: "GET",
+          data: {matricula: matricula, cod_disciplina: codDisciplina, periodo: periodo},
+          success: function(data) {
+          // Populate matricula
+          if (data.length > 0) {
+            matricula = data[0].matricula;
+          }
   
-<script>
-  // CREATE CHART FROM 'minhasAvaliações' TABLE
-  const table = document.getElementById("minhasAvaliações");
-  const canvas = document.getElementById("chartMinhasAvaliações");
-  const labels = [];
-  const data = [];
-
-  // Loop through each row (skipping the first row which contains headers)
-  for (let i = 1; i < table.rows.length; i++) {
-    const row = table.rows[i];
-    const critério = row.cells[0].textContent;
-    const values = Array.from(row.cells).slice(1).map(cell => parseInt(cell.textContent));
-
-    labels.push(critério);
-    data.push(values);
-  }
-
-  // Calculate percentages based on row values
-  const percentages = data.map(row => {
-    const total = row.reduce((sum, value) => sum + value, 0);
-    return row.map(value => (value / total) * 100);
-  });
-
-  // Custom labels for the Y-axis (transposed from X-axis)
-  const customLabels = ["Insatisfatório", "Parcialmente Satisfatório", "Satisfatório", "Bom", "Muito Bom"];
-
-  // Create the chart
-  const ctx = canvas.getContext("2d");
-  new Chart(ctx, {
-    type: "horizontalBar", // Use horizontalBar to transpose the chart
-    data: {
-      labels: labels, // Use the critério labels as Y-axis labels
-      datasets: [
-        { label: "Insatisfatório", data: percentages.map(row => row[0]), backgroundColor: "#FF0000", stack: 'Stack 0',},
-        { label: "Parcialmente Satisfatório", data: percentages.map(row => row[1]), backgroundColor: "#F18200", stack: 'Stack 0', },
-        { label: "Satisfatório", data: percentages.map(row => row[2]), backgroundColor: "#D2E400",stack: 'Stack 0', },
-        { label: "Bom", data: percentages.map(row => row[3]), backgroundColor: "#52D700", stack: 'Stack 0', },
-        { label: "Muito Bom", data: percentages.map(row => row[4]), backgroundColor: "#00CA1F", stack: 'Stack 0', }
-      ]
-    },
-    options: {
-      indexAxis: 'y',
-      scales: {
-        y: {
-          stacked: true
+          // Populate inputs with data from the server response
+          if (data.length > 0) {
+            var firstEntry = data[0];
+            $("#disciplina").val(firstEntry.disciplina);
+            $("#cod_disciplina").val(firstEntry.cod_disciplina);
+            $("#periodo").val(firstEntry.periodo);
+          } else {
+            console.log("No data found.");
+          }
+  
+          // Populate tables with data
+          populateTables(data);
+  
+          // Create the chart after populating the tables
+          createChart();
         },
-        x: {
-          stacked: true,
-          ticks: {
-            beginAtZero: true,
-            max: 100,
-            callback: function (value) {
-              return value + "%";
-            }
-          }
+        error: function (error) {
+          console.error('Error fetching data:', error);
         }
-      },
-      plugins: {
-        legend: {
-          display: true,
-          position: 'right',
-          labels: {
-            usePointStyle: true,
-            formatter: function (legendItem, _) {
-              const datasetIndex = legendItem.datasetIndex;
-              const dataIndex = legendItem.index;
-              const percentage = percentages[dataIndex][datasetIndex];
-              return `${customLabels[datasetIndex]} (${percentage.toFixed(1)}%)`;
-            }
-          }
-        }
+      });
+  
+      // Function to populate tables with data
+      function populateTables(data) {
+        var criteria = [
+          'pontualidade',
+          'comportamento',
+          'materiais',
+          'conhecimento',
+          'cuidado',
+          'adversidades',
+          'dupla',
+          'autoavaliacao'
+        ];
+  
+        criteria.forEach(function (criterion, index) {
+          var counts = {
+            'Insatisfatório': 0,
+            'Parcialmente': 0,
+            'Satisfatório': 0,
+            'Bom': 0,
+            'Muito Bom': 0
+          };
+  
+          data.forEach(function (entry) {
+            counts[entry[criterion]]++;
+          });
+  
+          var row = '<tr class="ui-state-default">' +
+            '<th style="border: 1px solid white; text-align: center;">' + criterion.charAt(0).toUpperCase() + criterion.slice(1) + '</th>' +
+            '<td style="border: 1px solid white; text-align: center;">' + counts['Insatisfatório'] + '</td>' +
+            '<td style="border: 1px solid white; text-align: center;">' + counts['Parcialmente'] + '</td>' +
+            '<td style="border: 1px solid white; text-align: center;">' + counts['Satisfatório'] + '</td>' +
+            '<td style="border: 1px solid white; text-align: center;">' + counts['Bom'] + '</td>' +
+            '<td style="border: 1px solid white; text-align: center;">' + counts['Muito Bom'] + '</td>' +
+            '</tr>';
+  
+          $('#table-body').append(row);
+  
+          // Populate id_solicitacao, nomeSolicitante, idSolicitante, and setor inputs
+          $('#matricula').val(matricula);
+  
+          // Count the number of entries in the data array
+          var numberOfEntries = data.length;
+  
+          // Populate the 'totalAvaliacoes' input with the count
+          $('#totalAvaliacoes').val(numberOfEntries);
+        });
+  
+        // Filter rows with non-empty 'obs' values
+        var filteredData = data.filter(function (entry) {
+          return entry.obs.trim() !== '';
+        });
+  
+        // Populate second table only if 'obs' is not empty
+        filteredData.forEach(function (entry) {
+          var row = '<tr class="ui-state-default">' +
+            '<td style="border: 1px solid white; text-align: center;">' + entry.data_avaliacao + '</td>' +
+            '<td style="border: 1px solid white; text-align: center;">' + entry.obs + '</td>' +
+            '</tr>';
+          $('#obs-body').append(row);
+        });
       }
-    }
-  });
-</script>
-
-</div>
-
-
-<!-- TAB OBSERVAÇÕES -->
-<div id="tabResultadoAvaliacaoDocente-3" class="ui-widget tabResultadoAvaliacaoDocente tabResultadoAvaliacaoDocente-3 tabResultadoAvaliacaoDocente-3">
-  <ul>
-    <li class="labeltabResultadoAvaliacaoDocente"><a href="#tabResultadoAvaliacaoDocente-3" accessKey="tabResultadoAvaliacaoDocente-3">Observações</a>
-    </li>
-  </ul>
-
-  <table id="listaObervações" class="ui-jqgrid ui-widget ui-widget-content ui-corner-all" style="margin-left: 50px; margin-top: 15px; width: 70%; height: auto;">
-    <thead class="ui-jqgrid-titlebar ui-widget-header ui-corner-top ui-helper-clearfix" style="font-size: larger; height: 10px;">
-      <th style="width: 15%;">Data</th>
-      <th style="width: 85%;">Observação</th>
-    </thead>
-    <tr class="ui-state-default">
-      <th>GET 'dataAvaliação'</th>
-      <th>GET 'avaliarObservações'</th>
-    </tr>
-    <tr class="ui-state-default">
-      <th>GET 'dataAvaliação'</th>
-      <th>GET 'avaliarObservações'</th>
-    </tr>
-  </table>
-</div>
-
-
-
-
-<div style="clear: both; margin-top: 10px;"></div>
-<div id="footer" style="z-index: 99999999;" class="ui-state-highlight ui-widget">
-			&copy;2010 - 2023 Cobalto
-</div>
-		
-</body>
+  
+        // Function to create the chart
+        function createChart() {
+          const table = document.getElementById("gridAvaliacoes");
+          const canvas = document.getElementById("chartgridAvaliacoes");
+  
+          const labels = [];
+          const data = [];
+  
+          // Loop through each row (skipping the first row which contains headers)
+          for (let i = 1; i < table.rows.length; i++) {
+            const row = table.rows[i];
+            const critério = row.cells[0].textContent;
+            const values = Array.from(row.cells).slice(1).map(cell => parseInt(cell.textContent));
+  
+            labels.push(critério);
+            data.push(values);
+          }
+  
+          // Calculate percentages based on row values
+          const percentages = data.map(row => {
+            const total = row.reduce((sum, value) => sum + value, 0);
+            return row.map(value => (value / total) * 100);
+          });
+  
+          // Custom labels for the Y-axis (transposed from X-axis)
+          const customLabels = ["Insatisfatório", "Parcialmente Satisfatório", "Satisfatório", "Bom", "Muito Bom"];
+  
+          // Create the chart
+          const ctx = canvas.getContext("2d");
+          new Chart(ctx, {
+            type: "horizontalBar", // Use horizontalBar to transpose the chart
+            data: {
+              labels: labels, // Use the critério labels as Y-axis labels
+              datasets: [
+                { label: "Insatisfatório", data: percentages.map(row => row[0]), backgroundColor: "#FF0000", stack: 'Stack 0',},
+                { label: "Parcialmente Satisfatório", data: percentages.map(row => row[1]), backgroundColor: "#F18200", stack: 'Stack 0', },
+                { label: "Satisfatório", data: percentages.map(row => row[2]), backgroundColor: "#D2E400",stack: 'Stack 0', },
+                { label: "Bom", data: percentages.map(row => row[3]), backgroundColor: "#52D700", stack: 'Stack 0', },
+                { label: "Muito Bom", data: percentages.map(row => row[4]), backgroundColor: "#00CA1F", stack: 'Stack 0', }
+              ]
+            },
+            options: {
+              indexAxis: 'y',
+              scales: {
+                y: {
+                  stacked: true
+                },
+                x: {
+                  stacked: true,
+                  ticks: {
+                    beginAtZero: true,
+                    max: 100,
+                    callback: function (value) {
+                      return value + "%";
+                    }
+                  }
+                }
+              },
+              plugins: {
+                legend: {
+                  display: true,
+                  position: 'right',
+                  labels: {
+                    usePointStyle: true,
+                    formatter: function (legendItem, _) {
+                      const datasetIndex = legendItem.datasetIndex;
+                      const dataIndex = legendItem.index;
+                      const percentage = percentages[dataIndex][datasetIndex];
+                      return `${customLabels[datasetIndex]} (${percentage.toFixed(1)}%)`;
+                    }
+                  }
+                }
+              }
+            }
+          });
+        }
+      });
+    </script>
 </html>

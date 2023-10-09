@@ -29,8 +29,7 @@
         <li><a href="index.html"></a></li><li>Gestão Saúde</li>
         <li>Administração</li>
         <li>Consultas</li>
-        <li>Avaliação de aluno em disciplina</li>
-        <li><span style="color: red; font-weight: bold;">'get aluno'</span></li>
+        <li>Avaliação média por disciplina</li>
       </ul>
     <div style="clear: both;"></div></div><div style="clear: both;"></div>
     
@@ -127,22 +126,21 @@
   </body>
 
   <script>
-  $(document).ready(function() {
-      // Get matricula, cod_disciplina, and periodo from the URL
+    $(document).ready(function() {
+      // Get periodo and cod_disciplina from the URL
       var urlParams = new URLSearchParams(window.location.search);
-      var matricula = urlParams.get('id');
       var codDisciplina = urlParams.get('cod_disciplina');
-      var periodo = urlParams.get('periodo'); // Get the value of 'periodo' parameter
+      var periodo = urlParams.get('periodo');
 
       // Make AJAX request on page load
       $.ajax({
-        url: "https://sistema-odonto.000webhostapp.com/consulta-avaliacoes-id-periodo-disciplina.php",
+        url: "https://sistema-odonto.000webhostapp.com/consulta-avaliacoes-periodo-disciplina.php",
         method: "GET",
-        data: {matricula: matricula, cod_disciplina: codDisciplina, periodo: periodo},
+        data: {periodo: periodo, cod_disciplina: codDisciplina},
         success: function(data) {
-        // Populate matricula
+        // Populate periodo
         if (data.length > 0) {
-          matricula = data[0].matricula;
+          periodo = data[0].periodo;
         }
 
         // Populate inputs with data from the server response
@@ -204,7 +202,7 @@
         $('#table-body').append(row);
 
         // Populate id_solicitacao, nomeSolicitante, idSolicitante, and setor inputs
-        $('#matricula').val(matricula);
+        $('#periodo').val(periodo);
 
         // Count the number of entries in the data array
         var numberOfEntries = data.length;

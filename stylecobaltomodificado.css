@@ -9,21 +9,23 @@
     }
 
 .agendamento-ui{
-    border:1px solid #84a800;
     background:#FFFF00;
     background-color:#FFFF00;
+    border-style: solid;
+    border-color: #cfcf02;
+    border-width: 1px;
     font-weight:bold;
     color:#000000;
-    border-radius:5px;
     }
 
 .atendido-ui{
-    border:1px solid #006d05;
     background:#09a716;
-    background-color:#0eca27;
+    background-color:#09a716;
+    border-style: solid;
+    border-color: #098013;
+    border-width: 1px;
     font-weight:bold;
     color:#000000;
-    border-radius:5px;
     }
 
 

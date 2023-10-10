@@ -9,8 +9,11 @@ include_once('config.php');
 // Initialize an array to store the data
 $data = array();
 
-// Fetch data from the database
-$consulta = mysqli_query($connection, "SELECT * FROM materiais");
+// Get the current date
+$currentDate = date("Y-m-d");
+
+// Fetch data from the database where data_agendamento = CurrentDate
+$consulta = mysqli_query($connection, "SELECT * FROM `agenda-clinicas` WHERE `data_agendamento` = '$currentDate'");
 
 if ($consulta) {
     while ($linha = mysqli_fetch_assoc($consulta)) {

@@ -10,7 +10,7 @@ include_once('config.php');
 $data = array();
 
 // Fetch data from the database
-$consulta = mysqli_query($connection, "SELECT * FROM materiais");
+$consulta = mysqli_query($connection, "SELECT * FROM `agenda-clinicas`");
 
 if ($consulta) {
     while ($linha = mysqli_fetch_assoc($consulta)) {

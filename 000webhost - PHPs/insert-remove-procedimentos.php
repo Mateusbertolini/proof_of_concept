@@ -1,17 +1,9 @@
 <?php
-// Allow cross-origin requests from any origin (replace '*' with the specific origin if needed)
 header("Access-Control-Allow-Origin: *");
-
-// Allow specific HTTP methods (e.g., GET, POST, PUT) - adjust as needed
 header("Access-Control-Allow-Methods: GET, POST, PUT");
-
-// Allow specific headers in the request - adjust as needed
 header("Access-Control-Allow-Headers: Content-Type");
-
-// Set the response content type to JSON
 header("Content-Type: application/json");
 
-// Include your database configuration file
 include_once('config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

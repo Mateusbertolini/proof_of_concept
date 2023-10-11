@@ -48,8 +48,7 @@
 
           <br>
           <label style="width: 200px; margin: 5px;">Filtrar por data</label>
-            <input type="date" id="filtroDataAgendamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 200px; height: 15px;">
-            <button id="dateButton" style="margin: 5px;">Filtrar por data</button>
+          <input type="date" id="filtroDataAgendamento" value="" maxlength="10" class="ui-state-default ui-corner-all mousetrap " style=" width: 200px; height: 15px;">
           <br>
 
           <label style="width: 200px; margin: 5px;">Filtrar por turno</label>
@@ -112,7 +111,6 @@
                         <th class="ui-jqgrid-titlebar ui-widget-header">Paciente</th>
                         <th class="ui-jqgrid-titlebar ui-widget-header">Agendado por:</th>
                         <th class="ui-jqgrid-titlebar ui-widget-header">Local</th>
-                        <th class="ui-jqgrid-titlebar ui-widget-header">Turno</th>
                         <th class="ui-jqgrid-titlebar ui-widget-header">Horário</th>
                         <th class="ui-jqgrid-titlebar ui-widget-header">Atividade</th>
                         <th class="ui-jqgrid-titlebar ui-widget-header">Descrição</th>
@@ -155,7 +153,7 @@
                 function loadTableData() {
                     // Make an AJAX request to fetch data from your PHP script
                     $.ajax({
-                        url: 'https://sistema-odonto.000webhostapp.com/agenda-clinicas-currentday.php',
+                        url: 'https://sistema-odonto.000webhostapp.com/APIs_agenda/agenda-clinicas-currentday.php',
                         method: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -183,7 +181,14 @@
                     // Apply the filtroTurnoAgendamento filter
                     if (filtroTurnoAgendamento !== '') {
                         filteredRows = filteredRows.filter(function (item) {
-                            return item.turno_agendamento === filtroTurnoAgendamento;
+                            if (filtroTurnoAgendamento === 'Manhã') {
+                                return parseInt(item.horario_agendamento) < 12;
+                            } else if (filtroTurnoAgendamento === 'Tarde') {
+                                return parseInt(item.horario_agendamento) >= 12 && parseInt(item.horario_agendamento) < 18;
+                            } else if (filtroTurnoAgendamento === 'Noite') {
+                                return parseInt(item.horario_agendamento) >= 18;
+                            }
+                            return true; // If 'Todos' selected, no filtering based on time
                         });
                     }
 
@@ -238,8 +243,7 @@
                         row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.cpf_paciente + '</td>';
                         row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.agendado_por + '</td>';
                         row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.local + '</td>';
-                        row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.turno_agendamento + '</td>';
-                        row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.horario_agendamento + '</td>';
+                        row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.horario_agendamento + ':' + item.minuto_agendamento + '</td>';
                         row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.atividade_curricular + '</td>';
                         row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.descricao + '</td>';
                         row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.status_agendamento + '</td>';

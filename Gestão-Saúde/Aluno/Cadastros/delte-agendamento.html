@@ -77,7 +77,7 @@
             <div style="margin: 20px;">
                 <p></p>
 
-                <form method="post" action="https://sistema-odonto.000webhostapp.com/APIs_agenda/agendamento-insert-remove.php" id="agendamentoForm">
+                <form method="post" action="https://sistema-odonto.000webhostapp.com/delete-agendamento.php" id="agendamentoForm">
                     
                     <div>
                     <p></p>
@@ -148,10 +148,10 @@
                     <br>
                     <p></p>
 
-                    <div style="margin: 20px; margin-left: 10%;">
+                    <div style="margin: 10px;">
                         <button type="submit" id="btnAdicionar" class="button">Cadastrar agendamento</button>
-                        <button name="deleteButton" id="deleteButton" value="deleteButton" class="button">Excluir agendamento</button>
-                        <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button">Apagar campos</button>
+                        <button name="deleteButton" id="deleteButton" value="deleteButton" class="button">Excluir</button>
+                        <button name="btnCancelar" onClick="limparCampos()" id="btnCancelar" value="Cancelar" class="button">Cancelar</button>
                     </div>
                 </form>
                 <br>
@@ -229,6 +229,15 @@
             </select>
             <br>
         
+        
+            <label style="width: 195px; margin: 5px;">Filtrar por status do agendamento</label>
+            <select class="ui-state-default ui-corner-all" style="width: 15%; height: 20px; margin: 5px;" id="filtroStatus">
+                <option value="Todos">Todos</option>
+                <option value="No local">No local</option>
+                <option value="Agendado">Agendado</option>
+                <option value="Atendido">Atendido</option>
+            </select>
+                
             <div style="margin: 5px;"></div>
             <button id="clear" style="margin: 10px;">Limpar filtros</button>
                 
@@ -262,51 +271,55 @@
                     </td>
                 </tr>
             </table>
+
+            <button name="btnExcluir" onClick="excluir()" id="btnExcluir" value="Excluir" class="button" style="margin-left: 50px; padding: 4px;">Excluir agendamento</button>
         </div>
     </div>
     
     <script>
         // DADOS DO BANCO PREENCHEM DA TABELA
         $(document).ready(function () {
-            var currentPage = 1;
-            var rowsPerPage = 25;
-            var tableRows = [];
-            var totalRows = 0;
-                    
-            //NEW FILTERS TEST!!
-            var filtroDataAgendamento = '';
-            var filtroTurnoAgendamento = '';
-            var filtroLocalAgendamento = '';
-            var filtroDisciplina = '';
-                                    
-            // Função para obter parâmetros da URL
-            function getUrlVars() {
-                var vars = {};
-                var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
-                    vars[key] = value;
-                });
-                return vars;
-            }
+          var currentPage = 1;
+          var rowsPerPage = 25;
+          var tableRows = [];
+          var totalRows = 0;
+                  
+          //NEW FILTERS TEST!!
+          var filtroDataAgendamento = '';
+          var filtroTurnoAgendamento = '';
+          var filtroLocalAgendamento = '';
+          var filtroDisciplina = '';
+          var filtroStatus = '';
+          
+          
+          // Função para obter parâmetros da URL
+          function getUrlVars() {
+              var vars = {};
+              var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                  vars[key] = value;
+              });
+              return vars;
+          }
 
-            function loadTableData() {
-                // Make an AJAX request to fetch data from your PHP script
-                $.ajax({
-                    url: 'https://sistema-odonto.000webhostapp.com/APIs_agenda/agendados-usuario.php?id=' + getUrlVars()["id"] + '',
-                    method: 'GET',
-                    dataType: 'json',
-                    success: function (data) {
-                        totalRows = data.length;
-                        tableRows = data;
-                        applyFilters();
-                        updateButtons();
-                    },
-                    error: function () {
-                        console.log('Error fetching data');
-                    }
-                });
-            }
+          function loadTableData() {
+              // Make an AJAX request to fetch data from your PHP script
+              $.ajax({
+                  url: 'https://sistema-odonto.000webhostapp.com/agenda-usuario.php?id=' + getUrlVars()["id"] + '',
+                  method: 'GET',
+                  dataType: 'json',
+                  success: function (data) {
+                      totalRows = data.length;
+                      tableRows = data;
+                      applyFilters();
+                      updateButtons();
+                  },
+                  error: function () {
+                      console.log('Error fetching data');
+                  }
+              });
+          }
       
-            function applyFilters() {
+          function applyFilters() {
                 var filteredRows = tableRows;
 
                 // Apply the filtroDataAgendamento filter
@@ -320,11 +333,12 @@
                 if (filtroTurnoAgendamento !== '') {
                     filteredRows = filteredRows.filter(function (item) {
                         if (filtroTurnoAgendamento === 'Manhã') {
-                            return parseInt(item.horario_agendamento) < 12;
+                            return item.turno_agendamento === filtroTurnoAgendamento && parseInt(item.horario_agendamento.split(':')[0]) < 12;
                         } else if (filtroTurnoAgendamento === 'Tarde') {
-                            return parseInt(item.horario_agendamento) >= 12 && parseInt(item.horario_agendamento) < 18;
+                            var horario = parseInt(item.horario_agendamento.split(':')[0]);
+                            return item.turno_agendamento === filtroTurnoAgendamento && horario >= 12 && horario < 18;
                         } else if (filtroTurnoAgendamento === 'Noite') {
-                            return parseInt(item.horario_agendamento) >= 18;
+                            return item.turno_agendamento === filtroTurnoAgendamento && parseInt(item.horario_agendamento.split(':')[0]) >= 18;
                         }
                         return true; // If 'Todos' selected, no filtering based on time
                     });
@@ -341,6 +355,13 @@
                 if (filtroDisciplina !== '') {
                     filteredRows = filteredRows.filter(function (item) {
                         return item.atividade_curricular === filtroDisciplina;
+                    });
+                }
+
+                // Apply the filtroStatus filter
+                if (filtroStatus !== '') {
+                    filteredRows = filteredRows.filter(function (item) {
+                        return item.status_agendamento === filtroStatus;
                     });
                 }
 
@@ -376,7 +397,7 @@
                     row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.data_agendamento + '</td>';
                     row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.cpf_paciente + '</td>';
                     row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.local + '</td>';
-                    row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.horario_agendamento + ':' + item.minuto_agendamento + '</td>';
+                    row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.horario_agendamento + '</td>';
                     row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.atividade_curricular + '</td>';
                     row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.descricao + '</td>';
                     row += '<td class="' + getStatusClass(item.status_agendamento) + ' ui-th-column ui-th-ltr">' + item.status_agendamento + '</td>';
@@ -436,17 +457,26 @@
                 updateButtons();
             });
 
-                // Clear button click event
-                $('#clear').click(function () {
+            // Listen for changes to filtroStatus filter
+            $('#filtroStatus').change(function () {
+                filtroStatus = $(this).val();
+                currentPage = 1; // Reset to the first page when the filter changes
+                applyFilters();
+                updateButtons();
+            });
+
+            // Clear button click event
+            $('#clear').click(function () {
                 $('#filtroDataAgendamento').val('');
-                $('#filtroTurnoAgendamento').val('');
                 $('#filtroLocalAgendamento').val('');
                 $('#filtroDisciplina').val('');
-                
+                $('#filtroStatus').val('');
+
                 filtroDataAgendamento = '';
                 filtroTurnoAgendamento = '';
                 filtroLocalAgendamento = '';
                 filtroDisciplina = '';
+                filtroStatus = '';
                 currentPage = 1; // Reset to the first page when clearing filters
                 applyFilters();
                 updateButtons();
@@ -490,8 +520,7 @@
                     cpf_paciente: $('#cpf_paciente').val(),
                     descricao: $('#descricao').val(),
                     data_agendamento: $('#data_agendamento').val(),
-                    horario_agendamento: $('#horario_agendamento_1').val(),
-                    minuto_agendamento: $('#horario_agendamento_2').val(),
+                    horario_agendamento: $('#horario_agendamento_1').val() + ':' + $('#horario_agendamento_2').val(),
                     local: $('#local').val(),
                     atividade_curricular: $('#atividade_curricular').val(),
                     agendado_por: agendadoPor
@@ -500,7 +529,7 @@
                 // Perform an AJAX POST request
                 $.ajax({
                     type: 'POST',
-                    url: 'https://sistema-odonto.000webhostapp.com/APIs_agenda/agendamento-insert-remove.php',
+                    url: 'https://sistema-odonto.000webhostapp.com/delete-agendamento.php',
                     data: formData,
                     success: function (response) {
                         // Show the result using the showCustomAlert() function
@@ -547,7 +576,7 @@
             // Send the POST request using AJAX for deletion
             $.ajax({
             type: 'POST',
-            url: 'https://sistema-odonto.000webhostapp.com/APIs_agenda/agendamento-insert-remove.php',
+            url: 'https://sistema-odonto.000webhostapp.com/delete-agendamento.php',
             data: requestData, // Send the selectedIds directly
             success: function (data) {
                 // Log the success response for debugging
